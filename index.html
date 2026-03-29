@@ -519,7 +519,7 @@ function renderRides(records) {
   const byDay = {};
   DAYS.forEach(d => byDay[d] = []);
   records.forEach(r => {
-    const day = r.fields[R.day]?.name;
+    const day = typeof r.fields[R.day] === 'object' ? r.fields[R.day]?.name : r.fields[R.day];
     if (day && byDay[day]) byDay[day].push(r.fields);
   });
 
@@ -544,7 +544,7 @@ function renderRides(records) {
       html += `<p class="no-rides">No rides scheduled</p>`;
     } else {
       rides.forEach(f => {
-        const status  = f[R.status]?.name || 'unknown';
+        const status  = f[R.status]?.name || f[R.status] || 'unknown';
         const loc     = f[R.loc] ? escHtml(f[R.loc]) + (f[R.addrNote] ? ` · ${escHtml(f[R.addrNote])}` : '') : null;
 
         html += `<div class="ride-card ${today ? 'today' : ''}">
@@ -593,7 +593,7 @@ function renderEvents(records) {
   let html = '';
   upcoming.forEach(r => {
     const f      = r.fields;
-    const status = f[E.status]?.name || 'planned';
+    const status = [E.status]?.name || f[E.status] || 'planned';
     const d      = new Date(f[E.date] + 'T00:00:00');
     const dlabel = `${DAYS[d.getDay()]}, ${fmt(d)} ${d.getFullYear()}`;
 
