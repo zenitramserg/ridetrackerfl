@@ -386,13 +386,12 @@
 
 <script>
 // ─────────────────────────────────────────────────────────────────
-//  CONFIG  — replace with your read-only Airtable PAT
+//  CONFIG  — token is stored server-side in Netlify env variable
 // ─────────────────────────────────────────────────────────────────
-const TOKEN   = 'patGo8slERZ4OKzNz.d97a5f60e13f16351daef3b1d0b13066bcdf7ee51e860c51431e5eb59b6a2ec2';
-const BASE_ID = 'appp3CTtWpqVcTn6e';
 const RIDES   = 'tbl7xURgDo5wU4z5t';
 const EVENTS  = 'tblrv1h7NAbRlQihQ';
 
+// Ride field IDs
 // Ride field names (Airtable REST API keys by field name, not ID)
 const R = {
   name:    'Ride Name',
@@ -439,15 +438,10 @@ function weekDates() {
   });
 }
 
-function fmt(d)     { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
-function isToday(d) { return d.toDateString() === new Date().toDateString(); }
-
-function escHtml(s) {
-  return String(s)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;');
+function fmt(d)      { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
+function isToday(d)  {
+  const t = new Date();
+  return d.toDateString() === t.toDateString();
 }
 
 function statusBadge(raw) {
@@ -460,19 +454,20 @@ function statusBadge(raw) {
   return `<span class="badge ${cls}">${label}</span>`;
 }
 
-function weatherRow(f, F) {
-  const rain    = f[F.rain];
-  const wind    = f[F.wind];
-  const summary = f[F.weather];
+function weatherRow(f, R_or_E) {
+  const rain    = f[R_or_E.rain];
+  const wind    = f[R_or_E.wind];
+  const summary = f[R_or_E.weather];
   if (rain === undefined && wind === undefined && !summary) return '';
+
   let parts = [];
   if (summary) {
     parts.push(`<span>${escHtml(summary)}</span>`);
   } else {
     if (rain !== undefined) {
-      const pct  = Math.round(rain * 100);
-      const cls  = pct >= 60 ? 'w-rain-high' : pct >= 30 ? 'w-rain-med' : 'w-rain-low';
-      const icon = pct >= 60 ? '🌧' : pct >= 30 ? '🌦' : '☀️';
+      const pct   = Math.round(rain * 100);
+      const cls   = pct >= 60 ? 'w-rain-high' : pct >= 30 ? 'w-rain-med' : 'w-rain-low';
+      const icon  = pct >= 60 ? '🌧' : pct >= 30 ? '🌦' : '☀️';
       parts.push(`<span class="${cls}">${icon} ${pct}% rain</span>`);
     }
     if (wind !== undefined) {
@@ -487,14 +482,22 @@ function metaItem(icon, text) {
   return `<span class="meta-item"><span class="meta-icon">${icon}</span> ${escHtml(text)}</span>`;
 }
 
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
 // ─── FETCH ALL RECORDS (handles pagination) ────────────────────────
 async function fetchAll(tableId, fieldNames) {
   const fields = fieldNames.map(n => `fields[]=${encodeURIComponent(n)}`).join('&');
   let records = [], offset = null;
   do {
-    const url = `https://api.airtable.com/v0/${BASE_ID}/${tableId}?${fields}` +
+    const url = `/.netlify/functions/airtable?tableId=${tableId}&${fields}` +
                 (offset ? `&offset=${offset}` : '');
-    const res = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}` } });
+    const res = await fetch(url);
     if (!res.ok) throw new Error(`Airtable ${res.status}: ${await res.text()}`);
     const data = await res.json();
     records = records.concat(data.records || []);
@@ -508,9 +511,11 @@ function renderRides(records) {
   const wk     = weekDates();
   const todayN = new Date().getDay();
 
+  // week label
   document.getElementById('weekLabel').textContent =
     `Week of ${fmt(wk[0])} – ${fmt(wk[6])}, ${wk[6].getFullYear()}`;
 
+  // group by day name
   const byDay = {};
   DAYS.forEach(d => byDay[d] = []);
   records.forEach(r => {
@@ -518,6 +523,7 @@ function renderRides(records) {
     if (day && byDay[day]) byDay[day].push(r.fields);
   });
 
+  // render in day order starting from today
   const order = [...Array(7).keys()].map(i => (todayN + i) % 7);
   let html = '';
 
@@ -538,10 +544,8 @@ function renderRides(records) {
       html += `<p class="no-rides">No rides scheduled</p>`;
     } else {
       rides.forEach(f => {
-        const status = f[R.status] || 'unknown';
-        const loc    = f[R.loc]
-          ? escHtml(f[R.loc]) + (f[R.addrNote] ? ` · ${escHtml(f[R.addrNote])}` : '')
-          : null;
+        const status  = f[R.status] || 'unknown';
+        const loc     = f[R.loc] ? escHtml(f[R.loc]) + (f[R.addrNote] ? ` · ${escHtml(f[R.addrNote])}` : '') : null;
 
         html += `<div class="ride-card ${today ? 'today' : ''}">
           <div class="card-top">
@@ -629,7 +633,7 @@ async function init() {
   } catch (err) {
     console.error(err);
     document.getElementById('ridesContainer').innerHTML =
-      `<div class="error-msg">⚠️ Could not load rides.<br><small>${err.message}</small></div>`;
+      `<div class="error-msg">⚠️ Could not load rides. Check that your Airtable token is set in <code>index.html</code>.<br><small>${err.message}</small></div>`;
   }
 }
 
