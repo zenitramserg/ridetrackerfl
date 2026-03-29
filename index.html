@@ -1,3 +1,6 @@
+Here's the full file — select all and copy:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -385,15 +388,11 @@
 </footer>
 
 <script>
-// ─────────────────────────────────────────────────────────────────
-//  CONFIG  — replace YOUR_TOKEN with a read-only Airtable PAT
-// ─────────────────────────────────────────────────────────────────
 const TOKEN   = 'patGo8slERZ4OKzNz.d97a5f60e13f16351daef3b1d0b13066bcdf7ee51e860c51431e5eb59b6a2ec2';
 const BASE_ID = 'appp3CTtWpqVcTn6e';
 const RIDES   = 'tbl7xURgDo5wU4z5t';
 const EVENTS  = 'tblrv1h7NAbRlQihQ';
 
-// Ride field IDs
 const R = {
   name:    'fldcGLkoF6JsLndQb',
   org:     'fldorJA4k2hXbXvss',
@@ -409,7 +408,6 @@ const R = {
   wind:    'fld4nwFJFwrjveMzX',
 };
 
-// Event field IDs
 const E = {
   name:    'fld4Vc2vN1oHI9HGG',
   org:     'fldPfWHwUqkakFyXO',
@@ -426,7 +424,6 @@ const E = {
 const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-// ─── HELPERS ───────────────────────────────────────────────────────
 function weekDates() {
   const today = new Date();
   const sun   = new Date(today);
@@ -438,8 +435,8 @@ function weekDates() {
   });
 }
 
-function fmt(d)      { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
-function isToday(d)  {
+function fmt(d)     { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
+function isToday(d) {
   const t = new Date();
   return d.toDateString() === t.toDateString();
 }
@@ -459,15 +456,14 @@ function weatherRow(f, R_or_E) {
   const wind    = f[R_or_E.wind];
   const summary = f[R_or_E.weather];
   if (rain === undefined && wind === undefined && !summary) return '';
-
   let parts = [];
   if (summary) {
     parts.push(`<span>${escHtml(summary)}</span>`);
   } else {
     if (rain !== undefined) {
-      const pct   = Math.round(rain * 100);
-      const cls   = pct >= 60 ? 'w-rain-high' : pct >= 30 ? 'w-rain-med' : 'w-rain-low';
-      const icon  = pct >= 60 ? '🌧' : pct >= 30 ? '🌦' : '☀️';
+      const pct  = Math.round(rain * 100);
+      const cls  = pct >= 60 ? 'w-rain-high' : pct >= 30 ? 'w-rain-med' : 'w-rain-low';
+      const icon = pct >= 60 ? '🌧' : pct >= 30 ? '🌦' : '☀️';
       parts.push(`<span class="${cls}">${icon} ${pct}% rain</span>`);
     }
     if (wind !== undefined) {
@@ -490,7 +486,6 @@ function escHtml(s) {
     .replace(/"/g,'&quot;');
 }
 
-// ─── FETCH ALL RECORDS (handles pagination) ────────────────────────
 async function fetchAll(tableId, fieldIds) {
   const fields = fieldIds.map(id => `fields[]=${id}`).join('&');
   let records = [], offset = null;
@@ -506,24 +501,21 @@ async function fetchAll(tableId, fieldIds) {
   return records;
 }
 
-// ─── RENDER RIDES ───────────────────────────────────────────────────
 function renderRides(records) {
   const wk     = weekDates();
   const todayN = new Date().getDay();
 
-  // week label
   document.getElementById('weekLabel').textContent =
     `Week of ${fmt(wk[0])} – ${fmt(wk[6])}, ${wk[6].getFullYear()}`;
 
-  // group by day name
   const byDay = {};
   DAYS.forEach(d => byDay[d] = []);
   records.forEach(r => {
-    const day = typeof r.fields[R.day] === 'object' ? typeof r.fields[R.day] === 'object' ? typeof r.fields[R.day] === 'object' ? r.fields[R.day]?.name : r.fields[R.day] : r.fields[R.day] : r.fields[R.day];
+    const raw = r.fields[R.day];
+    const day = typeof raw === 'object' && raw !== null ? raw.name : raw;
     if (day && byDay[day]) byDay[day].push(r.fields);
   });
 
-  // render in day order starting from today
   const order = [...Array(7).keys()].map(i => (todayN + i) % 7);
   let html = '';
 
@@ -544,8 +536,11 @@ function renderRides(records) {
       html += `<p class="no-rides">No rides scheduled</p>`;
     } else {
       rides.forEach(f => {
-        const status  = f[R.status]?.name || f[R.status] || 'unknown';
-        const loc     = f[R.loc] ? escHtml(f[R.loc]) + (f[R.addrNote] ? ` · ${escHtml(f[R.addrNote])}` : '') : null;
+        const rawStatus = f[R.status];
+        const status    = (typeof rawStatus === 'object' && rawStatus !== null)
+                          ? rawStatus.name
+                          : rawStatus || 'unknown';
+        const loc = f[R.loc] ? escHtml(f[R.loc]) + (f[R.addrNote] ? ` · ${escHtml(f[R.addrNote])}` : '') : null;
 
         html += `<div class="ride-card ${today ? 'today' : ''}">
           <div class="card-top">
@@ -572,7 +567,6 @@ function renderRides(records) {
   document.getElementById('ridesContainer').innerHTML = html;
 }
 
-// ─── RENDER EVENTS ──────────────────────────────────────────────────
 function renderEvents(records) {
   const today = new Date();
   today.setHours(0,0,0,0);
@@ -592,8 +586,11 @@ function renderEvents(records) {
 
   let html = '';
   upcoming.forEach(r => {
-    const f      = r.fields;
-    const status = [E.status]?.name || f[E.status] || 'planned';
+    const f         = r.fields;
+    const rawStatus = f[E.status];
+    const status    = (typeof rawStatus === 'object' && rawStatus !== null)
+                      ? rawStatus.name
+                      : rawStatus || 'planned';
     const d      = new Date(f[E.date] + 'T00:00:00');
     const dlabel = `${DAYS[d.getDay()]}, ${fmt(d)} ${d.getFullYear()}`;
 
@@ -619,7 +616,6 @@ function renderEvents(records) {
   document.getElementById('eventsContainer').innerHTML = html;
 }
 
-// ─── INIT ───────────────────────────────────────────────────────────
 async function init() {
   try {
     const [rides, events] = await Promise.all([
@@ -641,3 +637,4 @@ init();
 </script>
 </body>
 </html>
+```
