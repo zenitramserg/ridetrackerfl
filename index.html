@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideTrackerFL · Weston Cycling Rides</title>
+  <meta name="description" content="Find all cycling group rides in Weston, Florida. Updated weekly with confirmed status, weather, and details.">
+  <meta property="og:title" content="RideTrackerFL · Weston Cycling Rides">
+  <meta property="og:description" content="All confirmed group rides in Weston, FL — in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #0D0F1A;
+      --surface:       #141724;
+      --surface-hover: #1C2035;
+      --border:        rgba(255,255,255,0.08);
+      --green:         #10B981;
+      --green-dim:     rgba(16,185,129,0.12);
+      --yellow:        #F59E0B;
+      --yellow-dim:    rgba(245,158,11,0.12);
+      --red:           #EF4444;
+      --red-dim:       rgba(239,68,68,0.12);
+      --gray-dim:      rgba(107,114,128,0.18);
+      --text:          #F9FAFB;
+      --text-muted:    #9CA3AF;
+      --text-dim:      #6B7280;
+      --radius:        12px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,15,26,0.90);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--green);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .logo-name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: var(--text);
+    }
+
+    .logo-name em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    .header-city {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 52px 24px 36px;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    /* ── MAIN ───────────────────────────────────── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+    }
+
+    /* ── DAY SECTIONS ───────────────────────────── */
+    .day-section {
+      margin-bottom: 44px;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .day-name {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .day-date {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    .today-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      background: var(--green);
+      color: #000;
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    .no-rides {
+      font-size: 14px;
+      color: var(--text-dim);
+      font-style: italic;
+      padding: 8px 0;
+    }
+
+    /* ── RIDE CARD ──────────────────────────────── */
+    .ride-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 10px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .ride-card:hover {
+      background: var(--surface-hover);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .ride-card.today {
+      border-color: rgba(16,185,129,0.28);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .ride-name {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+    }
+
+    .ride-org {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* ── STATUS BADGES ──────────────────────────── */
+    .badge {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-transform: capitalize;
+    }
+
+    .badge-confirmed { background: var(--green-dim);  color: var(--green);  border: 1px solid rgba(16,185,129,0.25); }
+    .badge-planned   { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(245,158,11,0.25); }
+    .badge-canceled  { background: var(--red-dim);    color: var(--red);    border: 1px solid rgba(239,68,68,0.25);  }
+    .badge-unknown   { background: var(--gray-dim);   color: var(--text-dim); border: 1px solid rgba(107,114,128,0.25); }
+
+    /* ── CARD META ──────────────────────────────── */
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .meta-icon { opacity: 0.65; font-size: 13px; }
+
+    /* ── WEATHER ROW ────────────────────────────── */
+    .card-weather {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .w-rain-high { color: #60A5FA; }
+    .w-rain-med  { color: #93C5FD; }
+    .w-rain-low  { color: var(--text-dim); }
+
+    /* ── EVENTS SECTION ─────────────────────────── */
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 52px 0 36px;
+    }
+
+    .section-heading {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .event-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 10px;
+    }
+
+    .event-date-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 5px;
+    }
+
+    /* ── LOADING ────────────────────────────────── */
+    .loading {
+      text-align: center;
+      padding: 56px 24px;
+      color: var(--text-dim);
+    }
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+      border: 3px solid var(--border);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      margin: 0 auto 14px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-msg {
+      color: var(--red);
+      background: var(--red-dim);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-size: 14px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 28px 24px;
+    }
+
+    footer a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 600px) {
+      header        { padding: 12px 16px; }
+      .hero         { padding: 36px 16px 28px; }
+      main          { padding: 0 16px 56px; }
+      .card-meta    { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────── -->
+<header>
+  <a class="logo" href="/">
+    <div class="logo-mark">🚴</div>
+    <span class="logo-name">Ride<em>Tracker</em>FL</span>
+  </a>
+  <span class="header-city">Weston, FL</span>
+</header>
+
+<!-- ── HERO ──────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-eyebrow" id="weekLabel">Loading…</div>
+  <h1 class="hero-title">Weston Cycling<br>Rides This Week</h1>
+  <p class="hero-sub">All local group rides — confirmed status, weather, and details. No Instagram required.</p>
+</div>
+
+<!-- ── MAIN ──────────────────────────────────── -->
+<main>
+
+  <div id="ridesContainer">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading this week's rides…</p>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <h2 class="section-heading">Upcoming Events</h2>
+  <div id="eventsContainer">
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────── -->
+<footer>
+  <p>RideTrackerFL &middot; Weston, Florida</p>
+  <p style="margin-top:5px">Data sourced from local cycling groups &middot; Last refreshed: <span id="lastUpdated">—</span></p>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────────
+//  CONFIG  — replace YOUR_TOKEN with a read-only Airtable PAT
+// ─────────────────────────────────────────────────────────────────
+const TOKEN   = 'YOUR_AIRTABLE_TOKEN_HERE';
+const BASE_ID = 'appp3CTtWpqVcTn6e';
+const RIDES   = 'tbl7xURgDo5wU4z5t';
+const EVENTS  = 'tblrv1h7NAbRlQihQ';
+
+// Ride field IDs
+const R = {
+  name:    'fldcGLkoF6JsLndQb',
+  org:     'fldorJA4k2hXbXvss',
+  day:     'flddKtPFNDwQ7GcmL',
+  time:    'fld2iNs1FmYZUjk8Y',
+  loc:     'fldBVWgxU0hEDEdBm',
+  addrNote:'fldhQe3sjuF97T9RX',
+  dist:    'fldUmltgAReTEclC5',
+  pace:    'fldQBVNhysTgg25PB',
+  status:  'fldfoh4Ljmw8qnE9F',
+  weather: 'fldIAFoFLCfytdOJV',
+  rain:    'fld6lsm9KVE6Ujwcm',
+  wind:    'fld4nwFJFwrjveMzX',
+};
+
+// Event field IDs
+const E = {
+  name:    'fld4Vc2vN1oHI9HGG',
+  org:     'fldPfWHwUqkakFyXO',
+  date:    'fldC76Nv49ZH2sTmZ',
+  time:    'fldq6h5YO9SFZKrgd',
+  loc:     'flduhihVIFLofpSlc',
+  dist:    'fld4NrAvlXfpeTdDz',
+  pace:    'fldRQmX8qsSdWYiIf',
+  status:  'fld6ZMe2LB8xbiVfH',
+  weather: 'fld5XvAoqdr4lb1su',
+  rain:    'fldLIYQR6MzGAmpgW',
+};
+
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// ─── HELPERS ───────────────────────────────────────────────────────
+function weekDates() {
+  const today = new Date();
+  const sun   = new Date(today);
+  sun.setDate(today.getDate() - today.getDay());
+  return Array.from({length:7}, (_, i) => {
+    const d = new Date(sun);
+    d.setDate(sun.getDate() + i);
+    return d;
+  });
+}
+
+function fmt(d)      { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
+function isToday(d)  {
+  const t = new Date();
+  return d.toDateString() === t.toDateString();
+}
+
+function statusBadge(raw) {
+  const s = (raw || 'unknown').toLowerCase();
+  const cls = s === 'confirmed' ? 'badge-confirmed'
+            : s === 'planned'   ? 'badge-planned'
+            : (s === 'canceled' || s === 'cancelled') ? 'badge-canceled'
+            : 'badge-unknown';
+  const label = s === 'canceled' ? 'Canceled' : s.charAt(0).toUpperCase() + s.slice(1);
+  return `<span class="badge ${cls}">${label}</span>`;
+}
+
+function weatherRow(f, R_or_E) {
+  const rain    = f[R_or_E.rain];
+  const wind    = f[R_or_E.wind];
+  const summary = f[R_or_E.weather];
+  if (rain === undefined && wind === undefined && !summary) return '';
+
+  let parts = [];
+  if (summary) {
+    parts.push(`<span>${escHtml(summary)}</span>`);
+  } else {
+    if (rain !== undefined) {
+      const pct   = Math.round(rain * 100);
+      const cls   = pct >= 60 ? 'w-rain-high' : pct >= 30 ? 'w-rain-med' : 'w-rain-low';
+      const icon  = pct >= 60 ? '🌧' : pct >= 30 ? '🌦' : '☀️';
+      parts.push(`<span class="${cls}">${icon} ${pct}% rain</span>`);
+    }
+    if (wind !== undefined) {
+      parts.push(`<span>💨 ${Math.round(wind)} mph winds</span>`);
+    }
+  }
+  return `<div class="card-weather">${parts.join('')}</div>`;
+}
+
+function metaItem(icon, text) {
+  if (!text) return '';
+  return `<span class="meta-item"><span class="meta-icon">${icon}</span> ${escHtml(text)}</span>`;
+}
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// ─── FETCH ALL RECORDS (handles pagination) ────────────────────────
+async function fetchAll(tableId, fieldIds) {
+  const fields = fieldIds.map(id => `fields[]=${id}`).join('&');
+  let records = [], offset = null;
+  do {
+    const url = `https://api.airtable.com/v0/${BASE_ID}/${tableId}?${fields}` +
+                (offset ? `&offset=${offset}` : '');
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}` } });
+    if (!res.ok) throw new Error(`Airtable ${res.status}: ${await res.text()}`);
+    const data = await res.json();
+    records = records.concat(data.records);
+    offset  = data.offset || null;
+  } while (offset);
+  return records;
+}
+
+// ─── RENDER RIDES ───────────────────────────────────────────────────
+function renderRides(records) {
+  const wk     = weekDates();
+  const todayN = new Date().getDay();
+
+  // week label
+  document.getElementById('weekLabel').textContent =
+    `Week of ${fmt(wk[0])} – ${fmt(wk[6])}, ${wk[6].getFullYear()}`;
+
+  // group by day name
+  const byDay = {};
+  DAYS.forEach(d => byDay[d] = []);
+  records.forEach(r => {
+    const day = r.cellValuesByFieldId[R.day]?.name;
+    if (day && byDay[day]) byDay[day].push(r.cellValuesByFieldId);
+  });
+
+  // render in day order starting from today
+  const order = [...Array(7).keys()].map(i => (todayN + i) % 7);
+  let html = '';
+
+  order.forEach(di => {
+    const dayName = DAYS[di];
+    const date    = wk[di];
+    const today   = isToday(date);
+    const rides   = byDay[dayName] || [];
+
+    html += `<div class="day-section">`;
+    html += `<div class="day-header">
+      <span class="day-name">${dayName}</span>
+      <span class="day-date">${fmt(date)}</span>
+      ${today ? '<span class="today-badge">Today</span>' : ''}
+    </div>`;
+
+    if (!rides.length) {
+      html += `<p class="no-rides">No rides scheduled</p>`;
+    } else {
+      rides.forEach(f => {
+        const status  = f[R.status]?.name || 'unknown';
+        const loc     = f[R.loc] ? escHtml(f[R.loc]) + (f[R.addrNote] ? ` · ${escHtml(f[R.addrNote])}` : '') : null;
+
+        html += `<div class="ride-card ${today ? 'today' : ''}">
+          <div class="card-top">
+            <div>
+              <div class="ride-name">${escHtml(f[R.name] || 'Unnamed Ride')}</div>
+              <div class="ride-org">${escHtml(f[R.org] || '')}</div>
+            </div>
+            ${statusBadge(status)}
+          </div>
+          <div class="card-meta">
+            ${metaItem('🕐', f[R.time])}
+            ${loc ? `<span class="meta-item"><span class="meta-icon">📍</span> ${loc}</span>` : ''}
+            ${metaItem('📏', f[R.dist])}
+            ${metaItem('⚡', f[R.pace])}
+          </div>
+          ${weatherRow(f, R)}
+        </div>`;
+      });
+    }
+
+    html += `</div>`;
+  });
+
+  document.getElementById('ridesContainer').innerHTML = html;
+}
+
+// ─── RENDER EVENTS ──────────────────────────────────────────────────
+function renderEvents(records) {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const upcoming = records
+    .filter(r => {
+      const ds = r.cellValuesByFieldId[E.date];
+      return ds && new Date(ds + 'T00:00:00') >= today;
+    })
+    .sort((a,b) => new Date(a.cellValuesByFieldId[E.date]) - new Date(b.cellValuesByFieldId[E.date]));
+
+  if (!upcoming.length) {
+    document.getElementById('eventsContainer').innerHTML =
+      `<p class="no-rides">No upcoming events found.</p>`;
+    return;
+  }
+
+  let html = '';
+  upcoming.forEach(r => {
+    const f      = r.cellValuesByFieldId;
+    const status = f[E.status]?.name || 'planned';
+    const d      = new Date(f[E.date] + 'T00:00:00');
+    const dlabel = `${DAYS[d.getDay()]}, ${fmt(d)} ${d.getFullYear()}`;
+
+    html += `<div class="event-card">
+      <div class="card-top">
+        <div>
+          <div class="event-date-label">${dlabel}</div>
+          <div class="ride-name">${escHtml(f[E.name] || 'Unnamed Event')}</div>
+          <div class="ride-org">${escHtml(f[E.org] || '')}</div>
+        </div>
+        ${statusBadge(status)}
+      </div>
+      <div class="card-meta">
+        ${metaItem('🕐', f[E.time])}
+        ${metaItem('📍', f[E.loc])}
+        ${metaItem('📏', f[E.dist])}
+        ${metaItem('⚡', f[E.pace])}
+      </div>
+      ${weatherRow(f, E)}
+    </div>`;
+  });
+
+  document.getElementById('eventsContainer').innerHTML = html;
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────
+async function init() {
+  try {
+    const [rides, events] = await Promise.all([
+      fetchAll(RIDES, Object.values(R)),
+      fetchAll(EVENTS, Object.values(E)),
+    ]);
+    renderRides(rides);
+    renderEvents(events);
+    document.getElementById('lastUpdated').textContent =
+      new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+  } catch (err) {
+    console.error(err);
+    document.getElementById('ridesContainer').innerHTML =
+      `<div class="error-msg">⚠️ Could not load rides. Check that your Airtable token is set in <code>index.html</code>.<br><small>${err.message}</small></div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
