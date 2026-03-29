@@ -519,7 +519,7 @@ function renderRides(records) {
   const byDay = {};
   DAYS.forEach(d => byDay[d] = []);
   records.forEach(r => {
-    const day = typeof r.fields[R.day] === 'object' ? r.fields[R.day]?.name : r.fields[R.day];
+    const day = typeof r.fields[R.day] === 'object' ? typeof r.fields[R.day] === 'object' ? r.fields[R.day]?.name : r.fields[R.day] : r.fields[R.day];
     if (day && byDay[day]) byDay[day].push(r.fields);
   });
 
