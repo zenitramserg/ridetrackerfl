@@ -519,8 +519,8 @@ function renderRides(records) {
   const byDay = {};
   DAYS.forEach(d => byDay[d] = []);
   records.forEach(r => {
-    const day = r.cellValuesByFieldId[R.day]?.name;
-    if (day && byDay[day]) byDay[day].push(r.cellValuesByFieldId);
+    const day = r.fields[R.day]?.name;
+    if (day && byDay[day]) byDay[day].push(r.fields);
   });
 
   // render in day order starting from today
@@ -579,10 +579,10 @@ function renderEvents(records) {
 
   const upcoming = records
     .filter(r => {
-      const ds = r.cellValuesByFieldId[E.date];
+      const ds = r.fields[E.date];
       return ds && new Date(ds + 'T00:00:00') >= today;
     })
-    .sort((a,b) => new Date(a.cellValuesByFieldId[E.date]) - new Date(b.cellValuesByFieldId[E.date]));
+    .sort((a,b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]));
 
   if (!upcoming.length) {
     document.getElementById('eventsContainer').innerHTML =
@@ -592,7 +592,7 @@ function renderEvents(records) {
 
   let html = '';
   upcoming.forEach(r => {
-    const f      = r.cellValuesByFieldId;
+    const f      = r.fields;
     const status = f[E.status]?.name || 'planned';
     const d      = new Date(f[E.date] + 'T00:00:00');
     const dlabel = `${DAYS[d.getDay()]}, ${fmt(d)} ${d.getFullYear()}`;
