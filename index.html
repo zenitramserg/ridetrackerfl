@@ -257,6 +257,23 @@
     .w-rain-med  { color: #93C5FD; }
     .w-rain-low  { color: var(--text-dim); }
 
+    /* ── WEATHER PILL (day header) ──────────────────── */
+    .weather-pill {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 3px 10px;
+    }
+    .weather-pill .weather-sep { opacity: 0.35; }
+    .weather-pill .w-rain-high { color: #60A5FA; }
+    .weather-pill .w-rain-med  { color: #93C5FD; }
+
     /* ── EVENTS SECTION ─────────────────────────── */
     .section-rule {
       border: none;
@@ -506,8 +523,43 @@ async function fetchAll(tableId, fieldNames) {
   return records;
 }
 
+// ─── FETCH WEATHER (Open-Meteo, free, no key needed) ───────────────
+async function fetchWeather() {
+  try {
+    const url = 'https://api.open-meteo.com/v1/forecast' +
+      '?latitude=26.1004&longitude=-80.3997' +
+      '&daily=precipitation_probability_max,windspeed_10m_max' +
+      '&timezone=America%2FNew_York&forecast_days=7&wind_speed_unit=mph';
+    const res  = await fetch(url);
+    if (!res.ok) return {};
+    const data = await res.json();
+    const map  = {};
+    (data.daily.time || []).forEach((date, i) => {
+      map[date] = {
+        rain: data.daily.precipitation_probability_max[i],
+        wind: Math.round(data.daily.windspeed_10m_max[i])
+      };
+    });
+    return map;
+  } catch { return {}; }
+}
+
+function weatherPill(wx) {
+  if (!wx) return '';
+  const rain = wx.rain ?? null;
+  const wind = wx.wind ?? null;
+  if (rain === null && wind === null) return '';
+  const icon    = rain >= 60 ? '🌧' : rain >= 30 ? '🌦' : '☀️';
+  const rainCls = rain >= 60 ? 'w-rain-high' : rain >= 30 ? 'w-rain-med' : '';
+  return `<span class="weather-pill">
+    <span class="${rainCls}">${icon} ${rain}%</span>
+    <span class="weather-sep">·</span>
+    <span>💨 ${wind} mph</span>
+  </span>`;
+}
+
 // ─── RENDER RIDES ───────────────────────────────────────────────────
-function renderRides(records) {
+function renderRides(records, weatherMap = {}) {
   const wk     = weekDates();
   const todayN = new Date().getDay();
 
@@ -534,10 +586,12 @@ function renderRides(records) {
     const rides   = byDay[dayName] || [];
 
     html += `<div class="day-section">`;
+    const dateStr = date.toISOString().split('T')[0];
     html += `<div class="day-header">
       <span class="day-name">${dayName}</span>
       <span class="day-date">${fmt(date)}</span>
       ${today ? '<span class="today-badge">Today</span>' : ''}
+      ${weatherPill(weatherMap[dateStr])}
     </div>`;
 
     if (!rides.length) {
@@ -622,11 +676,12 @@ function renderEvents(records) {
 // ─── INIT ───────────────────────────────────────────────────────────
 async function init() {
   try {
-    const [rides, events] = await Promise.all([
+    const [rides, events, weatherMap] = await Promise.all([
       fetchAll(RIDES, Object.values(R)),
       fetchAll(EVENTS, Object.values(E)),
+      fetchWeather(),
     ]);
-    renderRides(rides);
+    renderRides(rides, weatherMap);
     renderEvents(events);
     document.getElementById('lastUpdated').textContent =
       new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
