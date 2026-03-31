@@ -102,6 +102,10 @@ def main():
     from pipeline.vision_client import analyze_scan_directory
     ride_candidates = analyze_scan_directory(scan_dir, use_ollama=args.use_ollama)
 
+    # ── Screenshot cleanup: keep only ride-post images ───────────────────────
+    if not args.dry_run:
+        _cleanup_non_ride_screenshots(scan_dir, ride_candidates)
+
     if not ride_candidates:
         print("\nNo ride posts detected in this scan. All done.")
         return
@@ -149,6 +153,37 @@ def main():
 
     # ── Summary ───────────────────────────────────────────────────────────────
     _print_summary(summary, scan_dir)
+
+
+def _cleanup_non_ride_screenshots(scan_dir: Path, ride_candidates: list[dict]):
+    """
+    Delete every screenshot in scan_dir that was NOT identified as a ride post.
+    Keeps only the images a human might want to review, saving disk space.
+    scan_metadata.json and any other non-image files are always preserved.
+    """
+    meta_path = scan_dir / "scan_metadata.json"
+    if not meta_path.exists():
+        return
+
+    with open(meta_path, encoding="utf-8") as f:
+        metadata = json.load(f)
+
+    all_paths  = {Path(s["path"]) for s in metadata.get("screenshots", [])}
+    keep_paths = {Path(r["screenshot_path"]) for r in ride_candidates
+                  if r.get("screenshot_path")}
+
+    deleted = 0
+    for img_path in all_paths:
+        if img_path not in keep_paths:
+            try:
+                img_path.unlink(missing_ok=True)
+                deleted += 1
+            except Exception as e:
+                print(f"[cleanup] ⚠ Could not delete {img_path.name}: {e}")
+
+    kept = len(keep_paths)
+    total = len(all_paths)
+    print(f"[cleanup] Kept {kept} ride-post screenshot(s), deleted {deleted} of {total} total.")
 
 
 def _enrich_weather():
