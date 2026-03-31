@@ -19,6 +19,7 @@ import base64
 import json
 import os
 import re
+import time
 from pathlib import Path
 
 # ── Config ────────────────────────────────────────────────────────────────────
@@ -182,30 +183,47 @@ def analyze_screenshot(
 
     client = anthropic.Anthropic(api_key=api_key)
 
-    try:
-        message = client.messages.create(
-            model=CLAUDE_MODEL,
-            max_tokens=1024,
-            messages=[{
-                "role": "user",
-                "content": [
-                    {
-                        "type": "image",
-                        "source": {
-                            "type":       "base64",
-                            "media_type": "image/png",
-                            "data":       _b64(image_path),
+    # Retry on 529 overloaded errors with exponential backoff
+    MAX_RETRIES = 4
+    RETRY_DELAYS = [5, 15, 30, 60]   # seconds between attempts
+
+    message = None
+    for attempt in range(MAX_RETRIES):
+        try:
+            message = client.messages.create(
+                model=CLAUDE_MODEL,
+                max_tokens=1024,
+                messages=[{
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image",
+                            "source": {
+                                "type":       "base64",
+                                "media_type": "image/png",
+                                "data":       _b64(image_path),
+                            },
                         },
-                    },
-                    {
-                        "type": "text",
-                        "text": EXTRACTION_PROMPT,
-                    },
-                ],
-            }],
-        )
-    except Exception as e:
-        print(f"[vision]   ✗ API error ({image_path.name}): {e}")
+                        {
+                            "type": "text",
+                            "text": EXTRACTION_PROMPT,
+                        },
+                    ],
+                }],
+            )
+            break   # success — exit retry loop
+        except Exception as e:
+            is_overloaded = "529" in str(e) or "overloaded" in str(e).lower()
+            if is_overloaded and attempt < MAX_RETRIES - 1:
+                wait = RETRY_DELAYS[attempt]
+                print(f"[vision]   ⚠ API overloaded, retrying in {wait}s "
+                      f"(attempt {attempt + 1}/{MAX_RETRIES})...")
+                time.sleep(wait)
+            else:
+                print(f"[vision]   ✗ API error ({image_path.name}): {e}")
+                return None
+
+    if message is None:
         return None
 
     if not message.content:
