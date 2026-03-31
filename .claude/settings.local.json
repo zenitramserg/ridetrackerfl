@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"json.loads\\\\|\\\\.split\\\\|\\\\.join\\\\|\\\\.format\" /Users/sergiomartinez/ridetrackerfl/pipeline/*.py)"
+    ]
+  }
+}

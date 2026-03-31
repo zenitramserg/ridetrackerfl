@@ -1,0 +1,65 @@
+{
+  "accounts": [
+    {
+      "handle": "omg_cycling",
+      "display_name": "OMG Cycling",
+      "type": "group",
+      "active": true,
+      "max_slides": 65
+    },
+    {
+      "handle": "alexbicycles",
+      "display_name": "Alex's Bicycle Pro Shop",
+      "type": "shop",
+      "active": true
+    },
+    {
+      "handle": "ride.84",
+      "display_name": "Ride 84",
+      "type": "group",
+      "active": true
+    },
+    {
+      "handle": "revoltcyclery",
+      "display_name": "Revolt Cyclery",
+      "type": "shop",
+      "active": true
+    },
+    {
+      "handle": "fpbikeshop",
+      "display_name": "FP Bike Shop",
+      "type": "shop",
+      "active": true
+    },
+    {
+      "handle": "unicosta_cycling",
+      "display_name": "Unicosta Cycling",
+      "type": "group",
+      "active": true
+    },
+    {
+      "handle": "mbo_tencycling",
+      "display_name": "MBO Ten Cycling",
+      "type": "group",
+      "active": true
+    },
+    {
+      "handle": "pd.cyclingclub",
+      "display_name": "PD Cycling Club",
+      "type": "group",
+      "active": true
+    },
+    {
+      "handle": "letourdeweston",
+      "display_name": "Le Tour de Weston",
+      "type": "event",
+      "active": true
+    },
+    {
+      "handle": "weston_flyers",
+      "display_name": "Weston Flyers",
+      "type": "group",
+      "active": true
+    }
+  ]
+}

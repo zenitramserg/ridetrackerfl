@@ -1,0 +1,92 @@
+[
+  {
+    "name": "csrftoken",
+    "value": "vQFew9eAkz-kbooPDDNjBz",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1809213345.451551,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "datr",
+    "value": "Vg_HaR4KUa2dElT0roaL2_cF",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1809213270.87758,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "ig_did",
+    "value": "78B26641-8A29-4F3A-9749-D7FAD4AD7796",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1806189270.877642,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "mid",
+    "value": "accPVgAEAAGhwcatHYuDRhYVtxRa",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1809213270.877676,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "dpr",
+    "value": "1",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1775258137,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "wd",
+    "value": "1280x900",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1775258137,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ds_user_id",
+    "value": "39701554613",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1782429345.45171,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "sessionid",
+    "value": "39701554613%3A75IsELzZHaQwiS%3A23%3AAYi0w71GewfmCbO8SBdoVTpe7ScAC7jNeT4MwkYDNA",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1806189329.162776,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "rur",
+    "value": "\"EAG\\05439701554613\\0541806189345:01fe96affe3861ba38b9bc5fed742e08522defcf1cd77436c0c78861e63e39675380a731\"",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  }
+]

@@ -1,0 +1,122 @@
+{
+  "canonical_locations": {
+    "Weston Town Center": [
+      "weston town center",
+      "town center weston"
+    ],
+    "Alex's Bicycle Pro Shop": [
+      "alex's bicycle pro shop",
+      "alexs bicycle pro shop",
+      "alex bicycle pro shop",
+      "alex bicycle shop",
+      "alex's bicycle",
+      "alexbicycles",
+      "alex bicycles",
+      "weston area"
+    ],
+    "Revolt Cyclery": [
+      "revolt cyclery",
+      "revolt"
+    ],
+    "Markham Park": [
+      "markham park",
+      "markham"
+    ],
+    "FP Bike Shop": [
+      "fp bike shop",
+      "fpbikeshop"
+    ]
+  },
+  "address_notes": {
+    "Behind Bank of America": [
+      "behind bank of america",
+      "bank of america"
+    ],
+    "Behind Graziano's": [
+      "behind graziano's",
+      "behind graziano",
+      "graziano's",
+      "graziano"
+    ]
+  },
+  "organizers": {
+    "OMG Cycling": {
+      "type": "group",
+      "aliases": ["omg cycling", "omg"],
+      "accounts": ["omg_cycling"]
+    },
+    "Weston Flyers": {
+      "type": "group",
+      "aliases": ["weston flyers", "flyers"],
+      "accounts": ["weston_flyers"]
+    },
+    "Unicosta Cycling": {
+      "type": "group",
+      "aliases": ["unicosta cycling", "unicosta"],
+      "accounts": ["unicosta_cycling"]
+    },
+    "MBO Ten Cycling": {
+      "type": "group",
+      "aliases": ["mbo ten", "mbo ten cycling", "mbo"],
+      "accounts": ["mbo_tencycling"]
+    },
+    "PD Cycling Club": {
+      "type": "group",
+      "aliases": ["pd cycling club", "pd cycling"],
+      "accounts": ["pd.cyclingclub"]
+    },
+    "Alex's Bicycle Pro Shop": {
+      "type": "shop",
+      "aliases": ["alex's bicycle pro shop", "alexs bicycle pro shop", "alex bicycle", "ride 84", "ride84", "alex bikes ride84"],
+      "accounts": ["alexbicycles", "ride.84"]
+    },
+    "Revolt Cyclery": {
+      "type": "shop",
+      "aliases": ["revolt cyclery", "revolt", "pd cycling club", "pd cycling"],
+      "accounts": ["revoltcyclery", "pd.cyclingclub"]
+    },
+    "FP Bike Shop": {
+      "type": "shop",
+      "aliases": ["fp bike shop", "fpbikeshop"],
+      "accounts": ["fpbikeshop"]
+    }
+  },
+  "noise_patterns": [
+    "viewed their story",
+    "view story",
+    "will be able to see that you viewed",
+    "send message",
+    "reply to",
+    "message...",
+    "liked by"
+  ],
+  "performance_patterns": [
+    "garmin",
+    "pulling time",
+    "edge 1050",
+    "active:",
+    "speed:",
+    "session#",
+    "w/kg",
+    "heart rate",
+    "avg power",
+    "avg speed",
+    "elapsed time",
+    "strava",
+    "inibike"
+  ],
+  "promo_patterns": [
+    "discount",
+    "sale",
+    "% off",
+    "coupon",
+    "promo",
+    "demo day",
+    "test ride",
+    "new arrival",
+    "in stock",
+    "shop now",
+    "buy now",
+    "limited time"
+  ]
+}

@@ -1,0 +1,692 @@
+{
+  "scan_timestamp": "2026-03-28T11:45:19",
+  "scan_directory": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145",
+  "accounts_checked": [
+    {
+      "handle": "omg_cycling",
+      "slides_captured": 12
+    },
+    {
+      "handle": "alexbicycles",
+      "slides_captured": 2
+    },
+    {
+      "handle": "ride.84",
+      "slides_captured": 12
+    },
+    {
+      "handle": "revoltcyclery",
+      "slides_captured": 12
+    },
+    {
+      "handle": "fpbikeshop",
+      "slides_captured": 2
+    },
+    {
+      "handle": "unicosta_cycling",
+      "slides_captured": 0
+    },
+    {
+      "handle": "mbo_tencycling",
+      "slides_captured": 12
+    },
+    {
+      "handle": "pd.cyclingclub",
+      "slides_captured": 12
+    },
+    {
+      "handle": "letourdeweston",
+      "slides_captured": 8
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_00.png",
+      "filename": "omg_cycling_00.png",
+      "account": "omg_cycling",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:29"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_01.png",
+      "filename": "omg_cycling_01.png",
+      "account": "omg_cycling",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:32"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_02.png",
+      "filename": "omg_cycling_02.png",
+      "account": "omg_cycling",
+      "slide_index": 2,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:35"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_03.png",
+      "filename": "omg_cycling_03.png",
+      "account": "omg_cycling",
+      "slide_index": 3,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:37"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_04.png",
+      "filename": "omg_cycling_04.png",
+      "account": "omg_cycling",
+      "slide_index": 4,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:40"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_05.png",
+      "filename": "omg_cycling_05.png",
+      "account": "omg_cycling",
+      "slide_index": 5,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:43"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_06.png",
+      "filename": "omg_cycling_06.png",
+      "account": "omg_cycling",
+      "slide_index": 6,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:45"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_07.png",
+      "filename": "omg_cycling_07.png",
+      "account": "omg_cycling",
+      "slide_index": 7,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:48"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_08.png",
+      "filename": "omg_cycling_08.png",
+      "account": "omg_cycling",
+      "slide_index": 8,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:51"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_09.png",
+      "filename": "omg_cycling_09.png",
+      "account": "omg_cycling",
+      "slide_index": 9,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:54"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_10.png",
+      "filename": "omg_cycling_10.png",
+      "account": "omg_cycling",
+      "slide_index": 10,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:56"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/omg_cycling_11.png",
+      "filename": "omg_cycling_11.png",
+      "account": "omg_cycling",
+      "slide_index": 11,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/omg_cycling/",
+      "timestamp": "2026-03-28T11:45:59"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/alexbicycles_00.png",
+      "filename": "alexbicycles_00.png",
+      "account": "alexbicycles",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/alexbicycles/",
+      "timestamp": "2026-03-28T11:46:08"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/alexbicycles_01.png",
+      "filename": "alexbicycles_01.png",
+      "account": "alexbicycles",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/alexbicycles/",
+      "timestamp": "2026-03-28T11:46:10"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_00.png",
+      "filename": "ride.84_00.png",
+      "account": "ride.84",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/ride.84/",
+      "timestamp": "2026-03-28T11:46:19"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_01.png",
+      "filename": "ride.84_01.png",
+      "account": "ride.84",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/ride.84/",
+      "timestamp": "2026-03-28T11:46:22"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_02.png",
+      "filename": "ride.84_02.png",
+      "account": "ride.84",
+      "slide_index": 2,
+      "story_id": "3862848683130342944",
+      "url": "https://www.instagram.com/stories/ride.84/3862848683130342944/",
+      "timestamp": "2026-03-28T11:46:25"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_03.png",
+      "filename": "ride.84_03.png",
+      "account": "ride.84",
+      "slide_index": 3,
+      "story_id": "3862848683130342944",
+      "url": "https://www.instagram.com/stories/ride.84/3862848683130342944/",
+      "timestamp": "2026-03-28T11:46:27"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_04.png",
+      "filename": "ride.84_04.png",
+      "account": "ride.84",
+      "slide_index": 4,
+      "story_id": "3862848683130342944",
+      "url": "https://www.instagram.com/stories/ride.84/3862848683130342944/",
+      "timestamp": "2026-03-28T11:46:30"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_05.png",
+      "filename": "ride.84_05.png",
+      "account": "ride.84",
+      "slide_index": 5,
+      "story_id": "3862848683130342944",
+      "url": "https://www.instagram.com/stories/ride.84/3862848683130342944/",
+      "timestamp": "2026-03-28T11:46:33"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_06.png",
+      "filename": "ride.84_06.png",
+      "account": "ride.84",
+      "slide_index": 6,
+      "story_id": "3862848683130342944",
+      "url": "https://www.instagram.com/stories/ride.84/3862848683130342944/",
+      "timestamp": "2026-03-28T11:46:36"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_07.png",
+      "filename": "ride.84_07.png",
+      "account": "ride.84",
+      "slide_index": 7,
+      "story_id": "3862848861220442977",
+      "url": "https://www.instagram.com/stories/ride.84/3862848861220442977/",
+      "timestamp": "2026-03-28T11:46:39"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_08.png",
+      "filename": "ride.84_08.png",
+      "account": "ride.84",
+      "slide_index": 8,
+      "story_id": "3862848861220442977",
+      "url": "https://www.instagram.com/stories/ride.84/3862848861220442977/",
+      "timestamp": "2026-03-28T11:46:41"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_09.png",
+      "filename": "ride.84_09.png",
+      "account": "ride.84",
+      "slide_index": 9,
+      "story_id": "3862848861220442977",
+      "url": "https://www.instagram.com/stories/ride.84/3862848861220442977/",
+      "timestamp": "2026-03-28T11:46:44"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_10.png",
+      "filename": "ride.84_10.png",
+      "account": "ride.84",
+      "slide_index": 10,
+      "story_id": "3862848861220442977",
+      "url": "https://www.instagram.com/stories/ride.84/3862848861220442977/",
+      "timestamp": "2026-03-28T11:46:47"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/ride.84_11.png",
+      "filename": "ride.84_11.png",
+      "account": "ride.84",
+      "slide_index": 11,
+      "story_id": "3862848861220442977",
+      "url": "https://www.instagram.com/stories/ride.84/3862848861220442977/",
+      "timestamp": "2026-03-28T11:46:50"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_00.png",
+      "filename": "revoltcyclery_00.png",
+      "account": "revoltcyclery",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:46:59"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_01.png",
+      "filename": "revoltcyclery_01.png",
+      "account": "revoltcyclery",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:02"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_02.png",
+      "filename": "revoltcyclery_02.png",
+      "account": "revoltcyclery",
+      "slide_index": 2,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:04"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_03.png",
+      "filename": "revoltcyclery_03.png",
+      "account": "revoltcyclery",
+      "slide_index": 3,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:07"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_04.png",
+      "filename": "revoltcyclery_04.png",
+      "account": "revoltcyclery",
+      "slide_index": 4,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:10"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_05.png",
+      "filename": "revoltcyclery_05.png",
+      "account": "revoltcyclery",
+      "slide_index": 5,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:12"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_06.png",
+      "filename": "revoltcyclery_06.png",
+      "account": "revoltcyclery",
+      "slide_index": 6,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:15"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_07.png",
+      "filename": "revoltcyclery_07.png",
+      "account": "revoltcyclery",
+      "slide_index": 7,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:18"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_08.png",
+      "filename": "revoltcyclery_08.png",
+      "account": "revoltcyclery",
+      "slide_index": 8,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:21"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_09.png",
+      "filename": "revoltcyclery_09.png",
+      "account": "revoltcyclery",
+      "slide_index": 9,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:23"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_10.png",
+      "filename": "revoltcyclery_10.png",
+      "account": "revoltcyclery",
+      "slide_index": 10,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:26"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/revoltcyclery_11.png",
+      "filename": "revoltcyclery_11.png",
+      "account": "revoltcyclery",
+      "slide_index": 11,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/revoltcyclery/",
+      "timestamp": "2026-03-28T11:47:29"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/fpbikeshop_00.png",
+      "filename": "fpbikeshop_00.png",
+      "account": "fpbikeshop",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/fpbikeshop/",
+      "timestamp": "2026-03-28T11:47:38"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/fpbikeshop_01.png",
+      "filename": "fpbikeshop_01.png",
+      "account": "fpbikeshop",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/fpbikeshop/",
+      "timestamp": "2026-03-28T11:47:40"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_00.png",
+      "filename": "mbo_tencycling_00.png",
+      "account": "mbo_tencycling",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/",
+      "timestamp": "2026-03-28T11:47:54"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_01.png",
+      "filename": "mbo_tencycling_01.png",
+      "account": "mbo_tencycling",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/",
+      "timestamp": "2026-03-28T11:47:57"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_02.png",
+      "filename": "mbo_tencycling_02.png",
+      "account": "mbo_tencycling",
+      "slide_index": 2,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/",
+      "timestamp": "2026-03-28T11:48:00"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_03.png",
+      "filename": "mbo_tencycling_03.png",
+      "account": "mbo_tencycling",
+      "slide_index": 3,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/",
+      "timestamp": "2026-03-28T11:48:03"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_04.png",
+      "filename": "mbo_tencycling_04.png",
+      "account": "mbo_tencycling",
+      "slide_index": 4,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/",
+      "timestamp": "2026-03-28T11:48:06"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_05.png",
+      "filename": "mbo_tencycling_05.png",
+      "account": "mbo_tencycling",
+      "slide_index": 5,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/",
+      "timestamp": "2026-03-28T11:48:09"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_06.png",
+      "filename": "mbo_tencycling_06.png",
+      "account": "mbo_tencycling",
+      "slide_index": 6,
+      "story_id": "3862775521557422013",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/3862775521557422013/",
+      "timestamp": "2026-03-28T11:48:12"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_07.png",
+      "filename": "mbo_tencycling_07.png",
+      "account": "mbo_tencycling",
+      "slide_index": 7,
+      "story_id": "3862775521557422013",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/3862775521557422013/",
+      "timestamp": "2026-03-28T11:48:14"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_08.png",
+      "filename": "mbo_tencycling_08.png",
+      "account": "mbo_tencycling",
+      "slide_index": 8,
+      "story_id": "3862775633310510789",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/3862775633310510789/",
+      "timestamp": "2026-03-28T11:48:17"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_09.png",
+      "filename": "mbo_tencycling_09.png",
+      "account": "mbo_tencycling",
+      "slide_index": 9,
+      "story_id": "3862775633310510789",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/3862775633310510789/",
+      "timestamp": "2026-03-28T11:48:20"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_10.png",
+      "filename": "mbo_tencycling_10.png",
+      "account": "mbo_tencycling",
+      "slide_index": 10,
+      "story_id": "3862777190076727655",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/3862777190076727655/",
+      "timestamp": "2026-03-28T11:48:22"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/mbo_tencycling_11.png",
+      "filename": "mbo_tencycling_11.png",
+      "account": "mbo_tencycling",
+      "slide_index": 11,
+      "story_id": "3862777190076727655",
+      "url": "https://www.instagram.com/stories/mbo_tencycling/3862777190076727655/",
+      "timestamp": "2026-03-28T11:48:25"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_00.png",
+      "filename": "pd.cyclingclub_00.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:35"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_01.png",
+      "filename": "pd.cyclingclub_01.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:38"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_02.png",
+      "filename": "pd.cyclingclub_02.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 2,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:40"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_03.png",
+      "filename": "pd.cyclingclub_03.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 3,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:43"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_04.png",
+      "filename": "pd.cyclingclub_04.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 4,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:45"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_05.png",
+      "filename": "pd.cyclingclub_05.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 5,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:48"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_06.png",
+      "filename": "pd.cyclingclub_06.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 6,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:50"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_07.png",
+      "filename": "pd.cyclingclub_07.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 7,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/",
+      "timestamp": "2026-03-28T11:48:53"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_08.png",
+      "filename": "pd.cyclingclub_08.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 8,
+      "story_id": "3862773802531371133",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/3862773802531371133/",
+      "timestamp": "2026-03-28T11:48:55"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_09.png",
+      "filename": "pd.cyclingclub_09.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 9,
+      "story_id": "3862773802531371133",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/3862773802531371133/",
+      "timestamp": "2026-03-28T11:48:58"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_10.png",
+      "filename": "pd.cyclingclub_10.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 10,
+      "story_id": "3862773802531371133",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/3862773802531371133/",
+      "timestamp": "2026-03-28T11:49:01"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/pd.cyclingclub_11.png",
+      "filename": "pd.cyclingclub_11.png",
+      "account": "pd.cyclingclub",
+      "slide_index": 11,
+      "story_id": "3862773802531371133",
+      "url": "https://www.instagram.com/stories/pd.cyclingclub/3862773802531371133/",
+      "timestamp": "2026-03-28T11:49:04"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_00.png",
+      "filename": "letourdeweston_00.png",
+      "account": "letourdeweston",
+      "slide_index": 0,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:13"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_01.png",
+      "filename": "letourdeweston_01.png",
+      "account": "letourdeweston",
+      "slide_index": 1,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:16"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_02.png",
+      "filename": "letourdeweston_02.png",
+      "account": "letourdeweston",
+      "slide_index": 2,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:19"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_03.png",
+      "filename": "letourdeweston_03.png",
+      "account": "letourdeweston",
+      "slide_index": 3,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:22"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_04.png",
+      "filename": "letourdeweston_04.png",
+      "account": "letourdeweston",
+      "slide_index": 4,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:24"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_05.png",
+      "filename": "letourdeweston_05.png",
+      "account": "letourdeweston",
+      "slide_index": 5,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:27"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_06.png",
+      "filename": "letourdeweston_06.png",
+      "account": "letourdeweston",
+      "slide_index": 6,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:30"
+    },
+    {
+      "path": "/Users/sergiomartinez/ridetrackerfl/data/screenshots/2026-03-28_1145/letourdeweston_07.png",
+      "filename": "letourdeweston_07.png",
+      "account": "letourdeweston",
+      "slide_index": 7,
+      "story_id": "",
+      "url": "https://www.instagram.com/stories/letourdeweston/",
+      "timestamp": "2026-03-28T11:49:33"
+    }
+  ]
+}

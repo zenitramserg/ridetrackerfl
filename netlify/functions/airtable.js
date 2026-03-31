@@ -6,7 +6,8 @@ exports.handler = async (event) => {
     return { statusCode: 500, body: JSON.stringify({ error: 'AIRTABLE_TOKEN not configured' }) };
   }
 
-  const rawQuery = event.rawQuery || '';
+  // Extract tableId from query params, pass rest through to Airtable
+  const rawQuery = event.rawQueryString || '';
   const params = new URLSearchParams(rawQuery);
   const tableId = params.get('tableId');
   params.delete('tableId');
