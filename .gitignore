@@ -2,6 +2,8 @@
 __pycache__/
 *.pyc
 data/screenshots/
+data/*.json
+data/*.csv
 Sample_Screenshots_With_Ride/
 *.png
 *.jpg
