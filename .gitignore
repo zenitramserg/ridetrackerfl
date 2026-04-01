@@ -2,4 +2,8 @@
 __pycache__/
 *.pyc
 data/screenshots/
+Sample_Screenshots_With_Ride/
+*.png
+*.jpg
+*.jpeg
 config/secrets.env
