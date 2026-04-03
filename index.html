@@ -4,486 +4,747 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RideTrackerFL · Weston Cycling Rides</title>
-  <meta name="description" content="Find all cycling group rides in Weston, Florida. Updated weekly with confirmed status, weather, and details.">
+  <meta name="description" content="Find all cycling group rides in Weston, Florida. Updated twice daily with confirmed status, weather, and details.">
   <meta property="og:title" content="RideTrackerFL · Weston Cycling Rides">
   <meta property="og:description" content="All confirmed group rides in Weston, FL — in one place.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg:            #0D0F1A;
-      --surface:       #141724;
-      --surface-hover: #1C2035;
-      --border:        rgba(255,255,255,0.08);
-      --green:         #10B981;
-      --green-dim:     rgba(16,185,129,0.12);
-      --yellow:        #F59E0B;
-      --yellow-dim:    rgba(245,158,11,0.12);
-      --red:           #EF4444;
-      --red-dim:       rgba(239,68,68,0.12);
-      --gray-dim:      rgba(107,114,128,0.18);
-      --text:          #F9FAFB;
-      --text-muted:    #9CA3AF;
-      --text-dim:      #6B7280;
-      --radius:        12px;
-    }
-
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafaf9;
+      color: #0d0d0d;
       min-height: 100vh;
       line-height: 1.5;
     }
 
     /* ── HEADER ─────────────────────────────────── */
-    header {
+    .header {
+      background: #0d0d0d;
+      padding: 20px 24px 16px;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13,15,26,0.90);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
-
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 16px;
+    }
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
+      flex-shrink: 0;
     }
-
-    .logo-mark {
-      width: 34px;
-      height: 34px;
-      background: var(--green);
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      font-size: 17px;
-      line-height: 1;
+    .favicon {
+      width: 32px;
+      height: 32px;
+      background: #D62B2B;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-
-    .logo-name {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      color: var(--text);
+    .favicon svg { width: 20px; height: 20px; }
+    .logo-text { display: flex; flex-direction: column; }
+    .wordmark {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.2;
     }
-
-    .logo-name em {
-      font-style: normal;
-      color: var(--green);
+    .wordmark-main { color: #f2f0eb; }
+    .wordmark-accent { color: #D62B2B; }
+    .submark {
+      font-size: 9px;
+      color: #888888;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin-top: 2px;
     }
-
-    .header-city {
+    .weather-widget {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 8px 14px;
       font-size: 13px;
-      color: var(--text-dim);
+      color: #f2f0eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-
-    /* ── HERO ───────────────────────────────────── */
-    .hero {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 52px 24px 36px;
+    .featured-events {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 12px 16px;
     }
-
-    .hero-eyebrow {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
+    .featured-events h4 {
+      font-size: 11px;
+      color: #888888;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
       text-transform: uppercase;
-      color: var(--green);
+    }
+    .featured-item {
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      color: #f2f0eb;
+    }
+    .featured-item:last-child { border-bottom: none; }
+    .featured-name { font-weight: 500; }
+    .featured-meta { color: #888888; font-size: 12px; margin-top: 1px; }
+    .featured-empty { font-size: 13px; color: #888888; font-style: italic; }
+
+    /* ── TABS BAR ───────────────────────────────── */
+    .tabs-bar {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    .tabs {
+      display: flex;
+      padding: 0 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .tab {
+      padding: 14px 20px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-size: 15px;
+      font-weight: 500;
+      color: #737373;
+      cursor: pointer;
+      font-family: inherit;
+      transition: color 0.15s;
+      white-space: nowrap;
+    }
+    .tab:hover { color: #0d0d0d; }
+    .tab.active { color: #0d0d0d; border-bottom-color: #D62B2B; }
+
+    /* ── FILTERS ────────────────────────────────── */
+    .filters {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 10px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 98;
+    }
+    .filters-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-dropdown { position: relative; display: inline-flex; align-items: center; }
+    .filter-select {
+      padding: 8px 32px 8px 14px;
+      background: #fafaf9;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      min-width: 150px;
+      appearance: none;
+      -webkit-appearance: none;
+      font-family: inherit;
+      color: #0d0d0d;
+    }
+    .filter-select:focus { outline: none; border-color: #a3a3a3; }
+    .filter-arrow {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 10px;
+      pointer-events: none;
+      color: #737373;
+    }
+    .clear-filters {
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #737373;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .clear-filters:hover { border-color: #a3a3a3; color: #0d0d0d; }
+
+    /* ── MAIN LAYOUT ─────────────────────────────── */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── SECTION HEADINGS ─────────────────────────── */
+    .section-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #0d0d0d;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .section-block { margin-bottom: 40px; }
+
+    /* ── TIMELINE CARDS ─────────────────────────── */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .timeline-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      user-select: none;
+    }
+    .timeline-card:hover {
+      border-color: #a3a3a3;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .timeline-card.confirmed { border-left: 3px solid #059669; }
+    .timeline-card.canceled { border-left: 3px solid #dc2626; opacity: 0.7; }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .timeline-organizer { font-size: 13px; font-weight: 500; color: #0d0d0d; }
+    .timeline-info { font-size: 12px; color: #737373; line-height: 1.5; }
+    .expand-hint {
+      font-size: 11px;
+      color: #a3a3a3;
+      margin-top: 6px;
+      text-align: right;
+    }
+    .timeline-card.expanded .expand-hint { display: none; }
+    .timeline-details {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #f5f5f5;
+      display: none;
+    }
+    .timeline-card.expanded .timeline-details { display: block; }
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
       margin-bottom: 10px;
     }
+    .timeline-detail-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #a3a3a3;
+      margin-bottom: 2px;
+    }
+    .timeline-detail-value { font-size: 13px; color: #0d0d0d; font-weight: 500; }
+    .timeline-meeting {
+      font-size: 12px;
+      color: #737373;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .timeline-meeting a { color: #D62B2B; text-decoration: none; }
+    .timeline-meeting a:hover { text-decoration: underline; }
+    .timeline-social { display: flex; gap: 8px; flex-wrap: wrap; }
+    .social-link {
+      font-size: 12px;
+      color: #737373;
+      text-decoration: none;
+      padding: 4px 10px;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .social-link:hover { border-color: #a3a3a3; color: #0d0d0d; }
 
-    .hero-title {
-      font-size: clamp(30px, 5vw, 46px);
-      font-weight: 800;
-      letter-spacing: -1.2px;
-      line-height: 1.08;
+    /* ── RIDE CARDS ─────────────────────────────── */
+    .ride-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 12px;
+      transition: box-shadow 0.15s;
+    }
+    .ride-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .ride-card.confirmed { border-left: 3px solid #059669; }
+    .ride-card.canceled { border-left: 3px solid #dc2626; opacity: 0.7; }
+    .ride-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
       margin-bottom: 14px;
     }
-
-    .hero-sub {
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #0d0d0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+    .ride-title-block { flex: 1; min-width: 0; }
+    .ride-title-block h3 {
       font-size: 16px;
-      color: var(--text-muted);
-      max-width: 520px;
+      font-weight: 500;
+      color: #0d0d0d;
+      margin-bottom: 5px;
     }
-
-    /* ── MAIN ───────────────────────────────────── */
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px 72px;
+    .ride-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #737373;
     }
-
-    /* ── DAY SECTIONS ───────────────────────────── */
-    .day-section {
-      margin-bottom: 44px;
+    .status-badge {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
     }
+    .badge-confirmed { background: #d1fae5; color: #065f46; }
+    .badge-planned   { background: #fef3c7; color: #92400e; }
+    .badge-canceled  { background: #fee2e2; color: #991b1b; }
+    .badge-unknown   { background: #f5f5f5; color: #737373; }
+    .tl-badge-confirmed { background: #d1fae5; color: #065f46; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+    .tl-badge-planned   { background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+    .tl-badge-canceled  { background: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+    .tl-badge-unknown   { background: #f5f5f5; color: #737373; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+    .ride-details {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px solid #f5f5f5;
+      border-bottom: 1px solid #f5f5f5;
+      margin-bottom: 12px;
+    }
+    .detail-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #a3a3a3;
+      margin-bottom: 3px;
+    }
+    .detail-value { font-size: 14px; color: #0d0d0d; font-weight: 500; }
+    .detail-value.muted { color: #a3a3a3; font-weight: 400; }
+    .meeting-point {
+      font-size: 13px;
+      color: #737373;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .meeting-point a { color: #D62B2B; text-decoration: none; }
+    .meeting-point a:hover { text-decoration: underline; }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      min-height: 32px;
+    }
+    .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
 
+    /* ── REGISTER BUTTON ─────────────────────────── */
+    .register-btn {
+      background: #D62B2B;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .register-btn:hover:not(:disabled) { background: #b52323; }
+    .register-btn:disabled { opacity: 0.5; cursor: default; }
+
+    /* ── DAY SECTION (All Rides tab) ─────────────── */
+    .day-section { margin-bottom: 36px; }
     .day-header {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding-bottom: 14px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e5e5e5;
+      flex-wrap: wrap;
     }
-
-    .day-name {
-      font-size: 19px;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-    }
-
-    .day-date {
-      font-size: 14px;
-      color: var(--text-dim);
-    }
-
+    .day-name { font-size: 18px; font-weight: 500; color: #0d0d0d; }
+    .day-date { font-size: 14px; color: #a3a3a3; }
     .today-badge {
       font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      background: var(--green);
-      color: #000;
+      background: #0d0d0d;
+      color: #fff;
       padding: 2px 8px;
       border-radius: 100px;
     }
-
-    .no-rides {
-      font-size: 14px;
-      color: var(--text-dim);
-      font-style: italic;
-      padding: 8px 0;
-    }
-
-    /* ── RIDE CARD ──────────────────────────────── */
-    .ride-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      margin-bottom: 10px;
-      transition: border-color 0.15s, background 0.15s;
-    }
-
-    .ride-card:hover {
-      background: var(--surface-hover);
-      border-color: rgba(255,255,255,0.14);
-    }
-
-    .ride-card.today {
-      border-color: rgba(16,185,129,0.28);
-    }
-
-    .card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .ride-name {
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      line-height: 1.3;
-    }
-
-    .ride-org {
-      font-size: 13px;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
-
-    /* ── STATUS BADGES ──────────────────────────── */
-    .badge {
-      flex-shrink: 0;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      padding: 4px 10px;
-      border-radius: 100px;
-      text-transform: capitalize;
-    }
-
-    .badge-confirmed { background: var(--green-dim);  color: var(--green);  border: 1px solid rgba(16,185,129,0.25); }
-    .badge-planned   { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(245,158,11,0.25); }
-    .badge-canceled  { background: var(--red-dim);    color: var(--red);    border: 1px solid rgba(239,68,68,0.25);  }
-    .badge-unknown   { background: var(--gray-dim);   color: var(--text-dim); border: 1px solid rgba(107,114,128,0.25); }
-
-    /* ── CARD META ──────────────────────────────── */
-    .card-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .meta-icon { opacity: 0.65; font-size: 13px; }
-
-    /* ── WEATHER ROW ────────────────────────────── */
-    .card-weather {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--text-dim);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .w-rain-high { color: #60A5FA; }
-    .w-rain-med  { color: #93C5FD; }
-    .w-rain-low  { color: var(--text-dim); }
-
-    /* ── WEATHER PILL (day header) ──────────────────── */
-    .weather-pill {
+    .weather-day-pill {
       margin-left: auto;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-size: 12px;
-      color: var(--text-dim);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
+      color: #737373;
+      background: #f5f5f5;
+      border: 1px solid #e5e5e5;
       border-radius: 100px;
       padding: 3px 10px;
     }
-    .weather-pill .weather-sep { opacity: 0.35; }
-    .weather-pill .w-rain-high { color: #60A5FA; }
-    .weather-pill .w-rain-med  { color: #93C5FD; }
+    .no-rides { font-size: 14px; color: #a3a3a3; font-style: italic; padding: 8px 0; }
 
-    /* ── EVENTS SECTION ─────────────────────────── */
-    .section-rule {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 52px 0 36px;
-    }
-
-    .section-heading {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 20px;
-    }
-
-    .event-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      margin-bottom: 10px;
-    }
-
-    .event-date-label {
+    /* ── EVENT CARD EXTRAS ─────────────────────────── */
+    .past-badge {
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 5px;
+      background: #f5f5f5;
+      color: #a3a3a3;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
     }
 
-    /* ── LOADING ────────────────────────────────── */
+    /* ── LOADING & ERROR ─────────────────────────── */
     .loading {
       text-align: center;
-      padding: 56px 24px;
-      color: var(--text-dim);
+      padding: 48px 24px;
+      color: #a3a3a3;
     }
-
     .spinner {
-      width: 30px;
-      height: 30px;
-      border: 3px solid var(--border);
-      border-top-color: var(--green);
+      width: 28px;
+      height: 28px;
+      border: 2px solid #e5e5e5;
+      border-top-color: #0d0d0d;
       border-radius: 50%;
       animation: spin 0.75s linear infinite;
-      margin: 0 auto 14px;
+      margin: 0 auto 12px;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
-
     .error-msg {
-      color: var(--red);
-      background: var(--red-dim);
-      border: 1px solid rgba(239,68,68,0.2);
-      border-radius: var(--radius);
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      border-radius: 8px;
       padding: 16px 20px;
       font-size: 14px;
-    }
-
-    /* ── FOOTER ─────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-dim);
-      padding: 28px 24px;
-    }
-
-    footer a {
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 600px) {
-      header        { padding: 12px 16px; }
-      .hero         { padding: 36px 16px 28px; }
-      main          { padding: 0 16px 56px; }
-      .card-meta    { gap: 10px; }
+      color: #991b1b;
     }
 
     /* ── EMAIL SIGNUP ───────────────────────────── */
     .email-signup-container {
-      max-width: 860px;
-      margin: 0 auto 40px;
+      max-width: 600px;
+      margin: 0 auto 64px;
       padding: 0 24px;
     }
-
     .email-signup {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: var(--radius);
-      padding: 40px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 32px;
       text-align: center;
-      color: white;
     }
-
     .email-signup h3 {
-      margin: 0 0 8px 0;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #0d0d0d;
+      margin-bottom: 8px;
     }
-
     .email-signup > p {
-      margin: 0 0 24px 0;
-      font-size: 15px;
-      opacity: 0.9;
+      color: #737373;
+      font-size: 14px;
+      margin-bottom: 20px;
     }
-
     .form-group {
       display: flex;
       gap: 10px;
-      max-width: 480px;
-      margin: 0 auto 16px;
+      max-width: 440px;
+      margin: 0 auto 12px;
     }
-
     #email-input {
       flex: 1;
-      padding: 13px 16px;
-      border: none;
-      border-radius: 8px;
+      padding: 12px 16px;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
       font-size: 15px;
       font-family: inherit;
       outline: none;
-      background: rgba(255,255,255,0.95);
-      color: #111;
+      color: #0d0d0d;
+      background: #fff;
     }
-
-    #email-input::placeholder { color: #888; }
-
+    #email-input:focus { border-color: #a3a3a3; }
     #submit-btn {
-      padding: 13px 28px;
-      background: rgba(255,255,255,0.15);
-      color: white;
-      border: 2px solid rgba(255,255,255,0.5);
-      border-radius: 8px;
+      padding: 12px 24px;
+      background: #D62B2B;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 500;
       font-family: inherit;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.15s;
       white-space: nowrap;
     }
+    #submit-btn:hover:not(:disabled) { background: #b52323; }
+    #submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-message { min-height: 20px; font-size: 14px; margin-top: 8px; }
+    .form-message.success { color: #065f46; }
+    .form-message.error   { color: #991b1b; }
+    .privacy-note { font-size: 12px; color: #a3a3a3; margin-top: 12px; }
 
-    #submit-btn:hover:not(:disabled) {
-      background: rgba(255,255,255,0.25);
-      transform: translateY(-1px);
+    /* ── FOOTER ─────────────────────────────────── */
+    .footer {
+      background: #0d0d0d;
+      color: #f2f0eb;
+      padding: 48px 24px 32px;
     }
-
-    #submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 32px;
     }
-
-    .form-message {
-      min-height: 22px;
+    .footer h4 {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      color: #f2f0eb;
+    }
+    .footer p { font-size: 14px; color: #737373; line-height: 1.7; }
+    .footer-social { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-social a {
+      color: #a3a3a3;
+      text-decoration: none;
+      padding: 7px 14px;
+      border: 1px solid #404040;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .footer-social a:hover { color: #f2f0eb; border-color: #737373; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      color: #a3a3a3;
+      text-decoration: none;
       font-size: 14px;
-      margin-top: 10px;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: #f2f0eb; }
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid #262626;
+      color: #737373;
+      font-size: 13px;
     }
 
-    .form-message.success { color: #86efac; }
-    .form-message.error   { color: #fca5a5; }
-
-    .privacy-note {
-      font-size: 12px;
-      opacity: 0.7;
-      margin: 14px 0 0;
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      .header-top { flex-direction: column; }
+      .weather-widget { flex-wrap: wrap; gap: 8px; }
+      .ride-details { grid-template-columns: repeat(2, 1fr); }
+      .footer-content { grid-template-columns: 1fr; gap: 32px; }
+      .timeline { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 600px) {
+      .header { padding: 16px 16px 12px; }
+      .wordmark { font-size: 17px; }
+      .tabs { padding: 0 12px; }
+      .tab { padding: 12px 12px; font-size: 14px; }
+      .filters { padding: 10px 16px; }
+      .filters-content { flex-direction: column; align-items: stretch; }
+      .filter-select { width: 100%; }
+      main { padding: 24px 16px 48px; }
+      .form-group { flex-direction: column; }
+      #submit-btn { width: 100%; }
+      .email-signup { padding: 24px 16px; }
       .email-signup-container { padding: 0 16px; }
-      .email-signup           { padding: 28px 20px; }
-      .email-signup h3        { font-size: 20px; }
-      .form-group             { flex-direction: column; }
-      #submit-btn             { width: 100%; }
+      .ride-details { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .card-footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ─────────────────────────────────── -->
-<header>
-  <a class="logo" href="/">
-    <div class="logo-mark">🚴</div>
-    <span class="logo-name">Ride<em>Tracker</em>FL</span>
-  </a>
-  <span class="header-city">Weston, FL</span>
+<!-- ── HEADER ─────────────────────────────────────── -->
+<header class="header" id="main-header">
+  <div class="header-content">
+    <div class="header-top">
+      <a href="/" class="logo">
+        <div class="favicon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <div class="wordmark">
+            <span class="wordmark-main">RIDETRACKER</span><span class="wordmark-accent">FL</span>
+          </div>
+          <div class="submark">WESTON · SOUTH FLORIDA</div>
+        </div>
+      </a>
+      <div class="weather-widget">
+        <span id="current-time">🕐 --:-- --</span>
+        <span id="current-temp">☀️ --°F</span>
+        <span id="current-wind">💨 -- mph</span>
+        <span id="current-rain">💧 --%</span>
+      </div>
+    </div>
+    <div class="featured-events">
+      <h4>Featured Events</h4>
+      <div id="featured-events-list">
+        <div class="featured-empty">Loading events…</div>
+      </div>
+    </div>
+  </div>
 </header>
 
-<!-- ── HERO ──────────────────────────────────── -->
-<div class="hero">
-  <div class="hero-eyebrow" id="weekLabel">Loading…</div>
-  <h1 class="hero-title">Weston Cycling<br>Rides This Week</h1>
-  <p class="hero-sub">All local group rides — confirmed status, weather, and details. No Instagram required.</p>
+<!-- ── TABS BAR ───────────────────────────────────── -->
+<div class="tabs-bar" id="tabs-bar">
+  <div class="tabs">
+    <button class="tab active" data-tab="upcoming">Upcoming</button>
+    <button class="tab" data-tab="all-rides">All Rides</button>
+    <button class="tab" data-tab="special-events">Special Events</button>
+  </div>
 </div>
 
-<!-- ── EMAIL SIGNUP ───────────────────────────── -->
+<!-- ── FILTERS ────────────────────────────────────── -->
+<div class="filters" id="filters-bar">
+  <div class="filters-content">
+    <div class="filter-dropdown">
+      <select class="filter-select" id="status-filter">
+        <option value="all">Status: All</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="planned">Planned</option>
+        <option value="canceled">Canceled</option>
+      </select>
+      <span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-dropdown">
+      <select class="filter-select" id="organizer-filter">
+        <option value="all">Organizer: All</option>
+      </select>
+      <span class="filter-arrow">▼</span>
+    </div>
+    <button class="clear-filters" id="clear-filters-btn">Clear Filters</button>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────── -->
+<main>
+
+  <!-- TAB: UPCOMING (default) ─────────────────────── -->
+  <div id="upcoming-content" class="tab-content active">
+
+    <!-- Special events in next 48h (shown only if any exist) -->
+    <div class="section-block" id="events-48h-block" style="display:none">
+      <div class="section-title">Special Events · Next 48 Hours</div>
+      <div id="events-48h-list"></div>
+    </div>
+
+    <!-- Compact timeline: next 48h recurring rides -->
+    <div class="section-block">
+      <div class="section-title">Next 48 Hours</div>
+      <div class="timeline" id="timeline-list">
+        <div class="loading"><div class="spinner"></div><p>Loading rides…</p></div>
+      </div>
+    </div>
+
+    <!-- Full cards: all recurring rides this week -->
+    <div class="section-block">
+      <div class="section-title">All Upcoming Rides</div>
+      <div id="upcoming-rides-list">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+    </div>
+
+    <!-- Upcoming special events beyond 48h -->
+    <div class="section-block">
+      <div class="section-title">Upcoming Special Events</div>
+      <div id="upcoming-events-list">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TAB: ALL RIDES ───────────────────────────────── -->
+  <div id="all-rides-content" class="tab-content">
+    <div id="all-rides-list">
+      <div class="loading"><div class="spinner"></div><p>Loading…</p></div>
+    </div>
+  </div>
+
+  <!-- TAB: SPECIAL EVENTS ─────────────────────────── -->
+  <div id="special-events-content" class="tab-content">
+    <div id="special-events-list">
+      <div class="loading"><div class="spinner"></div><p>Loading…</p></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── EMAIL SIGNUP ───────────────────────────────── -->
 <div class="email-signup-container">
   <div class="email-signup">
     <h3>Never Miss a Ride</h3>
     <p>Get weekly ride updates and weather alerts delivered to your inbox.</p>
     <form id="signup-form" novalidate>
       <div class="form-group">
-        <input
-          type="email"
-          id="email-input"
-          placeholder="your@email.com"
-          required
-          autocomplete="email"
-        >
+        <input type="email" id="email-input" placeholder="your@email.com" required autocomplete="email">
         <button type="submit" id="submit-btn">
           <span class="btn-text">Subscribe</span>
           <span class="btn-loading" style="display:none">Subscribing…</span>
@@ -495,140 +756,178 @@
   </div>
 </div>
 
-<!-- ── MAIN ──────────────────────────────────── -->
-<main>
-
-  <div id="ridesContainer">
-    <div class="loading">
-      <div class="spinner"></div>
-      <p>Loading this week's rides…</p>
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-content">
+    <div>
+      <h4>RideTrackerFL</h4>
+      <p>The most reliable source for group rides in Weston, South Florida. Updated twice daily with weather forecasts and confirmed status.</p>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Strava</a>
+        <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <h4>Partner with us</h4>
+      <div class="footer-links">
+        <a href="#">List your rides</a>
+        <a href="#">Sponsorship</a>
+        <a href="#">Contact</a>
+      </div>
     </div>
   </div>
-
-  <hr class="section-rule">
-
-  <h2 class="section-heading">Upcoming Events</h2>
-  <div id="eventsContainer">
-    <div class="loading">
-      <div class="spinner"></div>
-    </div>
+  <div class="footer-bottom">
+    © 2026 RideTrackerFL · Weston, South Florida
   </div>
-
-</main>
-
-<!-- ── FOOTER ─────────────────────────────────── -->
-<footer>
-  <p>RideTrackerFL &middot; Weston, Florida</p>
-  <p style="margin-top:5px">Data sourced from local cycling groups &middot; Last refreshed: <span id="lastUpdated">—</span></p>
 </footer>
 
 <script>
-// ─────────────────────────────────────────────────────────────────
-//  CONFIG  — token is stored server-side in Netlify env variable
-// ─────────────────────────────────────────────────────────────────
-const RIDES   = 'tbl7xURgDo5wU4z5t';
-const EVENTS  = 'tblrv1h7NAbRlQihQ';
+// ─────────────────────────────────────────────────────
+//  AIRTABLE CONFIG
+// ─────────────────────────────────────────────────────
+const RIDES  = 'tbl7xURgDo5wU4z5t';
+const EVENTS = 'tblrv1h7NAbRlQihQ';
 
-// Ride field IDs
-// Ride field names (Airtable REST API keys by field name, not ID)
+// Ride field names (Airtable keys by name, not ID)
 const R = {
-  name:    'Ride Name',
-  org:     'Organizer',
-  day:     'Day of Week',
-  time:    'Time',
-  loc:     'Location',
-  addrNote:'Address Note',
-  dist:    'Distance',
-  pace:    'Pace',
-  status:  'Status',
-  weather: 'Weather Summary',
-  rain:    'Rain Probability',
-  wind:    'Wind Speed',
+  name:      'Ride Name',
+  org:       'Organizer',
+  day:       'Day of Week',
+  time:      'Time',
+  loc:       'Location',
+  addrNote:  'Address Note',
+  dist:      'Distance',
+  pace:      'Pace',
+  status:    'Status',
+  weather:   'Weather Summary',
+  rain:      'Rain Probability',
+  wind:      'Wind Speed',
+  // Future fields (show gracefully when added to Airtable):
+  instagram: 'Instagram URL',
+  strava:    'Strava URL',
+  website:   'Website URL',
+  mapsUrl:   'Google Maps URL',
 };
 
 // Event field names
 const E = {
-  name:    'Event Name',
-  org:     'Organizer',
-  date:    'Event Date',
-  time:    'Time',
-  loc:     'Location',
-  dist:    'Distance',
-  pace:    'Pace',
-  status:  'Status',
-  weather: 'Weather Summary',
-  rain:    'Rain Probability',
-  wind:    'Wind Speed',
+  name:     'Event Name',
+  org:      'Organizer',
+  date:     'Event Date',
+  time:     'Time',
+  loc:      'Location',
+  dist:     'Distance',
+  pace:     'Pace',
+  status:   'Status',
+  weather:  'Weather Summary',
+  rain:     'Rain Probability',
+  wind:     'Wind Speed',
+  regUrl:   'Registration URL',
+  regPrice: 'Registration Price',
 };
 
 const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-// ─── HELPERS ───────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────
+//  HELPERS
+// ─────────────────────────────────────────────────────
+function escHtml(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function fmt(d) { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
+
+function isToday(d) {
+  const t = new Date();
+  return d.toDateString() === t.toDateString();
+}
+
+function isTomorrow(d) {
+  const t = new Date();
+  t.setDate(t.getDate() + 1);
+  return d.toDateString() === t.toDateString();
+}
+
 function weekDates() {
   const today = new Date();
   const sun   = new Date(today);
   sun.setDate(today.getDate() - today.getDay());
-  return Array.from({length:7}, (_, i) => {
+  return Array.from({ length: 7 }, (_, i) => {
     const d = new Date(sun);
     d.setDate(sun.getDate() + i);
     return d;
   });
 }
 
-function fmt(d)      { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
-function isToday(d)  {
-  const t = new Date();
-  return d.toDateString() === t.toDateString();
+function initials(name) {
+  if (!name) return '?';
+  const words = name.trim().split(/\s+/);
+  if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
+  return (words[0][0] + words[1][0]).toUpperCase();
+}
+
+function normalizeOrg(name) {
+  return (name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
 function statusBadge(raw) {
   const s = (raw || 'unknown').toLowerCase();
-  const cls = s === 'confirmed' ? 'badge-confirmed'
-            : s === 'planned'   ? 'badge-planned'
-            : (s === 'canceled' || s === 'cancelled') ? 'badge-canceled'
-            : 'badge-unknown';
-  const label = s === 'canceled' ? 'Canceled' : s.charAt(0).toUpperCase() + s.slice(1);
-  return `<span class="badge ${cls}">${label}</span>`;
+  const cls   = s === 'confirmed'                    ? 'badge-confirmed'
+              : s === 'planned'                       ? 'badge-planned'
+              : (s === 'canceled' || s === 'cancelled') ? 'badge-canceled'
+              : 'badge-unknown';
+  const label = (s === 'canceled' || s === 'cancelled') ? 'Canceled'
+              : s.charAt(0).toUpperCase() + s.slice(1);
+  return `<span class="status-badge ${cls}">${label}</span>`;
 }
 
-function weatherRow(f, R_or_E) {
-  const rain    = f[R_or_E.rain];
-  const wind    = f[R_or_E.wind];
-  const summary = f[R_or_E.weather];
-  if (rain === undefined && wind === undefined && !summary) return '';
-
-  let parts = [];
-  if (summary) {
-    parts.push(`<span>${escHtml(summary)}</span>`);
-  } else {
-    if (rain !== undefined) {
-      const pct   = Math.round(rain * 100);
-      const cls   = pct >= 60 ? 'w-rain-high' : pct >= 30 ? 'w-rain-med' : 'w-rain-low';
-      const icon  = pct >= 60 ? '🌧' : pct >= 30 ? '🌦' : '☀️';
-      parts.push(`<span class="${cls}">${icon} ${pct}% rain</span>`);
-    }
-    if (wind !== undefined) {
-      parts.push(`<span>💨 ${Math.round(wind)} mph winds</span>`);
-    }
-  }
-  return `<div class="card-weather">${parts.join('')}</div>`;
+function tlStatusBadge(raw) {
+  const s = (raw || 'unknown').toLowerCase();
+  const cls   = s === 'confirmed'                    ? 'tl-badge-confirmed'
+              : s === 'planned'                       ? 'tl-badge-planned'
+              : (s === 'canceled' || s === 'cancelled') ? 'tl-badge-canceled'
+              : 'tl-badge-unknown';
+  const label = s === 'confirmed'                    ? '✓ Confirmed'
+              : (s === 'canceled' || s === 'cancelled') ? '✕ Canceled'
+              : s.charAt(0).toUpperCase() + s.slice(1);
+  return `<span class="${cls}">${label}</span>`;
 }
 
-function metaItem(icon, text) {
-  if (!text) return '';
-  return `<span class="meta-item"><span class="meta-icon">${icon}</span> ${escHtml(text)}</span>`;
+function buildMapsUrl(location, addrNote) {
+  const query = [location, addrNote].filter(Boolean).join(', ');
+  return query
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+    : null;
 }
 
-function escHtml(s) {
-  return String(s)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;');
+function wxDisplay(wx, rainField, windField) {
+  // wx = { rain, wind } from daily map  |  fallback to per-card fields
+  const rain = wx ? wx.rain
+             : (rainField !== undefined && rainField !== null)
+               ? (rainField <= 1 ? Math.round(rainField * 100) : Math.round(rainField))
+               : null;
+  const wind = wx ? wx.wind
+             : (windField !== undefined && windField !== null)
+               ? Math.round(windField)
+               : null;
+  if (rain === null && wind === null) return '—';
+  if (rain !== null && wind !== null) return `${rain}% rain · ${wind} mph`;
+  if (rain !== null) return `${rain}% rain`;
+  return `${wind} mph wind`;
 }
 
-// ─── FETCH ALL RECORDS (handles pagination) ────────────────────────
+// ─────────────────────────────────────────────────────
+//  FETCH
+// ─────────────────────────────────────────────────────
 async function fetchAll(tableId, fieldNames) {
   const fields = fieldNames.map(n => `fields[]=${encodeURIComponent(n)}`).join('&');
   let records = [], offset = null;
@@ -644,7 +943,7 @@ async function fetchAll(tableId, fieldNames) {
   return records;
 }
 
-// ─── FETCH WEATHER (Open-Meteo, free, no key needed) ───────────────
+// Daily weather map for the week (Open-Meteo, no API key)
 async function fetchWeather() {
   try {
     const url = 'https://api.open-meteo.com/v1/forecast' +
@@ -665,158 +964,561 @@ async function fetchWeather() {
   } catch { return {}; }
 }
 
-function weatherPill(wx) {
-  if (!wx) return '';
-  const rain = wx.rain ?? null;
-  const wind = wx.wind ?? null;
-  if (rain === null && wind === null) return '';
-  const icon    = rain >= 60 ? '🌧' : rain >= 30 ? '🌦' : '☀️';
-  const rainCls = rain >= 60 ? 'w-rain-high' : rain >= 30 ? 'w-rain-med' : '';
-  return `<span class="weather-pill">
-    <span class="${rainCls}">${icon} ${rain}%</span>
-    <span class="weather-sep">·</span>
-    <span>💨 ${wind} mph</span>
-  </span>`;
+// ─────────────────────────────────────────────────────
+//  LIVE WEATHER WIDGET (header)
+// ─────────────────────────────────────────────────────
+function updateTime() {
+  const now  = new Date();
+  const h    = now.getHours();
+  const m    = now.getMinutes();
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const dh   = h % 12 || 12;
+  const dm   = m < 10 ? '0' + m : String(m);
+  document.getElementById('current-time').textContent = `🕐 ${dh}:${dm} ${ampm}`;
+}
+updateTime();
+setInterval(updateTime, 60000);
+
+async function updateHeaderWeather() {
+  try {
+    const url = 'https://api.open-meteo.com/v1/forecast' +
+      '?latitude=26.1004&longitude=-80.3997' +
+      '&current=temperature_2m,precipitation_probability,wind_speed_10m,wind_direction_10m' +
+      '&temperature_unit=fahrenheit&wind_speed_unit=mph';
+    const res  = await fetch(url);
+    if (!res.ok) return;
+    const data = await res.json();
+    const c    = data.current;
+
+    const temp = Math.round(c.temperature_2m);
+    const rain = c.precipitation_probability || 0;
+    const wind = Math.round(c.wind_speed_10m);
+    const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+    const dir  = dirs[Math.round(c.wind_direction_10m / 45) % 8];
+    const icon = rain >= 60 ? '🌧' : rain >= 30 ? '🌦' : temp >= 85 ? '☀️' : '🌤';
+
+    document.getElementById('current-temp').textContent = `${icon} ${temp}°F`;
+    document.getElementById('current-wind').textContent = `💨 ${wind} mph ${dir}`;
+    document.getElementById('current-rain').textContent = `💧 ${rain}%`;
+  } catch (e) {
+    console.warn('Header weather fetch failed:', e);
+  }
+}
+updateHeaderWeather();
+setInterval(updateHeaderWeather, 600000); // refresh every 10 min
+
+// ─────────────────────────────────────────────────────
+//  FEATURED EVENTS (header)
+// ─────────────────────────────────────────────────────
+function renderFeaturedEvents(eventRecords) {
+  const now       = new Date();
+  const thirtyDays = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+  const upcoming = eventRecords
+    .filter(r => {
+      const ds     = r.fields[E.date];
+      if (!ds) return false;
+      const d      = new Date(ds + 'T00:00:00');
+      const status = (r.fields[E.status] || '').toLowerCase();
+      return d >= now && d <= thirtyDays && status !== 'canceled' && status !== 'cancelled';
+    })
+    .sort((a, b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]))
+    .slice(0, 3);
+
+  const container = document.getElementById('featured-events-list');
+
+  if (!upcoming.length) {
+    container.innerHTML = '<div class="featured-empty">No upcoming events in the next 30 days.</div>';
+    return;
+  }
+
+  container.innerHTML = upcoming.map(r => {
+    const f         = r.fields;
+    const d         = new Date(f[E.date] + 'T00:00:00');
+    const dateLabel = `${DAYS[d.getDay()].substring(0, 3)} ${fmt(d)}`;
+    const distText  = f[E.dist] ? ` · ${escHtml(f[E.dist])} mi` : '';
+    const regText   = f[E.regUrl]
+      ? ` · <span style="color:#D62B2B;font-size:11px;">Registration open</span>` : '';
+    return `
+      <div class="featured-item">
+        <div class="featured-name">${escHtml(f[E.name] || 'Unnamed Event')}</div>
+        <div class="featured-meta">${dateLabel}${distText}${regText}</div>
+      </div>`;
+  }).join('');
 }
 
-// ─── RENDER RIDES ───────────────────────────────────────────────────
-function renderRides(records, weatherMap = {}) {
-  const wk     = weekDates();
+// ─────────────────────────────────────────────────────
+//  TIMELINE CARDS (next 48 hours, expandable)
+// ─────────────────────────────────────────────────────
+function renderTimeline(rideRecords, weatherMap) {
+  const todayN    = new Date().getDay();
+  const tomorrowN = (todayN + 1) % 7;
+  const todayName    = DAYS[todayN];
+  const tomorrowName = DAYS[tomorrowN];
+  const wk = weekDates();
+
+  const rides48 = rideRecords
+    .filter(r => r.fields[R.day] === todayName || r.fields[R.day] === tomorrowName)
+    .sort((a, b) => {
+      const da = a.fields[R.day] === todayName ? 0 : 1;
+      const db = b.fields[R.day] === todayName ? 0 : 1;
+      if (da !== db) return da - db;
+      return (a.fields[R.time] || '').localeCompare(b.fields[R.time] || '');
+    });
+
+  const container = document.getElementById('timeline-list');
+
+  if (!rides48.length) {
+    container.innerHTML = '<p class="no-rides">No rides in the next 48 hours.</p>';
+    return;
+  }
+
+  container.innerHTML = rides48.map(r => {
+    const f          = r.fields;
+    const dayName    = f[R.day];
+    const dayIdx     = DAYS.indexOf(dayName);
+    const dayDate    = wk[dayIdx];
+    const dayLabel   = isToday(dayDate) ? 'Today' : isTomorrow(dayDate) ? 'Tomorrow' : dayName;
+    const status     = (f[R.status] || 'unknown').toLowerCase();
+    const cardClass  = status === 'confirmed' ? 'confirmed'
+                     : (status === 'canceled' || status === 'cancelled') ? 'canceled' : '';
+    const dateStr    = dayDate ? dayDate.toISOString().split('T')[0] : null;
+    const wx         = dateStr ? weatherMap[dateStr] : null;
+    const mUrl       = f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]);
+    const locParts   = [f[R.loc], f[R.addrNote]].filter(Boolean);
+    const infoParts  = [
+      `<strong>${dayLabel}</strong>`,
+      f[R.time] ? escHtml(f[R.time]) : null,
+      f[R.loc]  ? escHtml(f[R.loc])  : null,
+      f[R.dist] ? escHtml(f[R.dist]) + ' mi' : null,
+    ].filter(Boolean);
+
+    const socialLinks = [
+      f[R.instagram] ? `<a href="${escHtml(f[R.instagram])}" class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
+      f[R.strava]    ? `<a href="${escHtml(f[R.strava])}"    class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
+      f[R.website]   ? `<a href="${escHtml(f[R.website])}"   class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
+    ].filter(Boolean).join('');
+
+    return `
+      <div class="timeline-card ${cardClass}"
+           data-status="${escHtml(status)}"
+           data-organizer="${escHtml(normalizeOrg(f[R.org]))}"
+           onclick="this.classList.toggle('expanded')">
+        <div class="timeline-header">
+          <span class="timeline-organizer">${escHtml(f[R.org] || f[R.name] || '—')}</span>
+          ${tlStatusBadge(f[R.status])}
+        </div>
+        <div class="timeline-info">${infoParts.join(' · ')}</div>
+        <div class="expand-hint">Tap for details ▾</div>
+        <div class="timeline-details">
+          <div class="timeline-grid">
+            <div>
+              <div class="timeline-detail-label">Pace</div>
+              <div class="timeline-detail-value">${escHtml(f[R.pace] || '—')}</div>
+            </div>
+            <div>
+              <div class="timeline-detail-label">Weather</div>
+              <div class="timeline-detail-value">${wxDisplay(wx, f[R.rain], f[R.wind])}</div>
+            </div>
+          </div>
+          ${locParts.length ? `
+          <div class="timeline-meeting">
+            📍 ${locParts.map(escHtml).join(' · ')}
+            ${mUrl ? ` · <a href="${escHtml(mUrl)}" target="_blank" rel="noopener">Maps</a>` : ''}
+          </div>` : ''}
+          ${socialLinks ? `<div class="timeline-social">${socialLinks}</div>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ─────────────────────────────────────────────────────
+//  BUILD FULL RIDE CARD (shared by Upcoming + All Rides)
+// ─────────────────────────────────────────────────────
+function buildRideCard(f, dayDate, weatherMap) {
+  const status     = (f[R.status] || 'unknown').toLowerCase();
+  const cardClass  = status === 'confirmed' ? 'confirmed'
+                   : (status === 'canceled' || status === 'cancelled') ? 'canceled' : '';
+  const dateStr    = dayDate ? dayDate.toISOString().split('T')[0] : null;
+  const wx         = dateStr ? weatherMap[dateStr] : null;
+  const orgName    = f[R.org] || f[R.name] || '';
+  const mUrl       = f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]);
+  const locParts   = [f[R.loc], f[R.addrNote]].filter(Boolean);
+  const dayLabel   = dayDate ? `${DAYS[dayDate.getDay()]}, ${fmt(dayDate)}` : '';
+
+  const socialLinks = [
+    f[R.instagram] ? `<a href="${escHtml(f[R.instagram])}" class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
+    f[R.strava]    ? `<a href="${escHtml(f[R.strava])}"    class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
+    f[R.website]   ? `<a href="${escHtml(f[R.website])}"   class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
+  ].filter(Boolean).join('');
+
+  return `
+    <div class="ride-card ${cardClass}"
+         data-status="${escHtml(status)}"
+         data-organizer="${escHtml(normalizeOrg(orgName))}">
+      <div class="ride-header">
+        <div class="avatar">${escHtml(initials(orgName))}</div>
+        <div class="ride-title-block">
+          <h3>${escHtml(f[R.name] || 'Unnamed Ride')}</h3>
+          <div class="ride-meta">
+            ${statusBadge(f[R.status])}
+            ${dayLabel ? `<span>${dayLabel}</span>` : ''}
+            ${f[R.time] ? `<span>· ${escHtml(f[R.time])}</span>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="ride-details">
+        <div class="detail-item">
+          <div class="detail-label">Location</div>
+          <div class="detail-value ${!f[R.loc] ? 'muted' : ''}">${escHtml(f[R.loc] || '—')}</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Distance</div>
+          <div class="detail-value ${!f[R.dist] ? 'muted' : ''}">
+            ${f[R.dist] ? escHtml(f[R.dist]) + ' mi' : '—'}
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Pace</div>
+          <div class="detail-value ${!f[R.pace] ? 'muted' : ''}">${escHtml(f[R.pace] || '—')}</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Weather</div>
+          <div class="detail-value ${wxDisplay(wx, f[R.rain], f[R.wind]) === '—' ? 'muted' : ''}">
+            ${wxDisplay(wx, f[R.rain], f[R.wind])}
+          </div>
+        </div>
+      </div>
+      ${locParts.length ? `
+      <div class="meeting-point">
+        📍 ${locParts.map(escHtml).join(' · ')}
+        ${mUrl ? ` · <a href="${escHtml(mUrl)}" target="_blank" rel="noopener">Open in Maps</a>` : ''}
+      </div>` : ''}
+      <div class="card-footer">
+        <div class="social-links">${socialLinks}</div>
+      </div>
+    </div>`;
+}
+
+// ─────────────────────────────────────────────────────
+//  BUILD EVENT CARD
+// ─────────────────────────────────────────────────────
+function buildEventCard(f, showRegister, isPast) {
+  const status     = (f[E.status] || 'planned').toLowerCase();
+  const d          = f[E.date] ? new Date(f[E.date] + 'T00:00:00') : null;
+  const dlabel     = d ? `${DAYS[d.getDay()]}, ${fmt(d)} ${d.getFullYear()}` : '';
+  const orgName    = f[E.org] || '';
+  const mUrl       = buildMapsUrl(f[E.loc], null);
+  const initStr    = initials(orgName || f[E.name] || '?');
+
+  let regBtn = '';
+  if (showRegister) {
+    if (f[E.regUrl]) {
+      regBtn = `<button class="register-btn" onclick="window.open('${escHtml(f[E.regUrl])}','_blank')">Register Now →</button>`;
+    } else {
+      regBtn = `<button class="register-btn" disabled>Registration TBA</button>`;
+    }
+  }
+
+  return `
+    <div class="ride-card"
+         data-status="${escHtml(status)}"
+         data-organizer="${escHtml(normalizeOrg(orgName))}">
+      <div class="ride-header">
+        <div class="avatar" style="background:#737373">${escHtml(initStr)}</div>
+        <div class="ride-title-block">
+          <h3>${escHtml(f[E.name] || 'Unnamed Event')}</h3>
+          <div class="ride-meta">
+            ${isPast ? '<span class="past-badge">Past Event</span>' : statusBadge(f[E.status])}
+            ${dlabel ? `<span>${dlabel}</span>` : ''}
+            ${f[E.time] ? `<span>· ${escHtml(f[E.time])}</span>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="ride-details">
+        <div class="detail-item">
+          <div class="detail-label">Location</div>
+          <div class="detail-value ${!f[E.loc] ? 'muted' : ''}">${escHtml(f[E.loc] || '—')}</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Distance</div>
+          <div class="detail-value ${!f[E.dist] ? 'muted' : ''}">
+            ${f[E.dist] ? escHtml(f[E.dist]) + ' mi' : '—'}
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Pace</div>
+          <div class="detail-value ${!f[E.pace] ? 'muted' : ''}">${escHtml(f[E.pace] || '—')}</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Organizer</div>
+          <div class="detail-value ${!f[E.org] ? 'muted' : ''}">${escHtml(f[E.org] || '—')}</div>
+        </div>
+      </div>
+      ${f[E.loc] ? `
+      <div class="meeting-point">
+        📍 ${escHtml(f[E.loc])}
+        ${mUrl ? ` · <a href="${escHtml(mUrl)}" target="_blank" rel="noopener">Open in Maps</a>` : ''}
+      </div>` : ''}
+      <div class="card-footer">
+        <div></div>
+        ${regBtn}
+      </div>
+    </div>`;
+}
+
+// ─────────────────────────────────────────────────────
+//  RENDER: UPCOMING TAB
+// ─────────────────────────────────────────────────────
+function renderUpcomingRides(rideRecords, weatherMap) {
   const todayN = new Date().getDay();
-
-  // week label
-  document.getElementById('weekLabel').textContent =
-    `Week of ${fmt(wk[0])} – ${fmt(wk[6])}, ${wk[6].getFullYear()}`;
-
-  // group by day name
-  const byDay = {};
-  DAYS.forEach(d => byDay[d] = []);
-  records.forEach(r => {
-    const day = r.fields[R.day];
-    if (day && byDay[day]) byDay[day].push(r.fields);
-  });
-
-  // render in day order starting from today
-  const order = [...Array(7).keys()].map(i => (todayN + i) % 7);
-  let html = '';
+  const wk     = weekDates();
+  const order  = [...Array(7).keys()].map(i => (todayN + i) % 7);
+  let html     = '';
 
   order.forEach(di => {
     const dayName = DAYS[di];
-    const date    = wk[di];
-    const today   = isToday(date);
-    const rides   = byDay[dayName] || [];
+    const dayDate = wk[di];
+    const rides   = rideRecords.filter(r => r.fields[R.day] === dayName);
+    rides.forEach(r => {
+      html += buildRideCard(r.fields, dayDate, weatherMap);
+    });
+  });
 
-    html += `<div class="day-section">`;
-    const dateStr = date.toISOString().split('T')[0];
-    html += `<div class="day-header">
-      <span class="day-name">${dayName}</span>
-      <span class="day-date">${fmt(date)}</span>
-      ${today ? '<span class="today-badge">Today</span>' : ''}
-      ${weatherPill(weatherMap[dateStr])}
-    </div>`;
+  document.getElementById('upcoming-rides-list').innerHTML =
+    html || '<p class="no-rides">No upcoming rides found.</p>';
+}
+
+function renderUpcomingEvents(eventRecords) {
+  const now       = new Date();
+  const fortyEightH = new Date(now.getTime() + 48 * 60 * 60 * 1000);
+
+  // Events in next 48h → top block
+  const events48 = eventRecords.filter(r => {
+    const ds = r.fields[E.date];
+    if (!ds) return false;
+    const d = new Date(ds + 'T00:00:00');
+    return d >= now && d <= fortyEightH;
+  });
+  const block48 = document.getElementById('events-48h-block');
+  if (events48.length) {
+    block48.style.display = 'block';
+    document.getElementById('events-48h-list').innerHTML =
+      events48.map(r => buildEventCard(r.fields, true, false)).join('');
+  } else {
+    block48.style.display = 'none';
+  }
+
+  // Events beyond 48h → upcoming events section
+  const upcoming = eventRecords
+    .filter(r => {
+      const ds = r.fields[E.date];
+      if (!ds) return false;
+      return new Date(ds + 'T00:00:00') > fortyEightH;
+    })
+    .sort((a, b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]));
+
+  document.getElementById('upcoming-events-list').innerHTML = upcoming.length
+    ? upcoming.map(r => buildEventCard(r.fields, true, false)).join('')
+    : '<p class="no-rides">No upcoming special events.</p>';
+}
+
+// ─────────────────────────────────────────────────────
+//  RENDER: ALL RIDES TAB (weekly schedule by day)
+// ─────────────────────────────────────────────────────
+function renderAllRides(rideRecords, weatherMap) {
+  const todayN = new Date().getDay();
+  const wk     = weekDates();
+  const order  = [...Array(7).keys()].map(i => (todayN + i) % 7);
+  let html     = '';
+
+  order.forEach(di => {
+    const dayName = DAYS[di];
+    const dayDate = wk[di];
+    const today   = isToday(dayDate);
+    const dateStr = dayDate.toISOString().split('T')[0];
+    const wx      = weatherMap[dateStr];
+    const rides   = rideRecords.filter(r => r.fields[R.day] === dayName);
+
+    html += `<div class="day-section">
+      <div class="day-header">
+        <span class="day-name">${dayName}</span>
+        <span class="day-date">${fmt(dayDate)}</span>
+        ${today ? '<span class="today-badge">Today</span>' : ''}
+        ${wx ? `<span class="weather-day-pill">
+          ${wx.rain >= 60 ? '🌧' : wx.rain >= 30 ? '🌦' : '☀️'} ${wx.rain}%
+          <span style="opacity:0.4">·</span>
+          💨 ${wx.wind} mph
+        </span>` : ''}
+      </div>`;
 
     if (!rides.length) {
       html += `<p class="no-rides">No rides scheduled</p>`;
     } else {
-      rides.forEach(f => {
-        const status  = f[R.status] || 'unknown';
-        const loc     = f[R.loc] ? escHtml(f[R.loc]) + (f[R.addrNote] ? ` · ${escHtml(f[R.addrNote])}` : '') : null;
-
-        html += `<div class="ride-card ${today ? 'today' : ''}">
-          <div class="card-top">
-            <div>
-              <div class="ride-name">${escHtml(f[R.name] || 'Unnamed Ride')}</div>
-              <div class="ride-org">${escHtml(f[R.org] || '')}</div>
-            </div>
-            ${statusBadge(status)}
-          </div>
-          <div class="card-meta">
-            ${metaItem('🕐', f[R.time])}
-            ${loc ? `<span class="meta-item"><span class="meta-icon">📍</span> ${loc}</span>` : ''}
-            ${metaItem('📏', f[R.dist])}
-            ${metaItem('⚡', f[R.pace])}
-          </div>
-          ${weatherRow(f, R)}
-        </div>`;
+      rides.forEach(r => {
+        html += buildRideCard(r.fields, dayDate, weatherMap);
       });
     }
-
     html += `</div>`;
   });
 
-  document.getElementById('ridesContainer').innerHTML = html;
+  document.getElementById('all-rides-list').innerHTML =
+    html || '<p class="no-rides">No rides found.</p>';
 }
 
-// ─── RENDER EVENTS ──────────────────────────────────────────────────
-function renderEvents(records) {
-  const today = new Date();
-  today.setHours(0,0,0,0);
+// ─────────────────────────────────────────────────────
+//  RENDER: SPECIAL EVENTS TAB
+// ─────────────────────────────────────────────────────
+function renderSpecialEvents(eventRecords) {
+  const now         = new Date();
+  const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
-  const upcoming = records
+  const visible = eventRecords
     .filter(r => {
       const ds = r.fields[E.date];
-      return ds && new Date(ds + 'T00:00:00') >= today;
+      if (!ds) return false;
+      return new Date(ds + 'T00:00:00') >= sevenDaysAgo;
     })
-    .sort((a,b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]));
+    .sort((a, b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]));
 
-  if (!upcoming.length) {
-    document.getElementById('eventsContainer').innerHTML =
-      `<p class="no-rides">No upcoming events found.</p>`;
-    return;
-  }
-
-  let html = '';
-  upcoming.forEach(r => {
-    const f      = r.fields;
-    const status = f[E.status] || 'planned';
-    const d      = new Date(f[E.date] + 'T00:00:00');
-    const dlabel = `${DAYS[d.getDay()]}, ${fmt(d)} ${d.getFullYear()}`;
-
-    html += `<div class="event-card">
-      <div class="card-top">
-        <div>
-          <div class="event-date-label">${dlabel}</div>
-          <div class="ride-name">${escHtml(f[E.name] || 'Unnamed Event')}</div>
-          <div class="ride-org">${escHtml(f[E.org] || '')}</div>
-        </div>
-        ${statusBadge(status)}
-      </div>
-      <div class="card-meta">
-        ${metaItem('🕐', f[E.time])}
-        ${metaItem('📍', f[E.loc])}
-        ${metaItem('📏', f[E.dist])}
-        ${metaItem('⚡', f[E.pace])}
-      </div>
-      ${weatherRow(f, E)}
-    </div>`;
-  });
-
-  document.getElementById('eventsContainer').innerHTML = html;
+  document.getElementById('special-events-list').innerHTML = visible.length
+    ? visible.map(r => {
+        const d      = new Date(r.fields[E.date] + 'T00:00:00');
+        const isPast = d < now;
+        return buildEventCard(r.fields, !isPast, isPast);
+      }).join('')
+    : '<p class="no-rides">No special events found.</p>';
 }
 
-// ─── INIT ───────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────
+//  ORGANIZER FILTER (dynamic population)
+// ─────────────────────────────────────────────────────
+function populateOrganizerFilter(rideRecords) {
+  const orgs = [...new Set(
+    rideRecords.map(r => r.fields[R.org]).filter(Boolean)
+  )].sort();
+
+  const sel = document.getElementById('organizer-filter');
+  orgs.forEach(org => {
+    const opt = document.createElement('option');
+    opt.value       = normalizeOrg(org);
+    opt.textContent = org;
+    sel.appendChild(opt);
+  });
+}
+
+// ─────────────────────────────────────────────────────
+//  FILTERS
+// ─────────────────────────────────────────────────────
+function applyFilters() {
+  const statusVal = document.getElementById('status-filter').value;
+  const orgVal    = document.getElementById('organizer-filter').value;
+
+  document.querySelectorAll('.ride-card, .timeline-card').forEach(card => {
+    let show = true;
+    if (statusVal !== 'all') {
+      const cs = card.dataset.status || '';
+      if (!cs.startsWith(statusVal)) show = false;
+    }
+    if (orgVal !== 'all') {
+      if ((card.dataset.organizer || '') !== orgVal) show = false;
+    }
+    card.style.display = show ? '' : 'none';
+  });
+}
+
+document.getElementById('status-filter').addEventListener('change', applyFilters);
+document.getElementById('organizer-filter').addEventListener('change', applyFilters);
+document.getElementById('clear-filters-btn').addEventListener('click', () => {
+  document.getElementById('status-filter').value    = 'all';
+  document.getElementById('organizer-filter').value = 'all';
+  applyFilters();
+});
+
+// ─────────────────────────────────────────────────────
+//  TABS
+// ─────────────────────────────────────────────────────
+function showTabContent(tabName) {
+  document.querySelectorAll('.tab-content').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(tabName + '-content');
+  if (el) el.classList.add('active');
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', function () {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    showTabContent(this.dataset.tab);
+    applyFilters(); // re-apply on tab switch
+  });
+});
+
+// ─────────────────────────────────────────────────────
+//  STICKY POSITION (dynamic — accounts for variable header height)
+// ─────────────────────────────────────────────────────
+function updateStickyPositions() {
+  const headerEl  = document.getElementById('main-header');
+  const tabsEl    = document.getElementById('tabs-bar');
+  const filtersEl = document.getElementById('filters-bar');
+  if (!headerEl || !tabsEl || !filtersEl) return;
+  const headerH = headerEl.offsetHeight;
+  const tabsH   = tabsEl.offsetHeight;
+  tabsEl.style.top    = headerH + 'px';
+  filtersEl.style.top = (headerH + tabsH) + 'px';
+}
+window.addEventListener('resize', updateStickyPositions);
+
+// ─────────────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────────────
 async function init() {
   try {
+    const rideFields = [
+      R.name, R.org, R.day, R.time, R.loc, R.addrNote,
+      R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
+      R.instagram, R.strava, R.website, R.mapsUrl,
+    ];
+    const eventFields = [
+      E.name, E.org, E.date, E.time, E.loc,
+      E.dist, E.pace, E.status, E.weather, E.rain, E.wind,
+      E.regUrl, E.regPrice,
+    ];
+
     const [rides, events, weatherMap] = await Promise.all([
-      fetchAll(RIDES, Object.values(R)),
-      fetchAll(EVENTS, Object.values(E)),
+      fetchAll(RIDES,  rideFields),
+      fetchAll(EVENTS, eventFields),
       fetchWeather(),
     ]);
-    renderRides(rides, weatherMap);
-    renderEvents(events);
-    document.getElementById('lastUpdated').textContent =
-      new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+
+    // Active rides only: must have a Day of Week set
+    const activeRides = rides.filter(r => r.fields[R.day]);
+
+    populateOrganizerFilter(activeRides);
+
+    renderFeaturedEvents(events);
+    renderTimeline(activeRides, weatherMap);
+    renderUpcomingRides(activeRides, weatherMap);
+    renderUpcomingEvents(events);
+    renderAllRides(activeRides, weatherMap);
+    renderSpecialEvents(events);
+
+    // Update sticky offsets after all content has rendered
+    setTimeout(updateStickyPositions, 150);
+
   } catch (err) {
     console.error(err);
-    document.getElementById('ridesContainer').innerHTML =
-      `<div class="error-msg">⚠️ Could not load rides. Check that your Airtable token is set in <code>index.html</code>.<br><small>${err.message}</small></div>`;
+    document.getElementById('timeline-list').innerHTML =
+      `<div class="error-msg">⚠️ Could not load rides. Please try again later.<br>
+       <small>${escHtml(err.message)}</small></div>`;
   }
 }
 
 init();
 
-// ─── EMAIL SIGNUP ───────────────────────────────────────────────────
-document.getElementById('signup-form').addEventListener('submit', async function(e) {
+// ─────────────────────────────────────────────────────
+//  EMAIL SIGNUP
+// ─────────────────────────────────────────────────────
+document.getElementById('signup-form').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const emailInput = document.getElementById('email-input');
@@ -824,13 +1526,11 @@ document.getElementById('signup-form').addEventListener('submit', async function
   const msgDiv     = document.getElementById('form-message');
   const email      = emailInput.value.trim();
 
-  // Basic client-side validation
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     showSignupMessage('Please enter a valid email address.', 'error');
     return;
   }
 
-  // Loading state
   submitBtn.disabled = true;
   submitBtn.querySelector('.btn-text').style.display    = 'none';
   submitBtn.querySelector('.btn-loading').style.display = 'inline';
@@ -849,14 +1549,13 @@ document.getElementById('signup-form').addEventListener('submit', async function
       if (data.alreadySubscribed) {
         showSignupMessage("You're already on the list — we'll keep you posted! 🚴", 'success');
       } else {
-        showSignupMessage('🎉 You\'re in! We\'ll keep you updated on Weston rides.', 'success');
+        showSignupMessage("🎉 You're in! We'll keep you updated on Weston rides.", 'success');
         emailInput.value = '';
       }
     } else {
       showSignupMessage(data.error || 'Something went wrong. Please try again.', 'error');
     }
   } catch (err) {
-    console.error('Signup error:', err);
     showSignupMessage('Network error. Please check your connection and try again.', 'error');
   } finally {
     submitBtn.disabled = false;
