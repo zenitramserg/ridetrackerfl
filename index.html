@@ -1473,15 +1473,16 @@ window.addEventListener('resize', updateStickyPositions);
 // ─────────────────────────────────────────────────────
 async function init() {
   try {
+    // Only request fields that exist in Airtable.
+    // Optional future fields (Instagram URL, Strava URL, etc.) are defined in R/E
+    // but excluded here until added to Airtable — add them back when ready.
     const rideFields = [
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
-      R.instagram, R.strava, R.website, R.mapsUrl,
     ];
     const eventFields = [
       E.name, E.org, E.date, E.time, E.loc,
       E.dist, E.pace, E.status, E.weather, E.rain, E.wind,
-      E.regUrl, E.regPrice,
     ];
 
     const [rides, events, weatherMap] = await Promise.all([
