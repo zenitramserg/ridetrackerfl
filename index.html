@@ -867,12 +867,16 @@ function isTomorrow(d) {
 }
 
 function weekDates() {
-  const today = new Date();
-  const sun   = new Date(today);
-  sun.setDate(today.getDate() - today.getDay());
-  return Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(sun);
-    d.setDate(sun.getDate() + i);
+  // Returns an array indexed by day-of-week (0=Sun … 6=Sat), each containing the
+  // *next upcoming* date for that day (today counts as upcoming, not past).
+  // Example on Saturday Apr 4: wk[0]=Apr 5 (Sun), wk[6]=Apr 4 (Sat/today).
+  const today  = new Date();
+  const todayN = today.getDay();
+  const base   = new Date(today.getFullYear(), today.getMonth(), today.getDate()); // midnight today
+  return Array.from({ length: 7 }, (_, dayIdx) => {
+    const daysAhead = (dayIdx - todayN + 7) % 7;
+    const d = new Date(base);
+    d.setDate(base.getDate() + daysAhead);
     return d;
   });
 }
@@ -1527,18 +1531,12 @@ function hasPrimaryDuplicate(record) {
 }
 
 /**
- * Returns true if the ride's weekday has already passed (before today's midnight).
- * Weekly rides from past days this week are hidden to keep the schedule clean.
+ * Returns true if the ride has no day set (invalid record).
+ * weekDates() now returns the next upcoming date for every day of week,
+ * so no valid weekly ride is ever in the past from the site's perspective.
  */
 function hasPassedMidnight(f) {
-  const dayName = f[R.day];
-  if (!dayName) return true;
-  const now = new Date();
-  const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const wk = weekDates();
-  const dayIdx = DAYS.indexOf(dayName);
-  if (dayIdx === -1) return false;
-  return wk[dayIdx] < todayMidnight;
+  return !f[R.day]; // only hide rides with no day assigned
 }
 
 /**
