@@ -1040,20 +1040,40 @@ setInterval(updateHeaderWeather, 600000); // refresh every 10 min
 // ─────────────────────────────────────────────────────
 //  FEATURED EVENTS (header)
 // ─────────────────────────────────────────────────────
-function renderFeaturedEvents(eventRecords) {
-  const now       = new Date();
+// Sources:
+//   1. Events table — all records with a date in the next 30 days
+//   2. Rides table  — records with Ride Type = "Featured Event" (uses Ride Date if set)
+function renderFeaturedEvents(eventRecords, featuredRideRecords) {
+  const now        = new Date();
   const thirtyDays = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+  const wk         = weekDates();
 
-  const upcoming = eventRecords
-    .filter(r => {
-      const ds     = r.fields[E.date];
-      if (!ds) return false;
-      const d      = new Date(ds + 'T00:00:00');
-      const status = (r.fields[E.status] || '').toLowerCase();
-      return d >= now && d <= thirtyDays && status !== 'canceled' && status !== 'cancelled';
-    })
-    .sort((a, b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]))
-    .slice(0, 3);
+  // Build a unified list of { name, date, dist, regUrl } from both sources
+  const items = [];
+
+  // From Events table
+  eventRecords.forEach(r => {
+    const f      = r.fields;
+    const ds     = f[E.date];
+    if (!ds) return;
+    const d      = new Date(ds + 'T00:00:00');
+    const status = (f[E.status] || '').toLowerCase();
+    if (d < now || d > thirtyDays || status === 'canceled' || status === 'cancelled') return;
+    items.push({ name: f[E.name] || 'Unnamed Event', date: d, dist: f[E.dist], regUrl: f[E.regUrl] });
+  });
+
+  // From Rides table (Ride Type = "Featured Event")
+  (featuredRideRecords || []).forEach(r => {
+    const f      = r.fields;
+    const status = (f[R.status] || '').toLowerCase();
+    if (status === 'canceled' || status === 'cancelled' || status === 'hidden') return;
+    const d = rideDateFor(f, wk);
+    if (!d || d < now || d > thirtyDays) return;
+    items.push({ name: f[R.name] || 'Unnamed Ride', date: d, dist: f[R.dist], regUrl: null });
+  });
+
+  items.sort((a, b) => a.date - b.date);
+  const upcoming = items.slice(0, 3);
 
   const container = document.getElementById('featured-events-list');
 
@@ -1062,16 +1082,14 @@ function renderFeaturedEvents(eventRecords) {
     return;
   }
 
-  container.innerHTML = upcoming.map(r => {
-    const f         = r.fields;
-    const d         = new Date(f[E.date] + 'T00:00:00');
-    const dateLabel = `${DAYS[d.getDay()].substring(0, 3)} ${fmt(d)}`;
-    const distText  = f[E.dist] ? ` · ${escHtml(f[E.dist])} mi` : '';
-    const regText   = f[E.regUrl]
+  container.innerHTML = upcoming.map(item => {
+    const dateLabel = `${DAYS[item.date.getDay()].substring(0, 3)} ${fmt(item.date)}`;
+    const distText  = item.dist ? ` · ${escHtml(item.dist)}` : '';
+    const regText   = item.regUrl
       ? ` · <span style="color:#D62B2B;font-size:11px;">Registration open</span>` : '';
     return `
       <div class="featured-item">
-        <div class="featured-name">${escHtml(f[E.name] || 'Unnamed Event')}</div>
+        <div class="featured-name">${escHtml(item.name)}</div>
         <div class="featured-meta">${dateLabel}${distText}${regText}</div>
       </div>`;
   }).join('');
@@ -1619,9 +1637,14 @@ async function init() {
     // Apply visibility filter before rendering
     const visibleRides = activeRides.filter(r => shouldShowRide(r));
 
+    // Rides tagged "Featured Event" surface in the header alongside Events table entries
+    const featuredRides = visibleRides.filter(r =>
+      (r.fields[R.rideType] || '').toLowerCase() === 'featured event'
+    );
+
     populateOrganizerFilter(visibleRides);
 
-    renderFeaturedEvents(events);
+    renderFeaturedEvents(events, featuredRides);
     renderTimeline(visibleRides, weatherMap);
     renderUpcomingRides(visibleRides, weatherMap);
     renderUpcomingEvents(events);
