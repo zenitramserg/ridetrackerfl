@@ -231,7 +231,9 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
     .timeline-card.confirmed { border-left: 3px solid #059669; }
-    .timeline-card.canceled { border-left: 3px solid #dc2626; opacity: 0.7; }
+    .timeline-card.canceled  { border-left: 3px solid #dc2626; opacity: 0.7; }
+    .timeline-card.planned   { border-left: 3px solid #d4d4d4; }
+    .timeline-card.past      { border-left: 3px solid #d4d4d4; opacity: 0.6; }
     .timeline-header {
       display: flex;
       justify-content: space-between;
@@ -300,7 +302,9 @@
     }
     .ride-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     .ride-card.confirmed { border-left: 3px solid #059669; }
-    .ride-card.canceled { border-left: 3px solid #dc2626; opacity: 0.7; }
+    .ride-card.canceled  { border-left: 3px solid #dc2626; opacity: 0.7; }
+    .ride-card.planned   { border-left: 3px solid #d4d4d4; }
+    .ride-card.past      { border-left: 3px solid #d4d4d4; opacity: 0.6; }
     .ride-header {
       display: flex;
       align-items: flex-start;
@@ -806,6 +810,11 @@ const R = {
   weather:   'Weather Summary',
   rain:      'Rain Probability',
   wind:      'Wind Speed',
+  // Visibility & source control fields (added 2026-04-04):
+  rideType:      'Ride Type',
+  displayOnSite: 'Display on Site',
+  isPrimary:     'Is Primary Listing',
+  needsReview:   'Needs Review',
   // Future fields (show gracefully when added to Airtable):
   instagram: 'Instagram URL',
   strava:    'Strava URL',
@@ -1469,6 +1478,90 @@ function updateStickyPositions() {
 window.addEventListener('resize', updateStickyPositions);
 
 // ─────────────────────────────────────────────────────
+//  VISIBILITY CONTROL
+// ─────────────────────────────────────────────────────
+
+// All active rides (has Day of Week). Set in init() so duplicate detection works.
+let allActiveRides = [];
+
+/**
+ * Returns true if this ride record should be shown on the site.
+ * Reasons to hide:
+ *  1. "Display on Site" checkbox explicitly unchecked (=== false in Airtable)
+ *  2. Status is "hidden" or "past"
+ *  3. Another record for the same ride is marked as the primary listing
+ *  4. The ride's day has already passed this week (midnight cutoff)
+ */
+function shouldShowRide(record) {
+  const f = record.fields;
+  // Checkbox: unchecked = field is undefined (not false). Only explicitly false = hidden.
+  if (f[R.displayOnSite] === false) return false;
+  const status = (f[R.status] || '').toLowerCase();
+  if (status === 'hidden' || status === 'past') return false;
+  if (hasPrimaryDuplicate(record)) return false;
+  if (hasPassedMidnight(f)) return false;
+  return true;
+}
+
+/**
+ * Returns true if another record is the designated primary listing
+ * for the same ride (same organizer + day + time).
+ * If no record is marked primary, the alphabetically first record ID wins.
+ */
+function hasPrimaryDuplicate(record) {
+  const f = record.fields;
+  const duplicates = allActiveRides.filter(r =>
+    r.fields[R.org]  === f[R.org]  &&
+    r.fields[R.day]  === f[R.day]  &&
+    r.fields[R.time] === f[R.time]
+  );
+  if (duplicates.length <= 1) return false;             // no duplicate
+  if (f[R.isPrimary] === true) return false;             // this IS the primary
+  const otherPrimary = duplicates.some(r =>
+    r.id !== record.id && r.fields[R.isPrimary] === true
+  );
+  if (otherPrimary) return true;                        // another is marked primary
+  // Fallback: keep the alphabetically first record ID
+  const sorted = [...duplicates].sort((a, b) => a.id.localeCompare(b.id));
+  return sorted[0].id !== record.id;
+}
+
+/**
+ * Returns true if the ride's weekday has already passed (before today's midnight).
+ * Weekly rides from past days this week are hidden to keep the schedule clean.
+ */
+function hasPassedMidnight(f) {
+  const dayName = f[R.day];
+  if (!dayName) return true;
+  const now = new Date();
+  const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const wk = weekDates();
+  const dayIdx = DAYS.indexOf(dayName);
+  if (dayIdx === -1) return false;
+  return wk[dayIdx] < todayMidnight;
+}
+
+/**
+ * Dev helper: logs any rides with duplicates to the console.
+ * Call after allActiveRides is populated to spot merge candidates.
+ */
+function logDuplicates() {
+  const seen = {};
+  allActiveRides.forEach(r => {
+    const f = r.fields;
+    const key = `${f[R.org]}|${f[R.day]}|${f[R.time]}`;
+    if (!seen[key]) seen[key] = [];
+    seen[key].push(r.id);
+  });
+  const dupes = Object.entries(seen).filter(([, ids]) => ids.length > 1);
+  if (dupes.length) {
+    console.group(`[RideTracker] ${dupes.length} duplicate ride(s) detected:`);
+    dupes.forEach(([key, ids]) => console.log(key, '→', ids));
+    console.groupEnd();
+  }
+}
+
+// ─────────────────────────────────────────────────────
 //  INIT
 // ─────────────────────────────────────────────────────
 async function init() {
@@ -1479,6 +1572,7 @@ async function init() {
     const rideFields = [
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
+      R.rideType, R.displayOnSite, R.isPrimary, R.needsReview,
     ];
     const eventFields = [
       E.name, E.org, E.date, E.time, E.loc,
@@ -1494,13 +1588,20 @@ async function init() {
     // Active rides only: must have a Day of Week set
     const activeRides = rides.filter(r => r.fields[R.day]);
 
-    populateOrganizerFilter(activeRides);
+    // Store globally for cross-record duplicate detection
+    allActiveRides = activeRides;
+    logDuplicates();
+
+    // Apply visibility filter before rendering
+    const visibleRides = activeRides.filter(r => shouldShowRide(r));
+
+    populateOrganizerFilter(visibleRides);
 
     renderFeaturedEvents(events);
-    renderTimeline(activeRides, weatherMap);
-    renderUpcomingRides(activeRides, weatherMap);
+    renderTimeline(visibleRides, weatherMap);
+    renderUpcomingRides(visibleRides, weatherMap);
     renderUpcomingEvents(events);
-    renderAllRides(activeRides, weatherMap);
+    renderAllRides(visibleRides, weatherMap);
     renderSpecialEvents(events);
 
     // Update sticky offsets after all content has rendered

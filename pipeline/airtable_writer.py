@@ -37,7 +37,18 @@ FIELD_MAP = {
     "distance":                 "fldUmltgAReTEclC5",  # Distance
     "pace":                     "fldQBVNhysTgg25PB",  # Pace
     "address_note":             "fldhQe3sjuF97T9RX",  # Address Note
-    "ride_type":                "fld06v2VSWHtfKuKT",  # Ride Type (singleSelect)
+    "ride_type":                "fld06v2VSWHtfKuKT",  # Ride Type (singleSelect): weekly, special_event, annual, Regular, Special Event, Featured Event
+    # ── Manual control fields (added 2026-04-04) ─────────────────────────────
+    # display_on_site:  checkbox — uncheck to hide from website without deleting record
+    # is_primary_listing: checkbox — mark the canonical record when duplicates exist
+    # source:           singleSelect — "Instagram Scraper" when written by this pipeline
+    # needs_review:     checkbox — flag for Sergio to review manually (e.g. new ride, conflict)
+    # instagram_screenshot: attachment — scraper does NOT write this; add manually in Airtable
+    "display_on_site":          "fld127xtSZgzoQZuU",  # Display on Site (checkbox, default unchecked=visible)
+    "is_primary_listing":       "fldxlIlSHvv8SZGNx",  # Is Primary Listing (checkbox)
+    "source":                   "fldTkJE7ScgZfjLgo",  # Source (singleSelect: Instagram Scraper, Organizer Email, etc.)
+    "needs_review":             "fldIQPl9MMrKMlvWL",  # Needs Review (checkbox — flag for manual check)
+    # Note: Instagram Screenshot (fldJH78crXSiHvsR) is attachment-only — scraper cannot write attachments via API
 }
 
 # Account handle → Instagram profile URL
@@ -125,8 +136,10 @@ def build_airtable_record(ride: dict) -> dict:
         fields[FIELD_MAP["date"]] = date_iso
 
     # Status (singleSelect)
+    # Valid values: planned, confirmed, canceled, unknown, hidden, past
+    # Scraper only sets planned/confirmed/canceled/unknown — hidden & past are set manually
     status = ride.get("status", "planned")
-    if status in ("planned", "confirmed", "canceled", "unknown"):
+    if status in ("planned", "confirmed", "canceled", "unknown", "hidden", "past"):
         fields[FIELD_MAP["status"]] = status
 
     # Last Checked At (ISO datetime)
@@ -154,6 +167,18 @@ def build_airtable_record(ride: dict) -> dict:
     if primary_account in INSTAGRAM_URLS:
         fields[FIELD_MAP["organizer_instagram"]] = INSTAGRAM_URLS[primary_account]
 
+    # ── Manual control fields ──────────────────────────────────────────────────
+    # Source: always "Instagram Scraper" when this pipeline creates/updates the record
+    fields[FIELD_MAP["source"]] = "Instagram Scraper"
+
+    # Needs Review: set True if confidence is Low, or if this is a new/unknown ride
+    confidence = float(ride.get("confidence") or 0)
+    if confidence < 0.60 or ride.get("needs_review"):
+        fields[FIELD_MAP["needs_review"]] = True
+    # Note: display_on_site and is_primary_listing are intentionally NOT set by the scraper.
+    # Leave them as unchecked (Airtable default) — set manually in Airtable UI.
+
+    # ── Weather fields ─────────────────────────────────────────────────────────
     # Weather fields
     if ride.get("weather_summary"):
         fields[FIELD_MAP["weather_summary"]] = ride["weather_summary"]
