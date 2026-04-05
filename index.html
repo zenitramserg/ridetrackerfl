@@ -810,6 +810,7 @@ const R = {
   weather:   'Weather Summary',
   rain:      'Rain Probability',
   wind:      'Wind Speed',
+  rideDate:      'Ride Date',       // specific date (YYYY-MM-DD); overrides weekDates() slot when set
   // Visibility & source control fields (added 2026-04-04):
   rideType:      'Ride Type',
   displayOnSite: 'Display on Site',
@@ -864,6 +865,22 @@ function isTomorrow(d) {
   const t = new Date();
   t.setDate(t.getDate() + 1);
   return d.toDateString() === t.toDateString();
+}
+
+/**
+ * Returns the Date to use for a ride record.
+ * If the record has an explicit "Ride Date" (ISO YYYY-MM-DD), parse and return that.
+ * Otherwise fall back to weekDates()[dayOfWeekIndex].
+ * Always use this instead of wk[dayIdx] when building individual ride cards.
+ */
+function rideDateFor(fields, wk) {
+  const iso = fields[R.rideDate];
+  if (iso) {
+    const d = new Date(iso + 'T00:00:00');
+    if (!isNaN(d)) return d;
+  }
+  const dayIdx = DAYS.indexOf(fields[R.day]);
+  return dayIdx === -1 ? null : wk[dayIdx];
 }
 
 function weekDates() {
@@ -1070,11 +1087,19 @@ function renderTimeline(rideRecords, weatherMap) {
   const tomorrowName = DAYS[tomorrowN];
   const wk = weekDates();
 
+  const todayDate    = wk[todayN];
+  const tomorrowDate = wk[tomorrowN];
+
   const rides48 = rideRecords
-    .filter(r => r.fields[R.day] === todayName || r.fields[R.day] === tomorrowName)
+    .filter(r => {
+      const actual = rideDateFor(r.fields, wk);
+      if (!actual) return false;
+      const ds = actual.toDateString();
+      return ds === todayDate.toDateString() || ds === tomorrowDate.toDateString();
+    })
     .sort((a, b) => {
-      const da = a.fields[R.day] === todayName ? 0 : 1;
-      const db = b.fields[R.day] === todayName ? 0 : 1;
+      const da = rideDateFor(a.fields, wk)?.toDateString() === todayDate.toDateString() ? 0 : 1;
+      const db = rideDateFor(b.fields, wk)?.toDateString() === todayDate.toDateString() ? 0 : 1;
       if (da !== db) return da - db;
       return (a.fields[R.time] || '').localeCompare(b.fields[R.time] || '');
     });
@@ -1089,8 +1114,7 @@ function renderTimeline(rideRecords, weatherMap) {
   container.innerHTML = rides48.map(r => {
     const f          = r.fields;
     const dayName    = f[R.day];
-    const dayIdx     = DAYS.indexOf(dayName);
-    const dayDate    = wk[dayIdx];
+    const dayDate    = rideDateFor(f, wk);
     const dayLabel   = isToday(dayDate) ? 'Today' : isTomorrow(dayDate) ? 'Tomorrow' : dayName;
     const status     = (f[R.status] || 'unknown').toLowerCase();
     const cardClass  = status === 'confirmed' ? 'confirmed'
@@ -1290,10 +1314,11 @@ function renderUpcomingRides(rideRecords, weatherMap) {
   let html     = '';
 
   order.forEach(di => {
-    const dayName = DAYS[di];
-    const dayDate = wk[di];
-    const rides   = rideRecords.filter(r => r.fields[R.day] === dayName);
+    const dayName   = DAYS[di];
+    const slotDate  = wk[di];
+    const rides     = rideRecords.filter(r => r.fields[R.day] === dayName);
     rides.forEach(r => {
+      const dayDate = rideDateFor(r.fields, wk) || slotDate;
       html += buildRideCard(r.fields, dayDate, weatherMap);
     });
   });
@@ -1369,7 +1394,8 @@ function renderAllRides(rideRecords, weatherMap) {
       html += `<p class="no-rides">No rides scheduled</p>`;
     } else {
       rides.forEach(r => {
-        html += buildRideCard(r.fields, dayDate, weatherMap);
+        const rideDay = rideDateFor(r.fields, wk) || dayDate;
+        html += buildRideCard(r.fields, rideDay, weatherMap);
       });
     }
     html += `</div>`;
@@ -1570,7 +1596,7 @@ async function init() {
     const rideFields = [
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
-      R.rideType, R.displayOnSite, R.isPrimary, R.needsReview,
+      R.rideDate, R.rideType, R.displayOnSite, R.isPrimary, R.needsReview,
     ];
     const eventFields = [
       E.name, E.org, E.date, E.time, E.loc,
