@@ -1044,11 +1044,13 @@ setInterval(updateHeaderWeather, 600000); // refresh every 10 min
 // ─────────────────────────────────────────────────────
 //  FEATURED EVENTS (header)
 // ─────────────────────────────────────────────────────
-// Source: Rides table — records with Featured checkbox checked
+// Source: Rides table — records with Featured checkbox checked.
+// Rules: show regardless of how far out; drop once the ride date has passed midnight;
+// if more than 3 are featured, show the 3 soonest.
 function renderFeaturedEvents(featuredRideRecords, weatherMap) {
-  const now        = new Date();
-  const thirtyDays = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-  const wk         = weekDates();
+  const now   = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // midnight today
+  const wk    = weekDates();
 
   // Unified item shape: { name, org, date, time, loc, addrNote, dist, pace, rain, wind, weather, mapsUrl }
   const items = [];
@@ -1059,7 +1061,7 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
     const status = (f[R.status] || '').toLowerCase();
     if (status === 'canceled' || status === 'cancelled' || status === 'hidden') return;
     const d = rideDateFor(f, wk);
-    if (!d || d < now || d > thirtyDays) return;
+    if (!d || d < today) return; // drop once midnight of the ride day has passed
     const dateStr = d.toISOString().split('T')[0];
     const wx      = weatherMap ? weatherMap[dateStr] : null;
     items.push({
