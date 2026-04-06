@@ -833,6 +833,7 @@ const R = {
   rideDate:      'Ride Date',       // specific date (YYYY-MM-DD); overrides weekDates() slot when set
   // Visibility & source control fields (added 2026-04-04):
   rideType:      'Ride Type',
+  featured:      'Featured',        // checkbox — manually pin to header (max 3, any ride type)
   displayOnSite: 'Display on Site',
   isPrimary:     'Is Primary Listing',
   needsReview:   'Needs Review',
@@ -1683,7 +1684,7 @@ async function init() {
     const rideFields = [
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
-      R.rideDate, R.rideType, R.displayOnSite, R.isPrimary, R.needsReview,
+      R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
     ];
     const eventFields = [
       E.name, E.org, E.date, E.time, E.loc,
@@ -1706,9 +1707,13 @@ async function init() {
     // Apply visibility filter before rendering
     const visibleRides = activeRides.filter(r => shouldShowRide(r));
 
-    // Rides tagged "Featured Event" surface in the header alongside Events table entries
-    const featuredRides = visibleRides.filter(r =>
-      (r.fields[R.rideType] || '').toLowerCase() === 'featured event'
+    // Featured rides: manually checked "Featured" checkbox in Airtable.
+    // Pulled from ALL rides (not just activeRides) so special one-time rides
+    // with only a Ride Date (no Day of Week) can also be featured.
+    const featuredRides = rides.filter(r =>
+      r.fields[R.featured] === true &&
+      r.fields[R.displayOnSite] !== false &&
+      !['hidden', 'canceled', 'cancelled'].includes((r.fields[R.status] || '').toLowerCase())
     );
 
     populateOrganizerFilter(visibleRides);
