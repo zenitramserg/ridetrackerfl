@@ -97,14 +97,34 @@
       text-transform: uppercase;
     }
     .featured-item {
-      padding: 6px 0;
+      padding: 8px 0;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       font-size: 13px;
       color: #f2f0eb;
+      cursor: pointer;
+      user-select: none;
     }
     .featured-item:last-child { border-bottom: none; }
+    .featured-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
     .featured-name { font-weight: 500; }
-    .featured-meta { color: #888888; font-size: 12px; margin-top: 1px; }
+    .featured-org  { font-size: 11px; color: #a3a3a3; margin-top: 1px; }
+    .featured-meta { color: #888888; font-size: 12px; margin-top: 2px; }
+    .featured-expand-hint { font-size: 10px; color: #555; flex-shrink: 0; margin-top: 2px; }
+    .featured-item.expanded .featured-expand-hint { display: none; }
+    .featured-details {
+      display: none;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+      color: #a3a3a3;
+      line-height: 1.6;
+    }
+    .featured-item.expanded .featured-details { display: block; }
+    .featured-details a { color: #D62B2B; text-decoration: none; }
+    .featured-details a:hover { text-decoration: underline; }
+    .featured-detail-row { margin-bottom: 3px; }
+    .featured-detail-label { color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
     .featured-empty { font-size: 13px; color: #888888; font-style: italic; }
 
     /* ── TABS BAR ───────────────────────────────── */
@@ -1043,12 +1063,12 @@ setInterval(updateHeaderWeather, 600000); // refresh every 10 min
 // Sources:
 //   1. Events table — all records with a date in the next 30 days
 //   2. Rides table  — records with Ride Type = "Featured Event" (uses Ride Date if set)
-function renderFeaturedEvents(eventRecords, featuredRideRecords) {
+function renderFeaturedEvents(eventRecords, featuredRideRecords, weatherMap) {
   const now        = new Date();
   const thirtyDays = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
   const wk         = weekDates();
 
-  // Build a unified list of { name, date, dist, regUrl } from both sources
+  // Unified item shape: { name, org, date, time, loc, addrNote, dist, pace, rain, wind, weather, mapsUrl, regUrl }
   const items = [];
 
   // From Events table
@@ -1059,7 +1079,19 @@ function renderFeaturedEvents(eventRecords, featuredRideRecords) {
     const d      = new Date(ds + 'T00:00:00');
     const status = (f[E.status] || '').toLowerCase();
     if (d < now || d > thirtyDays || status === 'canceled' || status === 'cancelled') return;
-    items.push({ name: f[E.name] || 'Unnamed Event', date: d, dist: f[E.dist], regUrl: f[E.regUrl] });
+    items.push({
+      name: f[E.name] || 'Unnamed Event',
+      org:  f[E.org]  || '',
+      date: d,
+      time: f[E.time] || '',
+      loc:  f[E.loc]  || '',
+      addrNote: '',
+      dist: f[E.dist] || '',
+      pace: f[E.pace] || '',
+      rain: f[E.rain], wind: f[E.wind], weather: f[E.weather],
+      mapsUrl: buildMapsUrl(f[E.loc], ''),
+      regUrl: f[E.regUrl] || '',
+    });
   });
 
   // From Rides table (Ride Type = "Featured Event")
@@ -1069,7 +1101,23 @@ function renderFeaturedEvents(eventRecords, featuredRideRecords) {
     if (status === 'canceled' || status === 'cancelled' || status === 'hidden') return;
     const d = rideDateFor(f, wk);
     if (!d || d < now || d > thirtyDays) return;
-    items.push({ name: f[R.name] || 'Unnamed Ride', date: d, dist: f[R.dist], regUrl: null });
+    const dateStr = d.toISOString().split('T')[0];
+    const wx      = weatherMap ? weatherMap[dateStr] : null;
+    items.push({
+      name: f[R.name] || 'Unnamed Ride',
+      org:  f[R.org]  || '',
+      date: d,
+      time: f[R.time] || '',
+      loc:  f[R.loc]  || '',
+      addrNote: f[R.addrNote] || '',
+      dist: f[R.dist] || '',
+      pace: f[R.pace] || '',
+      rain: wx ? wx.rain : f[R.rain],
+      wind: wx ? wx.wind : f[R.wind],
+      weather: f[R.weather] || '',
+      mapsUrl: f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]),
+      regUrl: '',
+    });
   });
 
   items.sort((a, b) => a.date - b.date);
@@ -1084,13 +1132,34 @@ function renderFeaturedEvents(eventRecords, featuredRideRecords) {
 
   container.innerHTML = upcoming.map(item => {
     const dateLabel = `${DAYS[item.date.getDay()].substring(0, 3)} ${fmt(item.date)}`;
-    const distText  = item.dist ? ` · ${escHtml(item.dist)}` : '';
+    const timeStr   = item.time ? ` · ${escHtml(item.time)}` : '';
+    const distStr   = item.dist ? ` · ${escHtml(item.dist)}` : '';
     const regText   = item.regUrl
       ? ` · <span style="color:#D62B2B;font-size:11px;">Registration open</span>` : '';
+
+    // Expanded detail rows
+    const locParts  = [item.loc, item.addrNote].filter(Boolean);
+    const locStr    = locParts.length
+      ? `<div class="featured-detail-row">📍 ${locParts.map(escHtml).join(' · ')}${item.mapsUrl ? ` · <a href="${escHtml(item.mapsUrl)}" target="_blank" rel="noopener">Maps</a>` : ''}</div>`
+      : '';
+    const paceStr   = item.pace
+      ? `<div class="featured-detail-row"><span class="featured-detail-label">Pace</span> ${escHtml(item.pace)}</div>` : '';
+    const wxStr     = wxDisplay(null, item.rain, item.wind) !== '—'
+      ? `<div class="featured-detail-row"><span class="featured-detail-label">Weather</span> ${wxDisplay(null, item.rain, item.wind)}</div>` : '';
+
     return `
-      <div class="featured-item">
-        <div class="featured-name">${escHtml(item.name)}</div>
-        <div class="featured-meta">${dateLabel}${distText}${regText}</div>
+      <div class="featured-item" onclick="this.classList.toggle('expanded')">
+        <div class="featured-item-header">
+          <div>
+            <div class="featured-name">${escHtml(item.name)}</div>
+            ${item.org ? `<div class="featured-org">${escHtml(item.org)}</div>` : ''}
+          </div>
+          <span class="featured-expand-hint">▾</span>
+        </div>
+        <div class="featured-meta">${dateLabel}${timeStr}${distStr}${regText}</div>
+        <div class="featured-details">
+          ${locStr}${paceStr}${wxStr}
+        </div>
       </div>`;
   }).join('');
 }
@@ -1644,7 +1713,7 @@ async function init() {
 
     populateOrganizerFilter(visibleRides);
 
-    renderFeaturedEvents(events, featuredRides);
+    renderFeaturedEvents(events, featuredRides, weatherMap);
     renderTimeline(visibleRides, weatherMap);
     renderUpcomingRides(visibleRides, weatherMap);
     renderUpcomingEvents(events);
