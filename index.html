@@ -814,7 +814,6 @@
 //  AIRTABLE CONFIG
 // ─────────────────────────────────────────────────────
 const RIDES  = 'tbl7xURgDo5wU4z5t';
-const EVENTS = 'tblrv1h7NAbRlQihQ';
 
 // Ride field names (Airtable keys by name, not ID)
 const R = {
@@ -844,22 +843,6 @@ const R = {
   mapsUrl:   'Google Maps URL',
 };
 
-// Event field names
-const E = {
-  name:     'Event Name',
-  org:      'Organizer',
-  date:     'Event Date',
-  time:     'Time',
-  loc:      'Location',
-  dist:     'Distance',
-  pace:     'Pace',
-  status:   'Status',
-  weather:  'Weather Summary',
-  rain:     'Rain Probability',
-  wind:     'Wind Speed',
-  regUrl:   'Registration URL',
-  regPrice: 'Registration Price',
-};
 
 const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -1061,41 +1044,16 @@ setInterval(updateHeaderWeather, 600000); // refresh every 10 min
 // ─────────────────────────────────────────────────────
 //  FEATURED EVENTS (header)
 // ─────────────────────────────────────────────────────
-// Sources:
-//   1. Events table — all records with a date in the next 30 days
-//   2. Rides table  — records with Ride Type = "Featured Event" (uses Ride Date if set)
-function renderFeaturedEvents(eventRecords, featuredRideRecords, weatherMap) {
+// Source: Rides table — records with Featured checkbox checked
+function renderFeaturedEvents(featuredRideRecords, weatherMap) {
   const now        = new Date();
   const thirtyDays = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
   const wk         = weekDates();
 
-  // Unified item shape: { name, org, date, time, loc, addrNote, dist, pace, rain, wind, weather, mapsUrl, regUrl }
+  // Unified item shape: { name, org, date, time, loc, addrNote, dist, pace, rain, wind, weather, mapsUrl }
   const items = [];
 
-  // From Events table
-  eventRecords.forEach(r => {
-    const f      = r.fields;
-    const ds     = f[E.date];
-    if (!ds) return;
-    const d      = new Date(ds + 'T00:00:00');
-    const status = (f[E.status] || '').toLowerCase();
-    if (d < now || d > thirtyDays || status === 'canceled' || status === 'cancelled') return;
-    items.push({
-      name: f[E.name] || 'Unnamed Event',
-      org:  f[E.org]  || '',
-      date: d,
-      time: f[E.time] || '',
-      loc:  f[E.loc]  || '',
-      addrNote: '',
-      dist: f[E.dist] || '',
-      pace: f[E.pace] || '',
-      rain: f[E.rain], wind: f[E.wind], weather: f[E.weather],
-      mapsUrl: buildMapsUrl(f[E.loc], ''),
-      regUrl: f[E.regUrl] || '',
-    });
-  });
-
-  // From Rides table (Ride Type = "Featured Event")
+  // From Rides table (Featured checkbox = true)
   (featuredRideRecords || []).forEach(r => {
     const f      = r.fields;
     const status = (f[R.status] || '').toLowerCase();
@@ -1117,7 +1075,6 @@ function renderFeaturedEvents(eventRecords, featuredRideRecords, weatherMap) {
       wind: wx ? wx.wind : f[R.wind],
       weather: f[R.weather] || '',
       mapsUrl: f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]),
-      regUrl: '',
     });
   });
 
@@ -1135,8 +1092,7 @@ function renderFeaturedEvents(eventRecords, featuredRideRecords, weatherMap) {
     const dateLabel = `${DAYS[item.date.getDay()].substring(0, 3)} ${fmt(item.date)}`;
     const timeStr   = item.time ? ` · ${escHtml(item.time)}` : '';
     const distStr   = item.dist ? ` · ${escHtml(item.dist)}` : '';
-    const regText   = item.regUrl
-      ? ` · <span style="color:#D62B2B;font-size:11px;">Registration open</span>` : '';
+    const regText   = '';
 
     // Expanded detail rows
     const locParts  = [item.loc, item.addrNote].filter(Boolean);
@@ -1326,73 +1282,6 @@ function buildRideCard(f, dayDate, weatherMap) {
 }
 
 // ─────────────────────────────────────────────────────
-//  BUILD EVENT CARD
-// ─────────────────────────────────────────────────────
-function buildEventCard(f, showRegister, isPast) {
-  const status     = (f[E.status] || 'planned').toLowerCase();
-  const d          = f[E.date] ? new Date(f[E.date] + 'T00:00:00') : null;
-  const dlabel     = d ? `${DAYS[d.getDay()]}, ${fmt(d)} ${d.getFullYear()}` : '';
-  const orgName    = f[E.org] || '';
-  const mUrl       = buildMapsUrl(f[E.loc], null);
-  const initStr    = initials(orgName || f[E.name] || '?');
-
-  let regBtn = '';
-  if (showRegister) {
-    if (f[E.regUrl]) {
-      regBtn = `<button class="register-btn" onclick="window.open('${escHtml(f[E.regUrl])}','_blank')">Register Now →</button>`;
-    } else {
-      regBtn = `<button class="register-btn" disabled>Registration TBA</button>`;
-    }
-  }
-
-  return `
-    <div class="ride-card"
-         data-status="${escHtml(status)}"
-         data-organizer="${escHtml(normalizeOrg(orgName))}">
-      <div class="ride-header">
-        <div class="avatar" style="background:#737373">${escHtml(initStr)}</div>
-        <div class="ride-title-block">
-          <h3>${escHtml(f[E.name] || 'Unnamed Event')}</h3>
-          <div class="ride-meta">
-            ${isPast ? '<span class="past-badge">Past Event</span>' : statusBadge(f[E.status])}
-            ${dlabel ? `<span>${dlabel}</span>` : ''}
-            ${f[E.time] ? `<span>· ${escHtml(f[E.time])}</span>` : ''}
-          </div>
-        </div>
-      </div>
-      <div class="ride-details">
-        <div class="detail-item">
-          <div class="detail-label">Location</div>
-          <div class="detail-value ${!f[E.loc] ? 'muted' : ''}">${escHtml(f[E.loc] || '—')}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Distance</div>
-          <div class="detail-value ${!f[E.dist] ? 'muted' : ''}">
-            ${f[E.dist] ? escHtml(f[E.dist]) + ' mi' : '—'}
-          </div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Pace</div>
-          <div class="detail-value ${!f[E.pace] ? 'muted' : ''}">${escHtml(f[E.pace] || '—')}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Organizer</div>
-          <div class="detail-value ${!f[E.org] ? 'muted' : ''}">${escHtml(f[E.org] || '—')}</div>
-        </div>
-      </div>
-      ${f[E.loc] ? `
-      <div class="meeting-point">
-        📍 ${escHtml(f[E.loc])}
-        ${mUrl ? ` · <a href="${escHtml(mUrl)}" target="_blank" rel="noopener">Open in Maps</a>` : ''}
-      </div>` : ''}
-      <div class="card-footer">
-        <div></div>
-        ${regBtn}
-      </div>
-    </div>`;
-}
-
-// ─────────────────────────────────────────────────────
 //  RENDER: UPCOMING TAB
 // ─────────────────────────────────────────────────────
 function renderUpcomingRides(rideRecords, weatherMap) {
@@ -1415,37 +1304,48 @@ function renderUpcomingRides(rideRecords, weatherMap) {
     html || '<p class="no-rides">No upcoming rides found.</p>';
 }
 
-function renderUpcomingEvents(eventRecords) {
-  const now       = new Date();
+function renderUpcomingEvents(rides, weatherMap) {
+  const now         = new Date();
   const fortyEightH = new Date(now.getTime() + 48 * 60 * 60 * 1000);
+  const wk          = weekDates();
+
+  const SPECIAL_TYPES = ['special_event', 'annual', 'special event'];
+
+  const specialRides = rides.filter(r => {
+    const f = r.fields;
+    if (f[R.displayOnSite] === false) return false;
+    const status = (f[R.status] || '').toLowerCase();
+    if (['hidden', 'past', 'canceled', 'cancelled'].includes(status)) return false;
+    const rideType = (f[R.rideType] || '').toLowerCase();
+    if (!SPECIAL_TYPES.includes(rideType)) return false;
+    const d = rideDateFor(f, wk);
+    return d && d >= now;
+  });
 
   // Events in next 48h → top block
-  const events48 = eventRecords.filter(r => {
-    const ds = r.fields[E.date];
-    if (!ds) return false;
-    const d = new Date(ds + 'T00:00:00');
-    return d >= now && d <= fortyEightH;
+  const events48 = specialRides.filter(r => {
+    const d = rideDateFor(r.fields, wk);
+    return d && d <= fortyEightH;
   });
   const block48 = document.getElementById('events-48h-block');
   if (events48.length) {
     block48.style.display = 'block';
     document.getElementById('events-48h-list').innerHTML =
-      events48.map(r => buildEventCard(r.fields, true, false)).join('');
+      events48.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap)).join('');
   } else {
     block48.style.display = 'none';
   }
 
   // Events beyond 48h → upcoming events section
-  const upcoming = eventRecords
+  const upcoming = specialRides
     .filter(r => {
-      const ds = r.fields[E.date];
-      if (!ds) return false;
-      return new Date(ds + 'T00:00:00') > fortyEightH;
+      const d = rideDateFor(r.fields, wk);
+      return d && d > fortyEightH;
     })
-    .sort((a, b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]));
+    .sort((a, b) => rideDateFor(a.fields, wk) - rideDateFor(b.fields, wk));
 
   document.getElementById('upcoming-events-list').innerHTML = upcoming.length
-    ? upcoming.map(r => buildEventCard(r.fields, true, false)).join('')
+    ? upcoming.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap)).join('')
     : '<p class="no-rides">No upcoming special events.</p>';
 }
 
@@ -1496,24 +1396,25 @@ function renderAllRides(rideRecords, weatherMap) {
 // ─────────────────────────────────────────────────────
 //  RENDER: SPECIAL EVENTS TAB
 // ─────────────────────────────────────────────────────
-function renderSpecialEvents(eventRecords) {
-  const now         = new Date();
+function renderSpecialEvents(rides, weatherMap) {
+  const now          = new Date();
   const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const wk           = weekDates();
 
-  const visible = eventRecords
+  const SPECIAL_TYPES = ['special_event', 'annual', 'special event'];
+
+  const visible = rides
     .filter(r => {
-      const ds = r.fields[E.date];
-      if (!ds) return false;
-      return new Date(ds + 'T00:00:00') >= sevenDaysAgo;
+      const f = r.fields;
+      const rideType = (f[R.rideType] || '').toLowerCase();
+      if (!SPECIAL_TYPES.includes(rideType)) return false;
+      const d = rideDateFor(f, wk);
+      return d && d >= sevenDaysAgo;
     })
-    .sort((a, b) => new Date(a.fields[E.date]) - new Date(b.fields[E.date]));
+    .sort((a, b) => rideDateFor(a.fields, wk) - rideDateFor(b.fields, wk));
 
   document.getElementById('special-events-list').innerHTML = visible.length
-    ? visible.map(r => {
-        const d      = new Date(r.fields[E.date] + 'T00:00:00');
-        const isPast = d < now;
-        return buildEventCard(r.fields, !isPast, isPast);
-      }).join('')
+    ? visible.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap)).join('')
     : '<p class="no-rides">No special events found.</p>';
 }
 
@@ -1686,14 +1587,9 @@ async function init() {
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
       R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
     ];
-    const eventFields = [
-      E.name, E.org, E.date, E.time, E.loc,
-      E.dist, E.pace, E.status, E.weather, E.rain, E.wind,
-    ];
 
-    const [rides, events, weatherMap] = await Promise.all([
+    const [rides, weatherMap] = await Promise.all([
       fetchAll(RIDES,  rideFields),
-      fetchAll(EVENTS, eventFields),
       fetchWeather(),
     ]);
 
@@ -1718,12 +1614,12 @@ async function init() {
 
     populateOrganizerFilter(visibleRides);
 
-    renderFeaturedEvents(events, featuredRides, weatherMap);
+    renderFeaturedEvents(featuredRides, weatherMap);
     renderTimeline(visibleRides, weatherMap);
     renderUpcomingRides(visibleRides, weatherMap);
-    renderUpcomingEvents(events);
+    renderUpcomingEvents(rides, weatherMap);
     renderAllRides(visibleRides, weatherMap);
-    renderSpecialEvents(events);
+    renderSpecialEvents(rides, weatherMap);
 
     // Update sticky offsets after all content has rendered
     setTimeout(updateStickyPositions, 150);
