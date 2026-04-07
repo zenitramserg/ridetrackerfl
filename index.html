@@ -1314,7 +1314,7 @@ function buildRideCard(f, dayDate, weatherMap) {
     <div class="ride-card ${cardClass}"
          data-status="${escHtml(status)}"
          data-organizer="${escHtml(normalizeOrg(orgName))}"
-         data-ride-name="${escHtml(f[R.name] || '')}"
+         data-ride-name="${escHtml(f[R.name] || '')}">
       <div class="ride-header">
         <div class="avatar">${escHtml(initials(orgName))}</div>
         <div class="ride-title-block">
