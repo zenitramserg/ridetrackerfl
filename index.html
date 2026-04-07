@@ -912,7 +912,7 @@ const R = {
   isPrimary:     'Is Primary Listing',
   needsReview:   'Needs Review',
   // Future fields (show gracefully when added to Airtable):
-  instagram: 'Instagram URL',
+  instagram: 'Organizer Instagram Profile',
   strava:    'Strava URL',
   website:   'Website URL',
   mapsUrl:   'Google Maps URL',
@@ -1722,6 +1722,7 @@ async function init() {
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
       R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
+      R.instagram,
     ];
 
     const [rides, weatherMap] = await Promise.all([
