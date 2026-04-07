@@ -101,6 +101,10 @@ def _merge_rides(existing: dict, incoming: dict) -> dict:
     merged["organized_by_type"] = org_type
     merged["organized_by_confidence"] = org_conf
 
+    # Carry screenshot_path from incoming if existing doesn't have one
+    if not merged.get("screenshot_path") and incoming.get("screenshot_path"):
+        merged["screenshot_path"] = incoming["screenshot_path"]
+
     return merged
 
 

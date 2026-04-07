@@ -43,13 +43,14 @@ FIELD_MAP = {
     # is_primary_listing: checkbox — mark the canonical record when duplicates exist
     # source:           singleSelect — "Instagram Scraper" when written by this pipeline
     # needs_review:     checkbox — flag for Sergio to review manually (e.g. new ride, conflict)
-    # instagram_screenshot: attachment — scraper does NOT write this; add manually in Airtable
     "display_on_site":          "fld127xtSZgzoQZuU",  # Display on Site (checkbox, default unchecked=visible)
     "is_primary_listing":       "fldxlIlSHvv8SZGNx",  # Is Primary Listing (checkbox)
     "source":                   "fldTkJE7ScgZfjLgo",  # Source (singleSelect: Instagram Scraper, Organizer Email, etc.)
     "needs_review":             "fldIQPl9MMrKMlvWL",  # Needs Review (checkbox — flag for manual check)
-    # Note: Instagram Screenshot (fldJH78crXSiHvsR) is attachment-only — scraper cannot write attachments via API
 }
+
+# Instagram Screenshot attachment field — uploaded separately after record creation
+SCREENSHOT_FIELD_ID = "fldJH78crXSiHvsR"
 
 # Account handle → Instagram profile URL
 INSTAGRAM_URLS = {
@@ -65,6 +66,60 @@ INSTAGRAM_URLS = {
 }
 
 # Confidence float → Airtable label
+def _upload_screenshot(api_key: str, record_id: str, screenshot_path: str) -> bool:
+    """
+    Upload a local screenshot file as an attachment to the Instagram Screenshot field.
+
+    Uses Airtable's upload attachment endpoint:
+        POST /v0/{baseId}/{tableId}/{recordId}/{fieldId}/uploadAttachment
+
+    The file is base64-encoded and sent as JSON.
+    Returns True on success, False on failure.
+    """
+    import base64
+    import urllib.request
+    import urllib.error
+
+    path = Path(screenshot_path)
+    if not path.exists():
+        print(f"  ⚠ Screenshot not found, skipping upload: {path.name}")
+        return False
+
+    try:
+        content_b64 = base64.b64encode(path.read_bytes()).decode("ascii")
+        payload = json.dumps({
+            "contentType": "image/png",
+            "filename":    path.name,
+            "file":        content_b64,
+        }).encode("utf-8")
+
+        url = (
+            f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_ID}"
+            f"/{record_id}/{SCREENSHOT_FIELD_ID}/uploadAttachment"
+        )
+        req = urllib.request.Request(
+            url,
+            data=payload,
+            headers={
+                "Authorization":  f"Bearer {api_key}",
+                "Content-Type":   "application/json",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            resp.read()
+        print(f"  📎 Screenshot uploaded: {path.name}")
+        return True
+
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"  ✗ Screenshot upload failed ({e.code}): {body[:200]}")
+        return False
+    except Exception as e:
+        print(f"  ✗ Screenshot upload error: {e}")
+        return False
+
+
 def _confidence_label(conf: float) -> str:
     if conf is None:
         return "Low"
@@ -259,6 +314,12 @@ def push_new_rides(dry_run: bool = False) -> int:
             ride["airtable_record_id"] = record_id
             print(f"  ✓ Created {record_id}: {ride.get('title', '?')}")
             pushed += 1
+
+            # Upload screenshot attachment if available
+            screenshot_path = ride.get("screenshot_path", "")
+            if screenshot_path:
+                _upload_screenshot(api_key, record_id, screenshot_path)
+
         except Exception as e:
             print(f"  ✗ Failed to push '{ride.get('title', '?')}': {e}")
 
