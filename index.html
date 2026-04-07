@@ -1354,19 +1354,39 @@ function buildRideCard(f, dayDate, weatherMap) {
 //  RENDER: UPCOMING TAB
 // ─────────────────────────────────────────────────────
 function renderUpcomingRides(rideRecords, weatherMap) {
-  const todayN = new Date().getDay();
-  const wk     = weekDates();
-  const order  = [...Array(7).keys()].map(i => (todayN + i) % 7);
-  let html     = '';
+  const wk    = weekDates();
+  const today = new Date(); today.setHours(0, 0, 0, 0);
 
-  order.forEach(di => {
-    const dayName   = DAYS[di];
-    const slotDate  = wk[di];
-    const rides     = rideRecords.filter(r => r.fields[R.day] === dayName);
-    rides.forEach(r => {
-      const dayDate = rideDateFor(r.fields, wk) || slotDate;
-      html += buildRideCard(r.fields, dayDate, weatherMap);
-    });
+  // Attach resolved date to each record, filter out anything in the past
+  const dated = rideRecords
+    .map(r => ({ r, d: rideDateFor(r.fields, wk) }))
+    .filter(({ d }) => d && d >= today)
+    .sort((a, b) => a.d - b.d || (a.r.fields[R.time] || '').localeCompare(b.r.fields[R.time] || ''));
+
+  // Group by ISO date string so April-10 Friday and April-24 Friday are separate sections
+  const groups = [];
+  dated.forEach(({ r, d }) => {
+    const key = d.toISOString().split('T')[0];
+    const last = groups[groups.length - 1];
+    if (last && last.key === key) { last.rides.push({ r, d }); }
+    else { groups.push({ key, d, rides: [{ r, d }] }); }
+  });
+
+  let html = '';
+  groups.forEach(({ d, rides }) => {
+    const dateStr  = d.toISOString().split('T')[0];
+    const wx       = weatherMap[dateStr];
+    const label    = isToday(d) ? 'Today' : isTomorrow(d) ? 'Tomorrow' : `${DAYS[d.getDay()]}, ${fmt(d)}`;
+    const todayBadge = isToday(d) ? '<span class="today-badge">Today</span>' : '';
+    html += `<div class="section-block">
+      <div class="section-title">${label}${todayBadge ? ' ' + todayBadge : ''}
+        ${wx ? `<span class="weather-day-pill">
+          ${wx.rain >= 60 ? '🌧' : wx.rain >= 30 ? '🌦' : '☀️'} ${wx.rain}%
+          <span style="opacity:0.4">·</span> 💨 ${wx.wind} mph
+        </span>` : ''}
+      </div>`;
+    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap); });
+    html += `</div>`;
   });
 
   document.getElementById('upcoming-rides-list').innerHTML =
@@ -1419,42 +1439,43 @@ function renderUpcomingEvents(rides, weatherMap) {
 }
 
 // ─────────────────────────────────────────────────────
-//  RENDER: ALL RIDES TAB (weekly schedule by day)
+//  RENDER: ALL RIDES TAB (grouped by actual date, chronological)
 // ─────────────────────────────────────────────────────
 function renderAllRides(rideRecords, weatherMap) {
-  const todayN = new Date().getDay();
-  const wk     = weekDates();
-  const order  = [...Array(7).keys()].map(i => (todayN + i) % 7);
-  let html     = '';
+  const wk    = weekDates();
+  const today = new Date(); today.setHours(0, 0, 0, 0);
 
-  order.forEach(di => {
-    const dayName = DAYS[di];
-    const dayDate = wk[di];
-    const today   = isToday(dayDate);
-    const dateStr = dayDate.toISOString().split('T')[0];
+  // Resolve actual date for every record, drop anything in the past
+  const dated = rideRecords
+    .map(r => ({ r, d: rideDateFor(r.fields, wk) }))
+    .filter(({ d }) => d && d >= today)
+    .sort((a, b) => a.d - b.d || (a.r.fields[R.time] || '').localeCompare(b.r.fields[R.time] || ''));
+
+  // Group by ISO date so e.g. two different Friday dates become separate sections
+  const groups = [];
+  dated.forEach(({ r, d }) => {
+    const key  = d.toISOString().split('T')[0];
+    const last = groups[groups.length - 1];
+    if (last && last.key === key) { last.rides.push({ r, d }); }
+    else { groups.push({ key, d, rides: [{ r, d }] }); }
+  });
+
+  let html = '';
+  groups.forEach(({ d, rides }) => {
+    const dateStr = d.toISOString().split('T')[0];
     const wx      = weatherMap[dateStr];
-    const rides   = rideRecords.filter(r => r.fields[R.day] === dayName);
-
     html += `<div class="day-section">
       <div class="day-header">
-        <span class="day-name">${dayName}</span>
-        <span class="day-date">${fmt(dayDate)}</span>
-        ${today ? '<span class="today-badge">Today</span>' : ''}
+        <span class="day-name">${DAYS[d.getDay()]}</span>
+        <span class="day-date">${fmt(d)}</span>
+        ${isToday(d) ? '<span class="today-badge">Today</span>' : ''}
         ${wx ? `<span class="weather-day-pill">
           ${wx.rain >= 60 ? '🌧' : wx.rain >= 30 ? '🌦' : '☀️'} ${wx.rain}%
           <span style="opacity:0.4">·</span>
           💨 ${wx.wind} mph
         </span>` : ''}
       </div>`;
-
-    if (!rides.length) {
-      html += `<p class="no-rides">No rides scheduled</p>`;
-    } else {
-      rides.forEach(r => {
-        const rideDay = rideDateFor(r.fields, wk) || dayDate;
-        html += buildRideCard(r.fields, rideDay, weatherMap);
-      });
-    }
+    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap); });
     html += `</div>`;
   });
 
@@ -1645,12 +1666,19 @@ function hasPrimaryDuplicate(record) {
 }
 
 /**
- * Returns true if the ride has no day set (invalid record).
- * weekDates() now returns the next upcoming date for every day of week,
- * so no valid weekly ride is ever in the past from the site's perspective.
+ * Returns true if the ride should be hidden because its date is in the past.
+ * - No Day of Week → always hide (invalid record)
+ * - Explicit Ride Date in the past → hide
+ * - No explicit Ride Date → weekDates() always returns a future/today date, so show
  */
 function hasPassedMidnight(f) {
-  return !f[R.day]; // only hide rides with no day assigned
+  if (!f[R.day]) return true; // no Day of Week = invalid, hide
+  const ds = f[R.rideDate];
+  if (!ds) return false; // weekly ride with no explicit date — weekDates() handles it
+  const rideDay = new Date(ds + 'T00:00:00');
+  const today   = new Date();
+  today.setHours(0, 0, 0, 0);
+  return rideDay < today; // hide if ride date is before today's midnight
 }
 
 /**
