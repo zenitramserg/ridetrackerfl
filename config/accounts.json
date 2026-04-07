@@ -60,6 +60,12 @@
       "display_name": "Weston Flyers",
       "type": "group",
       "active": true
+    },
+    {
+      "handle": "teamrecoveryweston",
+      "display_name": "Team Recovery Weston",
+      "type": "group",
+      "active": true
     }
   ]
 }

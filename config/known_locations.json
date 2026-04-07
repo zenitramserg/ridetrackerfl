@@ -25,6 +25,11 @@
     "FP Bike Shop": [
       "fp bike shop",
       "fpbikeshop"
+    ],
+    "Origamy Gelato, Weston": [
+      "origamy gelato",
+      "origamy",
+      "origami gelato"
     ]
   },
   "address_notes": {
@@ -79,6 +84,11 @@
       "type": "shop",
       "aliases": ["fp bike shop", "fpbikeshop"],
       "accounts": ["fpbikeshop"]
+    },
+    "Team Recovery Weston": {
+      "type": "group",
+      "aliases": ["team recovery weston", "team recovery", "teamrecoveryweston"],
+      "accounts": ["teamrecoveryweston"]
     }
   },
   "noise_patterns": [

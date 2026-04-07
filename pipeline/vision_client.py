@@ -61,7 +61,10 @@ Classification rules:
 - A countdown timer (e.g. "PEDALS UP 16h 27m") counts as is_ride_post = true
   but set confidence below 0.65 if no location or distance is shown
 - Extract EXACTLY what is visible — never infer or fabricate details not shown
-- confidence = how certain you are this is a genuine upcoming group ride announcement"""
+- confidence = how certain you are this is a genuine upcoming group ride announcement
+- Some accounts post in Spanish — translate day names to English (lunes=Monday, martes=Tuesday,
+  miércoles=Wednesday, jueves=Thursday, viernes=Friday, sábado=Saturday, domingo=Sunday)
+  and treat "rodada", "salida", "millas" as ride indicators"""
 
 
 # ── Image encoding ────────────────────────────────────────────────────────────
