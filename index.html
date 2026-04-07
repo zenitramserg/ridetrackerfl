@@ -161,14 +161,64 @@
     .filters {
       background: #fff;
       border-bottom: 1px solid #e5e5e5;
-      padding: 10px 24px;
       position: sticky;
       top: 0;
       z-index: 98;
     }
+    /* Toggle button row — always visible */
+    .filters-toggle-row {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .filters-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #525252;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s, color 0.15s;
+      user-select: none;
+    }
+    .filters-toggle:hover,
+    .filters-toggle.open { border-color: #a3a3a3; color: #0d0d0d; }
+    /* Red dot — shown when any filter is active */
+    .filters-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #D62B2B;
+      display: none;
+      flex-shrink: 0;
+    }
+    .filters-dot.active { display: inline-block; }
+    /* Chevron rotates when open */
+    .filters-chevron {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .filters-toggle.open .filters-chevron { transform: rotate(180deg); }
+    /* Collapsible panel */
+    .filters-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    .filters-panel.open { max-height: 200px; }
     .filters-content {
       max-width: 1400px;
       margin: 0 auto;
+      padding: 2px 24px 14px;
       display: flex;
       gap: 12px;
       align-items: center;
@@ -626,9 +676,10 @@
       .wordmark { font-size: 17px; }
       .tabs { padding: 0 12px; }
       .tab { padding: 12px 12px; font-size: 14px; }
-      .filters { padding: 10px 16px; }
-      .filters-content { flex-direction: column; align-items: stretch; }
+      .filters-toggle-row { padding: 8px 16px; }
+      .filters-content { flex-direction: column; align-items: stretch; padding: 2px 16px 14px; }
       .filter-select { width: 100%; }
+      .clear-filters { width: 100%; }
       main { padding: 24px 16px 48px; }
       .form-group { flex-direction: column; }
       #submit-btn { width: 100%; }
@@ -687,23 +738,39 @@
 
 <!-- ── FILTERS ────────────────────────────────────── -->
 <div class="filters" id="filters-bar">
-  <div class="filters-content">
-    <div class="filter-dropdown">
-      <select class="filter-select" id="status-filter">
-        <option value="all">Status: All</option>
-        <option value="confirmed">Confirmed</option>
-        <option value="planned">Planned</option>
-        <option value="canceled">Canceled</option>
-      </select>
-      <span class="filter-arrow">▼</span>
+  <div class="filters-toggle-row">
+    <button class="filters-toggle" id="filters-toggle-btn" aria-expanded="false" aria-controls="filters-panel">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="2" y1="4" x2="14" y2="4"/>
+        <line x1="4" y1="8" x2="12" y2="8"/>
+        <line x1="6" y1="12" x2="10" y2="12"/>
+      </svg>
+      Filters
+      <span class="filters-dot" id="filters-dot"></span>
+      <svg class="filters-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="4,6 8,10 12,6"/>
+      </svg>
+    </button>
+  </div>
+  <div class="filters-panel" id="filters-panel">
+    <div class="filters-content">
+      <div class="filter-dropdown">
+        <select class="filter-select" id="status-filter">
+          <option value="all">Status: All</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="planned">Planned</option>
+          <option value="canceled">Canceled</option>
+        </select>
+        <span class="filter-arrow">▼</span>
+      </div>
+      <div class="filter-dropdown">
+        <select class="filter-select" id="organizer-filter">
+          <option value="all">Organizer: All</option>
+        </select>
+        <span class="filter-arrow">▼</span>
+      </div>
+      <button class="clear-filters" id="clear-filters-btn">Clear Filters</button>
     </div>
-    <div class="filter-dropdown">
-      <select class="filter-select" id="organizer-filter">
-        <option value="all">Organizer: All</option>
-      </select>
-      <span class="filter-arrow">▼</span>
-    </div>
-    <button class="clear-filters" id="clear-filters-btn">Clear Filters</button>
   </div>
 </div>
 
@@ -1455,6 +1522,7 @@ function applyFilters() {
     }
     card.style.display = show ? '' : 'none';
   });
+  updateFiltersDot();
 }
 
 document.getElementById('status-filter').addEventListener('change', applyFilters);
@@ -1463,7 +1531,36 @@ document.getElementById('clear-filters-btn').addEventListener('click', () => {
   document.getElementById('status-filter').value    = 'all';
   document.getElementById('organizer-filter').value = 'all';
   applyFilters();
+  // Collapse the panel after clearing
+  setFiltersOpen(false);
 });
+
+// ── FILTERS TOGGLE ───────────────────────────────────
+function setFiltersOpen(open) {
+  const btn   = document.getElementById('filters-toggle-btn');
+  const panel = document.getElementById('filters-panel');
+  if (open) {
+    panel.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  } else {
+    panel.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+}
+
+document.getElementById('filters-toggle-btn').addEventListener('click', () => {
+  const isOpen = document.getElementById('filters-panel').classList.contains('open');
+  setFiltersOpen(!isOpen);
+});
+
+function updateFiltersDot() {
+  const statusVal = document.getElementById('status-filter').value;
+  const orgVal    = document.getElementById('organizer-filter').value;
+  const active    = statusVal !== 'all' || orgVal !== 'all';
+  document.getElementById('filters-dot').classList.toggle('active', active);
+}
 
 // ─────────────────────────────────────────────────────
 //  TABS
