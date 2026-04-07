@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RideTrackerFL · Weston Cycling Rides</title>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WM5CNVPHZ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WM5CNVPHZ2');
+  </script>
   <meta name="description" content="Find all cycling group rides in Weston, Florida. Updated twice daily with confirmed status, weather, and details.">
   <meta property="og:title" content="RideTrackerFL · Weston Cycling Rides">
   <meta property="og:description" content="All confirmed group rides in Weston, FL — in one place.">
@@ -1305,7 +1313,8 @@ function buildRideCard(f, dayDate, weatherMap) {
   return `
     <div class="ride-card ${cardClass}"
          data-status="${escHtml(status)}"
-         data-organizer="${escHtml(normalizeOrg(orgName))}">
+         data-organizer="${escHtml(normalizeOrg(orgName))}"
+         data-ride-name="${escHtml(f[R.name] || '')}"
       <div class="ride-header">
         <div class="avatar">${escHtml(initials(orgName))}</div>
         <div class="ride-title-block">
@@ -1759,6 +1768,70 @@ async function init() {
   }
 }
 
+// ─────────────────────────────────────────────────────
+//  GOOGLE ANALYTICS 4 — CUSTOM EVENT TRACKING
+// ─────────────────────────────────────────────────────
+function gaEvent(name, params) {
+  if (typeof gtag !== 'undefined') gtag('event', name, params);
+}
+
+// Tab switches (static elements — safe on DOMContentLoaded)
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', function () {
+    gaEvent('tab_switch', { event_category: 'navigation', event_label: this.dataset.tab || this.textContent.trim() });
+  });
+});
+
+// Filter usage (static elements)
+document.querySelectorAll('.filter-select').forEach(sel => {
+  sel.addEventListener('change', function () {
+    gaEvent('filter_used', { event_category: 'engagement', event_label: this.id, filter_value: this.value });
+  });
+});
+
+// Event delegation for dynamically rendered content (ride cards, links)
+document.addEventListener('click', function (e) {
+  // Ride card click
+  const card = e.target.closest('.ride-card, .timeline-card');
+  if (card && !e.target.closest('a, button')) {
+    gaEvent('ride_view', {
+      event_category: 'engagement',
+      event_label: card.dataset.rideName || 'Unknown Ride',
+      organizer: card.dataset.organizer || 'Unknown',
+      view_type: card.classList.contains('timeline-card') ? 'timeline_card' : 'ride_card',
+    });
+  }
+
+  // Social link click (Instagram / Strava / Website)
+  const social = e.target.closest('.social-link');
+  if (social) {
+    const parent = social.closest('[data-organizer]');
+    gaEvent('organizer_click', {
+      event_category: 'engagement',
+      event_label: parent ? parent.dataset.organizer : 'Unknown',
+      link_type: social.textContent.trim().toLowerCase(),
+    });
+  }
+
+  // Google Maps link click
+  const mapsLink = e.target.closest('.meeting-point a');
+  if (mapsLink) {
+    const parent = mapsLink.closest('[data-ride-name]');
+    gaEvent('maps_click', {
+      event_category: 'engagement',
+      event_label: parent ? parent.dataset.rideName : 'Unknown',
+    });
+  }
+
+  // Register button click
+  const regBtn = e.target.closest('.register-btn');
+  if (regBtn && !regBtn.disabled) {
+    const parent = regBtn.closest('.ride-card');
+    const name   = parent ? (parent.dataset.rideName || parent.querySelector('h3')?.textContent) : 'Unknown Event';
+    gaEvent('register_click', { event_category: 'conversion', event_label: name, value: 1 });
+  }
+});
+
 init();
 
 // ─────────────────────────────────────────────────────
@@ -1797,6 +1870,9 @@ document.getElementById('signup-form').addEventListener('submit', async function
       } else {
         showSignupMessage("🎉 You're in! We'll keep you updated on Weston rides.", 'success');
         emailInput.value = '';
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'email_signup', { event_category: 'engagement', event_label: 'footer_form', source: 'website' });
+        }
       }
     } else {
       showSignupMessage(data.error || 'Something went wrong. Please try again.', 'error');
