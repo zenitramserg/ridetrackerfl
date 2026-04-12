@@ -8,4 +8,9 @@ Sample_Screenshots_With_Ride/
 *.png
 *.jpg
 *.jpeg
+# Allow PWA icons
+!icons/*.png
 config/secrets.env
+*-backup-*.json
+*-backup-*.html
+~$*
