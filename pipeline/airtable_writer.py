@@ -9,6 +9,9 @@ NOTE: Airtable field IDs are hardcoded here from RideTrackerFL_MAIN > Rides tabl
 If the table schema changes, update the FIELD_MAP below.
 """
 
+import json
+from pathlib import Path
+
 # =============================================================================
 # Airtable IDs — RideTrackerFL_MAIN > Rides
 # =============================================================================

@@ -219,6 +219,12 @@ def _enrich_weather():
                 continue
 
             iso_date = d.strftime("%Y-%m-%d")
+
+            # Skip if outside Open-Meteo's 16-day forecast window
+            days_out = (d.date() - dt.now().date()).days
+            if days_out < 0 or days_out > 14:
+                continue
+
             url = (
                 f"https://api.open-meteo.com/v1/forecast"
                 f"?latitude={LAT}&longitude={LON}"
