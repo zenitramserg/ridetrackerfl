@@ -2024,6 +2024,34 @@ document.addEventListener('click', function (e) {
 init();
 
 // ─────────────────────────────────────────────────────
+//  PWA AUTO-REFRESH
+//  iOS keeps PWAs in memory and restores the frozen page
+//  instead of doing a fresh load. Re-fetch ride data:
+//    1. When the app comes back into view (visibilitychange)
+//    2. Every 10 minutes while the app is open (interval)
+// ─────────────────────────────────────────────────────
+let _lastRefresh = Date.now();
+const REFRESH_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  const now = Date.now();
+  // Only refresh if it's been at least 60 seconds since the last refresh
+  // (avoids double-fetch on rapid tab switches)
+  if (now - _lastRefresh > 60_000) {
+    _lastRefresh = now;
+    init();
+  }
+});
+
+setInterval(() => {
+  if (!document.hidden) {
+    _lastRefresh = Date.now();
+    init();
+  }
+}, REFRESH_INTERVAL_MS);
+
+// ─────────────────────────────────────────────────────
 //  EMAIL SIGNUP
 // ─────────────────────────────────────────────────────
 document.getElementById('signup-form').addEventListener('submit', async function (e) {
