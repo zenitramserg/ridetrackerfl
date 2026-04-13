@@ -717,6 +717,85 @@
       .card-footer { flex-direction: column; align-items: flex-start; }
     }
 
+    /* ── PWA INSTALL PROMPT ─────────────────────────────── */
+    .pwa-install-prompt {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+      padding: 20px;
+      z-index: 9999;
+      animation: slideUp 0.3s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);   opacity: 1; }
+    }
+    .pwa-prompt-content {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+    }
+    .pwa-close-btn {
+      position: absolute;
+      top: -10px; right: -10px;
+      background: #e5e5e5;
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #737373;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pwa-close-btn:hover { background: #d4d4d4; color: #0d0d0d; }
+    .pwa-prompt-icon img { border-radius: 12px; display: block; }
+    .pwa-prompt-text h3 { margin: 0 0 4px; font-size: 18px; font-weight: 500; color: #0d0d0d; }
+    .pwa-prompt-text p  { margin: 0; font-size: 14px; color: #737373; line-height: 1.4; }
+    .pwa-prompt-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .pwa-install-btn {
+      background: #D62B2B;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .pwa-install-btn:hover { background: #b82424; }
+    .pwa-later-btn {
+      background: transparent;
+      color: #737373;
+      border: 1px solid #e5e5e5;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .pwa-later-btn:hover { border-color: #d4d4d4; color: #0d0d0d; }
+    @media (max-width: 600px) {
+      .pwa-prompt-content { flex-direction: column; text-align: center; }
+      .pwa-prompt-icon { margin: 0 auto; }
+      .pwa-prompt-actions { width: 100%; margin-left: 0; }
+      .pwa-install-btn, .pwa-later-btn { width: 100%; }
+    }
+
     /* ── OFFLINE INDICATOR ──────────────────────────────── */
     .offline-indicator {
       position: fixed;
@@ -743,6 +822,24 @@
 <!-- Offline Indicator -->
 <div id="offline-indicator" class="offline-indicator" style="display: none;">
   <span>📡 You're offline — showing cached rides</span>
+</div>
+
+<!-- PWA Install Prompt (initially hidden) -->
+<div id="pwa-install-prompt" class="pwa-install-prompt" style="display: none;">
+  <div class="pwa-prompt-content">
+    <button class="pwa-close-btn" id="pwa-close-btn" aria-label="Close">×</button>
+    <div class="pwa-prompt-icon">
+      <img src="/icons/icon-192x192.png" alt="RideTrackerFL" width="64" height="64">
+    </div>
+    <div class="pwa-prompt-text">
+      <h3>Install RideTrackerFL</h3>
+      <p>Add to your home screen for quick access to Weston rides. Works like an app!</p>
+    </div>
+    <div class="pwa-prompt-actions">
+      <button class="pwa-install-btn" id="pwa-install-btn">Install App</button>
+      <button class="pwa-later-btn" id="pwa-later-btn">Maybe Later</button>
+    </div>
+  </div>
 </div>
 
 <!-- ── HEADER ─────────────────────────────────────── -->
@@ -1980,6 +2077,48 @@ function showSignupMessage(text, type) {
   d.textContent = text;
   d.className   = `form-message ${type}`;
 }
+
+// ── PWA INSTALL PROMPT ───────────────────────────────────────
+let deferredPrompt = null;
+const installPrompt = document.getElementById('pwa-install-prompt');
+const installBtn    = document.getElementById('pwa-install-btn');
+const laterBtn      = document.getElementById('pwa-later-btn');
+const closeBtn      = document.getElementById('pwa-close-btn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const dismissed = localStorage.getItem('pwa-install-dismissed');
+  const daysSince = dismissed ? (Date.now() - parseInt(dismissed)) / 86400000 : 999;
+  if (!dismissed || daysSince > 7) {
+    setTimeout(() => { if (installPrompt) installPrompt.style.display = 'block'; }, 3000);
+  }
+});
+
+function dismissInstallPrompt(label) {
+  if (installPrompt) installPrompt.style.display = 'none';
+  localStorage.setItem('pwa-install-dismissed', Date.now().toString());
+  if (typeof gtag !== 'undefined') gtag('event', 'pwa_install_dismissed', { event_category: 'engagement', event_label: label });
+}
+
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (typeof gtag !== 'undefined') gtag('event', 'pwa_install_clicked', { event_category: 'engagement', event_label: outcome });
+    if (installPrompt) installPrompt.style.display = 'none';
+    deferredPrompt = null;
+  });
+}
+if (laterBtn) laterBtn.addEventListener('click', () => dismissInstallPrompt('maybe_later'));
+if (closeBtn) closeBtn.addEventListener('click', () => dismissInstallPrompt('close_button'));
+
+window.addEventListener('appinstalled', () => {
+  if (installPrompt) installPrompt.style.display = 'none';
+  if (typeof gtag !== 'undefined') gtag('event', 'pwa_installed', { event_category: 'engagement', event_label: 'PWA Successfully Installed' });
+  console.log('✅ PWA installed successfully!');
+});
 
 // ── SERVICE WORKER REGISTRATION ──────────────────────────────
 if ('serviceWorker' in navigator) {
