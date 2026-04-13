@@ -1830,10 +1830,13 @@ function shouldShowRide(record) {
  */
 function hasPrimaryDuplicate(record) {
   const f = record.fields;
+  // Only consider non-past rides as potential duplicates.
+  // A past ride with an earlier record ID should not shadow a future ride.
   const duplicates = allActiveRides.filter(r =>
     r.fields[R.org]  === f[R.org]  &&
     r.fields[R.day]  === f[R.day]  &&
-    r.fields[R.time] === f[R.time]
+    r.fields[R.time] === f[R.time] &&
+    !hasPassedMidnight(r.fields)
   );
   if (duplicates.length <= 1) return false;             // no duplicate
   if (f[R.isPrimary] === true) return false;             // this IS the primary
