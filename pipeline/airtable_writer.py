@@ -233,8 +233,8 @@ def build_airtable_record(ride: dict) -> dict:
     confidence = float(ride.get("confidence") or 0)
     if confidence < 0.60 or ride.get("needs_review"):
         fields[FIELD_MAP["needs_review"]] = True
-    # Note: display_on_site and is_primary_listing are intentionally NOT set by the scraper.
-    # Leave them as unchecked (Airtable default) — set manually in Airtable UI.
+    # Note: display_on_site is set to True only for NEW records (in push_new_rides).
+    # is_primary_listing is intentionally never set by the scraper — set manually in Airtable UI.
 
     # ── Weather fields ─────────────────────────────────────────────────────────
     # Weather fields
@@ -309,6 +309,9 @@ def push_new_rides(dry_run: bool = False) -> int:
 
     for ride in pending:
         fields = build_airtable_record(ride)
+        # New records are visible on the website by default.
+        # Uncheck manually in Airtable to hide a specific ride without deleting it.
+        fields[FIELD_MAP["display_on_site"]] = True
         try:
             record = table.create(fields)
             record_id = record.get("id")
