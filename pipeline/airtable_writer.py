@@ -416,6 +416,9 @@ def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = Fal
             ts = r.get("last_updated") or r.get("last_verified_at", "")
             try:
                 dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+                # Handle both naive and timezone-aware datetimes
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
                 return dt >= cutoff
             except Exception:
                 return False
@@ -502,6 +505,9 @@ def push_ride_history(rides: list[dict] | None = None, dry_run: bool = False) ->
             ts = r.get("last_updated") or r.get("last_verified_at", "")
             try:
                 dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+                # Handle both naive and timezone-aware datetimes
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
                 return dt >= cutoff
             except Exception:
                 return False
