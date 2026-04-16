@@ -108,21 +108,60 @@ def _merge_rides(existing: dict, incoming: dict) -> dict:
     return merged
 
 
+def _is_recurring(ride: dict) -> bool:
+    """
+    Returns True if this ride is a recurring weekly ride (not a special/one-time event).
+    Used to decide whether week-over-week dedup matching applies.
+    """
+    ride_type = (ride.get("ride_type") or "").lower()
+    if ride_type in ("special_event", "annual", "special event", "featured event"):
+        return False
+    return bool(ride.get("weekday"))
+
+
+def _recurring_key(ride: dict) -> Tuple[str, str, str]:
+    """
+    Dedup key for recurring rides: (weekday, time, location) — no date.
+    Matches the same weekly ride across different weeks and different posting accounts.
+    """
+    weekday  = _normalize_key(ride.get("weekday", ""))
+    time     = _normalize_key(ride.get("start_time", ""))
+    location = _normalize_location(ride)
+    return (weekday, time, location)
+
+
 def deduplicate(existing_rides: List[dict], new_rides: List[dict]) -> Tuple[List[dict], int, int]:
     """
     Merge new_rides into existing_rides.
     Returns (merged_database, added_count, updated_count).
+
+    Matching tiers (in order):
+      1. Exact story_id   — same Instagram story re-scraped
+      2. Identity key     — (date, time, location) — same event, same week, cross-account
+      3. Recurring key    — (weekday, time, location) — same weekly ride, different week
+                            Updates the existing record's date to the new occurrence.
+                            Never applied to special/one-time events.
+      4. Fuzzy title+date — catches minor text extraction differences
+      5. New ride         — no match, append to database
     """
     database = list(existing_rides)
     added = 0
     updated = 0
 
-    # Build index of existing rides by identity key
+    # Build index of existing rides by identity key (date+time+location)
     index: Dict[Tuple, int] = {}
     for i, ride in enumerate(database):
         key = ride_identity_key(ride)
-        if all(k for k in key):  # only index if key is complete
+        if all(k for k in key):
             index[key] = i
+
+    # Build index by recurring key (weekday+time+location) — recurring rides only
+    recurring_index: Dict[Tuple, int] = {}
+    for i, ride in enumerate(database):
+        if _is_recurring(ride):
+            rkey = _recurring_key(ride)
+            if all(k for k in rkey):
+                recurring_index[rkey] = i
 
     # Also index by story_id for exact match
     story_id_index: Dict[str, int] = {
@@ -134,46 +173,71 @@ def deduplicate(existing_rides: List[dict], new_rides: List[dict]) -> Tuple[List
     for incoming in new_rides:
         story_id = incoming.get("story_id", "")
         identity = ride_identity_key(incoming)
+        matched  = False
 
-        # 1. Exact story_id match (same story re-scraped)
+        # ── Tier 1: Exact story_id (same story re-scraped) ───────────────────
         if story_id and story_id in story_id_index:
             idx = story_id_index[story_id]
             database[idx] = _merge_rides(database[idx], incoming)
             updated += 1
-            continue
+            matched = True
 
-        # 2. Identity key match (same ride, different account or re-post)
-        if all(k for k in identity) and identity in index:
+        # ── Tier 2: Identity key (same date+time+location, cross-account) ────
+        if not matched and all(k for k in identity) and identity in index:
             idx = index[identity]
             database[idx] = _merge_rides(database[idx], incoming)
-            # Update story_id index if new
             if story_id:
                 story_id_index[story_id] = idx
             updated += 1
-            continue
+            matched = True
 
-        # 3. Title + date fuzzy match — catches same ride posted across accounts
-        #    with slightly different text extraction (e.g. missing year, location variant)
-        incoming_title = incoming.get("title", "")
-        incoming_date  = _normalize_date(incoming.get("date", "") or incoming.get("weekday", ""))
-        for idx, existing in enumerate(database):
-            sim = _title_similarity(incoming_title, existing.get("title", ""))
-            existing_date = _normalize_date(existing.get("date", "") or existing.get("weekday", ""))
-            # High title overlap + same date = same ride
-            if sim >= 0.6 and incoming_date and existing_date and incoming_date == existing_date:
+        # ── Tier 3: Recurring key (same weekday+time+location, new week) ─────
+        # Matches the same weekly ride across different weekly occurrences.
+        # Updates the existing record's date to this week's occurrence so
+        # push_updated_rides() can sync the new date to Airtable.
+        # Never applied to special events.
+        if not matched and _is_recurring(incoming):
+            rkey = _recurring_key(incoming)
+            if all(k for k in rkey) and rkey in recurring_index:
+                idx = recurring_index[rkey]
                 database[idx] = _merge_rides(database[idx], incoming)
+                # Always advance to the newest occurrence date
+                if incoming.get("date"):
+                    database[idx]["date"] = incoming["date"]
                 if story_id:
                     story_id_index[story_id] = idx
                 if all(k for k in identity):
                     index[identity] = idx
                 updated += 1
-                break
-        else:
-            # 4. New ride — no match found, append
+                matched = True
+
+        # ── Tier 4: Fuzzy title + date ────────────────────────────────────────
+        if not matched:
+            incoming_title = incoming.get("title", "")
+            incoming_date  = _normalize_date(incoming.get("date", "") or incoming.get("weekday", ""))
+            for idx, existing in enumerate(database):
+                sim = _title_similarity(incoming_title, existing.get("title", ""))
+                existing_date = _normalize_date(existing.get("date", "") or existing.get("weekday", ""))
+                if sim >= 0.6 and incoming_date and existing_date and incoming_date == existing_date:
+                    database[idx] = _merge_rides(database[idx], incoming)
+                    if story_id:
+                        story_id_index[story_id] = idx
+                    if all(k for k in identity):
+                        index[identity] = idx
+                    updated += 1
+                    matched = True
+                    break
+
+        # ── Tier 5: New ride ──────────────────────────────────────────────────
+        if not matched:
             database.append(incoming)
             new_idx = len(database) - 1
             if all(k for k in identity):
                 index[identity] = new_idx
+            if _is_recurring(incoming):
+                rkey = _recurring_key(incoming)
+                if all(k for k in rkey):
+                    recurring_index[rkey] = new_idx
             if story_id:
                 story_id_index[story_id] = new_idx
             added += 1

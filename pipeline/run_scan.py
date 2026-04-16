@@ -145,9 +145,21 @@ def main():
     _banner("Phase 5 · Airtable Sync")
 
     if added > 0 or updated > 0:
-        from pipeline.airtable_writer import push_new_rides
+        from pipeline.airtable_writer import push_new_rides, push_updated_rides, push_ride_history
+
+        # Push brand-new rides (no Airtable record yet)
         pushed = push_new_rides()
-        print(f"Pushed {pushed} record(s) to Airtable.")
+        print(f"Pushed {pushed} new record(s) to Airtable.")
+
+        # Sync updated rides back to existing Airtable records (e.g. new date, source accounts)
+        synced = push_updated_rides()
+        if synced:
+            print(f"Synced {synced} updated record(s) to Airtable.")
+
+        # Log this week's detections to Ride History table
+        logged = push_ride_history()
+        if logged:
+            print(f"Logged {logged} ride history entry(s).")
     else:
         print("No changes to sync.")
 

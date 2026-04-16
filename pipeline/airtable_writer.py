@@ -17,6 +17,22 @@ from pathlib import Path
 # =============================================================================
 BASE_ID = "appp3CTtWpqVcTn6e"
 TABLE_ID = "tbl7xURgDo5wU4z5t"
+HISTORY_TABLE_ID = "tblmjfqmP5swqgKYY"  # Ride History table
+
+# Ride History field IDs
+HISTORY_FIELD_MAP = {
+    "entry":           "fldT0LLRd0XpKKQGX",  # Entry (primary — auto label)
+    "organizer":       "fldhHOxDAATvyzkQ2",  # Organizer
+    "ride_date":       "fldHD1dm4sJ8H9MRK",  # Ride Date
+    "day_of_week":     "fldp2u6clV5kYwhQR",  # Day of Week (singleSelect)
+    "time":            "fldkZTxJdn6GyuQea",  # Time
+    "confirmed_via":   "fldqY09nJrLe7p97c",  # Confirmed Via (singleSelect)
+    "source_accounts": "fldGWzkssCRlmQUgk",  # Source Accounts
+    "confidence":      "fldkbNcNqngYBmfJG",  # Confidence (singleSelect)
+    "rides_record_id": "fld5f0fviCFkO1Bhv",  # Rides Record ID (links to Rides table)
+    "detected_at":     "fldNh4jdci6KYEd1C",  # Detected At (dateTime)
+    "notes":           "fld7IVRnTDQu2md4M",  # Notes
+}
 
 # Maps our internal ride field names → Airtable field IDs
 FIELD_MAP = {
@@ -336,3 +352,215 @@ def push_new_rides(dry_run: bool = False) -> int:
         print(f"[airtable] ✓ Pushed {pushed} record(s) and saved record IDs to DB.")
 
     return pushed
+
+
+def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = False) -> int:
+    """
+    Sync updated ride fields back to existing Airtable records.
+
+    Called after deduplication when existing rides have new data (e.g. a recurring
+    ride was re-detected this week with a new date/status/source_accounts).
+
+    Only updates fields that change week-to-week:
+        date, status, source_accounts, last_verified_at, weather, confidence.
+    Never touches display_on_site or is_primary_listing (manual-only fields).
+
+    Args:
+        updated_ids: list of local DB ride IDs (ride["id"]) to sync.
+                     If None, syncs all rides that have an airtable_record_id
+                     and a date updated within the last 24 hours.
+        dry_run: if True, print what would be updated without calling Airtable.
+    """
+    import os
+    from datetime import datetime, timezone, timedelta
+
+    try:
+        from pyairtable import Api
+    except ImportError:
+        print("[airtable] ✗ pyairtable not installed.")
+        return 0
+
+    api_key = os.environ.get("AIRTABLE_API_KEY")
+    if not api_key:
+        print("[airtable] ✗ AIRTABLE_API_KEY not set.")
+        return 0
+
+    db_path = Path(__file__).parent.parent / "data" / "rides_database.json"
+    if not db_path.exists():
+        return 0
+
+    with open(db_path, encoding="utf-8") as f:
+        db = json.load(f)
+
+    # Fields that are safe to overwrite on existing records
+    UPDATABLE_FIELDS = [
+        "date", "status", "source_accounts", "last_verified_at",
+        "weather_summary", "rain_probability", "wind_speed", "confidence_label",
+        "source", "needs_review",
+    ]
+
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=24)
+
+    candidates = [
+        r for r in db
+        if r.get("airtable_record_id")
+        and (
+            updated_ids is None
+            or r.get("id") in updated_ids
+        )
+    ]
+
+    # When no explicit list, filter to recently-updated rides only
+    if updated_ids is None:
+        def _recently_updated(r):
+            ts = r.get("last_updated") or r.get("last_verified_at", "")
+            try:
+                dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+                return dt >= cutoff
+            except Exception:
+                return False
+        candidates = [r for r in candidates if _recently_updated(r)]
+
+    if not candidates:
+        print("[airtable] ✓ No rides need updating.")
+        return 0
+
+    print(f"[airtable] Updating {len(candidates)} existing ride(s)...")
+
+    api   = Api(api_key)
+    table = api.table(BASE_ID, TABLE_ID)
+    updated = 0
+
+    for ride in candidates:
+        record_id = ride["airtable_record_id"]
+        all_fields = build_airtable_record(ride)
+
+        # Only send the fields that are safe to overwrite
+        update_fields = {
+            fid: val for key, fid in FIELD_MAP.items()
+            if key in UPDATABLE_FIELDS
+            and (fid := FIELD_MAP[key]) in all_fields
+            and (val := all_fields[fid]) is not None
+        }
+
+        if not update_fields:
+            continue
+
+        if dry_run:
+            date_val = ride.get("date", "?")
+            print(f"  [dry-run] Would update {record_id}: {ride.get('title', '?')} → date={date_val}")
+            continue
+
+        try:
+            table.update(record_id, update_fields)
+            print(f"  ✓ Updated {record_id}: {ride.get('title', '?')} (date={ride.get('date', '?')})")
+            updated += 1
+        except Exception as e:
+            print(f"  ✗ Failed to update {record_id} '{ride.get('title', '?')}': {e}")
+
+    return updated
+
+
+def push_ride_history(rides: list[dict] | None = None, dry_run: bool = False) -> int:
+    """
+    Log each detected ride occurrence to the Ride History table.
+
+    One history record per ride per scan run. Captures:
+    - Which ride it was (linked via Rides Record ID)
+    - The specific date of this occurrence
+    - How it was confirmed (Instagram for scraper-detected rides)
+    - Which accounts posted it
+    - Confidence level
+
+    Args:
+        rides: list of ride dicts from the current scan. If None, reads
+               rides_database.json and logs all rides updated in the last 24h.
+        dry_run: if True, print without writing to Airtable.
+    """
+    import os
+    from datetime import datetime, timezone, timedelta
+
+    try:
+        from pyairtable import Api
+    except ImportError:
+        print("[airtable] ✗ pyairtable not installed.")
+        return 0
+
+    api_key = os.environ.get("AIRTABLE_API_KEY")
+    if not api_key:
+        return 0
+
+    if rides is None:
+        db_path = Path(__file__).parent.parent / "data" / "rides_database.json"
+        if not db_path.exists():
+            return 0
+        with open(db_path, encoding="utf-8") as f:
+            db = json.load(f)
+        cutoff = datetime.now(timezone.utc) - timedelta(hours=24)
+        def _recent(r):
+            ts = r.get("last_updated") or r.get("last_verified_at", "")
+            try:
+                dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+                return dt >= cutoff
+            except Exception:
+                return False
+        rides = [r for r in db if _recent(r)]
+
+    if not rides:
+        print("[airtable] ✓ No history entries to log.")
+        return 0
+
+    print(f"[airtable] Logging {len(rides)} ride history entry(s)...")
+
+    api   = Api(api_key)
+    htable = api.table(BASE_ID, HISTORY_TABLE_ID)
+    logged = 0
+
+    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+    for ride in rides:
+        # Build entry label: "OMG Cycling — Thursday 2026-04-15"
+        organizer  = ride.get("organized_by", "Unknown")
+        weekday    = (ride.get("weekday") or "").capitalize()
+        date_iso   = _parse_date_for_airtable(ride.get("date", ""))
+        entry_label = f"{organizer} — {weekday} {date_iso}" if date_iso else f"{organizer} — {weekday}"
+
+        sources = ride.get("source_accounts") or [ride.get("source_account", "")]
+        source_str = "|".join(s for s in sources if s)
+
+        conf_label = _confidence_label(ride.get("confidence"))
+
+        fields = {
+            HISTORY_FIELD_MAP["entry"]:           entry_label,
+            HISTORY_FIELD_MAP["organizer"]:       organizer,
+            HISTORY_FIELD_MAP["time"]:            ride.get("start_time", ""),
+            HISTORY_FIELD_MAP["confirmed_via"]:   "Instagram",
+            HISTORY_FIELD_MAP["source_accounts"]: source_str,
+            HISTORY_FIELD_MAP["confidence"]:      conf_label,
+            HISTORY_FIELD_MAP["detected_at"]:     now_iso,
+        }
+
+        if date_iso:
+            fields[HISTORY_FIELD_MAP["ride_date"]] = date_iso
+
+        if weekday:
+            fields[HISTORY_FIELD_MAP["day_of_week"]] = weekday
+
+        if ride.get("airtable_record_id"):
+            fields[HISTORY_FIELD_MAP["rides_record_id"]] = ride["airtable_record_id"]
+
+        # Remove empty strings
+        fields = {k: v for k, v in fields.items() if v}
+
+        if dry_run:
+            print(f"  [dry-run] Would log: {entry_label}")
+            continue
+
+        try:
+            htable.create(fields)
+            print(f"  ✓ History: {entry_label}")
+            logged += 1
+        except Exception as e:
+            print(f"  ✗ History log failed for '{entry_label}': {e}")
+
+    return logged
