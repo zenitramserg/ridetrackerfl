@@ -47,48 +47,103 @@
   "organizers": {
     "OMG Cycling": {
       "type": "group",
-      "aliases": ["omg cycling", "omg"],
-      "accounts": ["omg_cycling"]
+      "aliases": [
+        "omg cycling",
+        "omg"
+      ],
+      "accounts": [
+        "omg_cycling"
+      ]
     },
     "Weston Flyers": {
       "type": "group",
-      "aliases": ["weston flyers", "flyers"],
-      "accounts": ["weston_flyers"]
+      "aliases": [
+        "weston flyers",
+        "flyers"
+      ],
+      "accounts": [
+        "weston_flyers"
+      ]
     },
     "Unicosta Cycling": {
       "type": "group",
-      "aliases": ["unicosta cycling", "unicosta"],
-      "accounts": ["unicosta_cycling"]
+      "aliases": [
+        "unicosta cycling",
+        "unicosta"
+      ],
+      "accounts": [
+        "unicosta_cycling"
+      ]
     },
     "MBO Ten Cycling": {
       "type": "group",
-      "aliases": ["mbo ten", "mbo ten cycling", "mbo"],
-      "accounts": ["mbo_tencycling"]
+      "aliases": [
+        "mbo ten",
+        "mbo ten cycling",
+        "mbo"
+      ],
+      "accounts": [
+        "mbo_tencycling"
+      ]
     },
     "PD Cycling Club": {
       "type": "group",
-      "aliases": ["pd cycling club", "pd cycling"],
-      "accounts": ["pd.cyclingclub"]
+      "aliases": [
+        "pd cycling club",
+        "pd cycling"
+      ],
+      "accounts": [
+        "pd.cyclingclub"
+      ]
     },
     "Alex's Bicycle Pro Shop": {
       "type": "shop",
-      "aliases": ["alex's bicycle pro shop", "alexs bicycle pro shop", "alex bicycle", "ride 84", "ride84", "alex bikes ride84"],
-      "accounts": ["alexbicycles", "ride.84"]
+      "aliases": [
+        "alex's bicycle pro shop",
+        "alexs bicycle pro shop",
+        "alex bicycle",
+        "ride 84",
+        "ride84",
+        "alex bikes ride84"
+      ],
+      "accounts": [
+        "alexbicycles",
+        "ride.84"
+      ]
     },
     "Revolt Cyclery": {
       "type": "shop",
-      "aliases": ["revolt cyclery", "revolt", "pd cycling club", "pd cycling"],
-      "accounts": ["revoltcyclery", "pd.cyclingclub"]
+      "aliases": [
+        "revolt cyclery",
+        "revolt",
+        "pd cycling club",
+        "pd cycling"
+      ],
+      "accounts": [
+        "revoltcyclery",
+        "pd.cyclingclub"
+      ]
     },
     "FP Bike Shop": {
       "type": "shop",
-      "aliases": ["fp bike shop", "fpbikeshop"],
-      "accounts": ["fpbikeshop"]
+      "aliases": [
+        "fp bike shop",
+        "fpbikeshop"
+      ],
+      "accounts": [
+        "fpbikeshop"
+      ]
     },
     "Team Recovery Weston": {
       "type": "group",
-      "aliases": ["team recovery weston", "team recovery", "teamrecoveryweston"],
-      "accounts": ["teamrecoveryweston"]
+      "aliases": [
+        "team recovery weston",
+        "team recovery",
+        "teamrecoveryweston"
+      ],
+      "accounts": [
+        "teamrecoveryweston"
+      ]
     }
   },
   "noise_patterns": [
@@ -128,5 +183,12 @@
     "shop now",
     "buy now",
     "limited time"
+  ],
+  "suppressed_titles": [
+    "100-miles route",
+    "100 miles route",
+    "time to ride",
+    "it's time to ride",
+    "know before you ride"
   ]
 }

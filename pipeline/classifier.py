@@ -19,11 +19,18 @@ _CONFIG = _load_config()
 NOISE_PATTERNS = _CONFIG["noise_patterns"]
 PERFORMANCE_PATTERNS = _CONFIG["performance_patterns"]
 PROMO_PATTERNS = _CONFIG["promo_patterns"]
+SUPPRESSED_TITLES = _CONFIG.get("suppressed_titles", [])
 
 
 def is_noise(text: str) -> bool:
     t = (text or "").lower()
     return any(p in t for p in NOISE_PATTERNS)
+
+
+def is_suppressed_title(title: str) -> bool:
+    """Returns True if this ride title is on the suppression list (e.g. route maps, generic posts)."""
+    t = (title or "").lower().strip()
+    return any(p in t for p in SUPPRESSED_TITLES)
 
 
 def is_performance_post(text: str) -> bool:
@@ -78,6 +85,8 @@ def is_valid_group_ride(ride: dict) -> bool:
     if is_performance_post(raw):
         return False
     if is_promo_post(raw):
+        return False
+    if is_suppressed_title(ride.get("title", "")):
         return False
 
     # Must pass the confidence threshold set during vision extraction
