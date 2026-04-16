@@ -437,10 +437,11 @@ def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = Fal
 
         # Only send the fields that are safe to overwrite
         update_fields = {
-            fid: val for key, fid in FIELD_MAP.items()
-            if key in UPDATABLE_FIELDS
-            and (fid := FIELD_MAP[key]) in all_fields
-            and (val := all_fields[fid]) is not None
+            FIELD_MAP[key]: all_fields[FIELD_MAP[key]]
+            for key in UPDATABLE_FIELDS
+            if key in FIELD_MAP
+            and FIELD_MAP[key] in all_fields
+            and all_fields[FIELD_MAP[key]] is not None
         }
 
         if not update_fields:
