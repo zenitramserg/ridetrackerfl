@@ -163,7 +163,7 @@ async def scrape_stories(
             # ── Click through slides ──────────────────────────────────────────
             slide_idx  = 0
             seen_paths: set[str] = set()   # deduplicate by URL path — 1 shot per card
-            MAX_SKIP   = 10                # safety: break if stuck advancing without new cards
+            MAX_SKIP   = 3                 # safety: break if stuck advancing without new cards
 
             while slide_idx < max_slides:
 
