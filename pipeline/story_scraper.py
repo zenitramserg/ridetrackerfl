@@ -62,11 +62,20 @@ def _load_cookies() -> list[dict]:
 
 
 def _story_id_from_url(url: str) -> str:
-    """Extract story ID from URL like /stories/handle/3862367330567642767/"""
-    parts = [p for p in url.rstrip("/").split("/") if p]
+    """Extract story ID from URL like /stories/handle/3862367330567642767/
+    Strips query params and fragments before parsing so URLs like
+    /stories/handle/123/?source=story_viewer still parse correctly.
+    """
+    url_path = url.split("?")[0].split("#")[0]
+    parts = [p for p in url_path.rstrip("/").split("/") if p]
     if parts and parts[-1].isdigit():
         return parts[-1]
     return ""
+
+
+def _url_path(url: str) -> str:
+    """Return the path portion of a URL, stripping query string and fragment."""
+    return url.split("?")[0].split("#")[0]
 
 
 # ── Main scraper ──────────────────────────────────────────────────────────────
@@ -152,8 +161,9 @@ async def scrape_stories(
                 pass  # No confirmation screen — already on the story, continue
 
             # ── Click through slides ──────────────────────────────────────────
-            slide_idx = 0
-            seen_story_ids: set[str] = set()   # deduplicate: 1 screenshot per card
+            slide_idx  = 0
+            seen_paths: set[str] = set()   # deduplicate by URL path — 1 shot per card
+            MAX_SKIP   = 10                # safety: break if stuck advancing without new cards
 
             while slide_idx < max_slides:
 
@@ -162,19 +172,26 @@ async def scrape_stories(
                     print(f"[scraper]   → Story ended after {slide_idx} slides")
                     break
 
+                current_path     = _url_path(page.url)
                 current_story_id = _story_id_from_url(page.url)
 
-                # Skip cards we've already captured (e.g. video-pause made us loop back)
-                if current_story_id and current_story_id in seen_story_ids:
+                # Skip cards we've already captured — advance without screenshotting.
+                # Happens with video-pause duplicates or multi-segment story posts.
+                if current_path in seen_paths:
                     try:
                         await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
                         await page.wait_for_timeout(SLIDE_LOAD_MS)
                     except Exception:
                         break
+                    # Safety: if we've skipped MAX_SKIP times without a new card, give up
+                    MAX_SKIP -= 1
+                    if MAX_SKIP <= 0:
+                        print(f"[scraper]   → Stuck on same card, stopping")
+                        break
                     continue
 
-                if current_story_id:
-                    seen_story_ids.add(current_story_id)
+                seen_paths.add(current_path)
+                MAX_SKIP = 10  # reset counter whenever we see a new card
 
                 filename = f"{handle}_{slide_idx:02d}.png"
                 out_path = scan_dir / filename
@@ -198,22 +215,16 @@ async def scrape_stories(
 
                 slide_idx += 1
 
-                # Advance to next slide by clicking right portion of story panel.
-                # For VIDEO cards, the first click sometimes only pauses the video
-                # rather than advancing — so we verify the URL changed and retry once.
+                # Advance to next card. For VIDEO cards the first click sometimes
+                # only pauses the video — retry until the URL path actually changes
+                # or we've tried MAX_ADVANCE_RETRIES times.
+                MAX_ADVANCE_RETRIES = 4
                 try:
-                    await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
-                    await page.wait_for_timeout(SLIDE_LOAD_MS)
-
-                    # If the story ID didn't change, we likely just paused a video.
-                    # Click once more to actually advance to the next card.
-                    new_story_id = _story_id_from_url(page.url)
-                    if (current_story_id
-                            and new_story_id
-                            and new_story_id == current_story_id
-                            and f"/stories/{handle}/" in page.url):
+                    for _ in range(MAX_ADVANCE_RETRIES):
                         await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
                         await page.wait_for_timeout(SLIDE_LOAD_MS)
+                        if _url_path(page.url) != current_path:
+                            break  # successfully moved to next card
                 except Exception as e:
                     print(f"[scraper]   ✗ Advance click failed: {e}")
                     break
