@@ -34,7 +34,7 @@ SCREENSHOTS_BASE = BASE_DIR / "data" / "screenshots"
 # Instagram's story panel sits roughly centered. These coordinates advance slides.
 STORY_ADVANCE_X = 950   # right portion of story panel → next slide
 STORY_ADVANCE_Y = 350
-MAX_SLIDES_PER_ACCOUNT = 12   # safety cap; most accounts have 1-5 active stories
+MAX_SLIDES_PER_ACCOUNT = 24   # safety cap; most accounts have 1-5 active stories
 PAGE_LOAD_MS   = 3500         # wait after initial navigation (story must fully load)
 SLIDE_LOAD_MS  = 2000         # wait between slides (video stories need a moment)
 
