@@ -79,7 +79,10 @@ def _b64(image_path: Path) -> str:
 # Minimum characters of readable text required to bother sending to Claude.
 # Video frames and action shots typically return 0-5 chars.
 # Ride flyers / story cards with text return 20-200+ chars.
-MIN_TEXT_CHARS = 15
+# NOTE: Set conservatively low (5) — some accounts use dark/graphic templates
+# where Tesseract struggles but Claude Vision can still read the text fine.
+# Raising this risks silently dropping real ride announcements (e.g. @omg_cycling).
+MIN_TEXT_CHARS = 5
 
 def has_readable_text(image_path: Path) -> bool:
     """
@@ -107,6 +110,9 @@ def has_readable_text(image_path: Path) -> bool:
 
         text = pytesseract.image_to_string(content, config="--psm 11")
         char_count = len(text.strip())
+        if char_count < MIN_TEXT_CHARS:
+            preview = repr(text.strip()[:60]) if text.strip() else "(empty)"
+            print(f"[vision]     OCR found {char_count} chars: {preview}")
         return char_count >= MIN_TEXT_CHARS
     except Exception as e:
         # If OCR fails for any reason, fail open so Claude still sees it
