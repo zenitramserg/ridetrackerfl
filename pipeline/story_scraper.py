@@ -161,9 +161,10 @@ async def scrape_stories(
                 pass  # No confirmation screen — already on the story, continue
 
             # ── Click through slides ──────────────────────────────────────────
-            slide_idx  = 0
-            seen_paths: set[str] = set()   # deduplicate by URL path — 1 shot per card
-            MAX_SKIP   = 3                 # safety: break if stuck advancing without new cards
+            slide_idx   = 0
+            seen_paths: set[str] = set()    # 1 screenshot per unique story card URL
+            stuck_count = 0                 # consecutive stuck-on-same-card iterations
+            MAX_STUCK   = 20               # 20 × 1.5s poll = 30s max wait (covers 15s videos)
 
             while slide_idx < max_slides:
 
@@ -175,23 +176,25 @@ async def scrape_stories(
                 current_path     = _url_path(page.url)
                 current_story_id = _story_id_from_url(page.url)
 
-                # Skip cards we've already captured — advance without screenshotting.
-                # Happens with video-pause duplicates or multi-segment story posts.
+                # Already seen this card — we're either mid-video or at end of story.
+                # Click once more to nudge, wait a bit, then check again.
                 if current_path in seen_paths:
-                    try:
-                        await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
-                        await page.wait_for_timeout(SLIDE_LOAD_MS)
-                    except Exception:
+                    stuck_count += 1
+                    if stuck_count >= MAX_STUCK:
+                        print(f"[scraper]   → Story ended after {slide_idx} slides")
                         break
-                    # Safety: if we've skipped MAX_SKIP times without a new card, give up
-                    MAX_SKIP -= 1
-                    if MAX_SKIP <= 0:
-                        print(f"[scraper]   → Stuck on same card, stopping")
+                    try:
+                        # At 3s and 10s intervals, nudge with a click in case video paused
+                        if stuck_count in (2, 7):
+                            await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
+                        await page.wait_for_timeout(1500)
+                    except Exception:
                         break
                     continue
 
+                # New card — reset stuck counter and take the screenshot
+                stuck_count = 0
                 seen_paths.add(current_path)
-                MAX_SKIP = 10  # reset counter whenever we see a new card
 
                 filename = f"{handle}_{slide_idx:02d}.png"
                 out_path = scan_dir / filename
@@ -215,16 +218,12 @@ async def scrape_stories(
 
                 slide_idx += 1
 
-                # Advance to next card. For VIDEO cards the first click sometimes
-                # only pauses the video — retry until the URL path actually changes
-                # or we've tried MAX_ADVANCE_RETRIES times.
-                MAX_ADVANCE_RETRIES = 4
+                # Click to advance. For image cards the URL changes almost instantly.
+                # For video cards, the click may just pause — the stuck-count loop above
+                # will nudge again after 3s and 10s if the URL hasn't changed.
                 try:
-                    for _ in range(MAX_ADVANCE_RETRIES):
-                        await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
-                        await page.wait_for_timeout(SLIDE_LOAD_MS)
-                        if _url_path(page.url) != current_path:
-                            break  # successfully moved to next card
+                    await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
+                    await page.wait_for_timeout(SLIDE_LOAD_MS)
                 except Exception as e:
                     print(f"[scraper]   ✗ Advance click failed: {e}")
                     break
