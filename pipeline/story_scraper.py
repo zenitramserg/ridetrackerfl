@@ -62,20 +62,11 @@ def _load_cookies() -> list[dict]:
 
 
 def _story_id_from_url(url: str) -> str:
-    """Extract story ID from URL like /stories/handle/3862367330567642767/
-    Strips query params and fragments before parsing so URLs like
-    /stories/handle/123/?source=story_viewer still parse correctly.
-    """
-    url_path = url.split("?")[0].split("#")[0]
-    parts = [p for p in url_path.rstrip("/").split("/") if p]
+    """Extract story ID from URL like /stories/handle/3862367330567642767/"""
+    parts = [p for p in url.rstrip("/").split("/") if p]
     if parts and parts[-1].isdigit():
         return parts[-1]
     return ""
-
-
-def _url_path(url: str) -> str:
-    """Return the path portion of a URL, stripping query string and fragment."""
-    return url.split("?")[0].split("#")[0]
 
 
 # ── Main scraper ──────────────────────────────────────────────────────────────
@@ -125,16 +116,9 @@ async def scrape_stories(
             max_slides = account.get("max_slides", MAX_SLIDES_PER_ACCOUNT)
             print(f"[scraper] ── @{handle} (max {max_slides} slides) ──────────────────────────────")
 
-            # ── Navigate via profile page → click story ring ─────────────────
-            # Navigating directly to /stories/{handle}/ puts us in Instagram's
-            # "feed queue" which only shows UNSEEN stories. After multiple daily
-            # scans the scraper account has seen most stories and misses older ones.
-            #
-            # Clicking the story ring from the profile page shows ALL active stories
-            # for that account (seen + unseen), starting from the beginning.
-            profile_url = f"https://www.instagram.com/{handle}/"
+            story_url = f"https://www.instagram.com/stories/{handle}/"
             try:
-                await page.goto(profile_url, wait_until="domcontentloaded", timeout=20_000)
+                await page.goto(story_url, wait_until="domcontentloaded", timeout=20_000)
                 await page.wait_for_timeout(PAGE_LOAD_MS)
             except Exception as e:
                 print(f"[scraper]   ✗ Navigation failed: {e}")
@@ -145,39 +129,19 @@ async def scrape_stories(
                 })
                 continue
 
-            # Click the story ring avatar to open the full story viewer
-            story_opened = False
-            try:
-                # The story ring is an <img> inside a clickable link on the profile
-                avatar = page.locator(f"img[alt*='{handle}']").first
-                if await avatar.is_visible(timeout=4000):
-                    await avatar.click()
-                    await page.wait_for_timeout(PAGE_LOAD_MS)
-                    if f"/stories/{handle}/" in page.url:
-                        story_opened = True
-            except Exception:
-                pass
-
-            # Fallback: direct URL (works when profile avatar click doesn't land on story)
-            if not story_opened:
-                try:
-                    await page.goto(
-                        f"https://www.instagram.com/stories/{handle}/",
-                        wait_until="domcontentloaded",
-                        timeout=20_000,
-                    )
-                    await page.wait_for_timeout(PAGE_LOAD_MS)
-                    if f"/stories/{handle}/" in page.url:
-                        story_opened = True
-                except Exception:
-                    pass
-
-            if not story_opened:
-                print(f"[scraper]   ○ No active stories")
-                metadata["accounts_checked"].append({"handle": handle, "slides_captured": 0})
+            # If Instagram redirected away, this account has no active stories
+            if f"/stories/{handle}/" not in page.url:
+                print(f"[scraper]   ○ No active stories (redirected to {page.url[:60]})")
+                metadata["accounts_checked"].append({
+                    "handle": handle,
+                    "slides_captured": 0,
+                })
                 continue
 
             # ── Dismiss "View story" confirmation screen ──────────────────────
+            # Instagram shows a privacy confirmation ("View as X? omg_cycling will
+            # be able to see that you viewed their story.") before showing the story.
+            # We need to click "View story" to proceed.
             try:
                 view_btn = page.get_by_role("button", name="View story")
                 if await view_btn.is_visible(timeout=3000):
@@ -188,65 +152,38 @@ async def scrape_stories(
                 pass  # No confirmation screen — already on the story, continue
 
             # ── Click through slides ──────────────────────────────────────────
-            # Strategy: 1 screenshot per unique story card, then click to advance.
-            # Story ID (from URL) tells us when we've truly moved to a new card.
-            # If the URL doesn't change after clicking (video card that paused),
-            # we retry up to STUCK_LIMIT times before declaring the story ended.
-            # STUCK_LIMIT × SLIDE_LOAD_MS must exceed Instagram's max video length.
-
-            STUCK_LIMIT = 10    # 10 × 2s = 20s max wait — covers 15s Instagram videos
-
-            slide_idx   = 0
-            stuck_count = 0
-            seen_ids: set[str] = set()
-
+            slide_idx = 0
             while slide_idx < max_slides:
 
-                # Bail if Instagram has navigated away from this account's stories
+                # Bail if Instagram has moved us off this account's stories
                 if f"/stories/{handle}/" not in page.url:
                     print(f"[scraper]   → Story ended after {slide_idx} slides")
                     break
 
-                current_id = _story_id_from_url(page.url) or _url_path(page.url)
-
-                # Already seen this card — video hasn't auto-advanced yet, or end of story.
-                # Keep clicking to nudge until the URL changes or we time out.
-                if current_id in seen_ids:
-                    stuck_count += 1
-                    if stuck_count >= STUCK_LIMIT:
-                        print(f"[scraper]   → Story ended after {slide_idx} slides")
-                        break
-                    try:
-                        await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
-                        await page.wait_for_timeout(SLIDE_LOAD_MS)
-                    except Exception:
-                        break
-                    continue
-
-                # New card — reset stuck counter and take one screenshot
-                stuck_count = 0
-                seen_ids.add(current_id)
-
                 filename = f"{handle}_{slide_idx:02d}.png"
                 out_path = scan_dir / filename
+
                 try:
                     await page.screenshot(path=str(out_path), full_page=False)
+                    story_id = _story_id_from_url(page.url)
                     print(f"[scraper]   ✓ slide {slide_idx:02d} saved  ({filename})")
+
                     metadata["screenshots"].append({
                         "path":        str(out_path),
                         "filename":    filename,
                         "account":     handle,
                         "slide_index": slide_idx,
-                        "story_id":    current_id,
+                        "story_id":    story_id,
                         "url":         page.url,
                         "timestamp":   datetime.now().isoformat(timespec="seconds"),
                     })
-                    slide_idx += 1
                 except Exception as e:
                     print(f"[scraper]   ✗ Screenshot error: {e}")
                     break
 
-                # Click to advance to the next card
+                slide_idx += 1
+
+                # Advance to next slide by clicking right portion of story panel
                 try:
                     await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
                     await page.wait_for_timeout(SLIDE_LOAD_MS)
