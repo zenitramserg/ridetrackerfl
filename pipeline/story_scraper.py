@@ -161,10 +161,19 @@ async def scrape_stories(
                 pass  # No confirmation screen — already on the story, continue
 
             # ── Click through slides ──────────────────────────────────────────
+            # Strategy: 2 screenshots per story card (start + mid), then advance.
+            # 2 shots gives Vision two chances to read any text overlay (important
+            # for video cards where text appears after the video starts playing).
+            # We track story IDs to detect when we've truly moved to a new card.
+            # If we can't advance after STUCK_LIMIT retries, the story has ended.
+
+            SHOTS_PER_CARD  = 2      # screenshots per unique story card
+            INTRA_CARD_MS   = 2500   # wait between shot 1 and shot 2 of same card
+            STUCK_LIMIT     = 3      # max retries when advance click doesn't change card
+
             slide_idx   = 0
-            seen_paths: set[str] = set()    # 1 screenshot per unique story card URL
-            stuck_count = 0                 # consecutive stuck-on-same-card iterations
-            MAX_STUCK   = 20               # 20 × 1.5s poll = 30s max wait (covers 15s videos)
+            stuck_count = 0
+            seen_ids: set[str] = set()
 
             while slide_idx < max_slides:
 
@@ -173,54 +182,60 @@ async def scrape_stories(
                     print(f"[scraper]   → Story ended after {slide_idx} slides")
                     break
 
-                current_path     = _url_path(page.url)
-                current_story_id = _story_id_from_url(page.url)
+                current_story_id = _story_id_from_url(page.url) or _url_path(page.url)
 
-                # Already seen this card — we're either mid-video or at end of story.
-                # Click once more to nudge, wait a bit, then check again.
-                if current_path in seen_paths:
+                # If we're still on a card we've already shot, advance and retry.
+                # After STUCK_LIMIT retries with no new card, the story has ended.
+                if current_story_id in seen_ids:
                     stuck_count += 1
-                    if stuck_count >= MAX_STUCK:
+                    if stuck_count >= STUCK_LIMIT:
                         print(f"[scraper]   → Story ended after {slide_idx} slides")
                         break
                     try:
-                        # At 3s and 10s intervals, nudge with a click in case video paused
-                        if stuck_count in (2, 7):
-                            await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
-                        await page.wait_for_timeout(1500)
+                        await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
+                        await page.wait_for_timeout(SLIDE_LOAD_MS)
                     except Exception:
                         break
                     continue
 
-                # New card — reset stuck counter and take the screenshot
+                # New card — reset stuck counter and take SHOTS_PER_CARD screenshots
                 stuck_count = 0
-                seen_paths.add(current_path)
+                seen_ids.add(current_story_id)
 
-                filename = f"{handle}_{slide_idx:02d}.png"
-                out_path = scan_dir / filename
+                for shot_num in range(SHOTS_PER_CARD):
+                    if slide_idx >= max_slides:
+                        break
 
-                try:
-                    await page.screenshot(path=str(out_path), full_page=False)
-                    print(f"[scraper]   ✓ slide {slide_idx:02d} saved  ({filename})")
+                    # Wait between shots within the same card (lets video play a bit)
+                    if shot_num > 0:
+                        await page.wait_for_timeout(INTRA_CARD_MS)
+                        # Stop if Instagram auto-advanced during our wait
+                        if f"/stories/{handle}/" not in page.url:
+                            break
+                        new_id = _story_id_from_url(page.url) or _url_path(page.url)
+                        if new_id != current_story_id:
+                            break  # already moved on, don't screenshot old card again
 
-                    metadata["screenshots"].append({
-                        "path":        str(out_path),
-                        "filename":    filename,
-                        "account":     handle,
-                        "slide_index": slide_idx,
-                        "story_id":    current_story_id,
-                        "url":         page.url,
-                        "timestamp":   datetime.now().isoformat(timespec="seconds"),
-                    })
-                except Exception as e:
-                    print(f"[scraper]   ✗ Screenshot error: {e}")
-                    break
+                    filename = f"{handle}_{slide_idx:02d}.png"
+                    out_path = scan_dir / filename
+                    try:
+                        await page.screenshot(path=str(out_path), full_page=False)
+                        print(f"[scraper]   ✓ slide {slide_idx:02d} saved  ({filename})")
+                        metadata["screenshots"].append({
+                            "path":        str(out_path),
+                            "filename":    filename,
+                            "account":     handle,
+                            "slide_index": slide_idx,
+                            "story_id":    current_story_id,
+                            "url":         page.url,
+                            "timestamp":   datetime.now().isoformat(timespec="seconds"),
+                        })
+                        slide_idx += 1
+                    except Exception as e:
+                        print(f"[scraper]   ✗ Screenshot error: {e}")
+                        break
 
-                slide_idx += 1
-
-                # Click to advance. For image cards the URL changes almost instantly.
-                # For video cards, the click may just pause — the stuck-count loop above
-                # will nudge again after 3s and 10s if the URL hasn't changed.
+                # Advance to next card
                 try:
                     await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
                     await page.wait_for_timeout(SLIDE_LOAD_MS)
