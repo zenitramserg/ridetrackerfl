@@ -125,9 +125,16 @@ async def scrape_stories(
             max_slides = account.get("max_slides", MAX_SLIDES_PER_ACCOUNT)
             print(f"[scraper] ── @{handle} (max {max_slides} slides) ──────────────────────────────")
 
-            story_url = f"https://www.instagram.com/stories/{handle}/"
+            # ── Navigate via profile page → click story ring ─────────────────
+            # Navigating directly to /stories/{handle}/ puts us in Instagram's
+            # "feed queue" which only shows UNSEEN stories. After multiple daily
+            # scans the scraper account has seen most stories and misses older ones.
+            #
+            # Clicking the story ring from the profile page shows ALL active stories
+            # for that account (seen + unseen), starting from the beginning.
+            profile_url = f"https://www.instagram.com/{handle}/"
             try:
-                await page.goto(story_url, wait_until="domcontentloaded", timeout=20_000)
+                await page.goto(profile_url, wait_until="domcontentloaded", timeout=20_000)
                 await page.wait_for_timeout(PAGE_LOAD_MS)
             except Exception as e:
                 print(f"[scraper]   ✗ Navigation failed: {e}")
@@ -138,19 +145,39 @@ async def scrape_stories(
                 })
                 continue
 
-            # If Instagram redirected away, this account has no active stories
-            if f"/stories/{handle}/" not in page.url:
-                print(f"[scraper]   ○ No active stories (redirected to {page.url[:60]})")
-                metadata["accounts_checked"].append({
-                    "handle": handle,
-                    "slides_captured": 0,
-                })
+            # Click the story ring avatar to open the full story viewer
+            story_opened = False
+            try:
+                # The story ring is an <img> inside a clickable link on the profile
+                avatar = page.locator(f"img[alt*='{handle}']").first
+                if await avatar.is_visible(timeout=4000):
+                    await avatar.click()
+                    await page.wait_for_timeout(PAGE_LOAD_MS)
+                    if f"/stories/{handle}/" in page.url:
+                        story_opened = True
+            except Exception:
+                pass
+
+            # Fallback: direct URL (works when profile avatar click doesn't land on story)
+            if not story_opened:
+                try:
+                    await page.goto(
+                        f"https://www.instagram.com/stories/{handle}/",
+                        wait_until="domcontentloaded",
+                        timeout=20_000,
+                    )
+                    await page.wait_for_timeout(PAGE_LOAD_MS)
+                    if f"/stories/{handle}/" in page.url:
+                        story_opened = True
+                except Exception:
+                    pass
+
+            if not story_opened:
+                print(f"[scraper]   ○ No active stories")
+                metadata["accounts_checked"].append({"handle": handle, "slides_captured": 0})
                 continue
 
             # ── Dismiss "View story" confirmation screen ──────────────────────
-            # Instagram shows a privacy confirmation ("View as X? omg_cycling will
-            # be able to see that you viewed their story.") before showing the story.
-            # We need to click "View story" to proceed.
             try:
                 view_btn = page.get_by_role("button", name="View story")
                 if await view_btn.is_visible(timeout=3000):
