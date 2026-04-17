@@ -153,6 +153,8 @@ async def scrape_stories(
 
             # ── Click through slides ──────────────────────────────────────────
             slide_idx = 0
+            seen_story_ids: set[str] = set()   # deduplicate: 1 screenshot per card
+
             while slide_idx < max_slides:
 
                 # Bail if Instagram has moved us off this account's stories
@@ -160,12 +162,25 @@ async def scrape_stories(
                     print(f"[scraper]   → Story ended after {slide_idx} slides")
                     break
 
+                current_story_id = _story_id_from_url(page.url)
+
+                # Skip cards we've already captured (e.g. video-pause made us loop back)
+                if current_story_id and current_story_id in seen_story_ids:
+                    try:
+                        await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
+                        await page.wait_for_timeout(SLIDE_LOAD_MS)
+                    except Exception:
+                        break
+                    continue
+
+                if current_story_id:
+                    seen_story_ids.add(current_story_id)
+
                 filename = f"{handle}_{slide_idx:02d}.png"
                 out_path = scan_dir / filename
 
                 try:
                     await page.screenshot(path=str(out_path), full_page=False)
-                    story_id = _story_id_from_url(page.url)
                     print(f"[scraper]   ✓ slide {slide_idx:02d} saved  ({filename})")
 
                     metadata["screenshots"].append({
@@ -173,7 +188,7 @@ async def scrape_stories(
                         "filename":    filename,
                         "account":     handle,
                         "slide_index": slide_idx,
-                        "story_id":    story_id,
+                        "story_id":    current_story_id,
                         "url":         page.url,
                         "timestamp":   datetime.now().isoformat(timespec="seconds"),
                     })
@@ -183,10 +198,22 @@ async def scrape_stories(
 
                 slide_idx += 1
 
-                # Advance to next slide by clicking right portion of story panel
+                # Advance to next slide by clicking right portion of story panel.
+                # For VIDEO cards, the first click sometimes only pauses the video
+                # rather than advancing — so we verify the URL changed and retry once.
                 try:
                     await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
                     await page.wait_for_timeout(SLIDE_LOAD_MS)
+
+                    # If the story ID didn't change, we likely just paused a video.
+                    # Click once more to actually advance to the next card.
+                    new_story_id = _story_id_from_url(page.url)
+                    if (current_story_id
+                            and new_story_id
+                            and new_story_id == current_story_id
+                            and f"/stories/{handle}/" in page.url):
+                        await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
+                        await page.wait_for_timeout(SLIDE_LOAD_MS)
                 except Exception as e:
                     print(f"[scraper]   ✗ Advance click failed: {e}")
                     break
