@@ -488,6 +488,30 @@
     }
     .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
 
+    /* ── I'M RIDING BUTTON ───────────────────────── */
+    .im-riding-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1.5px solid #d4d4d4;
+      background: transparent;
+      color: #555;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .im-riding-btn:hover { border-color: #059669; color: #059669; }
+    .im-riding-btn.joined {
+      border-color: #059669;
+      background: #f0fdf4;
+      color: #059669;
+      cursor: default;
+    }
+
     /* ── REGISTER BUTTON ─────────────────────────── */
     .register-btn {
       background: #D62B2B;
@@ -1054,6 +1078,7 @@ const R = {
   displayOnSite: 'Display on Site',
   isPrimary:     'Is Primary Listing',
   needsReview:   'Needs Review',
+  riderCount:    'Rider Count',          // incremented by rsvp Netlify function
   // Future fields (show gracefully when added to Airtable):
   instagram: 'Organizer Instagram Profile',
   strava:    'Strava URL',
@@ -1456,7 +1481,7 @@ function renderTimeline(rideRecords, weatherMap) {
 // ─────────────────────────────────────────────────────
 //  BUILD FULL RIDE CARD (shared by Upcoming + All Rides)
 // ─────────────────────────────────────────────────────
-function buildRideCard(f, dayDate, weatherMap) {
+function buildRideCard(f, dayDate, weatherMap, recordId) {
   const status     = (f[R.status] || 'unknown').toLowerCase();
   const cardClass  = status === 'confirmed' ? 'confirmed'
                    : (status === 'canceled' || status === 'cancelled') ? 'canceled' : '';
@@ -1527,6 +1552,17 @@ function buildRideCard(f, dayDate, weatherMap) {
       </div>` : ''}
       <div class="card-footer">
         <div class="social-links">${socialLinks}</div>
+        ${recordId ? (() => {
+          const count   = f[R.riderCount] || 0;
+          const joined  = recordId && localStorage.getItem(`rsvp_${recordId}`) === '1';
+          const label   = joined
+            ? `🚴 ${count} riding ✓`
+            : count > 0 ? `🚴 ${count} riding` : `🚴 I'm Riding`;
+          return `<button class="im-riding-btn${joined ? ' joined' : ''}"
+                    data-record-id="${escHtml(recordId)}"
+                    data-count="${count}"
+                    ${joined ? 'disabled' : ''}>${label}</button>`;
+        })() : ''}
       </div>
     </div>`;
 }
@@ -1566,7 +1602,7 @@ function renderUpcomingRides(rideRecords, weatherMap) {
           <span style="opacity:0.4">·</span> 💨 ${wx.wind} mph
         </span>` : ''}
       </div>`;
-    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap); });
+    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap, r.id); });
     html += `</div>`;
   });
 
@@ -1601,7 +1637,7 @@ function renderUpcomingEvents(rides, weatherMap) {
   if (events48.length) {
     block48.style.display = 'block';
     document.getElementById('events-48h-list').innerHTML =
-      events48.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap)).join('');
+      events48.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap, r.id)).join('');
   } else {
     block48.style.display = 'none';
   }
@@ -1615,7 +1651,7 @@ function renderUpcomingEvents(rides, weatherMap) {
     .sort((a, b) => rideDateFor(a.fields, wk) - rideDateFor(b.fields, wk));
 
   document.getElementById('upcoming-events-list').innerHTML = upcoming.length
-    ? upcoming.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap)).join('')
+    ? upcoming.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap, r.id)).join('')
     : '<p class="no-rides">No upcoming special events.</p>';
 }
 
@@ -1656,7 +1692,7 @@ function renderAllRides(rideRecords, weatherMap) {
           💨 ${wx.wind} mph
         </span>` : ''}
       </div>`;
-    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap); });
+    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap, r.id); });
     html += `</div>`;
   });
 
@@ -1685,7 +1721,7 @@ function renderSpecialEvents(rides, weatherMap) {
     .sort((a, b) => rideDateFor(a.fields, wk) - rideDateFor(b.fields, wk));
 
   document.getElementById('special-events-list').innerHTML = visible.length
-    ? visible.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap)).join('')
+    ? visible.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap, r.id)).join('')
     : '<p class="no-rides">No special events found.</p>';
 }
 
@@ -1897,7 +1933,7 @@ async function init() {
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
       R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
-      R.instagram,
+      R.instagram, R.riderCount,
     ];
 
     const orgFields = [
@@ -1988,6 +2024,44 @@ document.addEventListener('click', function (e) {
       event_label: card.dataset.rideName || 'Unknown Ride',
       organizer: card.dataset.organizer || 'Unknown',
       view_type: card.classList.contains('timeline-card') ? 'timeline_card' : 'ride_card',
+    });
+  }
+
+  // "I'm Riding" button
+  const rsvpBtn = e.target.closest('.im-riding-btn');
+  if (rsvpBtn && !rsvpBtn.disabled) {
+    const recordId = rsvpBtn.dataset.recordId;
+    if (!recordId) return;
+
+    // Optimistic UI update
+    rsvpBtn.disabled = true;
+    const prevCount  = parseInt(rsvpBtn.dataset.count, 10) || 0;
+    const newCount   = prevCount + 1;
+    rsvpBtn.dataset.count = newCount;
+    rsvpBtn.textContent   = `🚴 ${newCount} riding ✓`;
+    rsvpBtn.classList.add('joined');
+    localStorage.setItem(`rsvp_${recordId}`, '1');
+
+    // Fire and forget — server confirms the increment
+    fetch('/.netlify/functions/rsvp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ recordId }),
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d.count !== undefined) {
+        rsvpBtn.textContent   = `🚴 ${d.count} riding ✓`;
+        rsvpBtn.dataset.count = d.count;
+      }
+    })
+    .catch(() => {}); // optimistic count stays even on network error
+
+    const card = rsvpBtn.closest('[data-ride-name]');
+    gaEvent('im_riding', {
+      event_category: 'engagement',
+      event_label: card ? card.dataset.rideName : 'Unknown Ride',
+      organizer: card ? card.dataset.organizer : 'Unknown',
     });
   }
 
