@@ -1329,6 +1329,9 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
     const wx      = weatherMap ? weatherMap[dateStr] : null;
     const orgKey = (f[R.org] || '').toLowerCase().trim();
     const orgRec = organizerMap[orgKey] || {};
+    if (orgKey && !organizerMap[orgKey]) {
+      console.warn(`[featured] No organizer match for "${orgKey}" — social links will use ride-field fallback`);
+    }
     items.push({
       name: f[R.name] || 'Unnamed Ride',
       org:  f[R.org]  || '',
@@ -1951,7 +1954,7 @@ async function init() {
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
       R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
-      R.instagram, R.riderCount,
+      R.instagram, R.website, R.strava, R.riderCount,
     ];
 
     const orgFields = [
