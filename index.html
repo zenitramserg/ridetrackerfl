@@ -1387,16 +1387,16 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
           <span class="featured-expand-hint">▾</span>
         </div>
         <div class="featured-meta">${dateLabel}${timeStr}${distStr}${regText}</div>
+        ${(() => {
+          const links = [
+            item.igUrl   ? `<a href="${escHtml(item.igUrl)}"   class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
+            item.strava  ? `<a href="${escHtml(item.strava)}"  class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
+            item.siteUrl ? `<a href="${escHtml(item.siteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
+          ].filter(Boolean).join('');
+          return links ? `<div class="featured-detail-row" style="margin-top:4px">${links}</div>` : '';
+        })()}
         <div class="featured-details">
           ${locStr}${paceStr}${wxStr}
-          ${(() => {
-            const links = [
-              item.igUrl   ? `<a href="${escHtml(item.igUrl)}"   class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
-              item.strava  ? `<a href="${escHtml(item.strava)}"  class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
-              item.siteUrl ? `<a href="${escHtml(item.siteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
-            ].filter(Boolean).join('');
-            return links ? `<div class="featured-detail-row">${links}</div>` : '';
-          })()}
         </div>
       </div>`;
   }).join('');
@@ -1954,7 +1954,7 @@ async function init() {
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
       R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
-      R.instagram, R.website, R.strava, R.riderCount,
+      R.instagram, R.riderCount,
     ];
 
     const orgFields = [
