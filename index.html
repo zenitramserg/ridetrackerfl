@@ -1439,10 +1439,15 @@ function renderTimeline(rideRecords, weatherMap) {
       f[R.dist] ? escHtml(f[R.dist]) + ' mi' : null,
     ].filter(Boolean);
 
+    const orgName_tl  = f[R.org] || f[R.name] || '';
+    const org_tl      = organizerMap[(orgName_tl).toLowerCase().trim()] || {};
+    const igUrl_tl    = org_tl[O.igUrl]    || f[R.instagram] || '';
+    const stravaUrl_tl= org_tl[O.strava]   || f[R.strava]    || '';
+    const siteUrl_tl  = org_tl[O.website]  || f[R.website]   || '';
     const socialLinks = [
-      f[R.instagram] ? `<a href="${escHtml(f[R.instagram])}" class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
-      f[R.strava]    ? `<a href="${escHtml(f[R.strava])}"    class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
-      f[R.website]   ? `<a href="${escHtml(f[R.website])}"   class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
+      igUrl_tl    ? `<a href="${escHtml(igUrl_tl)}"    class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
+      stravaUrl_tl? `<a href="${escHtml(stravaUrl_tl)}" class="social-link" target="_blank" rel="noopener">Strava</a>`   : '',
+      siteUrl_tl  ? `<a href="${escHtml(siteUrl_tl)}"  class="social-link" target="_blank" rel="noopener">Website</a>`  : '',
     ].filter(Boolean).join('');
 
     return `
