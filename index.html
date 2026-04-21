@@ -1327,6 +1327,8 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
     if (!d || d < today) return; // drop once midnight of the ride day has passed
     const dateStr = d.toISOString().split('T')[0];
     const wx      = weatherMap ? weatherMap[dateStr] : null;
+    const orgKey = (f[R.org] || '').toLowerCase().trim();
+    const orgRec = organizerMap[orgKey] || {};
     items.push({
       name: f[R.name] || 'Unnamed Ride',
       org:  f[R.org]  || '',
@@ -1340,6 +1342,9 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
       wind: wx ? wx.wind : f[R.wind],
       weather: f[R.weather] || '',
       mapsUrl: f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]),
+      igUrl:   orgRec[O.igUrl]   || f[R.instagram] || '',
+      siteUrl: orgRec[O.website] || f[R.website]   || '',
+      strava:  orgRec[O.strava]  || f[R.strava]    || '',
     });
   });
 
@@ -1381,6 +1386,14 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
         <div class="featured-meta">${dateLabel}${timeStr}${distStr}${regText}</div>
         <div class="featured-details">
           ${locStr}${paceStr}${wxStr}
+          ${(() => {
+            const links = [
+              item.igUrl   ? `<a href="${escHtml(item.igUrl)}"   class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
+              item.strava  ? `<a href="${escHtml(item.strava)}"  class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
+              item.siteUrl ? `<a href="${escHtml(item.siteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
+            ].filter(Boolean).join('');
+            return links ? `<div class="featured-detail-row">${links}</div>` : '';
+          })()}
         </div>
       </div>`;
   }).join('');
