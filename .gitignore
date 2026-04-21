@@ -4,6 +4,7 @@ __pycache__/
 data/screenshots/
 data/*.json
 data/*.csv
+RideTrackerDocuments/
 Sample_Screenshots_With_Ride/
 *.png
 *.jpg
