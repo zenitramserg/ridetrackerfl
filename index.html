@@ -1345,9 +1345,11 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
       wind: wx ? wx.wind : f[R.wind],
       weather: f[R.weather] || '',
       mapsUrl: f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]),
-      igUrl:   orgRec[O.igUrl]   || f[R.instagram] || '',
-      siteUrl: orgRec[O.website] || f[R.website]   || '',
-      strava:  orgRec[O.strava]  || f[R.strava]    || '',
+      igUrl:      orgRec[O.igUrl]   || f[R.instagram] || '',
+      siteUrl:    orgRec[O.website] || f[R.website]   || '',
+      strava:     orgRec[O.strava]  || f[R.strava]    || '',
+      recordId:   r.id,
+      riderCount: f[R.riderCount] || 0,
     });
   });
 
@@ -1394,6 +1396,21 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
             item.siteUrl ? `<a href="${escHtml(item.siteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
           ].filter(Boolean).join('');
           return links ? `<div class="featured-detail-row" style="margin-top:4px">${links}</div>` : '';
+        })()}
+        ${(() => {
+          if (!item.recordId) return '';
+          const joined = localStorage.getItem(`rsvp_${item.recordId}`) === '1';
+          const count  = item.riderCount;
+          const label  = joined
+            ? `🚴 ${count} riding ✓`
+            : count > 0 ? `🚴 ${count} riding` : `🚴 I'm Riding`;
+          return `<div style="margin-top:6px">
+            <button class="im-riding-btn${joined ? ' joined' : ''}"
+                    data-record-id="${escHtml(item.recordId)}"
+                    data-count="${count}"
+                    onclick="event.stopPropagation()"
+                    ${joined ? 'disabled' : ''}>${label}</button>
+          </div>`;
         })()}
         <div class="featured-details">
           ${locStr}${paceStr}${wxStr}
