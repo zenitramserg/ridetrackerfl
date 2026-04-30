@@ -1380,7 +1380,7 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
       ? `<div class="featured-detail-row"><span class="featured-detail-label">Weather</span> ${wxDisplay(null, item.rain, item.wind)}</div>` : '';
 
     return `
-      <div class="featured-item" onclick="this.classList.toggle('expanded')">
+      <div class="featured-item" onclick="if(!event.target.closest('button,a')) this.classList.toggle('expanded')">
         <div class="featured-item-header">
           <div>
             <div class="featured-name">${escHtml(item.name)}</div>
@@ -1402,13 +1402,12 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
           const joined = localStorage.getItem(`rsvp_${item.recordId}`) === '1';
           const count  = item.riderCount;
           const label  = joined
-            ? `🚴 ${count} riding ✓`
-            : count > 0 ? `🚴 ${count} riding` : `🚴 I'm Riding`;
+            ? `✅ ${count} riding`
+            : count > 0 ? `✅ ${count} riding` : `✅ I'm Riding`;
           return `<div style="margin-top:6px">
             <button class="im-riding-btn${joined ? ' joined' : ''}"
                     data-record-id="${escHtml(item.recordId)}"
                     data-count="${count}"
-                    onclick="event.stopPropagation()"
                     ${joined ? 'disabled' : ''}>${label}</button>
           </div>`;
         })()}
@@ -1594,8 +1593,8 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
           const count   = f[R.riderCount] || 0;
           const joined  = recordId && localStorage.getItem(`rsvp_${recordId}`) === '1';
           const label   = joined
-            ? `🚴 ${count} riding ✓`
-            : count > 0 ? `🚴 ${count} riding` : `🚴 I'm Riding`;
+            ? `✅ ${count} riding`
+            : count > 0 ? `✅ ${count} riding` : `✅ I'm Riding`;
           return `<button class="im-riding-btn${joined ? ' joined' : ''}"
                     data-record-id="${escHtml(recordId)}"
                     data-count="${count}"
@@ -2076,7 +2075,7 @@ document.addEventListener('click', function (e) {
     const prevCount  = parseInt(rsvpBtn.dataset.count, 10) || 0;
     const newCount   = prevCount + 1;
     rsvpBtn.dataset.count = newCount;
-    rsvpBtn.textContent   = `🚴 ${newCount} riding ✓`;
+    rsvpBtn.textContent   = `✅ ${newCount} riding`;
     rsvpBtn.classList.add('joined');
     localStorage.setItem(`rsvp_${recordId}`, '1');
 
@@ -2089,7 +2088,7 @@ document.addEventListener('click', function (e) {
     .then(r => r.json())
     .then(d => {
       if (d.count !== undefined) {
-        rsvpBtn.textContent   = `🚴 ${d.count} riding ✓`;
+        rsvpBtn.textContent   = `✅ ${d.count} riding`;
         rsvpBtn.dataset.count = d.count;
       }
     })
