@@ -69,7 +69,7 @@ FIELD_MAP = {
 }
 
 # Instagram Screenshot attachment field — uploaded separately after record creation
-SCREENSHOT_FIELD_ID = "fldJH78crXSiHvsR"
+SCREENSHOT_FIELD_ID = "fldjJH78crXSiHvsR"
 
 # Account handle → Instagram profile URL
 INSTAGRAM_URLS = {
@@ -84,7 +84,6 @@ INSTAGRAM_URLS = {
     "letourdeweston":    "https://www.instagram.com/letourdeweston/",
 }
 
-# Confidence float → Airtable label
 def _upload_screenshot(api_key: str, record_id: str, screenshot_path: str) -> bool:
     """
     Upload a local screenshot file as an attachment to the Instagram Screenshot field.
@@ -139,6 +138,7 @@ def _upload_screenshot(api_key: str, record_id: str, screenshot_path: str) -> bo
         return False
 
 
+# Confidence float → Airtable label
 def _confidence_label(conf: float) -> str:
     if conf is None:
         return "Low"
