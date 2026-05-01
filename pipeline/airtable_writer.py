@@ -271,9 +271,66 @@ def build_airtable_record(ride: dict) -> dict:
 # Direct Airtable push via pyairtable (used by run_scan.py for automated runs)
 # =============================================================================
 
+# Fields safe to overwrite on an existing (matched) Airtable record.
+# Never touch: title, organized_by, start_location, weekday, start_time,
+#              display_on_site, is_primary_listing — those are canonical/manual.
+_SAFE_UPDATE_KEYS = [
+    "date", "status", "source_accounts", "last_verified_at",
+    "weather_summary", "rain_probability", "wind_speed",
+    "confidence_label", "source", "needs_review",
+]
+
+
+def _ride_match_key(ride: dict) -> tuple:
+    """Normalized lookup key: (organizer, weekday, time)."""
+    org     = (ride.get("organized_by") or "").lower().strip()
+    weekday = (ride.get("weekday") or "").lower().strip()
+    time_   = (ride.get("start_time") or "").lower().strip()
+    return (org, weekday, time_)
+
+
+def _build_airtable_index(table) -> dict:
+    """
+    Fetch all existing Rides records and build a lookup dict:
+        (organizer, weekday, time) → airtable_record_id
+
+    One API call total (pyairtable paginates automatically).
+    Returns an empty dict on error — safe fallback means new rides are
+    created as usual rather than silently dropped.
+    """
+    index = {}
+    try:
+        records = table.all(fields=[
+            FIELD_MAP["organized_by"],
+            FIELD_MAP["weekday"],
+            FIELD_MAP["start_time"],
+        ])
+        for rec in records:
+            f = rec.get("fields", {})
+            org     = (f.get(FIELD_MAP["organized_by"]) or "").lower().strip()
+            weekday = (f.get(FIELD_MAP["weekday"]) or "").lower().strip()
+            time_   = (f.get(FIELD_MAP["start_time"]) or "").lower().strip()
+            key = (org, weekday, time_)
+            if all(key):
+                index[key] = rec["id"]
+        print(f"[airtable] Indexed {len(index)} existing Airtable record(s).")
+    except Exception as e:
+        print(f"[airtable] ⚠ Could not build Airtable index ({e}) — will create new records as fallback.")
+    return index
+
+
 def push_new_rides(dry_run: bool = False) -> int:
     """
     Push any rides in rides_database.json that don't yet have an airtable_record_id.
+
+    Before creating, checks whether a matching record already exists in Airtable
+    using a (organizer, weekday, time) key — catches recurring rides that would
+    otherwise create a duplicate record each week.
+
+    - Match found  → link the local DB ride to the existing record and PATCH
+                     only safe week-to-week fields (date, weather, status, etc.).
+                     Never overwrites title, location, display_on_site, etc.
+    - No match     → create a new record with display_on_site=True.
 
     Uses pyairtable for direct API access — no MCP needed.
 
@@ -281,7 +338,7 @@ def push_new_rides(dry_run: bool = False) -> int:
         pip install pyairtable
         AIRTABLE_API_KEY environment variable (Personal Access Token from airtable.com/create/tokens)
 
-    Returns the number of records pushed.
+    Returns the number of NEW records created (linked records are not counted).
     """
     import os
     import json
@@ -306,52 +363,88 @@ def push_new_rides(dry_run: bool = False) -> int:
     with open(db_path, encoding="utf-8") as f:
         db = json.load(f)
 
-    # Only push rides that haven't been synced yet
+    # Only process rides that haven't been synced yet
     pending = [r for r in db if not r.get("airtable_record_id")]
     if not pending:
         print("[airtable] ✓ All rides already synced — nothing to push.")
         return 0
 
-    print(f"[airtable] Pushing {len(pending)} new ride(s)...")
+    print(f"[airtable] {len(pending)} ride(s) pending sync...")
 
     if dry_run:
         for ride in pending:
-            print(f"  [dry-run] Would push: {ride.get('title', '?')}")
+            print(f"  [dry-run] Would process: {ride.get('title', '?')}")
         return 0
 
     api   = Api(api_key)
     table = api.table(BASE_ID, TABLE_ID)
-    pushed = 0
+
+    # Build index of all existing Airtable records — 1 API call
+    airtable_index = _build_airtable_index(table)
+
+    created = 0
+    linked  = 0
 
     for ride in pending:
-        fields = build_airtable_record(ride)
-        # New records are visible on the website by default.
-        # Uncheck manually in Airtable to hide a specific ride without deleting it.
-        fields[FIELD_MAP["display_on_site"]] = True
-        try:
-            record = table.create(fields)
-            record_id = record.get("id")
-            if not record_id:
-                raise ValueError(f"Airtable response missing 'id' field: {record}")
-            ride["airtable_record_id"] = record_id
-            print(f"  ✓ Created {record_id}: {ride.get('title', '?')}")
-            pushed += 1
+        match_key = _ride_match_key(ride)
+        existing_record_id = airtable_index.get(match_key) if all(match_key) else None
 
-            # Upload screenshot attachment if available
-            screenshot_path = ride.get("screenshot_path", "")
-            if screenshot_path:
-                _upload_screenshot(api_key, record_id, screenshot_path)
+        if existing_record_id:
+            # ── Match found: link + patch safe fields ─────────────────────────
+            ride["airtable_record_id"] = existing_record_id
 
-        except Exception as e:
-            print(f"  ✗ Failed to push '{ride.get('title', '?')}': {e}")
+            all_fields = build_airtable_record(ride)
+            patch_fields = {
+                FIELD_MAP[key]: all_fields[FIELD_MAP[key]]
+                for key in _SAFE_UPDATE_KEYS
+                if key in FIELD_MAP
+                and FIELD_MAP[key] in all_fields
+                and all_fields[FIELD_MAP[key]] is not None
+            }
 
-    # Save record IDs back to the local database
-    if pushed:
+            try:
+                if patch_fields:
+                    table.update(existing_record_id, patch_fields)
+                print(f"  ↻ Linked {existing_record_id}: {ride.get('title', '?')} (existing record updated)")
+                linked += 1
+            except Exception as e:
+                print(f"  ✗ Failed to patch '{ride.get('title', '?')}' ({existing_record_id}): {e}")
+                ride.pop("airtable_record_id", None)  # Don't save a bad link
+
+        else:
+            # ── No match: create new record ───────────────────────────────────
+            fields = build_airtable_record(ride)
+            # New records are visible on the website by default.
+            # Uncheck manually in Airtable to hide a ride without deleting it.
+            fields[FIELD_MAP["display_on_site"]] = True
+            try:
+                record = table.create(fields)
+                record_id = record.get("id")
+                if not record_id:
+                    raise ValueError(f"Airtable response missing 'id' field: {record}")
+                ride["airtable_record_id"] = record_id
+                # Add to index so later rides in the same batch don't create a second duplicate
+                if all(match_key):
+                    airtable_index[match_key] = record_id
+                print(f"  ✓ Created {record_id}: {ride.get('title', '?')}")
+                created += 1
+
+                # Upload screenshot attachment if available
+                screenshot_path = ride.get("screenshot_path", "")
+                if screenshot_path:
+                    _upload_screenshot(api_key, record_id, screenshot_path)
+
+            except Exception as e:
+                print(f"  ✗ Failed to create '{ride.get('title', '?')}': {e}")
+
+    # Save record IDs back to the local database (both new + linked)
+    resolved = created + linked
+    if resolved:
         with open(db_path, "w", encoding="utf-8") as f:
             json.dump(db, f, indent=2, ensure_ascii=False)
-        print(f"[airtable] ✓ Pushed {pushed} record(s) and saved record IDs to DB.")
+        print(f"[airtable] ✓ Done — {created} created, {linked} linked to existing records.")
 
-    return pushed
+    return created
 
 
 def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = False) -> int:

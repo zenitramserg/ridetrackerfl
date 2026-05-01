@@ -76,7 +76,14 @@ def is_valid_group_ride(ride: dict) -> bool:
     """
     Gate check: returns True only for genuine group ride flyers.
     Rejects: promos, performance stats, noise, and incomplete records.
-    Requires at minimum: start_time + (distance OR pace OR start_location).
+
+    Minimum required fields:
+      - start_time   (when the ride leaves)
+      - start_location (where it meets)
+      - weekday OR explicit date (when in the week / calendar)
+
+    All three must be present. Rides missing any one are rejected — they
+    would show on the website with missing info and confuse users.
     """
     raw = ride.get("raw_visible_text", "") or ""
 
@@ -93,19 +100,8 @@ def is_valid_group_ride(ride: dict) -> bool:
     if float(ride.get("confidence", 0)) < 0.5:
         return False
 
-    has_time     = bool(ride.get("start_time"))
-    has_distance = bool(ride.get("distance"))
-    has_pace     = bool(ride.get("pace"))
-    has_location = bool(ride.get("start_location"))
-    confidence   = float(ride.get("confidence", 0))
+    has_time       = bool(ride.get("start_time"))
+    has_location   = bool(ride.get("start_location"))
+    has_day_anchor = bool(ride.get("weekday")) or bool(ride.get("date"))
 
-    # Standard path: time + at least one other detail
-    if has_time and (has_distance or has_pace or has_location):
-        return True
-
-    # Relaxed path: high-confidence detection with a clear location but no explicit time
-    # Covers event announcements and recurring rides where time is community-known
-    if has_location and confidence >= 0.70:
-        return True
-
-    return False
+    return has_time and has_location and has_day_anchor
