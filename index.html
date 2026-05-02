@@ -428,7 +428,22 @@
       font-size: 16px;
       font-weight: 500;
       color: #0d0d0d;
+      margin-bottom: 2px;
+    }
+    .ride-organizer-name {
+      font-size: 12px;
+      color: #a3a3a3;
       margin-bottom: 5px;
+    }
+    .timeline-ride-title {
+      font-size: 12px;
+      color: #737373;
+      margin-top: 1px;
+    }
+    .scan-status-text {
+      font-size: 11px;
+      color: #a3a3a3;
+      white-space: nowrap;
     }
     .ride-meta {
       display: flex;
@@ -890,6 +905,7 @@
         <span id="current-temp">☀️ --°F</span>
         <span id="current-wind">💨 -- mph</span>
         <span id="current-rain">💧 --%</span>
+        <span id="scan-status-text" class="scan-status-text"></span>
       </div>
     </div>
     <div class="featured-events">
@@ -1079,6 +1095,7 @@ const R = {
   isPrimary:     'Is Primary Listing',
   needsReview:   'Needs Review',
   riderCount:    'Rider Count',          // incremented by rsvp Netlify function
+  lastChecked:   'Last Checked At',      // ISO datetime — set by scraper each scan
   // Future fields (show gracefully when added to Airtable):
   instagram: 'Organizer Instagram Profile',
   strava:    'Strava URL',
@@ -1491,6 +1508,7 @@ function renderTimeline(rideRecords, weatherMap) {
           <span class="timeline-organizer">${escHtml(f[R.org] || f[R.name] || '—')}</span>
           ${tlStatusBadge(f[R.status])}
         </div>
+        ${f[R.name] ? `<div class="timeline-ride-title">${escHtml(f[R.name])}</div>` : ''}
         <div class="timeline-info">${infoParts.join(' · ')}</div>
         <div class="expand-hint">Tap for details ▾</div>
         <div class="timeline-details">
@@ -1553,6 +1571,7 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
           : `<div class="avatar">${escHtml(initials(orgName))}</div>`}
         <div class="ride-title-block">
           <h3>${escHtml(f[R.name] || 'Unnamed Ride')}</h3>
+          ${orgName ? `<div class="ride-organizer-name">${escHtml(orgName)}</div>` : ''}
           <div class="ride-meta">
             ${statusBadge(f[R.status])}
             ${dayLabel ? `<span>${dayLabel}</span>` : ''}
@@ -1939,6 +1958,35 @@ function hasPassedMidnight(f) {
 }
 
 /**
+ * Show "Updated Xh ago" in the header based on the most recent
+ * Last Checked At timestamp across all fetched ride records.
+ */
+function updateScanStatus(rides) {
+  const el = document.getElementById('scan-status-text');
+  if (!el) return;
+  const timestamps = rides
+    .map(r => r.fields[R.lastChecked])
+    .filter(Boolean)
+    .map(ts => new Date(ts).getTime())
+    .filter(t => !isNaN(t));
+  if (!timestamps.length) return;
+  const latest = new Date(Math.max(...timestamps));
+  const diffMs = Date.now() - latest.getTime();
+  const diffH  = diffMs / (1000 * 60 * 60);
+  let label;
+  if (diffH < 1) {
+    const diffM = Math.round(diffMs / 60000);
+    label = diffM <= 1 ? 'just now' : `${diffM}m ago`;
+  } else if (diffH < 24) {
+    label = `${Math.round(diffH)}h ago`;
+  } else {
+    const diffD = Math.round(diffH / 24);
+    label = `${diffD}d ago`;
+  }
+  el.textContent = `· Updated ${label}`;
+}
+
+/**
  * Dev helper: logs any rides with duplicates to the console.
  * Call after allActiveRides is populated to spot merge candidates.
  */
@@ -1970,7 +2018,7 @@ async function init() {
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
       R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
-      R.instagram, R.riderCount,
+      R.instagram, R.riderCount, R.lastChecked,
     ];
 
     const orgFields = [
@@ -1997,6 +2045,9 @@ async function init() {
     // Store globally for cross-record duplicate detection
     allActiveRides = activeRides;
     logDuplicates();
+
+    // Show last scan timestamp in header
+    updateScanStatus(rides);
 
     // Apply visibility filter before rendering
     const visibleRides = activeRides.filter(r => shouldShowRide(r));
