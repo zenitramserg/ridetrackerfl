@@ -187,10 +187,13 @@ def build_airtable_record(ride: dict) -> dict:
     if sources:
         fields[FIELD_MAP["source_accounts"]] = "|".join(s for s in sources if s)
 
-    # Day of Week (singleSelect — must match option name exactly)
+    # Day of Week (singleSelect — must match option name exactly, single value only)
     weekday = ride.get("weekday", "")
     if weekday:
-        fields[FIELD_MAP["weekday"]] = weekday.capitalize()
+        # Guard against multi-day strings like "Tuesday, thursday" or "Tue/Thu"
+        weekday = weekday.split(",")[0].split("/")[0].strip()
+        if weekday:
+            fields[FIELD_MAP["weekday"]] = weekday.capitalize()
 
     # Time
     if ride.get("start_time"):
@@ -261,8 +264,9 @@ def build_airtable_record(ride: dict) -> dict:
     if ride.get("wind_speed") is not None:
         fields[FIELD_MAP["wind_speed"]] = ride["wind_speed"]
 
-    # Remove any None-keyed fields (unmapped)
-    fields = {k: v for k, v in fields.items() if k is not None}
+    # Remove None-keyed fields (unmapped) and empty-string values
+    # (Airtable rejects "" for singleSelect fields with a 422 error)
+    fields = {k: v for k, v in fields.items() if k is not None and v != ""}
 
     return fields
 
@@ -297,19 +301,23 @@ def _build_airtable_index(table) -> dict:
     One API call total (pyairtable paginates automatically).
     Returns an empty dict on error — safe fallback means new rides are
     created as usual rather than silently dropped.
+
+    NOTE: Airtable REST API returns fields keyed by field NAME, not field ID.
+    We must request and look up by name, not by ID.
     """
+    # Field names (not IDs) — Airtable returns data keyed by name
+    F_ORGANIZER = "Organizer"
+    F_WEEKDAY   = "Day of Week"
+    F_TIME      = "Time"
+
     index = {}
     try:
-        records = table.all(fields=[
-            FIELD_MAP["organized_by"],
-            FIELD_MAP["weekday"],
-            FIELD_MAP["start_time"],
-        ])
+        records = table.all(fields=[F_ORGANIZER, F_WEEKDAY, F_TIME])
         for rec in records:
             f = rec.get("fields", {})
-            org     = (f.get(FIELD_MAP["organized_by"]) or "").lower().strip()
-            weekday = (f.get(FIELD_MAP["weekday"]) or "").lower().strip()
-            time_   = (f.get(FIELD_MAP["start_time"]) or "").lower().strip()
+            org     = (f.get(F_ORGANIZER) or "").lower().strip()
+            weekday = (f.get(F_WEEKDAY)   or "").lower().strip()
+            time_   = (f.get(F_TIME)      or "").lower().strip()
             key = (org, weekday, time_)
             if all(key):
                 index[key] = rec["id"]
