@@ -60,8 +60,9 @@
       "handle": "letourdeweston",
       "display_name": "Le Tour de Weston",
       "type": "event",
-      "active": true,
-      "max_slides": 24
+      "active": false,
+      "max_slides": 24,
+      "inactive_reason": "Annual event — re-activate ~1 month before next edition"
     },
     {
       "handle": "weston_flyers",
