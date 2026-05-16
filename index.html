@@ -1420,7 +1420,7 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
           const count  = item.riderCount;
           const label  = joined
             ? `✅ ${count} riding`
-            : count > 0 ? `✅ ${count} riding` : `✅ I'm Riding`;
+            : `✅ I'm Riding${count > 0 ? ` (${count})` : ''}`;
           return `<div style="margin-top:6px">
             <button class="im-riding-btn${joined ? ' joined' : ''}"
                     data-record-id="${escHtml(item.recordId)}"
@@ -1613,7 +1613,7 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
           const joined  = recordId && localStorage.getItem(`rsvp_${recordId}`) === '1';
           const label   = joined
             ? `✅ ${count} riding`
-            : count > 0 ? `✅ ${count} riding` : `✅ I'm Riding`;
+            : `✅ I'm Riding${count > 0 ? ` (${count})` : ''}`;
           return `<button class="im-riding-btn${joined ? ' joined' : ''}"
                     data-record-id="${escHtml(recordId)}"
                     data-count="${count}"
