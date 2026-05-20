@@ -133,7 +133,7 @@
     .featured-name { font-weight: 500; }
     .featured-org  { font-size: 11px; color: #a3a3a3; margin-top: 1px; }
     .featured-meta { color: #888888; font-size: 12px; margin-top: 2px; }
-    .featured-expand-hint { font-size: 10px; color: #555; flex-shrink: 0; margin-top: 2px; }
+    .featured-expand-hint { font-size: 10px; color: #555; flex-shrink: 0; margin-top: 2px; transition: transform 0.2s; }
     .featured-item.expanded .featured-expand-hint { display: none; }
     .featured-details {
       display: none;
@@ -150,6 +150,16 @@
     .featured-detail-row { margin-bottom: 3px; }
     .featured-detail-label { color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
     .featured-empty { font-size: 13px; color: #888888; font-style: italic; }
+    /* Mobile: collapse featured cards — show only name + date by default */
+    @media (max-width: 600px) {
+      .featured-org,
+      .featured-social-row,
+      .featured-rsvp-row { display: none; }
+      .featured-item.expanded .featured-org,
+      .featured-item.expanded .featured-social-row,
+      .featured-item.expanded .featured-rsvp-row { display: block; }
+      .featured-item.expanded .featured-expand-hint { display: inline-block !important; transform: rotate(180deg); }
+    }
 
     /* ── TABS BAR ───────────────────────────────── */
     .tabs-bar {
@@ -1412,7 +1422,7 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
             item.strava  ? `<a href="${escHtml(item.strava)}"  class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
             item.siteUrl ? `<a href="${escHtml(item.siteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
           ].filter(Boolean).join('');
-          return links ? `<div class="featured-detail-row" style="margin-top:4px">${links}</div>` : '';
+          return links ? `<div class="featured-detail-row featured-social-row" style="margin-top:4px">${links}</div>` : '';
         })()}
         ${(() => {
           if (!item.recordId) return '';
@@ -1421,7 +1431,7 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
           const label  = joined
             ? `✅ ${count} riding`
             : `✅ I'm Riding${count > 0 ? ` (${count})` : ''}`;
-          return `<div style="margin-top:6px">
+          return `<div class="featured-rsvp-row" style="margin-top:6px">
             <button class="im-riding-btn${joined ? ' joined' : ''}"
                     data-record-id="${escHtml(item.recordId)}"
                     data-count="${count}"
