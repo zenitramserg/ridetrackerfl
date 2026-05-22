@@ -264,9 +264,12 @@ def build_airtable_record(ride: dict) -> dict:
     if ride.get("wind_speed") is not None:
         fields[FIELD_MAP["wind_speed"]] = ride["wind_speed"]
 
-    # Remove None-keyed fields (unmapped) and empty-string values
-    # (Airtable rejects "" for singleSelect fields with a 422 error)
-    fields = {k: v for k, v in fields.items() if k is not None and v != ""}
+    # Remove None-keyed fields (unmapped), empty-string values, and the
+    # literal sentinel "empty string" that the vision model sometimes returns
+    # instead of null for missing fields — all three cause 422 errors on
+    # Airtable singleSelect fields.
+    _EMPTY = {"", "empty string"}
+    fields = {k: v for k, v in fields.items() if k is not None and v not in _EMPTY}
 
     return fields
 

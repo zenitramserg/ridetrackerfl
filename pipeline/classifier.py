@@ -100,8 +100,13 @@ def is_valid_group_ride(ride: dict) -> bool:
     if float(ride.get("confidence", 0)) < 0.5:
         return False
 
-    has_time       = bool(ride.get("start_time"))
-    has_location   = bool(ride.get("start_location"))
-    has_day_anchor = bool(ride.get("weekday")) or bool(ride.get("date"))
+    # Treat the literal sentinel "empty string" (returned by the vision model
+    # for missing fields) as falsy — same as None or "".
+    def _present(val) -> bool:
+        return bool(val) and str(val).strip().lower() != "empty string"
+
+    has_time       = _present(ride.get("start_time"))
+    has_location   = _present(ride.get("start_location"))
+    has_day_anchor = _present(ride.get("weekday")) or _present(ride.get("date"))
 
     return has_time and has_location and has_day_anchor
