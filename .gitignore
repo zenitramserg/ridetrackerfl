@@ -14,4 +14,5 @@ Sample_Screenshots_With_Ride/
 config/secrets.env
 *-backup-*.json
 *-backup-*.html
+*.bak-*
 ~$*
