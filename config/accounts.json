@@ -25,8 +25,9 @@
       "handle": "revoltcyclery",
       "display_name": "Revolt Cyclery",
       "type": "shop",
-      "active": true,
-      "max_slides": 24
+      "active": false,
+      "max_slides": 24,
+      "inactive_reason": "Per organizer request — paused pending sync on marketing guidelines"
     },
     {
       "handle": "fpbikeshop",
