@@ -84,7 +84,9 @@ def _merge_rides(existing: dict, incoming: dict) -> dict:
             merged[field] = new
 
     # Prefer higher confidence float
-    if float(incoming.get("confidence", 0)) > float(existing.get("confidence", 0)):
+    # Use `or 0` instead of default=0 so that explicit None/null values
+    # (returned by the vision model for missing fields) don't raise TypeError.
+    if float(incoming.get("confidence") or 0) > float(existing.get("confidence") or 0):
         merged["confidence"] = incoming["confidence"]
 
     # Keep earliest first_seen, latest last_updated
