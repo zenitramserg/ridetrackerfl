@@ -169,6 +169,18 @@ def build_airtable_record(ride: dict) -> dict:
     Convert a ride dict (from rides_database.json) to an Airtable fields dict.
     Only includes fields that have a known field ID and non-empty values.
     """
+    # Normalize sentinel strings the Vision API returns instead of null.
+    # Must happen before any field processing so that guards like
+    # `if ride.get("weekday"):` work correctly.  Without this,
+    # "empty string".capitalize() → "Empty string" bypasses the
+    # post-build _EMPTY filter (case-sensitive) and causes a 422
+    # INVALID_MULTIPLE_CHOICE_OPTIONS error on singleSelect fields.
+    _SENTINELS = {"empty string", "empty_string"}
+    ride = {
+        k: (None if isinstance(v, str) and v.strip().lower() in _SENTINELS else v)
+        for k, v in ride.items()
+    }
+
     fields = {}
 
     # Ride Name (primary field — always set)
