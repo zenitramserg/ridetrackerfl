@@ -577,6 +577,7 @@ def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = Fal
             updated += 1
         except Exception as e:
             print(f"  ✗ Failed to update {record_id} '{ride.get('title', '?')}': {e}")
+            ride.pop("airtable_record_id", None)  # Clear stale ID so next run retries cleanly
 
     return updated
 

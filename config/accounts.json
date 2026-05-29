@@ -78,6 +78,13 @@
       "type": "group",
       "active": true,
       "max_slides": 24
+    },
+    {
+      "handle": "alligators.cycling",
+      "display_name": "Alligators Cycling",
+      "type": "shop",
+      "active": true,
+      "max_slides": 24
     }
   ]
 }

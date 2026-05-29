@@ -31,17 +31,24 @@ OLLAMA_MODEL  = "llama3.2-vision"   # fallback: "llava"
 
 # ── Extraction prompt ─────────────────────────────────────────────────────────
 
-EXTRACTION_PROMPT = """You are analyzing a screenshot of an Instagram story from a cycling account in the Weston, FL area.
+def _build_extraction_prompt() -> str:
+    """Build the extraction prompt with today's date injected so the model
+    never guesses the wrong year when a slide omits it."""
+    from datetime import datetime
+    today = datetime.now().strftime("%A %B %d, %Y")  # e.g. "Friday May 29, 2026"
+    return f"""You are analyzing a screenshot of an Instagram story from a cycling account in the Weston, FL area.
+
+Today's date is {today}. Use this to resolve any ambiguous dates — if a slide shows "Saturday May 30" with no year, the year is {datetime.now().year}.
 
 Your job: determine if this story slide is announcing an upcoming group cycling ride, then extract the key details.
 
 Output ONLY valid JSON with this exact structure — no markdown, no commentary:
-{
+{{
   "is_ride_post": true or false,
   "title": "descriptive ride name or null if unknown",
   "ride_type": "weekly_ride | ride_event | unknown",
   "weekday": "Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday or null if unknown",
-  "date": "full date string like 'Saturday March 28, 2026' or null if unknown",
+  "date": "full date string like 'Saturday March 28, {datetime.now().year}' or null if unknown",
   "start_time": "HH:MM AM/PM format or null if unknown",
   "start_location": "venue or place name or null if unknown",
   "address_note": "street address if visible or null if unknown",
@@ -51,7 +58,7 @@ Output ONLY valid JSON with this exact structure — no markdown, no commentary:
   "confidence": a number from 0.0 to 1.0,
   "raw_visible_text": "all text visible in the image, transcribed exactly",
   "image_description": "one sentence describing what the image shows"
-}
+}}
 
 Classification rules:
 - is_ride_post = false for: product promotions, gear sales, performance activity stats,
@@ -65,6 +72,9 @@ Classification rules:
 - Some accounts post in Spanish — translate day names to English (lunes=Monday, martes=Tuesday,
   miércoles=Wednesday, jueves=Thursday, viernes=Friday, sábado=Saturday, domingo=Sunday)
   and treat "rodada", "salida", "millas" as ride indicators"""
+
+
+EXTRACTION_PROMPT = _build_extraction_prompt()  # built once at import time
 
 
 # ── Image encoding ────────────────────────────────────────────────────────────
