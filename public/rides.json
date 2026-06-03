@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T20:51:10.530990+00:00",
+  "generated_at": "2026-06-03T20:54:31.850022+00:00",
   "rides": {
     "records": [
       {
@@ -194,7 +194,7 @@
           "Distance": "40",
           "Ride Name": "Thursday Tempo Ride",
           "Day of Week": "Thursday",
-          "Status": "canceled",
+          "Status": "confirmed",
           "Ride Date": "2026-06-04",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
@@ -409,6 +409,22 @@
           "Ride Date": "2026-06-01",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
+        }
+      },
+      {
+        "id": "recaE1xja2682w4yI",
+        "createdTime": "2026-06-03T20:54:09.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "6:30 PM",
+          "Location": "Weston Branch Library",
+          "Distance": "35",
+          "Ride Name": "Team Galiz Wednesday Evening Ride",
+          "Day of Week": "Wednesday",
+          "Status": "canceled",
+          "Ride Date": "2026-06-03",
+          "Organizer": "Team Galiz",
+          "Notes": "Cancelled today due to rain."
         }
       },
       {
