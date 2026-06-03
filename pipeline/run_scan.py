@@ -166,6 +166,31 @@ def main():
     # ── Summary ───────────────────────────────────────────────────────────────
     _print_summary(summary, scan_dir)
 
+    # ── Phase 6: Sync to site ─────────────────────────────────────────────────
+    _banner("Phase 6 · Sync to Site")
+    if not args.dry_run:
+        try:
+            from pipeline.sync_to_site import generate_rides_json, write_json, git_push
+            import os
+            from pathlib import Path as _Path
+
+            token = os.environ.get("AIRTABLE_API_KEY")
+            if not token:
+                secrets_path = _Path(__file__).parent.parent / "config" / "secrets.env"
+                for line in secrets_path.read_text().splitlines():
+                    if line.strip().startswith("AIRTABLE_API_KEY="):
+                        token = line.strip().split("=", 1)[1]
+                        break
+
+            payload  = generate_rides_json(token)
+            write_json(payload)
+            git_push(_Path(__file__).parent.parent)
+        except Exception as e:
+            print(f"[sync] ⚠ Site sync failed: {e}")
+            print("[sync] Site continues serving previous rides.json — no outage.")
+    else:
+        print("[sync] Dry run — skipping site sync.")
+
 
 def _cleanup_non_ride_screenshots(scan_dir: Path, ride_candidates: list[dict]):
     """
