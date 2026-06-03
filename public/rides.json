@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T20:01:38.861197+00:00",
+  "generated_at": "2026-06-03T20:44:38.121848+00:00",
   "rides": {
     "records": [
       {
@@ -236,7 +236,7 @@
           "Pace": "A: 26+ mph / B: 24-26 mph",
           "Ride Name": "Unicosta Thursday Ride",
           "Day of Week": "Thursday",
-          "Status": "planned",
+          "Status": "canceled",
           "Ride Date": "2026-06-04",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
