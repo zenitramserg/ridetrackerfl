@@ -1,0 +1,1036 @@
+{
+  "generated_at": "2026-06-03T20:01:38.861197+00:00",
+  "rides": {
+    "records": [
+      {
+        "id": "rec0BQsCUSAC3RENg",
+        "createdTime": "2026-04-14T20:19:24.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:00 AM",
+          "Wind Speed": 1,
+          "Rain Probability": 0.18,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-05-27T15:12:30.000Z",
+          "Weather Summary": "Dry (18% rain), light winds 1 mph\"",
+          "Pace": "22/23 mph",
+          "Distance": "30",
+          "Ride Name": "Wednesday Favorite Ride",
+          "Day of Week": "Wednesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-03",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
+        }
+      },
+      {
+        "id": "rec0sFQ5vHfH9d58I",
+        "createdTime": "2026-05-29T01:08:19.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "6:15 AM",
+          "Location": "Robert Is Here — 19200 SW 344th St, Homestead, FL",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Featured": true,
+          "Pace": "20-22 mph",
+          "Distance": "75",
+          "Ride Name": "MBO Robert Is Here Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-30",
+          "Address Note": "1100 SW 2nd Ave, Miami, FL 33130",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Special farewell ride for Jhon Negron heading to Puerto Rico. Destination ride to Robert Is Here fruit stand, Homestead. Meeting point: 1100 SW 2nd Ave, Miami — note this ride starts in Miami, not Weston."
+        }
+      },
+      {
+        "id": "rec59NuIqnIv6JFzf",
+        "createdTime": "2026-05-02T16:59:35.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "05:50 AM",
+          "Wind Speed": 1.3,
+          "Rain Probability": 0,
+          "Location": "1340 NE 155th St, North Miami Beach, FL 33162",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-05-02T12:59:31.000Z",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Ride Name": "MBO Saturday Ride to West Palm Beach and Back on the Train",
+          "Day of Week": "Saturday",
+          "Status": "past",
+          "Ride Date": "2026-05-02",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Address: 1340 NE 155th St, North Miami Beach, FL 33162\nPace: 20-23 mph\nDistance: 80 mi\n---\nAn Instagram story slide announcing an MBO Ten Cycling group ride to West Palm Beach on May 2, 2026, featuring a flyer with cyclists riding alongside a train, with detailed ride logistics including time, pace, distance, and meeting address."
+        }
+      },
+      {
+        "id": "rec5pXok7XiOHyShs",
+        "createdTime": "2026-03-27T14:43:19.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:00 AM",
+          "Wind Speed": 5,
+          "Rain Probability": 0.15,
+          "Location": "Alex's Bicycles",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Pace": "A & B / C Groups",
+          "Distance": "40 / 30",
+          "Ride Name": "Ride84",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-06",
+          "Address Note": "16098 W State Rd 84, Weston",
+          "Organizer": "Ride84",
+          "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
+        }
+      },
+      {
+        "id": "rec5zqHIC90jmqFmi",
+        "createdTime": "2026-05-29T22:07:39.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 2.8,
+          "Rain Probability": 0.05,
+          "Location": "Griffin & Flamingo",
+          "Weather Summary": "Dry (5% rain), light winds 3 mph",
+          "Distance": "40",
+          "Ride Name": "Team Galiz Sunday Recovery Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-31",
+          "Organizer": "Team Galiz",
+          "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
+        }
+      },
+      {
+        "id": "rec9tOGet7nqICQib",
+        "createdTime": "2026-05-29T22:07:39.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 7,
+          "Rain Probability": 0,
+          "Location": "Griffin & Flamingo",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Pace": "20-22 mph (B) / 23+ mph (A)",
+          "Distance": "50",
+          "Ride Name": "Team Galiz Saturday Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-06",
+          "Organizer": "Team Galiz",
+          "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
+        }
+      },
+      {
+        "id": "recDJ1wXrKxpGMj9f",
+        "createdTime": "2026-03-28T23:22:32.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:00 AM",
+          "Wind Speed": 2.8,
+          "Rain Probability": 0.05,
+          "Location": "Weston Town Center - Behind Bank of America",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-03-28T19:22:30.000Z",
+          "Weather Summary": "Dry (5% rain), light winds 3 mph",
+          "Pace": "22 /. 24 mph",
+          "Distance": "40",
+          "Ride Name": "Sunday Chilling Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-31",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details.",
+          "Is Primary Listing": true
+        }
+      },
+      {
+        "id": "recDczKYsPMEwd0R7",
+        "createdTime": "2026-04-07T02:47:41.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:30 PM",
+          "Wind Speed": 1,
+          "Rain Probability": 0.18,
+          "Location": "Origamy Gelato, Weston",
+          "Organizer Instagram Profile": "https://www.instagram.com/teamrecoveryweston/",
+          "Last Checked At": "2026-04-06T00:00:00.000Z",
+          "Weather Summary": "Dry (18% rain), light winds 1 mph",
+          "Pace": "Recovery (C/D pace)",
+          "Distance": "30",
+          "Ride Name": "Team Recovery Weston - Wednesday evening ride",
+          "Day of Week": "Wednesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-03",
+          "Address Note": "Origamy Gelato Weston - meet in parking lot",
+          "Organizer": "Team Recovery Weston",
+          "Notes": "Added manually - Team Recovery Weston. Bio says \"LUNES Y MIERCOLES 30 millas\" (Monday & Wednesday 30 miles). Spanish-speaking group."
+        }
+      },
+      {
+        "id": "recHtSoEzNTxyHQBY",
+        "createdTime": "2026-04-16T00:43:55.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "05:30 AM",
+          "Wind Speed": 6,
+          "Rain Probability": 0.16,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-06-03T13:28:10.000Z",
+          "Weather Summary": "Dry (16% rain), light winds 6 mph",
+          "Pace": "24 /26 mph",
+          "Distance": "40",
+          "Ride Name": "Thursday Tempo Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-04",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
+        }
+      },
+      {
+        "id": "recHxrbjn68gWdMZv",
+        "createdTime": "2026-05-21T16:49:40.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:30 AM",
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-05-25T09:38:13.000Z",
+          "Pace": "23/25",
+          "Distance": "40",
+          "Ride Name": "Memorial Day Ride - OMG & Team Recovery",
+          "Day of Week": "Monday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-25",
+          "Address Note": "Behind Bank of America",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Bank of America\nPace: 23/25 mph\nDistance: 40 miles\n---\nA patriotic-themed event flyer for a Memorial Day group cycling ride featuring silhouetted cyclists riding toward a sunset, overlaid with an American flag background, fireworks, and bold red-white-and-blue typography announcing the ride details."
+        }
+      },
+      {
+        "id": "recJgnwpRsAuba1yA",
+        "createdTime": "2026-03-30T01:33:52.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:30 PM",
+          "Wind Speed": 6,
+          "Rain Probability": 0.16,
+          "Location": "1800 N Commerce Pkwy, Weston",
+          "Organizer Instagram Profile": "https://www.instagram.com/unicosta_cycling/",
+          "Weather Summary": "Dry (16% rain), light winds 6 mph",
+          "Pace": "A: 26+ mph / B: 24-26 mph",
+          "Ride Name": "Unicosta Thursday Ride",
+          "Day of Week": "Thursday",
+          "Status": "planned",
+          "Ride Date": "2026-06-04",
+          "Organizer": "Unicosta Cycling",
+          "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        }
+      },
+      {
+        "id": "recNVXs6XqsKevcQK",
+        "createdTime": "2026-04-09T20:42:34.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "06:00 AM",
+          "Wind Speed": 4.9,
+          "Rain Probability": 0.03,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-05-28T17:56:31.000Z",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
+          "Distance": "30",
+          "Ride Name": "Friday Recovery Ride",
+          "Day of Week": "Friday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-29",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from OMG Cycling announcing a Friday Recovery group ride, featuring the OMG Cycling logo over a background photo of cyclists riding on a road, with ride details including time, distance, pace, and meeting location."
+        }
+      },
+      {
+        "id": "recOBO7IsIYbPmgzB",
+        "createdTime": "2026-05-27T22:03:30.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00AM",
+          "Wind Speed": 7,
+          "Rain Probability": 0,
+          "Location": "10430 Taft St, Pembroke Pines, FL 33026",
+          "Organizer Instagram Profile": "https://www.instagram.com/alligators.cycling/",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Pace": "22 / 25",
+          "Distance": "48",
+          "Ride Name": "Alligators Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-06",
+          "Organizer": "Alligators Cycling"
+        }
+      },
+      {
+        "id": "recU4u7cZ1aYEIWNV",
+        "createdTime": "2026-03-30T01:33:52.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:30 PM",
+          "Wind Speed": 4,
+          "Rain Probability": 0.01,
+          "Location": "1800 N Commerce Pkwy, Weston",
+          "Organizer Instagram Profile": "https://www.instagram.com/unicosta_cycling/",
+          "Weather Summary": "Dry (1% rain), light winds 4 mph",
+          "Pace": "A: 26+ mph / B: 24-26 mph",
+          "Ride Name": "Unicosta Tuesday Ride",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-02",
+          "Organizer": "Unicosta Cycling",
+          "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        }
+      },
+      {
+        "id": "recUFQINAv4zfLETg",
+        "createdTime": "2026-05-29T22:07:39.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:30 PM",
+          "Wind Speed": 1,
+          "Rain Probability": 0.18,
+          "Location": "Weston Branch Library",
+          "Weather Summary": "Dry (18% rain), light winds 1 mph",
+          "Distance": "35",
+          "Ride Name": "Team Galiz Wednesday Evening Ride",
+          "Day of Week": "Wednesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-03",
+          "Organizer": "Team Galiz",
+          "Notes": "SAG vehicle. Pace TBC — pending confirmation from organizer."
+        }
+      },
+      {
+        "id": "recVtvAFoBiUcQnOc",
+        "createdTime": "2026-05-29T01:09:49.000Z",
+        "fields": {
+          "Ride Type": "Special Event",
+          "Display on Site": true,
+          "Time": "6:30 AM",
+          "Location": "1100 SW 2nd Ave, Miami, FL 33130",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Featured": true,
+          "Pace": "20-22 mph",
+          "Distance": "62",
+          "Ride Name": "MBO 1st Anniversary Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-05",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "MBO Ten Cycling 1-year anniversary ride. Multiple cycling teams and groups joining to celebrate the community. Note: starts in Miami at 1100 SW 2nd Ave, not Weston."
+        }
+      },
+      {
+        "id": "recXG5XkqB9QM0qVT",
+        "createdTime": "2026-04-13T20:59:46.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "05:30 AM",
+          "Wind Speed": 5.1,
+          "Rain Probability": 0.03,
+          "Location": "Alex's Bicycle Pro Shop",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-06-01T18:13:10.000Z",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
+          "Pace": "24 / 26 mph",
+          "Distance": "43",
+          "Ride Name": "Tuesday New Season Ride at Alex's Bicycle Pro Shop",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-02",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: 16098 W State Rd 84 #3, Weston\nPace: 24/26 mph\nDistance: 43 miles\n---\nAn Instagram story slide from omg_cycling announcing a Tuesday morning group road cycling ride starting at 5:30 AM from Alex's Bicycle Pro Shop in Weston, FL, covering 43 miles at a controlled pace of 24-26 mph, with a note that the coffee shop will be open after the ride.",
+          "Is Primary Listing": true
+        }
+      },
+      {
+        "id": "recXhozXtxIJSjbWD",
+        "createdTime": "2026-05-29T22:27:25.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "06:15 AM",
+          "Wind Speed": 2.9,
+          "Rain Probability": 0.01,
+          "Location": "Robert Is Here Fruit Stand and Farm",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-05-29T18:27:19.000Z",
+          "Weather Summary": "Dry (1% rain), winds 3 mph",
+          "Ride Name": "MBO Saturdays Rides - Farewell to Jhon Negron",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-30",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Address: 1100 SW, 2nd Ave, Miami FL, 33130\nPace: 20-22 mph\nDistance: 75 mi\n---\nAn Instagram story flyer for MBO Saturdays Rides announcing a group cycling ride heading south to the Robert Is Here fruit stand, celebrating the farewell of Jhon Negron who is moving to Puerto Rico, with ride logistics including meeting time, distance, and pace displayed over a collage of cyclists and the fruit stand."
+        }
+      },
+      {
+        "id": "recYIhjXHLzbywyG2",
+        "createdTime": "2026-04-05T20:15:44.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:00 AM",
+          "Wind Speed": 2,
+          "Rain Probability": 0.02,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-05-17T16:51:46.000Z",
+          "Weather Summary": "Dry (2% rain), light winds 2 mph",
+          "Pace": "22/24 mph",
+          "Distance": "30",
+          "Ride Name": "Monday Ride",
+          "Day of Week": "Monday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-01",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
+        }
+      },
+      {
+        "id": "recbDWyJtkTVLanmX",
+        "createdTime": "2026-04-22T21:50:35.000Z",
+        "fields": {
+          "Ride Type": "Special Event",
+          "Display on Site": true,
+          "Location": "MBO Store",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-04-22T17:50:25.000Z",
+          "Ride Name": "Coast to Coast Ride - MBO Cycling",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-02",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Address: 1100 SW 2nd Ave, Miami, FL\n---\nA dramatic promotional poster showing cyclists riding along a coastal road at sunset with a glowing neon outline of Florida in the background, advertising a coast-to-coast cycling event from Miami to Naples."
+        }
+      },
+      {
+        "id": "receiCnwildfQbHgn",
+        "createdTime": "2026-04-22T21:50:43.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Complejo Deportivo Four",
+          "Last Checked At": "2026-04-22T17:50:25.000Z",
+          "Ride Name": "Ride Femenino - Pure Cycling - Rodamos Juntas",
+          "Day of Week": "Saturday",
+          "Status": "past",
+          "Ride Date": "2025-04-25",
+          "Organizer": "Team Recovery Weston",
+          "Notes": "Address: Santa Ana\nDistance: 24 km\n---\nA promotional flyer for a women's group cycling ride organized by Pure Cycling, featuring a female cyclist in white kit riding a road bike at sunset, with a route map and elevation profile showing a 24 km course with 436 meters of climbing near Santa Ana."
+        }
+      },
+      {
+        "id": "recke6Hxce9MDpQ7h",
+        "createdTime": "2026-04-05T01:58:50.000Z",
+        "fields": {
+          "Ride Type": "Regular",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Coconut Grove Store",
+          "Organizer Instagram Profile": "https://www.instagram.com/pd.cyclingclub/",
+          "Featured": true,
+          "Last Checked At": "2026-04-04T21:58:43.000Z",
+          "Pace": "20/22 mph",
+          "Distance": "60",
+          "Ride Name": "Specialized Sunday Ride - No Drop",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-07",
+          "Address Note": "3208 Grand Ave, Coconut Grove, FL 33133",
+          "Organizer": "PD Cycling Club",
+          "Notes": "Pace: 20-22 mph\nDistance: 60 mi\n---\nA dark-themed promotional Instagram story showing a Specialized S-Works cycling helmet centered on the image, announcing a Sunday group ride on April 12th from the Coconut Grove store at 7:00 AM, covering 60 miles at a 20-22 mph pace, described as a no-drop ride where everyone is welcome."
+        }
+      },
+      {
+        "id": "recmaYHKKI6Cw9yEo",
+        "createdTime": "2026-05-17T20:51:49.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "06:30 AM",
+          "Wind Speed": 5.1,
+          "Rain Probability": 0.07,
+          "Location": "MBO Brickell Store",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-05-17T16:51:46.000Z",
+          "Weather Summary": "Dry (7% rain), winds 5 mph",
+          "Ride Name": "MBO Girls Ride - Stronger Together",
+          "Day of Week": "Saturday",
+          "Status": "past",
+          "Ride Date": "2026-05-23",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Address: 1100 SW 2nd Ave, Miami FL 33130\nPace: 20-22 mph\nDistance: 40 mi\n---\nA promotional flyer for the MBO Girls Ride featuring female cyclists in MBO kit riding along a waterfront with a Miami skyline backdrop at sunset, overlaid with event details for a 40-mile group ride on Saturday May 23, 2026."
+        }
+      },
+      {
+        "id": "recu9ZDwLMybK8isf",
+        "createdTime": "2026-04-18T00:09:30.000Z",
+        "fields": {
+          "Ride Type": "Special Event",
+          "Display on Site": true,
+          "Time": "06:45 AM",
+          "Wind Speed": 7.5,
+          "Rain Probability": 0.05,
+          "Location": "MBO Store",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-04-28T18:11:58.000Z",
+          "Weather Summary": "Dry (5% rain), winds 8 mph",
+          "Ride Name": "MBO Girls Community Ride - Miami",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-03",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Pace: 20-23 mph\nDistance: 60 miles\n---\nA promotional flyer for the MBO Girls Community Ride in Miami featuring three female cyclists in MBO team kit riding road bikes together, overlaid with event details for May 3rd."
+        }
+      },
+      {
+        "id": "recvP1Z0oAtXYT8pc",
+        "createdTime": "2026-04-07T22:56:48.000Z",
+        "fields": {
+          "Ride Type": "Special Event",
+          "Display on Site": true,
+          "Location": "MBO Store",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Featured": true,
+          "Last Checked At": "2026-04-22T17:50:25.000Z",
+          "Ride Name": "Coast to Coast Ride - MBO Cycling - Miami - Naples",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-05-24",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Address: 1100 SW 2nd Ave, Miami, FL\n---\nA promotional flyer for the MBO Cycling Coast to Coast Ride featuring cyclists riding along a coastal road at sunset with a glowing neon outline of Florida in the background, showing the route from Miami to Naples."
+        }
+      },
+      {
+        "id": "recwsRk8IafsKiFac",
+        "createdTime": "2026-04-11T10:17:14.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "06:00 AM",
+          "Wind Speed": 7.4,
+          "Rain Probability": 0,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-05-29T18:27:19.000Z",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Pace": "23-25mph",
+          "Distance": "42/52/62",
+          "Ride Name": "Saturday Palomos 2.0",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-06",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
+        }
+      }
+    ]
+  },
+  "organizers": {
+    "records": [
+      {
+        "id": "rec1Zz7O9wummKVmA",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attPMBjxZoKcLz5o4",
+              "width": 464,
+              "height": 464,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/aTnYTYXH6gEEyglpQXAOlg/QtZJDkrNxPBhSf5WPsvASZvpzEL3HboNcioVXdFqKlDvoWbl7PBFw1INju_lQrVVY9kHrvl4VnnckPdjnYVNl2O5lCRcLF9Bse1hbmntSVFPmKqU6j04UFuga63mF6JNlrTEpX0c6ysBmd_76hyIs0B-_FkPLDv4naZRbpUM50c/_NYP6w98zo4e29IUHJWjU-MABaDIb0EC0msNDzu6_CA",
+              "filename": "Alex-bicycle.jpg",
+              "size": 15898,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/slavhlArIKNYt46DEAMquA/dZ-eFSB3iQypeY8ULqjMcec48casSXZpElfptkhAoxUFUZbzwip3IlT-3Mq00OULvBzm54dapDvUxn6HLn5zoWj5MPyx0ZTetLkJAbHNBj6oTY0W8rs2LyavUc7iS4yDV4np4NbNcJBaRHVnNpuoPw/uvw8FjA_w5gKNyCInySV313_nfLC8wDbroPtRbll7-Y",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/qqtihY-asKFKo7AUpK-71A/_ptJ5x-5Rmuy75b6J63BAWZMGjryu4r2CZ-umNpyZykpZlIDjdXJf0jn0p7Tnc4HmXACm2klrXxnvtwY07lY30eRb9FP2hP4IQmHTBi4ZyRpqM0vCGGxqBSx_UYLoTKrgnJRXoeeSun5gaiJlaaIAA/ADytJK2rC0zV_0TuTOD-u2cTDGnpaFwyMeVXaoRNKIw",
+                  "width": 464,
+                  "height": 464
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/xDWWqnVPQzcCOGt8dBvSMA/xw7Cnk9JJW2A-iMspqrNCrBFQZavEpEHsEOgtF7o3EoqYmKR3CvSxu2iQa-lSKGBai3eaLoijXqLQPTT9rGj4tewkJUlwel2Adg04dl2MSf4Ed431aSoXgrACBr2Z08Sk4LwRYNWXtzvtTWwvNuOHQ/o6RCxgxDhkS9KZBT0Iu7VHBxToBSvOFVDIycVmFr_ys",
+                  "width": 464,
+                  "height": 464
+                }
+              }
+            }
+          ],
+          "Name": "Alex's Bicycle Pro Shop",
+          "Active": true,
+          "Type": "Shop",
+          "Instagram URL": "https://www.instagram.com/alexbicycles/",
+          "Instagram Handle": "alexbicycles"
+        }
+      },
+      {
+        "id": "rec3aihrvIwkXvWFU",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "att4eLbY8kBtk7RZF",
+              "width": 1080,
+              "height": 1080,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/LjYOF9c3N6WDuMoGOoE-qQ/a_j5JyA03rpPEEhKxDBkp4J5sKG1ZPGweVGyG7FQYz6ziOk2no7E4YKl5XhpQTjlItNfAov2bAPq_8Xqf4rEKHQXldLQqKh5W2XSXMGeXrePypVPIApZVVowF8NiOUmwwFnuSw1UwQ7qdzXD7ScJxFySsEKBr5fPAb3EGjuoCDE/nV_vAaMCrO1mXgZY8aOGM3lJ8wK8Us8MQAc6nZ-pc-Q",
+              "filename": "omg-cycling.jpeg",
+              "size": 57042,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/0HR3-8OsavnWCWpSqOQwRg/7bjiY9H4Bp32COx1mIFEA_H2ili6MRGVlLe8BKqhGLF2-bS-U23mxSb-t97KKb4mV_U7BTg1T3BRSIMhrPag3TyFYWfnTjn7nli51GpP4GKurCLpkAGSWHbZB9ecOHbD1qey8vwEW2ewPf1WfxsbeQ/RLrzCVTzl6X7ZeVmuT1VBbQeAOKWfBVDlkqX1gt3gmk",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/ruQU0olmSG-_DcozPR6GqA/8SGyArKAsslYBr8tz_Ee0RmKYIOHAkHMb17JREvo0b8ioXcJZFdyJUtpEd2YyKZJn39_-_pD4eIklS8enf6pyQ_Uz7tTqBdOHLFTyeU3WOnL_x3qu2e-EMKPg2HRS39pFqVWnjIkNtw6klfNx2vvKg/UxmybnGopm5_tfEhS8PsDb4vNqo4AUiEn9kRYUzTmEM",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/AmaWnfqr0NdApYtbrbMeCg/N5hX8Ia4o7t98epeDGRknRbcwhgm5GWIRRWv7y3YIhyLOFZaLEq_R_lhg4pqQAszeBGQkQxO9WFrDJBXjC9OiWQsoxMaSm578Xg82x6uToO-FPWSR-NHj_jlZy7oUC5WVoYB5Ektyf7adgThzuwp-A/CJmw08Zr8NfgB_fuhKg2GaMZl2Up8A78Fnr_bo51rxI",
+                  "width": 1080,
+                  "height": 1080
+                }
+              }
+            }
+          ],
+          "Name": "OMG Cycling",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/omg_cycling/",
+          "Instagram Handle": "omg_cycling"
+        }
+      },
+      {
+        "id": "recCMhStxOf8oKJl4",
+        "createdTime": "2026-05-15T22:36:38.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attT2qDVHA8dsiVea",
+              "width": 320,
+              "height": 320,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/6a5yWGALOtapp5cpSIj3OQ/zX1kJ8vyBMKWmVA7DtU4mHv_Fz6W4GbRGnCtn0wRvzWV0O5f9LETDo6OMKa-CoGKOU9vcQ4hQp81xIiLKuGEwOy2iF5LYtPLBR44eEwt4-1XcMiDNNJNkFrfH5qyXPz9a2MGYR15gsUqf2tPicprcm1x0B0sIOiQInETm4j15KpscK7fLF06cUA9lgRpHPLhcZy2A0P4NliJA9ggFGBtZA/rD9hMOhevE42r79QhL2NyHv1PtN5HQJIkSYUczkA1dE",
+              "filename": "46892269_1677775128990747_2031409811773456384_n.jpeg",
+              "size": 11070,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/ZA520yZII37hj7Xnn63ssA/p8ID0tPSuymnp9k3f6oSPiks2oUGxMcj5GFJFge3S3oe-um7i0gjunpljyiSbcwOPMFwJYfclULeqS13ABA1mrx2LZUsj6w6UTzcQirRp4G1fNeB5ahBH_AUZ4T7pJfHFTFv9JV-Ynlpi4zQOknuoQ/HAAV5mKzWoJRe_qXnlBAfwj-On9k3soNTtq3RdlvLY0",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/pIx5byfbb5fF7GhOIHTe_A/N0X-Y5HL51WJHgcJweESqQQke8CnroT1_6KaZdIeWiHAyRP0L2MMjnhAxeQpYmaudWU6EG7XcMkEy_q0hHibqJq25hufWHDBl7spkq3I32Ng2L4t5idyE0kCRLO-QxjLDBSlobYb2cXSYPVCabxYTA/nA0Ki20bMqqEle8-APcdh782NPi9rkgAOmJb58mI_8Q",
+                  "width": 320,
+                  "height": 320
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/80vgOemp7LSftqZ7KsjpUw/tFPJSzH2tVeZJb1JAP1qm6k3wUAg9EZww8X45a82H-8gXalsNFPoEifyJbe0j09oEdX2lkaYigbqW6jeaA3c70mXQ12HpS-ZHGP0GbP4xDO8OFswXfu3b4rYISvrmgUEnhWn7Gex9TzvO0bREJyFYA/YaaVydFWPpXVe995KxeLIBdMJWZZT2Pnvkf3mJF0gYw",
+                  "width": 320,
+                  "height": 320
+                }
+              }
+            }
+          ],
+          "Name": "Ride84",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/ride.84/",
+          "Instagram Handle": "ride.84"
+        }
+      },
+      {
+        "id": "recFahEXxqiGoz2fx",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attgdnMqMvLSRg391",
+              "width": 1080,
+              "height": 1080,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/NYbiO-K-BMFGE7JBuahlyw/U1TCnfMVa1wLMV2WF7qYxqJx6vKJ3CxCmnOAqix-iHYBjuA2Rw2A8sS7Pfz59ZflDZgMpp3SVHCsaPRJyu_hZVDKQgS9mAo3J3rXV5couhLIiAyln7e1JE6kOaCnqJeKuO_ZaehVW9nROUDXvKv2MIwS6no1dWesXEu4LlGNZxo/H85L82qqf9sj_k6GqMsXPtSI_Ba195CVEGwlMwloWUM",
+              "filename": "weston-flyers.jpeg",
+              "size": 123665,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/K2Ma7S_iM6mf4fAjsrZNww/acjNH77VEjqkLSZqkSEbuBIIHmFskHveKzCu1jbrztUqyHkX-ivg-tlaQV9CQMkpgfunQ8EYXT9HyBXx10I0dt6W61Uo4-ji2Y_MZynDw7qkG3r0Kz9pqRkAfcJckfBwZW9QGXzU0rfflVwALOJuKA/KDFWsC70U6My1SguDE3ed-feVKjDCQjwO34kxy-Skmc",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/yvxROjk7XwHn_cFliQmlVQ/3bsNwuFbMyDCJfdx-tHJuoxdHHaRl3s1I994Zq83L2GvK4_oAeUnNjfXfIsfCpiyes2jCL1HOsi4ZQJsDoRR1EjnPR7m8dhpwtxj5YPiuyOyWm8CAIKtL_7auIPF9mwsQPrz_iNx2ddskM5R8AXn8Q/bBTVIgJC-nHtSgxmkzBiEs_muiHrtFtM1gHsotC6KAY",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/eiqA4SOpVECSwQ12IBHOHw/TkSqOOajxQJONseMDJUEMypkC1EbOeJmTOYQF-KzHf-Wg6DF1kc8-sEJyOIXqwyFMH3bftAy2NeXTuXWbjA9JU0ikooEv2fQscLDeyXKIzPW0gMzTp2onDmMJNd6StMfkphSMZxB1Ds7WpwL3nBkXw/zLY5ZbujZeA-_dIE2eWQuPTuyiFuVUT7V9fo2DAbcPo",
+                  "width": 1080,
+                  "height": 1080
+                }
+              }
+            }
+          ],
+          "Name": "Weston Flyers",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/weston_flyers/",
+          "Instagram Handle": "weston_flyers"
+        }
+      },
+      {
+        "id": "recJBSL9I2aauLJk3",
+        "createdTime": "2026-05-20T20:26:41.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attgMVj8cmln8yCdQ",
+              "width": 1080,
+              "height": 1080,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/IwFrXYyH4fMH2hclla98DA/TjVy5aKsmCbozrmqjYf6J6IV9Hq8m_JZ5s3EI5-DosIuuW8XcMDGbg1iMDkt0C_qXgtNFAIlV3gfPD4i5q7Yeb6k3_sy0S-RH7ZBUDA-NWf-xvMoMT8MMrpfEO1juVw2NTFX2FeLz2yWvYVq0n5b1QXE1bJWuRytF5z50kIvqdjA2cEV6_SMvoHxssWVfULTNGuzZ_htBisbvWMFrhjBQ-Dte-_oTZ-Ulpz4DxaXASI/1NGi2RSlXlskqJD6_Ua-MAABHg-eP6z_0HcWjq08UbM",
+              "filename": "SnapInsta.to_299534231_795560015125262_5460383434928525675_n.jpg",
+              "size": 120265,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/PPDlNXrS-MDONtSn8WefLQ/LokI3gYBShQW8NJlTZvCDZ6GPJz6QxtiUBHAO_Jf0rAXnW878fyrS0jR0x-r8NU2hH10yYTrunO8bx0U24pivPW3deZLobybaeKeReAEMFYKjNQLpxi_qTh70BT0vHFVD65TxeldvkSVq7y2rPxwiw/F-Ci24swmulZ04dP6Ab0Ma1JugtaD2Ew5Lm7z9DFlqY",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/ReJmwWtxkLnQJq0ZyFW5Bw/bvFilIF5qCLKFYAGfzVGE1gWt579wdHzNwfhE7dIk7It5U2wCeuf7tSVqFqtEhDCoG6d7kY6VPKC88N-JfMAVsGZWDrQxaZS1FkpnzxiRAIuKtXLH7zMU2s6oU_S32cSzP5dfvWdIiZGqEghzKRX2A/wt2aiBdbQndvwNhY_u3WCBUOZ2wQSPM2NMppCuRhH-U",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/DD8keVKaVa2Yg4deDUTUfQ/o01Gr4XkJQq7hK06Wpv41G3V0fOiSnaFJM6QakMg39w_aGSQLATOnNEhP6LVWJtznDXYtb7tPGVh9MOqRD9fPzps-x8zgeyFvJtDzb2nN3fJj3Mjcyq2dYiiEMjoodLZ8zbvuf_6LJS_Mu_0NyaZTQ/Ve4PIB900w2PR7Kdgu-fi4XjFqWiiWAOeJdIQG7P1P8",
+                  "width": 1080,
+                  "height": 1080
+                }
+              }
+            }
+          ],
+          "Name": "Wild Hogs Cycling",
+          "Active": true,
+          "Type": "Group",
+          "Website URL": "https://wildhogscycle.com/",
+          "Instagram URL": "https://www.instagram.com/wildhogscycling/",
+          "Instagram Handle": "wildhogscycling"
+        }
+      },
+      {
+        "id": "recMa62EUxWLWuCkA",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attEZdVF0s2Tm9OBB",
+              "width": 150,
+              "height": 150,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/0cmHTYH9ifoU_AEV8QB20w/QyUYQRjOFVbIxnS733jJQ8lf8RixRxHi7y2ryU2qrEGE5Y75Ct60M7kx2FXnYJkx137721BDFi1pPVIZ3oWq9FuEA6Fi9XPdzI6jwQTdIrIlt-q1CnmX61iXV02Ggw3bKnTxUBpjfc_fk-WMccSjer-m3zSU9997I2S2xzmxESE/2gd26A9E5sMAhsEu90gUpdFRls_6KDvVu-EpqahlQGo",
+              "filename": "pd-cycling-group.jpg",
+              "size": 7807,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/h-kzd0Kf-tuEAsIoi2HNoQ/aBPaFut_KccCncHmMXx5vVRSdv-NAzf6L6Bi5em9SbHU0sIrlQCeNOAd9y5-1AUvkfuy3ra2CL1IH_INh76uww79rYFEsQZ9_XQg8N7BkNqICo1LgzWwWkZt3s8ISnWexxWj8wDXA5QlbU40JH8IHg/dwxr-cSbwSdJCfwwAcCZB5mbWnZC53nFRUyX7fyftVg",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/hZ1_ETiD1Rgr5O-txcpazw/sJROO8PQS6l9wbYxMbHtbxyTul-Va52dgttBugvl5D14pyvrZQu-oecTeNZyJqERZDaYE2LFSjATTkYoBN3PDaOBM50cZ3bGpG3P-9BzSjTF7O4lHCNQ59SpDdW9-_EGugEWrGv7ngLZ7aEbnsBEBg/ZkEWofKfIWS9hAcYXoSnaZgldZOLuOTg2SLL6nTRsyI",
+                  "width": 150,
+                  "height": 150
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/DpAMRh5RqKK4nA3lvo1boQ/wpc-6s4RiS5vK5lbJwB21LLFh7QmwxqC_sMOzsY1cwYq7Jpl-BuTsWcH2mJd1TPsl0yFMceJY9iKcFEgLcrhHVfoYpF_ifDyVuMoDf64y5MXThlcXgmoq-O6TwPuWdFV2NVP2kPdnDX6PUHkxYU7vQ/iHJWrYq6_Z9OFWc5RHg01yTf7421788Kxx5EFOhLziA",
+                  "width": 150,
+                  "height": 150
+                }
+              }
+            }
+          ],
+          "Name": "PD Cycling Club",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/pd.cyclingclub/",
+          "Instagram Handle": "pd.cyclingclub"
+        }
+      },
+      {
+        "id": "recPKlzY606Rb2cuy",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attLC2XKqetMrjEdc",
+              "width": 616,
+              "height": 616,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/t1MzGS6YCgykRNhMu4yAew/JSAbQaxe9g1WXCaTfoAHANzd9x47iichQfej2qUGSx1qg0bvY9F_jvY9r5fb7DgdfzikOS5t9Si_knRx4eApJwruLK7v3pT-iW75_97JlmjISQKU-PqUuCKuFLTXXD2ec2wS5reHX8A5lIt-UDUhMMH77d8_zukzvfPculqbb6A/VceZBPhglnqMJQfFLm2MORCh_CUT9ykAPbnYaPxfV1I",
+              "filename": "unicosta-cycling.jpeg",
+              "size": 93223,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/OgHwfMVLMFGYr3HwuFwAGQ/44lIQjYgYhNXxF-LvRB6s1TLCurBSO3BESnDwAkN7H0msUg3KN4K01J2JDZm4WDGhnK8Q3GWP3UWsNSo1Mh9rr6o6yv8WkJDDFX5o-ydqMOQNrMAnaaplhyzYKQuM1fxBvym8oDm0Kni1aEChzW3aw/ZdRl1s0T-831nX7NFJkgdLoLiSI03jK_mZdk60p7euw",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/9hJWodW5973HcxhrmUZGpg/2hXhfIDxNXqp684x1eRObfTEk8hbgqQXyPBsWfaPaUYeo7RrSpjGQ4fS-cWnotxgWqkmmYcJzVBiyEsEDOPmb_czlcnV7Ov-xZbdU42CmY5Q6mUUCFOagioYdu1y6qtwuGYqntmJiTj3uvBzIfeqhw/RCYkYNLP22SRlB28sa3jsjY3kn_15q45MpZpT1bCv90",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/yCdMhUS5WVbQ4usdLp9toQ/8KAP9Scwnpca5-TUmFSrANe-2GRbCzALEx4oiyR4lFvTfNtaRXXHfOogmnxQOKzNqzBrQX-zW_LxnsuTyua6gJd8CSXp8kUoc24bw7D7gW-lmD1tTNjG7GFN2WtmkI9IT0ZdTSor5X1b2rH7oDpzQA/kfJbC-Ec1zET8bsAmXclIU_4i2ViI-pZtpRHnb8P-6w",
+                  "width": 616,
+                  "height": 616
+                }
+              }
+            }
+          ],
+          "Name": "Unicosta Cycling",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/unicosta_cycling/",
+          "Instagram Handle": "unicosta_cycling"
+        }
+      },
+      {
+        "id": "recPXOsIR96lSELuj",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attldDOvbiXlZVC2W",
+              "width": 977,
+              "height": 977,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/Wfp9wmhEddA_IKXWvdm7LA/Y1VAduSBS_zyWLJiryveMMTg3E5zk9CeH65NqH1vfZ1iea8JC26pMXxHxgcx2KdRWzGryCSELxWV2-Jwfdn46pUlux3kQ2T5EqMnec19RQp-t5fPtvXGvowpu8ktKkDRKTo0XiCTtR_CoWWCNcgXiOUeNSCmP-g_wsL_UOMALxc/mA6zzRNxffDJKHcdpIyDQODTfq-G9QWabry1UPUkAVc",
+              "filename": "mbo-ten..jpeg",
+              "size": 37811,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/jsbFzeRMO0D2CIA51-WG-A/LIky5PSnuocpH_KCZIUYf57VuV4cHHMAaA_CtuXO1GzhMzg54R-Xw_BD6B2eKyXAK8fktEmqO9wtV3YwyDpdDPkLYD6PHsow4Kfu_xjskIr15S3GwpbNDCg876_R1RvD20bEU2LBmErf1C_ZDFx_Fw/iiI1vDwgSZQYbCi-UGXoDyXcptl2aOnDU24yNCXxT0E",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/h82A3qnxSmfQKAwjYFJ8eA/qDQL5fKqi5-TolKUJKY9bqj3Q6DHPwcQoQdMU6Uk8R_EwEBLUwasFodIA_Bk9K7txEWM2M_AWpj0cH7cKPYGbDWVIg-dQw6aHk0d3tX4gnrZZXMdc8CtchcOOiS3P7xAyLArk7iAlHnk1chs51V4kw/WS12MjWepYGulzjjMQc4SRNx8p-K3VIucuewzBvJTPc",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/JjFeGajhliisiXFL8Jgdlg/NmrndXORI4ESBcpsPJMQJuMRHc2V0joLYfjYiRgp012pd2s15AKchs-MQovhKKnNQvw8rdtBi196OysekVOqsEIEkiNTwkblBCeQzBi7GRkswMVM-iIXdcBIJISSeWwhNrfs_bjxWwQAura2vN1eiQ/E6_kVSTy5ZATxs2WpkQR5lh1Lx9Ptt-5rOQiVSakcE0",
+                  "width": 977,
+                  "height": 977
+                }
+              }
+            }
+          ],
+          "Name": "MBO Ten Cycling",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/mbo_tencycling/",
+          "Instagram Handle": "mbo_tencycling"
+        }
+      },
+      {
+        "id": "recSRM0mvYC3M1Pi5",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "atthUPZmVKki1qlYO",
+              "width": 377,
+              "height": 377,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/UnGehlNWSm3ctsh4U6vjVg/bf-IliF-BKZ9Uzu-WPvvMh7RvCTVP41tutDTNi6uWoVKKZNlOs3RUbazKit_9vTBbVKFEdmRz3BhojyhPcrR1uNzhRoNRZMBtkySN9dK_8NjjY1zsXq9I3SNv8VFGlZ05c2SEhpQ0tM842w6nYs8yCYXC3iEWt73vjtAdmBgjSs/q_J6F9y6761l8q4JzWvERS8sxd32j5XRkbgkCebcxeo",
+              "filename": "Le-Tour-Weston.jpg",
+              "size": 31275,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/XfQcLY6wsxaMFjLGbiuXtw/laVeeMh4rXDd_uVWrse0f2ool111xAn60xP8ZzQlHRltRLGbDVK5F-MyQ0VpDyx7WimDnYS73KCMf6kN5SZHinleEqXaDJ-tTLUIi_5JVpM2-I4p86YHMnwmWheH_525Nx6q8t5wMJZpZlU6x1SySQ/YIwjYP8ymPZkMVHJibYDog0BpnORPEI1tqgEVb9Bm3E",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/fL2Pbs99AhU0Vz9UDk766w/K31sFHQXvtId2yHnTCY3_4fa0mqkvyG23OwBV0BZaEZl-fSumXDexklYF81yBRI8ACJKeoY_y87TfZi_u61BZ26-U9NhrEO8TKb7TqbBJtpEnRVIc6eiJC-YWfNiG9e77-Io97eG7U0WROb4-UkLtQ/8WjJsWAtPtT5g05yfHZ3i__xJHVsc6EfKJgh5K0pim8",
+                  "width": 377,
+                  "height": 377
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/mbXfdg0SR9_DnNDi7OHTfQ/ri6KYm-XD2yuejR9h9wm-DzRRj9hHz_Kx1s6WPmm_JyLALY0gpHNimvLqPREQcbYHP8tY9RO6qZRY9_U56TyhJAoL67EYlzWQxHH1RwxyYcdXeNteDaEthmdBQxuP-7RssgWLBlmxF0H6xBNooPLsw/5f6npXMJhZTj8sSWJQEUj-_jaZV5kUn-ZQ3MHbMYxbc",
+                  "width": 377,
+                  "height": 377
+                }
+              }
+            }
+          ],
+          "Name": "Le Tour de Weston",
+          "Active": true,
+          "Type": "Event",
+          "Website URL": "https://letourdeweston.com/",
+          "Instagram URL": "https://www.instagram.com/letourdeweston/",
+          "Instagram Handle": "letourdeweston"
+        }
+      },
+      {
+        "id": "recc0EkGVSUMoY1Ll",
+        "createdTime": "2026-04-09T01:45:02.000Z",
+        "fields": {
+          "Name": "Metro-Dade Firefighters Local 1403",
+          "Active": true,
+          "Type": "Event",
+          "Website URL": "https://www.eventbrite.com/e/7th-annual-autism-bike-ride-riding-for-the-cause-tickets-1978467084308"
+        }
+      },
+      {
+        "id": "reccsxxc2tGMfG8dB",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attRhmlTb8DNZQ1ra",
+              "width": 1080,
+              "height": 1080,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/I_C5Becll7sY2RH6VlWX0g/HlhFIfTSwKLk4Qzlvfk01esiDgZy3lHeQmH_KsVA1jHfA3rtbgkjpLcVWBcFzL--yiJ0CTQB-Ok4LW-VR2aPe3VpG1vXMLylPizEnx6kabypYAB82WtJyKw5SxfKOjoWsbt0XeGFROeoPUm0rrSdFuWFn6qfRRs3uR9SrA6I_BQ/10RLTTWUYDNpugifEjmC4dUre2SiJLB4ZXetst0odMk",
+              "filename": "team-recovery.jpeg",
+              "size": 77820,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/DqRcR-wzY_NpV1vYDvIuRg/hDHKpc1n19tpHJw36RryUlLS7DGZgygCkr_SJfilFEyWSJOwCqmTMrSoHTALzWRaNrPf77ozia7iiqqY-aiJ4_7wi3ynHZizfmaYSvg45I4hOuVcm4PbG_ubg8lTeuNEtsTLqt-ikRQbETdrJ-BwnQ/J7-HkC418hXgsUkxs6u99h_ye_0LwbL_ndMvPVdhC5k",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/JrnZQDXLb5a_b2dlyX_ePQ/HK6bFhpmu_vTSNt_pP9jhaOIgiUJBbRVlCUcHIDbJHZemCF-BUMh32jUPbzJIJfxWzGsHMYGrma2siWS37bPZVebMklcoBr-snQ9G-fVf-Q9ki0Z_etvMWYss6HFqvG-GHgV_BQNnEFyUAeft_lMdg/WCc2JLPA_bXlw7F8IRAi9vb37OpdaPgOE0Tf3mT7ysU",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/o-lCbALm3la8dTzTtNahtw/tggIScEI_5lCiMSnqhwXwyD3VbcGmY7zJjFymHIZG3MnsElF9xxKKEfG6eMhy_49Nxgl2kUMdQCrxOcICE6B6Z14OpwzBPZdbVuFtLG9eQDuOkqGR2f8CZm_auP3Rti_oFG-ZCpkwJglncxI7rMrOA/Gfk9LTwzed1IaTtWIvS7mjDw5i5zilfwezM7o-OZpaI",
+                  "width": 1080,
+                  "height": 1080
+                }
+              }
+            }
+          ],
+          "Name": "Team Recovery Weston",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/teamrecoveryweston/",
+          "Instagram Handle": "teamrecoveryweston"
+        }
+      },
+      {
+        "id": "recdikH26xMPZtCso",
+        "createdTime": "2026-05-27T21:58:04.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attx9rNareziSBh4P",
+              "width": 1000,
+              "height": 1000,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/KhL6X0Fd-jdJIsNRWdW78Q/ZMA1GzVQ87yJY2iUresO4AylM7asPF_P6i_DuTrBClurtR4WH9iHkemuLdwCJuHOZE8xcFVicXq3hsmLnbLMBS_QI4SLQYsiE6pZVOBnxIv44nl3loVcDF0V0ExItbqAAAKhlUo9989dm9IMUvWXt94-1UfvfMAajRlGFhx7oKadMt3mguQWi3C6fX6pXh0x/EoAPzb7lERX5DBUa_oV-xD4ZEX-_vYPG9fFeiZACSIc",
+              "filename": "storiesdown.co_alligators.webp",
+              "size": 19404,
+              "type": "image/webp",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/uOUljnSI6nyfeghUC3ooUw/ckvLARh6hlnztbCr7ea3Zrsw2Xwd6F4y2vcnuvSSaSgRopbFLQVWlPvyoQmFcF93abebyU9nepcHiPssZFvKoG-IxxPKazRd5k7eT5AbKCLmYDcpToVyZDc7P0lMu1xUhu8ZOJUBelg2KardAhq6_w/f3XxKsasDGJQTamUw9CRHs9CYE1nKurAuzKjyha1xTM",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/tPx7dCqQ23OpwK73d14S_g/tCR3ETQslmAZ80oo0gzxfcGRy8MOt9nwbAkrFXZwKlRFsQHWSNf3AaoVYT0QObE12BzsDFi0CTSgrkaMzb5h5HtRMCV6I0CfvZBRdhD2IV91Blwn2eRc1YGtUfDPkBQ2bcDZzX8YH70TqJGlDP380w/rFHfLkNTHDK0BGsMo6uJd7Xsg0je-EbIjfrfOg373pQ",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/_4NfiNcwtCpxxFlDR4aGXA/CvegRT2gK78kyub6Ju8nbsPigmWrcRrYqQuVOTuT-GHTdgLRLThjPsjAQvoMC7S3gboWw3HU_bj33cVWX8lqTwq4em2_iHhnWGhYe-wIDaw2rUmWwWI-i4GH5KoHev68nj0Srg5C7_LeIU6IyGi9Kg/SUeCKsxFLn05GzTilnJBBUOgvXbdiffMrzW7cLOhn78",
+                  "width": 1000,
+                  "height": 1000
+                }
+              }
+            }
+          ],
+          "Name": "Alligators Cycling",
+          "Active": true,
+          "Type": "Shop",
+          "Instagram URL": "https://www.instagram.com/alligators.cycling/",
+          "Instagram Handle": "alligators.cycling"
+        }
+      },
+      {
+        "id": "recwnKj1az3uNqz60",
+        "createdTime": "2026-04-07T03:24:21.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attG87R1m5TukpWMY",
+              "width": 776,
+              "height": 776,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/JuYwVuzJnR1avmZJXnci0w/PWpJjZq4qIyt5-nCq1nTP7_jm26dKTo6ScrRKXxRW4sC4K0qHzlEvGCReTQ143FwQT66mWTcnN3JahZB7TiaBlCkMfULu9YQJNbZ047LzDmdRglXSc-ob7-gezZtKZKfuVNdvHCw8yAo7ymRCEq1FfKzgdIIqx6906FUVjCwSVU/MNCNkUgA1N_tShU6mgIGeJWidGeCCCJdcDlLxMrbQOo",
+              "filename": "fp-bike-shop.jpeg",
+              "size": 94058,
+              "type": "image/jpeg",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/JjJBNf6K9dWgaT0XDYiMbw/Yj-H7_Qfxz5nTct2XUPe9f4ibU7hCPt6IYzcTTJswwd4ys9xpa7B5X3-H3ivaN2jeTqiSMVGtO6NobIk4DFlMxpxFxACQ38sLb5lYys2Q9w6D2iSQm5_OMtoUEQK5oFsK2D8jfQq9S-UzXgDnDWfww/Z97ZsmhvkbDuONrSJJlsghy6Kfsqc7TI09w7AR4dJvk",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/AR887vKBCkmtyYceoz-elA/FhE5XfsJ0rJcTOV35ZqHUqMx7g6-W9KOfkXULV6xPtE1fKe1WKdSXPIC6DxpzUQR-iVhk6El93E1ly9lhBWTDRo9wrBHe3s1Ba6NTpthbCHVaVMt8ZuvDbl45w162K_6WJ6csxAOEwCFUIRwJ_4IkA/pSo-g2NeDu6VcxD0dCMK3IEPf61bFlu0tV8Vu5XFzDs",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/JdpmdUvq25_kF2BQqI3zcQ/5gMqXmg5qVmmncXl2jwwfz8VJ4VGP4U1M9atqqpuc9MRmjYGFyhItbpcUJmngQpv1KMi4GK8ACMD57LE_PxLyrs9VqbUf-14ZB4a__anTkhcdp1r086_ZeJzTDKKr8x7bLDWWx4VhmYrAnCdo-8B7A/QFtv3Cwm68kJCMztaxxFF0LCeazsGbH1f6Cdk5txiRM",
+                  "width": 776,
+                  "height": 776
+                }
+              }
+            }
+          ],
+          "Name": "FP Bike Shop",
+          "Active": true,
+          "Type": "Shop",
+          "Instagram URL": "https://www.instagram.com/fpbikeshop/",
+          "Instagram Handle": "fpbikeshop"
+        }
+      }
+    ]
+  }
+}

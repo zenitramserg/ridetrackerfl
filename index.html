@@ -1255,19 +1255,21 @@ function wxDisplay(wx, rainField, windField) {
 // ─────────────────────────────────────────────────────
 //  FETCH
 // ─────────────────────────────────────────────────────
+// Static JSON cache — loaded once per session
+let _ridesJson = null;
+async function _loadRidesJson() {
+  if (_ridesJson) return _ridesJson;
+  const res = await fetch('/public/rides.json');
+  if (!res.ok) throw new Error(`Could not load rides. Please try again later.\nAirtable ${res.status}: ${await res.text()}`);
+  _ridesJson = await res.json();
+  return _ridesJson;
+}
+
 async function fetchAll(tableId, fieldNames) {
-  const fields = fieldNames.map(n => `fields[]=${encodeURIComponent(n)}`).join('&');
-  let records = [], offset = null;
-  do {
-    const url = `/.netlify/functions/airtable?tableId=${tableId}&${fields}` +
-                (offset ? `&offset=${offset}` : '');
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Airtable ${res.status}: ${await res.text()}`);
-    const data = await res.json();
-    records = records.concat(data.records || []);
-    offset  = data.offset || null;
-  } while (offset);
-  return records;
+  const data = await _loadRidesJson();
+  if (tableId === RIDES)      return (data.rides      || {}).records || [];
+  if (tableId === ORGANIZERS) return (data.organizers || {}).records || [];
+  return [];
 }
 
 // Daily weather map for the week (Open-Meteo, no API key)
@@ -2044,6 +2046,8 @@ async function init() {
       fetchAll(ORGANIZERS, orgFields),
       fetchWeather(),
     ]);
+    // rides.json generated: show timestamp in console for debugging
+    _loadRidesJson().then(d => d && console.log('[RideTrackerFL] rides.json generated:', d.generated_at));
 
     // Build lookup map: lowercase organizer name → organizer fields
     organizerMap = {};
