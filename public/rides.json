@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T21:09:36.065116+00:00",
+  "generated_at": "2026-06-03T21:13:48.968820+00:00",
   "rides": {
     "records": [
       {
@@ -986,6 +986,45 @@
           "Type": "Shop",
           "Instagram URL": "https://www.instagram.com/alligators.cycling/",
           "Instagram Handle": "alligators.cycling"
+        }
+      },
+      {
+        "id": "recjydED9HXzc7H6Q",
+        "createdTime": "2026-05-29T20:20:31.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "id": "attMvzlraSPA6XWDE",
+              "width": 637,
+              "height": 637,
+              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/eW4kTCBBWApIn5pWart6eg/bpveV452gnxkLnvB93qD0MehDiNYSj_3KmlA2ydDHBwI83k0VyfjgPlgcfbIWdYht1aF_hsXGHlg1Rv8Ao__CLUoJ4bWGC1pdGxHjPzFIPrEpXlWOyOSWsLkHJ3JHGoPowk4K74ARCxdsoWtmjG4C7XgbZP5abVXe6upvpnDa-s/gF3vlzO7Yaxvo0rsQvCdNxIk5XW6BRuu8wext6UAwck",
+              "filename": "storiesdown.webp",
+              "size": 22184,
+              "type": "image/webp",
+              "thumbnails": {
+                "small": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/49KJfz7nuz67Ti-0Xsu1kg/AjSqgQqie1-OOEcWru8Su3LJS32vKhHRRDr-iDnpklU5tF76weFeN7oyQoI5nvVMZPiy7nJ3hS95LQgXQ4nPcEf56h8QBU6RqZTo-4IgCr0zrHxgQbREQBoRrWaCWJQFXzkciZuve6NISAymbwnoXw/Rq4dFXh8WIYMcIM5Pz11essE7JuHCZ-zroUrAFU0PL4",
+                  "width": 36,
+                  "height": 36
+                },
+                "large": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/gExcP62CTCLHwVSVUBcclw/NL5YO1wNCt4ztylh3EQ_rqfS6RTlPh9SOWmjOymADrQl4hP1rLlwP7bdkgHv8E2IhisuXCL_uZezZ8KcGCKnsaJxiIoYTFJvJ4GyEFMjAwc0uDV5sIeRkCktJj0xSSvDs9pIkrEPwMBO83vRtdvYxg/n4Op_gGufBO901beFYAX_dtAYBNN1u-Q9n-ZGUVUxHY",
+                  "width": 512,
+                  "height": 512
+                },
+                "full": {
+                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780531200000/T5j7gB0tt_7G2EZ0MO5vXQ/PJ51lHGlkzs3MSPD9tEtHst0_yzJEkTel7OJZEkwRpa-znBRoXk0nxpGAYGCWaTU4HsoPhx4_3hkqfxhXzgyvS9_3Sw0GoYYV45-P8vgoMaMr4FtDLrPe-jVql4vOeK30Qgt7EHRHGdQ5TFKAKb9aA/JsTokO4kw7gljTtprXqYscxJ4dm2lvB2nQN1noGRk-E",
+                  "width": 637,
+                  "height": 637
+                }
+              }
+            }
+          ],
+          "Name": "Team Galiz",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/teamgaliz/",
+          "Instagram Handle": "teamgaliz"
         }
       },
       {
