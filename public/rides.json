@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T20:54:31.850022+00:00",
+  "generated_at": "2026-06-03T21:01:58.969616+00:00",
   "rides": {
     "records": [
       {
@@ -236,7 +236,7 @@
           "Pace": "A: 26+ mph / B: 24-26 mph",
           "Ride Name": "Unicosta Thursday Ride",
           "Day of Week": "Thursday",
-          "Status": "canceled",
+          "Status": "planned",
           "Ride Date": "2026-06-04",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
@@ -303,26 +303,6 @@
           "Ride Date": "2026-06-02",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
-        }
-      },
-      {
-        "id": "recUFQINAv4zfLETg",
-        "createdTime": "2026-05-29T22:07:39.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "6:30 PM",
-          "Wind Speed": 1,
-          "Rain Probability": 0.18,
-          "Location": "Weston Branch Library",
-          "Weather Summary": "Dry (18% rain), light winds 1 mph",
-          "Distance": "35",
-          "Ride Name": "Team Galiz Wednesday Evening Ride",
-          "Day of Week": "Wednesday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-03",
-          "Organizer": "Team Galiz",
-          "Notes": "SAG vehicle. Pace TBC — pending confirmation from organizer."
         }
       },
       {
