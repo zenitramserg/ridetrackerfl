@@ -150,15 +150,16 @@
     .featured-detail-row { margin-bottom: 3px; }
     .featured-detail-label { color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
     .featured-empty { font-size: 13px; color: #888888; font-style: italic; }
-    /* Mobile: collapse featured cards — show only name + date by default */
+    /* Collapse social + RSVP by default on all sizes — show only on expand */
+    .featured-social-row,
+    .featured-rsvp-row { display: none; }
+    .featured-item.expanded .featured-social-row,
+    .featured-item.expanded .featured-rsvp-row { display: block; }
+    .featured-item.expanded .featured-expand-hint { transform: rotate(180deg); }
+    /* Mobile: also collapse org name by default */
     @media (max-width: 600px) {
-      .featured-org,
-      .featured-social-row,
-      .featured-rsvp-row { display: none; }
-      .featured-item.expanded .featured-org,
-      .featured-item.expanded .featured-social-row,
-      .featured-item.expanded .featured-rsvp-row { display: block; }
-      .featured-item.expanded .featured-expand-hint { display: inline-block !important; transform: rotate(180deg); }
+      .featured-org { display: none; }
+      .featured-item.expanded .featured-org { display: block; }
     }
 
     /* ── TABS BAR ───────────────────────────────── */
