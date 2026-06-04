@@ -114,12 +114,21 @@ def _extract_hourly(data: dict, field: str, hour: int) -> Optional[float]:
 
 
 def _parse_hour(time_str: str) -> int:
-    """Parse '06:00 AM' → 6, '05:30 AM' → 5, '06:00 PM' → 18"""
-    try:
-        dt = datetime.strptime(time_str.strip(), "%I:%M %p")
-        return dt.hour
-    except Exception:
-        return 6  # default to 6 AM for early morning rides
+    """Parse various time formats to an hour integer.
+    Handles: '06:00 AM', '6:00 AM', '7:00AM', '06:30 PM', '5:50 AM'
+    """
+    if not time_str:
+        return 6
+    # Normalise: ensure space before AM/PM so strptime works reliably
+    import re
+    t = time_str.strip()
+    t = re.sub(r'([0-9])(AM|PM)', r'\1 \2', t, flags=re.IGNORECASE)
+    for fmt in ("%I:%M %p", "%H:%M"):
+        try:
+            return datetime.strptime(t, fmt).hour
+        except Exception:
+            continue
+    return 6  # default to 6 AM if all parsing fails
 
 
 def _parse_date(date_str: str) -> Optional[str]:
