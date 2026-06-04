@@ -21,4 +21,5 @@ config/secrets.env
 *-backup-*.json
 *-backup-*.html
 *.bak-*
+*.pdf
 ~$*
