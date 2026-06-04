@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T23:34:43.689578+00:00",
+  "generated_at": "2026-06-04T23:38:52.582433+00:00",
   "rides": {
     "records": [
       {
@@ -257,12 +257,12 @@
         "fields": {
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 7,
-          "Rain Probability": 0.01,
+          "Wind Speed": 4.9,
+          "Rain Probability": 0.03,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-05-28T17:56:31.000Z",
-          "Weather Summary": "Dry (1% rain), light winds 7 mph\"",
+          "Last Checked At": "2026-06-04T19:38:46.000Z",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
@@ -332,6 +332,26 @@
           "Ride Date": "2026-07-05",
           "Organizer": "MBO Ten Cycling",
           "Notes": "MBO Ten Cycling 1-year anniversary ride. Multiple cycling teams and groups joining to celebrate the community. Note: starts in Miami at 1100 SW 2nd Ave, not Weston."
+        }
+      },
+      {
+        "id": "recW97LHDBN40DRnQ",
+        "createdTime": "2026-06-04T23:38:50.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "5:30 AM",
+          "Wind Speed": 5.7,
+          "Rain Probability": 0.13,
+          "Location": "Alex's Bike Shop",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Last Checked At": "2026-06-04T19:38:46.000Z",
+          "Weather Summary": "Dry (13% rain), winds 6 mph",
+          "Ride Name": "OMG Cycling - The Boys High Tempo Ride",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-09",
+          "Organizer": "OMG Cycling",
+          "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
         }
       },
       {
@@ -487,6 +507,26 @@
           "Address Note": "3208 Grand Ave, Coconut Grove, FL 33133",
           "Organizer": "PD Cycling Club",
           "Notes": "Pace: 20-22 mph\nDistance: 60 mi\n---\nA dark-themed promotional Instagram story showing a Specialized S-Works cycling helmet centered on the image, announcing a Sunday group ride on April 12th from the Coconut Grove store at 7:00 AM, covering 60 miles at a 20-22 mph pace, described as a no-drop ride where everyone is welcome."
+        }
+      },
+      {
+        "id": "recktoQXI2oRkO1wT",
+        "createdTime": "2026-06-04T23:38:49.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "6:00 AM",
+          "Wind Speed": 5,
+          "Rain Probability": 0,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-06-04T19:38:46.000Z",
+          "Weather Summary": "Dry (0% rain), winds 5 mph",
+          "Ride Name": "OMG Friday Recovery Ride",
+          "Day of Week": "Friday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-05",
+          "Organizer": "OMG Cycling",
+          "Notes": "Pace: 22/24 mph\nDistance: 30 mi\n---\nA weekend ride schedule graphic from omg_cycling Instagram account listing multiple group cycling rides across South Florida for Friday June 5, Saturday June 6, and Sunday June 7, 2026."
         }
       },
       {
