@@ -47,7 +47,8 @@ ORG_FIELDS = [
     "WhatsApp Link", "Strava URL", "Contact Email", "Avatar", "Active",
 ]
 
-OUTPUT_PATH = Path(__file__).parent.parent / "public" / "rides.json"
+OUTPUT_PATH    = Path(__file__).parent.parent / "public" / "rides.json"
+AVATARS_PATH   = Path(__file__).parent.parent / "public" / "organizers"
 
 
 # ── Airtable fetch ─────────────────────────────────────────────────────────────
@@ -93,6 +94,152 @@ def _fetch_table(token: str, table_id: str, fields: list[str],
     return records
 
 
+# ── Avatar caching ─────────────────────────────────────────────────────────────
+
+def _slug(name: str) -> str:
+    """Convert organizer name to a safe filename slug."""
+    import re
+    return re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
+
+
+def _sync_avatar(attachment: dict, slug: str) -> str | None:
+    """
+    Download organizer avatar from Airtable and save to public/organizers/.
+    Skips download if local file already exists with the same size.
+    Returns the local web path (e.g. /public/organizers/omg_cycling.png)
+    or None if download failed.
+    """
+    AVATARS_PATH.mkdir(parents=True, exist_ok=True)
+
+    url      = attachment.get("url", "")
+    filename = attachment.get("filename", "")
+    size     = attachment.get("size", 0)
+
+    if not url:
+        return None
+
+    # Determine extension from filename or default to jpg
+    ext = Path(filename).suffix.lower() if filename else ".jpg"
+    if ext not in (".jpg", ".jpeg", ".png", ".webp", ".gif"):
+        ext = ".jpg"
+
+    local_path = AVATARS_PATH / f"{slug}{ext}"
+
+    # Skip if file exists and size matches
+    if local_path.exists() and local_path.stat().st_size == size:
+        return f"/public/organizers/{slug}{ext}"
+
+    # Download
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "RideTrackerFL/2.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = resp.read()
+        local_path.write_bytes(data)
+        action = "Updated" if local_path.exists() else "Downloaded"
+        print(f"[sync] {action} avatar: {local_path.name}")
+        return f"/public/organizers/{slug}{ext}"
+    except Exception as e:
+        print(f"[sync] ⚠ Could not download avatar for {slug}: {e}")
+        return None
+
+
+# ── Weather refresh ───────────────────────────────────────────────────────────
+
+# Airtable field IDs for weather fields
+_WEATHER_FIELD_SUMMARY = "fldIAFoFLCfytdOJV"  # Weather Summary
+_WEATHER_FIELD_RAIN    = "fld6lsm9KVE6Ujwcm"  # Rain Probability
+_WEATHER_FIELD_WIND    = "fld4nwFJFwrjveMzX"  # Wind Speed
+
+
+def _refresh_weather(token: str, rides: list[dict]) -> None:
+    """
+    For any ride within the next 7 days, fetch fresh weather from Open-Meteo
+    and write it back to Airtable if the stored value is empty or has changed.
+    Updates the ride dicts in-place so rides.json also gets fresh values.
+    """
+    from datetime import date, timedelta
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent))
+    from weather import get_ride_weather
+
+    today     = date.today()
+    cutoff    = today + timedelta(days=7)
+    updated   = 0
+    errors    = 0
+
+    for rec in rides:
+        fields   = rec.get("fields", {})
+        ride_date_str = fields.get("Ride Date") or fields.get("Day of Week")
+        ride_time_str = fields.get("Time", "06:00 AM")
+        record_id     = rec.get("id")
+
+        if not ride_date_str or not record_id:
+            continue
+
+        # Parse ride date
+        try:
+            from datetime import datetime as _dt
+            if len(ride_date_str) == 10 and ride_date_str[4] == "-":
+                ride_date = _dt.strptime(ride_date_str, "%Y-%m-%d").date()
+            else:
+                continue  # weekday-only records handled by frontend
+        except Exception:
+            continue
+
+        if not (today <= ride_date <= cutoff):
+            continue
+
+        # Fetch fresh weather
+        try:
+            wx = get_ride_weather(ride_date_str, ride_time_str or "06:00 AM")
+        except Exception as e:
+            errors += 1
+            continue
+
+        if not wx or wx.get("rain_probability") is None:
+            continue
+
+        new_summary = wx.get("weather_summary", "")
+        new_rain    = (wx["rain_probability"] or 0) / 100  # Airtable stores as 0.0–1.0
+        new_wind    = wx.get("wind_speed")
+
+        # Check if values differ from stored (skip unnecessary API calls)
+        stored_rain = fields.get("Rain Probability")
+        if stored_rain is not None and abs(stored_rain - new_rain) < 0.02 and fields.get("Weather Summary"):
+            continue  # Close enough — skip update
+
+        # Write back to Airtable
+        patch = {
+            _WEATHER_FIELD_SUMMARY: new_summary,
+            _WEATHER_FIELD_RAIN:    new_rain,
+        }
+        if new_wind is not None:
+            patch[_WEATHER_FIELD_WIND] = new_wind
+
+        try:
+            url = f"https://api.airtable.com/v0/{BASE_ID}/{RIDES_TABLE}/{record_id}"
+            body = json.dumps({"fields": patch}).encode("utf-8")
+            req  = urllib.request.Request(
+                url, data=body, method="PATCH",
+                headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=15):
+                pass
+            # Update in-place so rides.json reflects fresh values too
+            fields["Weather Summary"]   = new_summary
+            fields["Rain Probability"]  = new_rain
+            if new_wind is not None:
+                fields["Wind Speed"] = new_wind
+            updated += 1
+        except Exception as e:
+            errors += 1
+
+    msg = f"[sync] Weather refreshed: {updated} ride(s) updated."
+    if errors:
+        msg += f" ({errors} skipped/failed)"
+    print(msg)
+
+
 # ── Generate JSON ──────────────────────────────────────────────────────────────
 
 def generate_rides_json(token: str) -> dict:
@@ -114,6 +261,27 @@ def generate_rides_json(token: str) -> dict:
         filter_formula="{Active}=TRUE()"
     )
     print(f"[sync] {len(organizers)} organizers fetched.")
+
+    # Refresh weather for upcoming rides that are missing or have stale data
+    _refresh_weather(token, rides)
+
+    # Download avatars and replace Airtable URLs with permanent local paths
+    print("[sync] Syncing organizer avatars...")
+    downloaded = 0
+    for rec in organizers:
+        fields    = rec.get("fields", {})
+        name      = fields.get("Name", "")
+        avatars   = fields.get("Avatar", [])
+        if not name or not avatars:
+            continue
+        slug      = _slug(name)
+        local_url = _sync_avatar(avatars[0], slug)
+        if local_url:
+            # Replace the Airtable attachment array with a simple local URL string
+            # The frontend checks: org['Avatar'][0].url — we keep the same shape
+            fields["Avatar"] = [{"url": local_url, "filename": Path(local_url).name}]
+            downloaded += 1
+    print(f"[sync] Avatars synced: {downloaded}/{len(organizers)}.")
 
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -144,13 +312,13 @@ def git_push(repo_root: Path) -> bool:
     try:
         # Check if file actually changed
         result = subprocess.run(
-            ["git", "diff", "--quiet", "public/rides.json"],
+            ["git", "diff", "--quiet", "public/rides.json", "public/organizers/"],
             cwd=repo_root, capture_output=True
         )
         if result.returncode == 0:
-            # Also check if it's untracked (new file)
+            # Also check for untracked files (new avatars or new rides.json)
             status = subprocess.run(
-                ["git", "status", "--porcelain", "public/rides.json"],
+                ["git", "status", "--porcelain", "public/rides.json", "public/organizers/"],
                 cwd=repo_root, capture_output=True, text=True
             )
             if not status.stdout.strip():
@@ -158,7 +326,7 @@ def git_push(repo_root: Path) -> bool:
                 return False
 
         ts = datetime.now().strftime("%Y-%m-%d %H:%M")
-        subprocess.run(["git", "add", "public/rides.json"], cwd=repo_root, check=True)
+        subprocess.run(["git", "add", "public/rides.json", "public/organizers/"], cwd=repo_root, check=True)
         subprocess.run(
             ["git", "commit", "-m", f"chore: sync rides.json [{ts}]"],
             cwd=repo_root, check=True, capture_output=True
