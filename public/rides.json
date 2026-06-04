@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T23:38:52.582433+00:00",
+  "generated_at": "2026-06-04T23:42:30.588355+00:00",
   "rides": {
     "records": [
       {
@@ -72,11 +72,11 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 5,
-          "Rain Probability": 0.15,
+          "Wind Speed": 3.7,
+          "Rain Probability": 0.01,
           "Location": "Alex's Bicycles",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Weather Summary": "Dry (1% rain), light winds 4 mph",
           "Pace": "A & B / C Groups",
           "Distance": "40 / 30",
           "Ride Name": "Ride84",
@@ -102,7 +102,10 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-07",
           "Organizer": "Team Galiz",
-          "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
+          "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle.",
+          "Weather Summary": "Dry (6% rain), light winds 7 mph",
+          "Rain Probability": 0.06,
+          "Wind Speed": 6.7
         }
       },
       {
@@ -143,7 +146,10 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-07",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details."
+          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details.",
+          "Weather Summary": "Dry (6% rain), light winds 7 mph",
+          "Rain Probability": 0.06,
+          "Wind Speed": 6.7
         }
       },
       {
@@ -193,12 +199,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "05:30 AM",
-          "Wind Speed": 6,
-          "Rain Probability": 0.16,
+          "Wind Speed": 1.8,
+          "Rain Probability": 0.1,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-06-03T13:28:10.000Z",
-          "Weather Summary": "Dry (16% rain), light winds 6 mph",
+          "Weather Summary": "Dry (10% rain), light winds 2 mph",
           "Pace": "24 /26 mph",
           "Distance": "40",
           "Ride Name": "Thursday Tempo Ride",
@@ -257,12 +263,12 @@
         "fields": {
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.9,
-          "Rain Probability": 0.03,
+          "Wind Speed": 6.2,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-06-04T19:38:46.000Z",
-          "Weather Summary": "Dry (3% rain), winds 5 mph",
+          "Weather Summary": "Dry (0% rain), light winds 6 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
@@ -484,7 +490,10 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-06",
           "Organizer": "Best Buddies Challenge Miami",
-          "Notes": "Charity ride — Riding for Inclusion. Roll-out 6:30 AM. Short option: 42 miles to Blackpoint Marina and back. Post-ride pastries and drinks for 72-mile riders. Note: starts in Miami at 1451 Brickell Ave, not Weston."
+          "Notes": "Charity ride — Riding for Inclusion. Roll-out 6:30 AM. Short option: 42 miles to Blackpoint Marina and back. Post-ride pastries and drinks for 72-mile riders. Note: starts in Miami at 1451 Brickell Ave, not Weston.",
+          "Weather Summary": "Dry (0% rain), light winds 4 mph",
+          "Rain Probability": 0.0,
+          "Wind Speed": 4.1
         }
       },
       {
@@ -506,7 +515,10 @@
           "Ride Date": "2026-06-07",
           "Address Note": "3208 Grand Ave, Coconut Grove, FL 33133",
           "Organizer": "PD Cycling Club",
-          "Notes": "Pace: 20-22 mph\nDistance: 60 mi\n---\nA dark-themed promotional Instagram story showing a Specialized S-Works cycling helmet centered on the image, announcing a Sunday group ride on April 12th from the Coconut Grove store at 7:00 AM, covering 60 miles at a 20-22 mph pace, described as a no-drop ride where everyone is welcome."
+          "Notes": "Pace: 20-22 mph\nDistance: 60 mi\n---\nA dark-themed promotional Instagram story showing a Specialized S-Works cycling helmet centered on the image, announcing a Sunday group ride on April 12th from the Coconut Grove store at 7:00 AM, covering 60 miles at a 20-22 mph pace, described as a no-drop ride where everyone is welcome.",
+          "Weather Summary": "Dry (6% rain), light winds 7 mph",
+          "Rain Probability": 0.06,
+          "Wind Speed": 6.7
         }
       },
       {
