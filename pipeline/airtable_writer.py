@@ -300,11 +300,22 @@ _SAFE_UPDATE_KEYS = [
 ]
 
 
+def _normalize_time(t: str) -> str:
+    """Normalise time strings so '6:00 AM' == '06:00 AM'.
+    Strips leading zeros from hour: '06:00 am' → '6:00 am'
+    """
+    import re
+    t = (t or "").lower().strip()
+    # Remove leading zero from hour: '06:30 am' → '6:30 am'
+    t = re.sub(r'^0(\d:\d{2})', r'\1', t)
+    return t
+
+
 def _ride_match_key(ride: dict) -> tuple:
     """Normalized lookup key: (organizer, weekday, time)."""
     org     = (ride.get("organized_by") or "").lower().strip()
     weekday = (ride.get("weekday") or "").lower().strip()
-    time_   = (ride.get("start_time") or "").lower().strip()
+    time_   = _normalize_time(ride.get("start_time") or "")
     return (org, weekday, time_)
 
 
@@ -332,7 +343,7 @@ def _build_airtable_index(table) -> dict:
             f = rec.get("fields", {})
             org     = (f.get(F_ORGANIZER) or "").lower().strip()
             weekday = (f.get(F_WEEKDAY)   or "").lower().strip()
-            time_   = (f.get(F_TIME)      or "").lower().strip()
+            time_   = _normalize_time(f.get(F_TIME) or "")
             key = (org, weekday, time_)
             if all(key):
                 index[key] = rec["id"]
