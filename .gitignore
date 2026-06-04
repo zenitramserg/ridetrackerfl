@@ -9,10 +9,13 @@ Sample_Screenshots_With_Ride/
 *.png
 *.jpg
 *.jpeg
+*.webp
 # Allow PWA icons
 !icons/*.png
 # Allow organizer avatars
-!public/organizers/*
+!public/organizers/*.jpg
+!public/organizers/*.jpeg
+!public/organizers/*.png
 !public/organizers/*.webp
 config/secrets.env
 *-backup-*.json
