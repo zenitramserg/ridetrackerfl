@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T11:20:00.977843+00:00",
+  "generated_at": "2026-06-04T11:28:33.848779+00:00",
   "rides": {
     "records": [
       {
@@ -587,30 +587,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attPMBjxZoKcLz5o4",
-              "width": 464,
-              "height": 464,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/xa_i-KnHVLkQRHkP-sdmmA/VFMXtgf8i8veqWHc9652q1mGfPsvkC5eRculIg_VTnh_H4yQOXohDXDT6xM9OZ3VV4PQEvMcI5zNQ-BD-wOD_y_U24qLSQUDnVLG1KAjyZwmIykMeazxdHAEfHaHSf3mFXe9oiN7HO0GSSuLOvXwbI_BjKWCW5M_vz8GPj9KmxE/e52HoqsO7_OPVtKGcDeSz2gIPpPoddUhB50kcbOLOXE",
-              "filename": "Alex-bicycle.jpg",
-              "size": 15898,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/D9zx3y5fp-4aAvsZBN4_uA/Ynzn1VUltNesnIH1SmzPe6LPS3qgAWGCAcPBA0m4ncid1eW_u-Pyl30lAnR9EUx6F7a_eo0IEfAXg9Xln2ebTdIzkH-TFc3Oxb3oUYvhP9uQgeG6Yau3WKO__mEqk5487dmkMigDGCQUPVOOVroVrA/I3Fh3qMbmeXSrLysCJ7Fcqsp9Ku8azMQMoJgGjpwQcs",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/7inGixVfTsA8yKh6DQXa0w/_NXksmngxhD7P9y6hM7ozZzMHzpZMgy-0Px9t42h7b08FaxapnLgJxdMWQNaEZjQK3fRn8NaEAi7ortLHg3UJ_WtCbze84dJNAF5WqGoEPqWSA1J9CATcGBk-qx5VGoeUFTNxYifJth58DOjsLQn3Q/2U0yEXNmbXIzF3F1REDfRwvdq7wv40EIw-O2QlEYkv0",
-                  "width": 464,
-                  "height": 464
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/pLmKWIEfwIh0CwWZ7F2GGw/FzWqSUPcjBvsHiwiqA3V8J_a639J3blxeDKgE6NgU4c54lgD7wT11WVWchFqx7OVdxR6ocWdJ5iWq6wLr7rasKRzBSf2ioF3B2RkLodRX8drJUf4uxUa8j_cShue8iHRCJhcUw8jx9doLjVtvp3x1A/Ph_aajHgOUca1rVxXHW92mpldS_qFRZSbLXki9P9hps",
-                  "width": 464,
-                  "height": 464
-                }
-              }
+              "url": "/public/organizers/alex_s_bicycle_pro_shop.jpg",
+              "filename": "alex_s_bicycle_pro_shop.jpg"
             }
           ],
           "Name": "Alex's Bicycle Pro Shop",
@@ -626,30 +604,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "att4eLbY8kBtk7RZF",
-              "width": 1080,
-              "height": 1080,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/KDIqypmDMqSraY_X4g2GXg/4VDuCUDgv3OqORWviVYXoWxxGfc54klDUdeomQSusNd-jW62B5UxU7HWSd5Qxgk1VNrUJYbG-zN-VFumME2AIFChX_JrEznJZk8MylZ03O9IemZjjpR8tQU2AEzRf4OlKNXPcxhKs5YlfNPPV8VQN7V4THokFzG4-CzaujMHYD8/D8kFvSUAzmOxeBqGaYtKfrKrBBXvSur70GutNWSUmx4",
-              "filename": "omg-cycling.jpeg",
-              "size": 57042,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/RxOxYm5l222i_gNCLLTIxg/_U4ngrRk8tqWNX0ZM2Bqv9r0kC3wL5XPz2gmmAZufukVSA5frMYtSlXg0Feb0fhN4TD3CjZskyCtBCIpJuQ45qgv0lGDIhA_QkDQdtNpBjAVeewXqgwzcKDMQ8PYWeb0Xe5QbSzl5hrL70xGl21NKQ/bK34_7Hr3qQc6QCDAPbQnynO-AyJxzQudMTQtA4jZLo",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/X48CP5OuKBVscl06MSDXvA/3kg6PZjC4uCtoAsn_VKmlWUA8qFBmpCLUBCUjG-qK2nWecQBNgadCUK1Lzax8cdS1OvkDKbczgEQMHhkXoPtU4d7HH4pQDb0fVho1GIUtvM-k4nJpgEANXtlsr7pohyWladd5TO2R7YWQ_Q_R-1cvQ/B9D35whiZ_eCcZKHXwH4CMu9o5x6-KyZNiUO8js1uMQ",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/IYoVzFoJV7gdZAHU6ekWiw/BhQ5SI-erjQlLA-6LNGJXUVDvRPle93DMWDiM9NOtsRCziz1LE4CUXuhG2Y0YAWjpT2JP5dGxplNgO_42UsSTULmKJn4eDEyF4yAZNdpDIB-LnEIxbEXFOb57ajIhkFA_AGayr6u74TCp4YD714NmA/8aTN5bsxSnkU3RUf2Q-iMYFKi2jwGgNCqBift7wgllU",
-                  "width": 1080,
-                  "height": 1080
-                }
-              }
+              "url": "/public/organizers/omg_cycling.jpeg",
+              "filename": "omg_cycling.jpeg"
             }
           ],
           "Name": "OMG Cycling",
@@ -665,30 +621,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attT2qDVHA8dsiVea",
-              "width": 320,
-              "height": 320,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/DpDv5H0E581mwDzEDOf6bw/mczeh_rzE6F7nqbTp-52NrRGwP0S2uG2vVveALm8DOhXrz5tBW5jpRtopKpPFG9_rucjv-tCte0W18Xfk--TZdlxd4AACJw9AxMMaJ5xOHtOBxQwoiGg2JXvm1H-mmc-dljO21g2LI-ES_pXwStFBcqx8K8Ke1jP3TSWpHoHSkuFJm4VgfYMTO3E7TJOh3T_vzGkYmwhelsG9k1P60ceIQ/qdKL0xNhf3opYmRAZIjd4Vw7eNK3i6u4OKhbYekvNHA",
-              "filename": "46892269_1677775128990747_2031409811773456384_n.jpeg",
-              "size": 11070,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/l7cZRveFAZ5Oc1hb0X5MTw/cXzJPwzTjZDaDptlXxukFXuV0r67ST1c5lqdT6NEO-C-6CaDEFW0TyXba3M5bqTsUD1HJzqLNGzXJ8hy4FSnOAmzSIWuUTkrwSBNHnLkzCWz3zdT4pi1riX0NVY1xc6KSKL8C9_W-BXP1Aj8koOcHg/Nt3FeymeUgZWyj7sUceJA7atoiUssxPrc9JLHPcYKnE",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/lEo-kU7LQTYaaVirLEis3A/aRx8meQ1NPHD-9HdHKiR-8stZAWK0ZqUEKcfQ39evFPw4jhBLFdTqUnh3VjK-AwRqysT9tY09b0T5IBxvpTagQtO41d_0WHJ9KSRPZ274L2I2CLy1PqHnytyntqmLAenwzhFDlyPCcagoNPx0OlzFg/LsWdWkAq7Kfmn0KCXk8TFwoGAESQp0DN7UrFIVQfJcY",
-                  "width": 320,
-                  "height": 320
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/iCT8J2tBVKaNt09j8iUoYg/fobJX6rCU2vuBIviDpl3XRup1zC_N_czeq0m0GtfNknPISn_aYHSHPvJmGd9Qpv1twgIJWNokhZg5Kg05iOk4YHhnCYOUToYgMqLHNaAFgyaf4J2P158I-r7owTQQdqShzedGaCKfBasbFYI7C5N0Q/aMBQ1KBU3zaGnfDi2F_wrbyKUlpYGYhQcirj3oe5N4E",
-                  "width": 320,
-                  "height": 320
-                }
-              }
+              "url": "/public/organizers/ride84.jpeg",
+              "filename": "ride84.jpeg"
             }
           ],
           "Name": "Ride84",
@@ -704,30 +638,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attgdnMqMvLSRg391",
-              "width": 1080,
-              "height": 1080,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/-NvfIT19IA195TQufsp8PQ/bApt14lv_qlTSzh0KSHQhewiZBcCZVcoT8S2ECvF_VVMWHyWyjOz_8p-UhJHjryh3dC5CCl7u6nAlP9nyZMqghFMTUk7Cg0o8JcrLIB1DRYUEEL333SYMAzPnd5dutPLvCPwSMX9O1_CxbT6tPqWLM72jRSX1C0xUeYGTlh2B40/j6WIxegZmAViC23Seh9z_PWv7XjPsimX56Pc7jkPV68",
-              "filename": "weston-flyers.jpeg",
-              "size": 123665,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/O1D3qo1j1s3nnSmapNLtQQ/G9t-eo4leJOoPx8XBgrJHlquN9vsRJCdCbRaXDX3ix0-53uLRnpuI4eRgoTkm1Mrl9NXTcdSGQ0GMzZEtk8DbVWkfBqdU5HzLqsQYq5r2xQpyldBfseAlzceAfW_LX2Viq7cZruWNvJFJhEeLw4sWQ/me0xPrYEhDA3qmbitAUUIhVbVhcPvvkqFNDWD0q91xw",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/2upHjrlqjWo2DTscCz1uyA/D22VmzYQTaFTwRpMnIBeW7LIQIlIciAG-yM2YvtaXP3pfbPTyU8-Zb1MVl2P-sj0mhdE5BZf9_yAHS0XHU1ZHf6z23LmEe84dPUmFteBboj8xwU3omuNDlks-pE_ZXKk175Z8PeJU4r_qwUlYMIb0g/aVqrS9wBiPRWSgwQuXbb5Zi40cNK5kS4DIT3cLz6NTQ",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/DcvX2HpJvh2PwWviYE7Bpw/ddVm_KzjC80VV8dgESs-4cGAXkIDFcpXsVVfRLVE9JCPX-TV0eSjp-1mhfZqoK-DrL7XvBk6BDFNszzUCF8TUlTIU_Bt2PnbWBgqhn7halh-0qJtW5bipI0AQ3BVxlLVKVYpQXITR5XK02MEI-q5dw/exEpH61yp3sjY7bjpwkNqFjGB5BwDC5-yye1278I6lM",
-                  "width": 1080,
-                  "height": 1080
-                }
-              }
+              "url": "/public/organizers/weston_flyers.jpeg",
+              "filename": "weston_flyers.jpeg"
             }
           ],
           "Name": "Weston Flyers",
@@ -743,30 +655,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attgMVj8cmln8yCdQ",
-              "width": 1080,
-              "height": 1080,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/mZludZcNrEGpoF5ryiOYuQ/BDP5BFUb8A1MU_XAjAa9Us-F5vDjhGsDS7hAYVtWrP7GlJb3uuYqUKvi-PAfcGYq6-TLOlDlbcM1BoIMDPIw4MZ_JvCTLXj6fuwO-wO3nwQndA9e6cnYwrcujNPbYqgRcWt1a3UKKmrfosFed1VK51aRdsP_0GepplEM3tL356TDgqjJMGToygQvGHkA8wATR5PAo3vcQflaMaV2TRs_IsQjezjNu7sc9Wg77yIWiRc/P7K9dlbrr5Yl3H1HppRQQLu30J-sGuFiORDJqvXXw_0",
-              "filename": "SnapInsta.to_299534231_795560015125262_5460383434928525675_n.jpg",
-              "size": 120265,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/1PX87PF3acz-Y1KbKl4dow/ipaQN-Xe98lBmI1j7VT1c7o9myaeRsFUDXA2Uk47ZAOqaN7z2qmsqvHyI71q9fDUaURzcU8jd5uWhRy84nizNRo6j54NtH-ib5esNhw002BkpSmyx_Ei9k8z7MmZlJQD0vWQ-H0LLqofHV5wiY6k5A/EsxlhZgKBnRixMqwimVngljEkIocmyWN8KI2MYDCLBw",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/IZ6pjoGY7nyK1OKYHN55jQ/jmPpgYRL-kdnnGs_cmOuEzWoPZKpQrNfhTkbOz3meSUIF24_yW8evx42752vVubmT_vVTJLR1cU8ZD_bAAM6STNDYw1QIJLaivS6LXYAmRa8enRm12q0z6fEsqboDk5wOIwPmQ57FtdoeROSmos4pw/YuVb9x95FrSdyNJp3J3iPhUFeMca10-DLHvjkgyKaeY",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/8dbZ8QTY7J39rZDsQCjJ0g/Y0RIcx5Qqj5WdD3KaGqTRsLOd-lEkn7SodnRYNZu4UpbY7BtXZmTN8THdQVSnFOfqlLiYJhzxZvzHlBFfh_jH2625DoP3LS0TTA7GaMPFen2h5WR7g_0bEN6GO8MDQrUA_amNmqMV0BYiu7k3CAl1A/Um8GEAZVviGPG0Ey-14QuYHHqR65x0AOO_TlHte3-Gw",
-                  "width": 1080,
-                  "height": 1080
-                }
-              }
+              "url": "/public/organizers/wild_hogs_cycling.jpg",
+              "filename": "wild_hogs_cycling.jpg"
             }
           ],
           "Name": "Wild Hogs Cycling",
@@ -783,30 +673,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attEZdVF0s2Tm9OBB",
-              "width": 150,
-              "height": 150,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/4-sfC51W5UeeDJH9T0VebA/U80qg9XWeFfp0zb6OdW4aRe2FOlPx9ZKo4SvNwzro3pl_HLvFjLTPhaSEYJtAvzHd4H6OJe2gSzFnapSRQ5AEIxNnD3Wkuzp3FiMJJwno2SIi1wTC9sxlqYYIPP9R4t0BfLHQ39f7Ue5cX9WSOnB2Q9ZCDCc_31Zgyw6xQ6zfzo/mRHkrcWDZyWzbQrVTLexPj7wQckhEQ3TO6J5lAJKKsA",
-              "filename": "pd-cycling-group.jpg",
-              "size": 7807,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/LyPrif-dmnGjrtsoUlFhtg/FZsSZNik8VpqviWv6KE3cxPs4RVYaXrGoFVS1I9_hjYNAXp1cWeHAEf_uZZHX5ztaCMcXTvdn6_9QyGLjeTt6WmxftgNwyQpCcJjUVUot1NveQPTYjgTqY7vpOMbyTIpi8TswtLGLoWnUr_2p1wY2g/cVmn0503jLYIvZicg05xfNVQJne24_q2ngaEKKDUGO8",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/3-8eS2ptB2ZF6N_Mq7Y1wA/AyUQlDwSOihBio0FHJ7uQW7_9DaOghXtJlSqbxPLF0RwCDkOwX3E-Lfy5Zmt8E3obKXaEznMDzo4R-FZdhyFnfavHZKiFm5P8THfnIlu2N1TguPDkv1rkTA7iGvt7-jB7IdA3YTiPMXfSrcqeRyOvA/VgYQIOOKJBCJJ1_UQ4ndtOX4sJjppTUUgrLae3ArKwY",
-                  "width": 150,
-                  "height": 150
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/s_ExzPEs19oIjJS9G2om2Q/SAP6ar5UEvr6u3wb9WlNNfINlbejlMDeDSzPBvYuSBQZkZ_RepLC7RtDrDndTXYP07ZEiQD0xbcz9uGvgzTfu8xxSa03bO2kaInat0AYmD936vNus6JFfxa1MP9B9EUqoFO9Cv0m8enVE0KEQkJDGg/ubT_tgTLf0DUbU5IzI2H6BSzQJpX2I74Ifu_ECi2EUg",
-                  "width": 150,
-                  "height": 150
-                }
-              }
+              "url": "/public/organizers/pd_cycling_club.jpg",
+              "filename": "pd_cycling_club.jpg"
             }
           ],
           "Name": "PD Cycling Club",
@@ -822,30 +690,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attLC2XKqetMrjEdc",
-              "width": 616,
-              "height": 616,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/pEFFVXG_y_sf-HpqxqsznQ/nKGVDyPnFVJPoRiLAe21t21F-wer_W-yKSFCBdNF45WQ9dJYG04tKUH--AOKoCqph3q81uvpjREM3sSkjmj0WKIonZoF-DDPawRx0tWk3dBMDah8abgOmd-Rg5-NU3jIwmDyuDHlU5AEV5-d4meciACBUdqCESJ4r8JrODNhQuk/mv9GxsjW5fzYWSimg_x0eBd3JtID8ZS6WLZf7x_aBc0",
-              "filename": "unicosta-cycling.jpeg",
-              "size": 93223,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/nIhcbV-jbq79eokRWrv-hg/ZvDc2qvA-BIl7TgI-H0Gq8wVJlrsyzrR9FgGMgTxzR5PoZ6UBYmjuS6n2TnoraWBefnqMaLnbPf51GCRnAWdAXCCHk0oBoXl2n7qG0dZnaIvUYgs8KpYVwHPM1bxS96OFGRDQnxm3kUtPwKMNeOnhw/KBjGu9CFow1XW1vmgg5pYVA4-cPhD8p95d_U3gPQoJU",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/S4zL-rcLls1ImPXBAKA4Og/Xt9mlTJhbguo_qkiqnkMLZcGi-w_LUEE_qqP0gED7yzIfW_7fJlogRL60tv7DGloZA1UmObNIKFjatlR1aS3rPv25pqpgpxmT6qFsiYYKYIhJOfHhq2QCRFlcUPOPLGb36b7b92kwSCHv9GezkER-w/OAiKiFyUF7oCZZuiseqWDdKSW5KxG0NXajm19Fz1NPc",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/GLi22DObATDPfZ_sXRcTIA/odw_GRtFVe82fm7uL2Oo1Hkap2j2AE7y3y7OHpWJATGbSc-viFTcTGUJtGNGJdVFZLYwdIaxA4b6mBRKOdKDiT7jBXSfGRbN_D3UBO72DULSGdXgZsQKObYFK00Xl7tRYjFl2RRQXxYzHWM0icNnLA/H9snednp8CFthsK4EBkQiZYrR3G0CZUXcE36bKbHbRY",
-                  "width": 616,
-                  "height": 616
-                }
-              }
+              "url": "/public/organizers/unicosta_cycling.jpeg",
+              "filename": "unicosta_cycling.jpeg"
             }
           ],
           "Name": "Unicosta Cycling",
@@ -861,30 +707,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attldDOvbiXlZVC2W",
-              "width": 977,
-              "height": 977,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/-luBKM2cxaVqw7DMg7VL6w/d12wY4f4tb7uiSJ5Q_NDS_CX6dMQBccNhm2NzFDHrs2aa7Pr5tWdUWPoJjWjfwj3_vBJx4mPZGl46-I1xRLV4nhNThqCWTf0gcAlfOWIQ3P-bEww9yp3mV03ro-Ty34MVfvTviyew0fzla5AGKcKMDifHDYPiOPyzq4MNi3f3HE/BvVBhqf4psLKtJBBO1I_ycqy68w75uvWY-2lD9xPw6w",
-              "filename": "mbo-ten..jpeg",
-              "size": 37811,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/45yRMTtiE3ogPEi8niXS5w/L-ghA7wjWMW16DrQwKL1ieJeivNfmSqB040KWslClmhhOkRp4Jejp6qE21WcaYldm8ajJlOBoGFvhE-iIRIKHVn5Nu4F0lCQ0cfRnTKgYSL9ZJ09hVJ9nZLB4Hw_zP6re2S1KwBQ7nOHr0LcLStJIQ/0iMIybTltpXp_p1u1ohjRUS2tFyr3dpDa2jjPqs6d9c",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/T68hqDlykBSHBNWLGg69Hg/UeBzOZAQVsbCuDfvx45lWTWQAG1_kf7dwrpZmeM-Zm0bCCEICK7cYhPpNz4zn2pnvj1jCa6IMJFIiY9e_N_F-AJysyAjVPv1xU035jAONFrOyt2SkYvKOyJbSeWMIxmbkjG6bGX5VOYbwqwfMsYGEw/AMVNT2pZmqthci-yzFhAN0zA9OvA8lkRMAHq3KzJGPk",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/cj45fCCS3LJ__oL4L-auWw/3NKPrhBeQPnaalWGSw_nQoFMj1UXfF44zuuGQEY_BBb4qlaGq-hAZSZRMVzTWoqFtBSS8TJdl8IU29vFjNf1U4hUVBT18ICLghG5f2dEBZyolkKcKjUZpyUpu6fcg95o8YUc_Fowd3GheLkl0duBLQ/pMDoKe1lNvtWtaCM2SkCEgvH6UschlBdJHBNnkrSNH0",
-                  "width": 977,
-                  "height": 977
-                }
-              }
+              "url": "/public/organizers/mbo_ten_cycling.jpeg",
+              "filename": "mbo_ten_cycling.jpeg"
             }
           ],
           "Name": "MBO Ten Cycling",
@@ -900,30 +724,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attMJgBJ5baxqS8e3",
-              "width": 1000,
-              "height": 1000,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/RSxXNuz7C8VXUxxN9-Ri7g/PgSb9NSaMDsPrx49gvWJ_s0DEa9UA5QuMA3nytbTuoBKNS-aflyueMbnfPfWsVl4DHKbHXvO6U3MXu0nmGSE_BGI4lHIFqmPRoYmigjl3pFQZxAsxfl6Nad4cZHWXVE5IVDwIdXNOfEQ9e01pyuOEDaafdYCCcOv5L2qSVVc90Y/mRrBBtiGYtthq1_u26hKG4Bzer1e7bpKsM-zCZBfaUA",
-              "filename": "BestBuddiesChallenge.webp",
-              "size": 36274,
-              "type": "image/webp",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/zQNE5VP3RlQUX0vTkuIeFA/Nu2YdURSHgvlixmhcS9CoiXLsuOClVgZnj86DFNa4fc7GxTturv52IuiP99Dx_to84ncA0wF7j_F7lcqRkpZPsayEdChVfvX7xlv_FzWCTV9hPYA7unZ9xtvOjDXleLtiYO9E4XVDuUzNW5AQJSa3g/jcNrdYFgYMjvKRbRyhFVCRb9DQHgoMo3qHFXHCATkzU",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/aYUYz5_hksUGoi2LNWs-Ug/rD4z0OdHN6anEHT7Y78cR1zRkv2At7MTQEAS4NrV3A-mU7mtsbGTB9szYlZ_bX0O6mdQ07F9Xj2rgtDsD1l845BcngmjecSqmsCapO2b8C8MEb9HTr7XSS_dpFiv_v89vsPuZ63k4j5LjTzdV1dBpw/JjqfvF3HCoHzZb68xwKvXj_WHbfdrKBeln-srqXx6yo",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/H1GW1cYUqSrGX60seAZ30g/HHVZqducpOXACgEaMATtGLKt-sG1srN8UMydYRDMAJeLEhQm-Vfih0gXEUKovtL1FyYiJ5LHRplZ5Ly0wqfO00EH0Dj9fWviHqscNHg2SDPbT2WODUyrC61kJgdWW-rr4jKJ1uEoO0I4RBuUrNFaJw/IIFFkfrUjneskJ3nYYfQPURsUdhw_a27nu1EtFen8xs",
-                  "width": 1000,
-                  "height": 1000
-                }
-              }
+              "url": "/public/organizers/best_buddies_challenge_miami.webp",
+              "filename": "best_buddies_challenge_miami.webp"
             }
           ],
           "Name": "Best Buddies Challenge Miami",
@@ -939,30 +741,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "atthUPZmVKki1qlYO",
-              "width": 377,
-              "height": 377,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/EFIcM9HVqBxlGjs-STouhg/aPQbuTR1wO8pFGQn_4FHe_ni4Z7WTJjB-CvjGQBedNcEx-Frgk5WCDqCJaL5615mMYZKrWO5Zs4Yt3kTeMNaevytBXo_JXAl_hty6QnGvTsf16Em68SPdjdeAIVaotidof-xmUlc26lXsrTK4Ppw5k7DfFlL9uZVyXKpR4BI-MQ/8ceYu4OIowQ2pWHkEx05Jrio45bWdMpQ_1oiFTYIgg0",
-              "filename": "Le-Tour-Weston.jpg",
-              "size": 31275,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/-6bqZcpRhw8dqooEBVNGRg/d01eFrnow1tM0j1gPAZTyqbqW0vjR74bRrYAe_GX3Dph980u_rE4ql1wPJbgEUFJSG-LkheNKFE07gNaWpCyApSz9cAsJBmAsE4KOhinXY-lB9xE0TzzxzJUA2thJSLPKXH2FuZMSASrUKHY355pIg/-IjDLEM8xLlwYRTXOfxPRFvMmFQOpON5bINAl7neFYw",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/aH3QMF5l-LgB2I3wJw5DNw/oVpJWwN3Fl7gB3CwzM8CH3QnOos8doLBZg4UIdE0DfDNncXoR8V3Fz_RRk8OhrKqnEajiF0oWd9LpoYE1pMTJRplTTInN92zdu7gLjICZaajRLiz0WTQYQ89WAapXo5sxJPd5YM8f6cyAeYQwe53rA/rHwV6YfLyoUUtQH-gv_1Usdu4CAmBa_MaKvU0k4JAsw",
-                  "width": 377,
-                  "height": 377
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/jzDSFanEdXt8hd6JaOfpqQ/Cy3aU5uM4PReAGy8m7yGjlY84rhu2IiK8rr7n4ajzcwgT7IGCsnjwwHjJiG3xDO_Yr7w060IdgWedUvMaNctsnVPd3UZ0Gk5aCfGHHcJ3kz8AQt5b08M9Hxpa7iLjGqsFiuUUs6YhxpurbMiyZkYrw/F6RW8m5QNCv61OSw74s85Awe5_aWqV0Wyxy4zeLsUgY",
-                  "width": 377,
-                  "height": 377
-                }
-              }
+              "url": "/public/organizers/le_tour_de_weston.jpg",
+              "filename": "le_tour_de_weston.jpg"
             }
           ],
           "Name": "Le Tour de Weston",
@@ -989,30 +769,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attRhmlTb8DNZQ1ra",
-              "width": 1080,
-              "height": 1080,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/SvscA2GE0yhKy9R2vwdu8w/Q1CddLITy5Ja0UfylPS95ZXuLtdHUP5JTE-qyVlOr_9WsexkhdD2PMRKxJqqXPuIXYKdWtwBIS0DLyWJFG3SsxS2zWB4Ofmz0pL-Okm7C7q-SKxRKege69sVZ4QH56xOQzC2J2R85rQ-GqP_Rdpdnu3YvrZF6vjIxubQsl_qcUI/LJGyWGQwVX7W07zHIgmhaMEBbUOU9rb-fJeL1vE8UsI",
-              "filename": "team-recovery.jpeg",
-              "size": 77820,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/bsj2GpsziUeV62o2AQ1YBw/hktLdshiJNkS7k3VUBVk0JidZp_VtXPkBsXS0-qmxy_GLF-87-aClcCExgMA6S9oAb_sNnAGvCu4EWg8PhAbSVNq8UPB4AhGTRw6e8w3r77W7puVnBzYzMgiZVQoojyeFcj_L4b4PP5tJm8km4xwKA/0zz7qfFs85Moq5xhnLUsqLMUlCmFSNk3nnqQmu9DKa4",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/BWeTupqWbV6Yi01XDdvy4w/hbTvT7Q6_rvVujH2IrfKRf_HTUMwlgV58mZE1bKj3N0rLxsnBH54onGJ6A3hK-0EeIp1ixkM-vEnx221ueek_L9d_tL85-d9fRTEt5RIGOnv0vdsFwyYCwShkCObubHMX8zzpC6-XOX8W-nvEInzsA/Uc__6x3eTW3Q93sYRNd_8ePpPbs3C4Hth4IvgwV7s3Y",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/wXS3Fitao_WucNujD_WzOw/7hg0Nd7FH3larwBokLyGlyEOAXLdC2OCgqLGqc2w4cit9eCEHSHUVhhxT8F8f1QzmnURXoyusvSsy8y8EszjnzbsqEzO3eeMpKi0kep6Pkn6nHgmpiwX9HAJQGUGrKESSIuUUK8jKv5rDzYIAmb2Lw/dHANA38Z9olarlX7FyoCDKgMqW2fkMy-whLA2PJRP2U",
-                  "width": 1080,
-                  "height": 1080
-                }
-              }
+              "url": "/public/organizers/team_recovery_weston.jpeg",
+              "filename": "team_recovery_weston.jpeg"
             }
           ],
           "Name": "Team Recovery Weston",
@@ -1028,30 +786,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attx9rNareziSBh4P",
-              "width": 1000,
-              "height": 1000,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/lND3Ffm_kZdldv0uLyMB5g/ufDhPkb6UWJhV6cQ9w-amYh9L8mZjPoYU0zIhCzebo4Pr8HeS1rN-cFKZaBNLv0n_6VktDijQwvHR_P3_cd7pOeMuyXFKNlHEMbY6Yy-B7g7cLAipAk4OIC97xFxFYqsdD-TIivYgII0EJBOk1Dq-tRjRCMYUq1Cc-mQMWpw5R9iHNN7ErnIXghVv5hcouVQ/yg-f0pqgtNcZHbNV0RriORWc3lMBUcmsqw159vYfGEc",
-              "filename": "storiesdown.co_alligators.webp",
-              "size": 19404,
-              "type": "image/webp",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/HTWb3VNDSBSjmGqsOpulqw/LEpLyyLbbzIgvXNbR_hU_yR4X0PamECU8L3udyrakCgBJ_ijyQDFJlrDsupqQGuSIXcvjZ8TU19P9o6xWXgGf1s6U2I0v_uyG8j_FmPKy5OcLfOXcgm_hnLCiswyWtgUNZxAKOB2svhlpCQIcR7E7A/UlnJJ7T2eaMdY1xHz3kgD2K_Pf-RiptYpOBf6TX5PaU",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/xqYn6z3Sr4Nw4x71Iexo9w/lbXphXTU5SukPi-oXsL6tlM5NZmawEwowhwHYSEbJIWYE9lXqaTHHZ9yzJa3eTWxZPJqDUt0ObV6jjWcbGW7YSLB3d92_zWDK_B7o5P7QbQgkBHkb06REb0F5LkkiPJ5X3JFwA9XdsuCtoEYs1k_Aw/A98k89zhtCihvD_oMk8bcL1XPT7GnA85PBAp6Gvw-LY",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/h3T8ngfKc5dIQ6y2z2qFvQ/0XQ82tQAJuR6kadb-VqlIBM3Etx2wkd8iHSsfjirWBT4aDSG6e4pkYlyQoStyGbP9bAoeix2gu_Q5quBxQ4ZC3aXS1p9eScABoT8TihtVvc1vIMv-WWYEGMIMBpUsBH4BeildkkZG-EJWGohAu9JcA/a9y8NSF68ALAPYXUOVYM_965SDTq_FtAz1fv3AbVl8Y",
-                  "width": 1000,
-                  "height": 1000
-                }
-              }
+              "url": "/public/organizers/alligators_cycling.webp",
+              "filename": "alligators_cycling.webp"
             }
           ],
           "Name": "Alligators Cycling",
@@ -1067,30 +803,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attMvzlraSPA6XWDE",
-              "width": 637,
-              "height": 637,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/uoCrDZ8MQSK1E_hQRJzJIQ/aTHRjVmTsgGic1u2Oyfe1p2beRbCH8oQ2GagCsAttDb0PgszaPbjZy8mU7CpDTdZ_-2JpkzT-W6dMt1kQILdy9kt-242qPmkwtEaz0_3NJcMXIRMq5Yw-nwvDa3BbAf_Bz2DdVIu2XYobWkSMzGaCIuy6fInxsMmf4vaRrpEDdc/nJCeBO56e5unGrVReONWOEtM3ceNyNcUvFiaARDipVo",
-              "filename": "storiesdown.webp",
-              "size": 22184,
-              "type": "image/webp",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/9K5yxD0M8esDxzlHDW3-tg/XdzhLDAFM7QlYzGBIy9FEUhks1qrw7ke-EPi3iVx0HxY1D1Oq9la0FeXy2Nm3_f246w4fmZxHxF-6x1mAoEZGRnWE8FBLqdfjT9Pv0_4fp8um6J9GrPdXFwMVFVO4_UdV9JCno6CyTWP70MqtNE3og/E9o-EU0mFfM9rq4AM5IjY40D8aXyeINPjD1HZZoogIg",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/vY_BgqQ-xYbEDWcPHSyVTQ/Lf9TsTk-F9ms5KInl3CO9WHD5FkEhzRLWjKw7GX_J0s2WI2ryisSFGJngjXF_dc3Cuyay6hm082UQaT97kIzog82MvNefzvHqMRgIorVeq-U63AhPGdLooF8XOmBhUXLiIIRT-4n20fwCjN1lnKUCA/zCfzRUQv9_t1DH0jhiE2gsKpROxPTm8-ylYL78YPvyY",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/FnZjSddU6Kp63-TZpfyYrA/H-agbl9fG4x5LrYcSfMOVcahjY77GHnU2NvkMNaIWAx5YeRXd1cvxqlxlnbuKQ2Ri3bU8uY2ScZoo2FizLkTpEnI6b2gql4kUS1shgQqVWVtDKv7C5ad9r8iI8tLZxZYzcd-4P-l-pduRCZ6lr4NkQ/XAQHvb0lkC2OmgIzdog8BqPKKK72ADvsJjO2n9noN0E",
-                  "width": 637,
-                  "height": 637
-                }
-              }
+              "url": "/public/organizers/team_galiz.webp",
+              "filename": "team_galiz.webp"
             }
           ],
           "Name": "Team Galiz",
@@ -1106,30 +820,8 @@
         "fields": {
           "Avatar": [
             {
-              "id": "attG87R1m5TukpWMY",
-              "width": 776,
-              "height": 776,
-              "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/Yd5SR7kzQ9uFHJh002vSeg/2X__qOm6pFhk2IEM6PWlj-88C1yH15GQ3WzKjObFE_tq4dn14wB8UlMfqgZAgLBqIuMP_UxoQsgOFhueRhb3h_RTUp8guvUVqooE8ctFyvpZ-xUGn-iCjZYU1-q8QEIFudgrFiBUpXDimEamD3Kq2oH6FymLf9KQO6WwB3hkYO4/I9WfI7S6zbO4_PDsxnitZt29MaZCR-4ktKlKJ_t7Rbo",
-              "filename": "fp-bike-shop.jpeg",
-              "size": 94058,
-              "type": "image/jpeg",
-              "thumbnails": {
-                "small": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/25R3zsoTRbFKBjjXzkelnQ/hfGNsZhC_9ZLzW5BsazZQUMYryPXUzBcU6OT-c3kSNczYfMmnsxUNH3Domp9Z-LXhMBog4U2opjub0BibKZDXq-6uDoHjwrhrhRUAhMfG5IzrUE8R5cM5Qp9DjE3jWiIFnN7_gkRdpXwgw9mckX5sQ/VPMqtlYL9AvmPC47PfcIXg9uWocyg-R99irBKvJaa5Q",
-                  "width": 36,
-                  "height": 36
-                },
-                "large": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/kvLG-DBROB3m6bnS9-lb1g/wo_i3g4Gs6TlxZ-ZZILDW1jqMOGi3ap96zL_S_OK9_XWSrVnV1FvrKP2JVpXhioeSA2WxD-3_5sBlQwarAE8Cu7N0V0T0Q-Ovw6oJpqfkaeYR4_i4aCeGCff7ixTsH9S4v4x6oQszJaceHLCZMCS3w/pSNmaCHNGvxW1eieBSMq_vtFM165fb9nHZAP2miaUfI",
-                  "width": 512,
-                  "height": 512
-                },
-                "full": {
-                  "url": "https://v5.airtableusercontent.com/v3/u/54/54/1780581600000/aK-wz6k9y194yZG9BqcMGg/_X5gZwnl9g6gt1vGUUS-voK1bfLEMEPOxLoRFU0Vh-Q6h9rjeKwe2jPDnpOLdofiNW7BbQIjjrObgnUB3_m47rg0NIQ3tHdAghfrcxsRml0aO_l2-HoG-EE_EdXUwh7-_SYPmZLUHy-k0NxKzluNOA/53zw9GGWgFXbvf-qwOycAy88gke_zz1WBeM3Q_y3ghM",
-                  "width": 776,
-                  "height": 776
-                }
-              }
+              "url": "/public/organizers/fp_bike_shop.jpeg",
+              "filename": "fp_bike_shop.jpeg"
             }
           ],
           "Name": "FP Bike Shop",
