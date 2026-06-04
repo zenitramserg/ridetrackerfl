@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T23:23:17.993566+00:00",
+  "generated_at": "2026-06-04T23:32:46.266334+00:00",
   "rides": {
     "records": [
       {
@@ -95,15 +95,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 2.8,
-          "Rain Probability": 0.05,
           "Location": "Griffin & Flamingo",
-          "Weather Summary": "Dry (5% rain), light winds 3 mph",
           "Distance": "40",
           "Ride Name": "Team Galiz Sunday Recovery Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
-          "Ride Date": "2026-05-31",
+          "Ride Date": "2026-06-07",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
         }
@@ -136,21 +133,17 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 2.8,
-          "Rain Probability": 0.05,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-03-28T19:22:30.000Z",
-          "Weather Summary": "Dry (5% rain), light winds 3 mph",
           "Pace": "22 /. 24 mph",
           "Distance": "40",
           "Ride Name": "Sunday Chilling Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
-          "Ride Date": "2026-05-31",
+          "Ride Date": "2026-06-07",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details.",
-          "Is Primary Listing": true
+          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details."
         }
       },
       {
@@ -523,15 +516,12 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "06:45 AM",
-          "Wind Speed": 7.5,
-          "Rain Probability": 0.05,
           "Location": "MBO Store",
           "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
           "Last Checked At": "2026-04-28T18:11:58.000Z",
-          "Weather Summary": "Dry (5% rain), winds 8 mph",
           "Ride Name": "MBO Girls Community Ride - Miami",
           "Day of Week": "Sunday",
-          "Status": "confirmed",
+          "Status": "past",
           "Ride Date": "2026-05-03",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Pace: 20-23 mph\nDistance: 60 miles\n---\nA promotional flyer for the MBO Girls Community Ride in Miami featuring three female cyclists in MBO team kit riding road bikes together, overlaid with event details for May 3rd."
@@ -545,11 +535,10 @@
           "Display on Site": true,
           "Location": "MBO Store",
           "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Featured": true,
           "Last Checked At": "2026-04-22T17:50:25.000Z",
           "Ride Name": "Coast to Coast Ride - MBO Cycling - Miami - Naples",
           "Day of Week": "Sunday",
-          "Status": "confirmed",
+          "Status": "past",
           "Ride Date": "2026-05-24",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Address: 1100 SW 2nd Ave, Miami, FL\n---\nA promotional flyer for the MBO Cycling Coast to Coast Ride featuring cyclists riding along a coastal road at sunset with a glowing neon outline of Florida in the background, showing the route from Miami to Naples."
