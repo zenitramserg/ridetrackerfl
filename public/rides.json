@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T17:35:53.820841+00:00",
+  "generated_at": "2026-06-07T17:39:16.749319+00:00",
   "rides": {
     "records": [
       {
@@ -130,6 +130,30 @@
         }
       },
       {
+        "id": "recB81Wo3kz8Xh6gT",
+        "createdTime": "2026-04-07T02:47:41.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:30 PM",
+          "Wind Speed": 10.1,
+          "Rain Probability": 0.04,
+          "Location": "Origamy Gelato, Weston",
+          "Organizer Instagram Profile": "https://www.instagram.com/teamrecoveryweston/",
+          "Last Checked At": "2026-04-06T00:00:00.000Z",
+          "Weather Summary": "Dry (4% rain), light winds 10 mph",
+          "Pace": "Recovery (C/D pace)",
+          "Distance": "30",
+          "Ride Name": "Team Recovery Weston - Monday evening ride",
+          "Day of Week": "Monday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-08",
+          "Address Note": "Origamy Gelato Weston - meet in parking lot",
+          "Organizer": "Team Recovery Weston",
+          "Notes": "Added manually - Team Recovery Weston. Bio says \"LUNES Y MIERCOLES 30 millas\" (Monday & Wednesday 30 miles). Spanish-speaking group."
+        }
+      },
+      {
         "id": "recDJ1wXrKxpGMj9f",
         "createdTime": "2026-03-28T23:22:32.000Z",
         "fields": {
@@ -213,30 +237,6 @@
           "Ride Date": "2026-06-04",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
-        }
-      },
-      {
-        "id": "recHxrbjn68gWdMZv",
-        "createdTime": "2026-05-21T16:49:40.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "6:30 AM",
-          "Wind Speed": 3,
-          "Rain Probability": 0,
-          "Location": "Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-05-25T09:38:13.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 3 mph\"",
-          "Pace": "23/25",
-          "Distance": "40",
-          "Ride Name": "Memorial Day Ride - OMG & Team Recovery",
-          "Day of Week": "Monday",
-          "Status": "confirmed",
-          "Ride Date": "2026-05-25",
-          "Address Note": "Behind Bank of America",
-          "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 23/25 mph\nDistance: 40 miles\n---\nA patriotic-themed event flyer for a Memorial Day group cycling ride featuring silhouetted cyclists riding toward a sunset, overlaid with an American flag background, fireworks, and bold red-white-and-blue typography announcing the ride details."
         }
       },
       {
@@ -418,7 +418,7 @@
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-05-17T16:51:46.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 3 mph\"",
+          "Weather Summary": "Dry (0% rain), light winds 3 mph",
           "Pace": "22/24 mph",
           "Distance": "30",
           "Ride Name": "Monday Ride",
