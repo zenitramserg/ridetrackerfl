@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T17:25:44.767951+00:00",
+  "generated_at": "2026-06-07T17:26:38.054208+00:00",
   "rides": {
     "records": [
       {
@@ -95,7 +95,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 5.0,
+          "Wind Speed": 5,
           "Rain Probability": 0.05,
           "Location": "Griffin & Flamingo",
           "Weather Summary": "Dry (5% rain), light winds 5 mph",
@@ -136,7 +136,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 5.0,
+          "Wind Speed": 5,
           "Rain Probability": 0.05,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
@@ -506,7 +506,7 @@
           "Ride Type": "Regular",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 5.0,
+          "Wind Speed": 5,
           "Rain Probability": 0.05,
           "Location": "Coconut Grove Store",
           "Organizer Instagram Profile": "https://www.instagram.com/pd.cyclingclub/",
