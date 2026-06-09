@@ -589,6 +589,10 @@ def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = Fal
         except Exception as e:
             print(f"  ✗ Failed to update {record_id} '{ride.get('title', '?')}': {e}")
             ride.pop("airtable_record_id", None)  # Clear stale ID so next run retries cleanly
+            # Persist the cleared ID back to disk so the next run doesn't
+            # keep hitting the same 403/404 for a deleted Airtable record.
+            with open(db_path, "w", encoding="utf-8") as f:
+                json.dump(db, f, indent=2, ensure_ascii=False)
 
     return updated
 
