@@ -89,10 +89,12 @@ def _b64(image_path: Path) -> str:
 # Minimum characters of readable text required to bother sending to Claude.
 # Video frames and action shots typically return 0-5 chars.
 # Ride flyers / story cards with text return 20-200+ chars.
-# NOTE: Set conservatively low (5) — some accounts use dark/graphic templates
-# where Tesseract struggles but Claude Vision can still read the text fine.
-# Raising this risks silently dropping real ride announcements (e.g. @omg_cycling).
-MIN_TEXT_CHARS = 5
+# NOTE: Set to 2 (not 5) — stylized/graphic fonts (e.g. OMG Cycling Tuesday flyer)
+# can fool Tesseract into returning only 1-2 chars even on text-rich slides.
+# Threshold of 2 still blocks completely blank frames (0-1 chars) while
+# letting graphic flyers through to Claude Vision. Cost impact: ~$0.003 per
+# extra image — negligible vs. the risk of silently missing a ride announcement.
+MIN_TEXT_CHARS = 2
 
 def has_readable_text(image_path: Path) -> bool:
     """
