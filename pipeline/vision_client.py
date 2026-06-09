@@ -63,6 +63,8 @@ Output ONLY valid JSON with this exact structure — no markdown, no commentary:
 Classification rules:
 - is_ride_post = false for: product promotions, gear sales, performance activity stats,
   race results, general lifestyle content, team photos without ride details
+- is_ride_post = false if the slide shows a screenshot of the RideTrackerFL website
+  or references @ridetrackerfl / ridetrackerfl.com — these are reposts of our own site
 - is_ride_post = true only when the slide announces a specific upcoming GROUP ride
   with at least a date/weekday OR a time
 - A countdown timer (e.g. "PEDALS UP 16h 27m") counts as is_ride_post = true
