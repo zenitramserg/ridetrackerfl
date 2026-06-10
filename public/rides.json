@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T23:07:05.907418+00:00",
+  "generated_at": "2026-06-10T01:32:24.908620+00:00",
   "rides": {
     "records": [
       {
@@ -9,12 +9,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 3.6,
-          "Rain Probability": 0.03,
+          "Wind Speed": 3.0,
+          "Rain Probability": 0.06,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-05-27T15:12:30.000Z",
-          "Weather Summary": "Dry (3% rain), light winds 4 mph",
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
           "Pace": "22/23 mph",
           "Distance": "30",
           "Ride Name": "Wednesday Favorite Ride",
@@ -102,7 +102,7 @@
           "Distance": "40",
           "Ride Name": "Team Galiz Sunday Recovery Ride",
           "Day of Week": "Sunday",
-          "Status": "confirmed",
+          "Status": "hidden",
           "Ride Date": "2026-06-07",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
@@ -581,6 +581,28 @@
           "Ride Date": "2026-06-06",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
+        }
+      },
+      {
+        "id": "reczqnPaUd9kMMQgG",
+        "createdTime": "2026-06-10T01:29:00.000Z",
+        "fields": {
+          "Ride Type": "Featured Event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Griffin & Flamingo",
+          "Organizer Instagram Profile": "https://www.instagram.com/teamgaliz/",
+          "Featured": true,
+          "Distance": "50",
+          "Ride Name": "Team Galiz Coffee Ride - Parkland Bound",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-14",
+          "Organizer": "Team Galiz",
+          "Notes": "Controlled Pace - SAG Vehicle ",
+          "Weather Summary": "Dry (3% rain), light winds 4 mph",
+          "Rain Probability": 0.03,
+          "Wind Speed": 3.7
         }
       }
     ]
