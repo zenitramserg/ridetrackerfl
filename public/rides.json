@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T01:32:24.908620+00:00",
+  "generated_at": "2026-06-10T01:33:48.676255+00:00",
   "rides": {
     "records": [
       {
@@ -9,7 +9,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 3.0,
+          "Wind Speed": 3,
           "Rain Probability": 0.06,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
@@ -587,7 +587,7 @@
         "id": "reczqnPaUd9kMMQgG",
         "createdTime": "2026-06-10T01:29:00.000Z",
         "fields": {
-          "Ride Type": "Featured Event",
+          "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "7:00 AM",
           "Location": "Griffin & Flamingo",
