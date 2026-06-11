@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T20:54:35.567008+00:00",
+  "generated_at": "2026-06-11T15:34:59.303258+00:00",
   "rides": {
     "records": [
       {
@@ -246,11 +246,11 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:30 PM",
-          "Wind Speed": 8.7,
-          "Rain Probability": 0.1,
+          "Wind Speed": 10.9,
+          "Rain Probability": 0.05,
           "Location": "1800 N Commerce Pkwy, Weston",
           "Organizer Instagram Profile": "https://www.instagram.com/unicosta_cycling/",
-          "Weather Summary": "Dry (10% rain), light winds 9 mph",
+          "Weather Summary": "Dry (5% rain), light winds 11 mph",
           "Pace": "A: 26+ mph / B: 24-26 mph",
           "Ride Name": "Unicosta Thursday Ride",
           "Day of Week": "Thursday",
