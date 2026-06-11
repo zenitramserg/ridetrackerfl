@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T15:34:59.303258+00:00",
+  "generated_at": "2026-06-11T16:20:48.957480+00:00",
   "rides": {
     "records": [
       {
@@ -264,6 +264,7 @@
         "id": "recNVXs6XqsKevcQK",
         "createdTime": "2026-04-09T20:42:34.000Z",
         "fields": {
+          "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "06:00 AM",
           "Wind Speed": 6.2,
@@ -276,7 +277,7 @@
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-05",
+          "Ride Date": "2026-06-12",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from OMG Cycling announcing a Friday Recovery group ride, featuring the OMG Cycling logo over a background photo of cyclists riding on a road, with ride details including time, distance, pace, and meeting location."
         }
