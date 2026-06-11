@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T16:24:57.612088+00:00",
+  "generated_at": "2026-06-11T20:45:52.716971+00:00",
   "rides": {
     "records": [
       {
@@ -23,48 +23,6 @@
           "Ride Date": "2026-06-10",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
-        }
-      },
-      {
-        "id": "rec0sFQ5vHfH9d58I",
-        "createdTime": "2026-05-29T01:08:19.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "6:15 AM",
-          "Location": "Robert Is Here — 19200 SW 344th St, Homestead, FL",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Featured": true,
-          "Pace": "20-22 mph",
-          "Distance": "75",
-          "Ride Name": "MBO Robert Is Here Ride",
-          "Day of Week": "Saturday",
-          "Status": "past",
-          "Ride Date": "2026-05-30",
-          "Address Note": "1100 SW 2nd Ave, Miami, FL 33130",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Special farewell ride for Jhon Negron heading to Puerto Rico. Destination ride to Robert Is Here fruit stand, Homestead. Meeting point: 1100 SW 2nd Ave, Miami — note this ride starts in Miami, not Weston."
-        }
-      },
-      {
-        "id": "rec59NuIqnIv6JFzf",
-        "createdTime": "2026-05-02T16:59:35.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "05:50 AM",
-          "Wind Speed": 1.3,
-          "Rain Probability": 0,
-          "Location": "1340 NE 155th St, North Miami Beach, FL 33162",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-05-02T12:59:31.000Z",
-          "Weather Summary": "Dry (0% rain), winds 7 mph",
-          "Ride Name": "MBO Saturday Ride to West Palm Beach and Back on the Train",
-          "Day of Week": "Saturday",
-          "Status": "past",
-          "Ride Date": "2026-05-02",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1340 NE 155th St, North Miami Beach, FL 33162\nPace: 20-23 mph\nDistance: 80 mi\n---\nAn Instagram story slide announcing an MBO Ten Cycling group ride to West Palm Beach on May 2, 2026, featuring a flyer with cyclists riding alongside a train, with detailed ride logistics including time, pace, distance, and meeting address."
         }
       },
       {
@@ -250,7 +208,7 @@
         "id": "recNVXs6XqsKevcQK",
         "createdTime": "2026-04-09T20:42:34.000Z",
         "fields": {
-          "Ride Type": "special_event",
+          "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
           "Wind Speed": 6.2,
@@ -352,27 +310,6 @@
         }
       },
       {
-        "id": "recXhozXtxIJSjbWD",
-        "createdTime": "2026-05-29T22:27:25.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "06:15 AM",
-          "Wind Speed": 2.9,
-          "Rain Probability": 0.01,
-          "Location": "Robert Is Here Fruit Stand and Farm",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-05-29T18:27:19.000Z",
-          "Weather Summary": "Dry (1% rain), winds 3 mph",
-          "Ride Name": "MBO Saturdays Rides - Farewell to Jhon Negron",
-          "Day of Week": "Saturday",
-          "Status": "past",
-          "Ride Date": "2026-05-30",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1100 SW, 2nd Ave, Miami FL, 33130\nPace: 20-22 mph\nDistance: 75 mi\n---\nAn Instagram story flyer for MBO Saturdays Rides announcing a group cycling ride heading south to the Robert Is Here fruit stand, celebrating the farewell of Jhon Negron who is moving to Puerto Rico, with ride logistics including meeting time, distance, and pace displayed over a collage of cyclists and the fruit stand."
-        }
-      },
-      {
         "id": "recYIhjXHLzbywyG2",
         "createdTime": "2026-04-05T20:15:44.000Z",
         "fields": {
@@ -413,40 +350,6 @@
           "Ride Date": "2026-06-10",
           "Organizer": "Team Galiz",
           "Notes": "Cancelled today due to rain."
-        }
-      },
-      {
-        "id": "recbDWyJtkTVLanmX",
-        "createdTime": "2026-04-22T21:50:35.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Location": "MBO Store",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-04-22T17:50:25.000Z",
-          "Ride Name": "Coast to Coast Ride - MBO Cycling",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-05-02",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1100 SW 2nd Ave, Miami, FL\n---\nA dramatic promotional poster showing cyclists riding along a coastal road at sunset with a glowing neon outline of Florida in the background, advertising a coast-to-coast cycling event from Miami to Naples."
-        }
-      },
-      {
-        "id": "receiCnwildfQbHgn",
-        "createdTime": "2026-04-22T21:50:43.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Location": "Complejo Deportivo Four",
-          "Last Checked At": "2026-04-22T17:50:25.000Z",
-          "Ride Name": "Ride Femenino - Pure Cycling - Rodamos Juntas",
-          "Day of Week": "Saturday",
-          "Status": "past",
-          "Ride Date": "2025-04-25",
-          "Organizer": "Team Recovery Weston",
-          "Notes": "Address: Santa Ana\nDistance: 24 km\n---\nA promotional flyer for a women's group cycling ride organized by Pure Cycling, featuring a female cyclist in white kit riding a road bike at sunset, with a route map and elevation profile showing a 24 km course with 436 meters of climbing near Santa Ana."
         }
       },
       {
@@ -494,27 +397,6 @@
           "Address Note": "3208 Grand Ave, Coconut Grove, FL 33133",
           "Organizer": "PD Cycling Club",
           "Notes": "Pace: 20-22 mph\nDistance: 60 mi\n---\nA dark-themed promotional Instagram story showing a Specialized S-Works cycling helmet centered on the image, announcing a Sunday group ride on April 12th from the Coconut Grove store at 7:00 AM, covering 60 miles at a 20-22 mph pace, described as a no-drop ride where everyone is welcome."
-        }
-      },
-      {
-        "id": "recmaYHKKI6Cw9yEo",
-        "createdTime": "2026-05-17T20:51:49.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "06:30 AM",
-          "Wind Speed": 5.1,
-          "Rain Probability": 0.07,
-          "Location": "MBO Brickell Store",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-05-17T16:51:46.000Z",
-          "Weather Summary": "Dry (7% rain), winds 5 mph",
-          "Ride Name": "MBO Girls Ride - Stronger Together",
-          "Day of Week": "Saturday",
-          "Status": "past",
-          "Ride Date": "2026-05-23",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1100 SW 2nd Ave, Miami FL 33130\nPace: 20-22 mph\nDistance: 40 mi\n---\nA promotional flyer for the MBO Girls Ride featuring female cyclists in MBO kit riding along a waterfront with a Miami skyline backdrop at sunset, overlaid with event details for a 40-mile group ride on Saturday May 23, 2026."
         }
       },
       {
