@@ -309,6 +309,16 @@ def git_push(repo_root: Path) -> bool:
     Stage rides.json, commit if changed, push.
     Returns True if a push was made, False if nothing changed.
     """
+    # Clear any stale git lock files left by interrupted processes on mounted filesystems
+    for lock_file in ["index.lock", "HEAD.lock", "COMMIT_EDITMSG.lock"]:
+        lock_path = repo_root / ".git" / lock_file
+        if lock_path.exists():
+            try:
+                lock_path.unlink()
+                print(f"[sync] Cleared stale lock: {lock_file}")
+            except OSError:
+                pass  # If we can't remove it, the commit will fail and report the real error
+
     try:
         # Check if file actually changed
         result = subprocess.run(
@@ -327,16 +337,17 @@ def git_push(repo_root: Path) -> bool:
 
         ts = datetime.now().strftime("%Y-%m-%d %H:%M")
         subprocess.run(["git", "add", "public/rides.json", "public/organizers/"], cwd=repo_root, check=True)
-        subprocess.run(
+        result = subprocess.run(
             ["git", "commit", "-m", f"chore: sync rides.json [{ts}]"],
-            cwd=repo_root, check=True, capture_output=True
+            cwd=repo_root, check=True, capture_output=True, text=True
         )
         subprocess.run(["git", "push"], cwd=repo_root, check=True, capture_output=True)
         print(f"[sync] Pushed to GitHub at {ts}.")
         return True
 
     except subprocess.CalledProcessError as e:
-        print(f"[sync] ⚠ Git error: {e}")
+        stderr = e.stderr.strip() if e.stderr else "(no stderr)"
+        print(f"[sync] ⚠ Git error: {e} — {stderr}")
         return False
 
 
