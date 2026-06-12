@@ -1169,13 +1169,28 @@ function isTomorrow(d) {
  * Returns the Date to use for a ride record.
  * If the record has an explicit "Ride Date" (ISO YYYY-MM-DD), parse and return that.
  * Otherwise fall back to weekDates()[dayOfWeekIndex].
+ * For weekly rides, if the explicit Ride Date is in the past (scraper set last week's date
+ * and hasn't updated yet), ignore it and fall back to weekDates() so the card always shows
+ * the correct upcoming date rather than disappearing until the scraper runs again.
  * Always use this instead of wk[dayIdx] when building individual ride cards.
  */
 function rideDateFor(fields, wk) {
   const iso = fields[R.rideDate];
   if (iso) {
     const d = new Date(iso + 'T00:00:00');
-    if (!isNaN(d)) return d;
+    if (!isNaN(d)) {
+      // For weekly rides: if the stored date is already past, fall back to weekDates()
+      // so the card renders on the next upcoming occurrence, not last week's slot.
+      const rideType = (fields[R.rideType] || '').toLowerCase();
+      if (rideType === 'weekly') {
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        if (d < today) {
+          const dayIdx = DAYS.indexOf(fields[R.day]);
+          return dayIdx === -1 ? null : wk[dayIdx];
+        }
+      }
+      return d;
+    }
   }
   const dayIdx = DAYS.indexOf(fields[R.day]);
   return dayIdx === -1 ? null : wk[dayIdx];
@@ -1960,17 +1975,23 @@ function hasPrimaryDuplicate(record) {
 /**
  * Returns true if the ride should be hidden because its date is in the past.
  * - No Day of Week → always hide (invalid record)
- * - Explicit Ride Date in the past → hide
+ * - Explicit Ride Date in the past → hide (except weekly rides — see below)
  * - No explicit Ride Date → weekDates() always returns a future/today date, so show
+ * - Weekly ride with a past Ride Date → never hide; rideDateFor() will compute the next
+ *   upcoming occurrence via weekDates() so the ride stays visible between scraper runs.
  */
 function hasPassedMidnight(f) {
   if (!f[R.day]) return true; // no Day of Week = invalid, hide
   const ds = f[R.rideDate];
-  if (!ds) return false; // weekly ride with no explicit date — weekDates() handles it
+  if (!ds) return false; // no explicit date — weekDates() handles it
   const rideDay = new Date(ds + 'T00:00:00');
   const today   = new Date();
   today.setHours(0, 0, 0, 0);
-  return rideDay < today; // hide if ride date is before today's midnight
+  // Weekly rides: a past Ride Date just means the scraper hasn't run this week yet.
+  // Don't hide — rideDateFor() will advance the date to the next occurrence.
+  const rideType = (f[R.rideType] || '').toLowerCase();
+  if (rideType === 'weekly' && rideDay < today) return false;
+  return rideDay < today; // hide non-weekly rides if date is before today's midnight
 }
 
 /**
