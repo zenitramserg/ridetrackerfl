@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T18:28:22.379065+00:00",
+  "generated_at": "2026-06-12T18:42:42.439208+00:00",
   "rides": {
     "records": [
       {
@@ -212,12 +212,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 6.2,
-          "Rain Probability": 0,
+          "Wind Speed": 0.4,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-06-04T19:38:46.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 6 mph",
+          "Last Checked At": "2026-06-12T14:42:07.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 0 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
