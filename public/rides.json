@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T20:45:52.716971+00:00",
+  "generated_at": "2026-06-12T01:09:04.263889+00:00",
   "rides": {
     "records": [
       {
@@ -85,6 +85,7 @@
           "Day of Week": "Saturday",
           "Status": "confirmed",
           "Ride Date": "2026-06-13",
+          "Address Note": "1100 SW 2nd Ave, Miami, FL 33130",
           "Organizer": "Team Galiz",
           "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
         }
