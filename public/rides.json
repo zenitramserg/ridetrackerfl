@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T01:15:33.702948+00:00",
+  "generated_at": "2026-06-12T18:28:22.379065+00:00",
   "rides": {
     "records": [
       {
@@ -465,12 +465,12 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.03,
+          "Wind Speed": 2.2,
+          "Rain Probability": 0.06,
           "Location": "Griffin & Flamingo",
           "Organizer Instagram Profile": "https://www.instagram.com/teamgaliz/",
           "Featured": true,
-          "Weather Summary": "Dry (3% rain), light winds 4 mph",
+          "Weather Summary": "Dry (6% rain), light winds 2 mph",
           "Distance": "50",
           "Ride Name": "Team Galiz Coffee Ride - Parkland Bound",
           "Day of Week": "Sunday",
