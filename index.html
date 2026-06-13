@@ -150,11 +150,9 @@
     .featured-detail-row { margin-bottom: 3px; }
     .featured-detail-label { color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
     .featured-empty { font-size: 13px; color: #888888; font-style: italic; }
-    /* Collapse social + RSVP by default on all sizes — show only on expand */
-    .featured-social-row,
-    .featured-rsvp-row { display: none; }
-    .featured-item.expanded .featured-social-row,
-    .featured-item.expanded .featured-rsvp-row { display: block; }
+    /* Collapse social by default on all sizes — show only on expand */
+    .featured-social-row { display: none; }
+    .featured-item.expanded .featured-social-row { display: block; }
     .featured-item.expanded .featured-expand-hint { transform: rotate(180deg); }
     /* Mobile: also collapse org name by default */
     @media (max-width: 600px) {
@@ -514,29 +512,6 @@
     }
     .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
 
-    /* ── I'M RIDING BUTTON ───────────────────────── */
-    .im-riding-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1.5px solid #d4d4d4;
-      background: transparent;
-      color: #555;
-      font-size: 0.78rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
-      white-space: nowrap;
-    }
-    .im-riding-btn:hover { border-color: #059669; color: #059669; }
-    .im-riding-btn.joined {
-      border-color: #059669;
-      background: #f0fdf4;
-      color: #059669;
-      cursor: default;
-    }
 
     /* ── REGISTER BUTTON ─────────────────────────── */
     .register-btn {
@@ -1108,7 +1083,6 @@ const R = {
   displayOnSite: 'Display on Site',
   isPrimary:     'Is Primary Listing',
   needsReview:   'Needs Review',
-  riderCount:    'Rider Count',          // incremented by rsvp Netlify function
   lastChecked:   'Last Checked At',      // ISO datetime — set by scraper each scan
   // Future fields (show gracefully when added to Airtable):
   instagram: 'Organizer Instagram Profile',
@@ -1397,7 +1371,6 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
       siteUrl:    orgRec[O.website] || f[R.website]   || '',
       strava:     orgRec[O.strava]  || f[R.strava]    || '',
       recordId:   r.id,
-      riderCount: f[R.riderCount] || 0,
     });
   });
 
@@ -1444,20 +1417,6 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
             item.siteUrl ? `<a href="${escHtml(item.siteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
           ].filter(Boolean).join('');
           return links ? `<div class="featured-detail-row featured-social-row" style="margin-top:4px">${links}</div>` : '';
-        })()}
-        ${(() => {
-          if (!item.recordId) return '';
-          const joined = localStorage.getItem(`rsvp_${item.recordId}`) === '1';
-          const count  = item.riderCount;
-          const label  = joined
-            ? `✅ ${count} riding`
-            : `✅ I'm Riding${count > 0 ? ` (${count})` : ''}`;
-          return `<div class="featured-rsvp-row" style="margin-top:6px">
-            <button class="im-riding-btn${joined ? ' joined' : ''}"
-                    data-record-id="${escHtml(item.recordId)}"
-                    data-count="${count}"
-                    ${joined ? 'disabled' : ''}>${label}</button>
-          </div>`;
         })()}
         <div class="featured-details">
           ${locStr}${paceStr}${wxStr}
@@ -1639,17 +1598,6 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
       </div>` : ''}
       <div class="card-footer">
         <div class="social-links">${socialLinks}</div>
-        ${recordId ? (() => {
-          const count   = f[R.riderCount] || 0;
-          const joined  = recordId && localStorage.getItem(`rsvp_${recordId}`) === '1';
-          const label   = joined
-            ? `✅ ${count} riding`
-            : `✅ I'm Riding${count > 0 ? ` (${count})` : ''}`;
-          return `<button class="im-riding-btn${joined ? ' joined' : ''}"
-                    data-record-id="${escHtml(recordId)}"
-                    data-count="${count}"
-                    ${joined ? 'disabled' : ''}>${label}</button>`;
-        })() : ''}
       </div>
     </div>`;
 }
@@ -2055,7 +2003,7 @@ async function init() {
       R.name, R.org, R.day, R.time, R.loc, R.addrNote,
       R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
       R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
-      R.instagram, R.riderCount, R.lastChecked,
+      R.instagram, R.lastChecked,
     ];
 
     const orgFields = [
@@ -2151,44 +2099,6 @@ document.addEventListener('click', function (e) {
       event_label: card.dataset.rideName || 'Unknown Ride',
       organizer: card.dataset.organizer || 'Unknown',
       view_type: card.classList.contains('timeline-card') ? 'timeline_card' : 'ride_card',
-    });
-  }
-
-  // "I'm Riding" button
-  const rsvpBtn = e.target.closest('.im-riding-btn');
-  if (rsvpBtn && !rsvpBtn.disabled) {
-    const recordId = rsvpBtn.dataset.recordId;
-    if (!recordId) return;
-
-    // Optimistic UI update
-    rsvpBtn.disabled = true;
-    const prevCount  = parseInt(rsvpBtn.dataset.count, 10) || 0;
-    const newCount   = prevCount + 1;
-    rsvpBtn.dataset.count = newCount;
-    rsvpBtn.textContent   = `✅ ${newCount} riding`;
-    rsvpBtn.classList.add('joined');
-    localStorage.setItem(`rsvp_${recordId}`, '1');
-
-    // Fire and forget — server confirms the increment
-    fetch('/.netlify/functions/rsvp', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ recordId }),
-    })
-    .then(r => r.json())
-    .then(d => {
-      if (d.count !== undefined) {
-        rsvpBtn.textContent   = `✅ ${d.count} riding`;
-        rsvpBtn.dataset.count = d.count;
-      }
-    })
-    .catch(() => {}); // optimistic count stays even on network error
-
-    const card = rsvpBtn.closest('[data-ride-name]');
-    gaEvent('im_riding', {
-      event_category: 'engagement',
-      event_label: card ? card.dataset.rideName : 'Unknown Ride',
-      organizer: card ? card.dataset.organizer : 'Unknown',
     });
   }
 
