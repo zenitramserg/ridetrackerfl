@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T18:36:47.407652+00:00",
+  "generated_at": "2026-06-14T23:03:13.802922+00:00",
   "rides": {
     "records": [
       {
@@ -76,7 +76,7 @@
           "Display on Site": true,
           "Time": "7:00 AM",
           "Wind Speed": 0.9,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Griffin & Flamingo",
           "Weather Summary": "Dry (0% rain), light winds 1 mph",
           "Pace": "20-22 mph (B) / 23+ mph (A)",
@@ -235,7 +235,7 @@
           "Display on Site": true,
           "Time": "7:00AM",
           "Wind Speed": 0.9,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "10430 Taft St, Pembroke Pines, FL 33026",
           "Organizer Instagram Profile": "https://www.instagram.com/alligators.cycling/",
           "Weather Summary": "Dry (0% rain), light winds 1 mph",
@@ -443,7 +443,7 @@
           "Display on Site": true,
           "Time": "06:00 AM",
           "Wind Speed": 1.9,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-05-29T18:27:19.000Z",
