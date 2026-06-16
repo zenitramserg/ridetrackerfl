@@ -1,5 +1,5 @@
-const CACHE_NAME = 'ridetrackerfl-v3';
-const RUNTIME_CACHE = 'ridetrackerfl-runtime-v3';
+const CACHE_NAME = 'ridetrackerfl-v4';
+const RUNTIME_CACHE = 'ridetrackerfl-runtime-v4';
 
 // Assets to cache immediately on install
 const STATIC_ASSETS = [
