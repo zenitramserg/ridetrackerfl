@@ -404,6 +404,7 @@
       transition: box-shadow 0.15s;
     }
     .ride-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .ride-card { cursor: pointer; user-select: none; }
     .ride-card.confirmed { border-left: 3px solid #059669; }
     .ride-card.canceled  { border-left: 3px solid #dc2626; opacity: 0.7; }
     .ride-card.planned   { border-left: 3px solid #d4d4d4; }
@@ -477,14 +478,16 @@
     .tl-badge-canceled  { background: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
     .tl-badge-unknown   { background: #f5f5f5; color: #737373; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
     .ride-details {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       padding: 12px 0;
       border-top: 1px solid #f5f5f5;
       border-bottom: 1px solid #f5f5f5;
       margin-bottom: 12px;
+      margin-top: 12px;
     }
+    .ride-card.expanded .ride-details { display: grid; }
     .detail-label {
       font-size: 11px;
       text-transform: uppercase;
@@ -495,22 +498,90 @@
     .detail-value { font-size: 14px; color: #0d0d0d; font-weight: 500; }
     .detail-value.muted { color: #a3a3a3; font-weight: 400; }
     .meeting-point {
+      display: none;
       font-size: 13px;
       color: #737373;
       margin-bottom: 10px;
       line-height: 1.5;
     }
+    .ride-card.expanded .meeting-point { display: block; }
     .meeting-point a { color: #D62B2B; text-decoration: none; }
     .meeting-point a:hover { text-decoration: underline; }
     .card-footer {
-      display: flex;
+      display: none;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
       min-height: 32px;
     }
+    .ride-card.expanded .card-footer { display: flex; }
     .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── CARD CHIPS (collapsed summary row) ───────── */
+    .ride-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .ride-chip {
+      font-size: 12px;
+      color: #737373;
+      background: #f5f5f5;
+      border-radius: 4px;
+      padding: 3px 8px;
+      white-space: nowrap;
+    }
+    .chip-chevron {
+      margin-left: auto;
+      font-size: 13px;
+      color: #a3a3a3;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .ride-card.expanded .chip-chevron { transform: rotate(180deg); }
+
+    /* ── PACE COLOUR DOT ─────────────────────────── */
+    .pace-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-right: 3px;
+      vertical-align: middle;
+    }
+    .pace-a { background: #dc2626; }
+    .pace-b { background: #d97706; }
+    .pace-c { background: #059669; }
+
+    /* ── CALENDAR BUTTON ─────────────────────────── */
+    .calendar-btn {
+      font-size: 12px;
+      color: #737373;
+      padding: 5px 10px;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      cursor: pointer;
+      background: transparent;
+      font-family: inherit;
+      transition: border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .calendar-btn:hover { border-color: #a3a3a3; color: #0d0d0d; }
+
+    /* ── NEXT RIDE HINT (48h empty state) ─────────── */
+    .next-ride-hint {
+      font-size: 13px;
+      color: #737373;
+      padding: 10px 12px;
+      background: #f9f9f9;
+      border-radius: 6px;
+      border: 1px solid #e5e5e5;
+      margin-top: 8px;
+    }
+    .next-ride-label { color: #a3a3a3; margin-right: 2px; }
 
 
     /* ── REGISTER BUTTON ─────────────────────────── */
@@ -1455,7 +1526,37 @@ function renderTimeline(rideRecords, weatherMap) {
   const container = document.getElementById('timeline-list');
 
   if (!rides48.length) {
-    container.innerHTML = '<p class="no-rides">No rides in the next 48 hours.</p>';
+    // Look for the next ride later this week (beyond tomorrow)
+    const afterTomorrow = new Date(tomorrowDate);
+    afterTomorrow.setDate(afterTomorrow.getDate() + 1);
+    const nextRide = rideRecords
+      .filter(r => {
+        if (!shouldShowRide(r)) return false;
+        const d = rideDateFor(r.fields, wk);
+        return d && d >= afterTomorrow;
+      })
+      .sort((a, b) => {
+        const da = rideDateFor(a.fields, wk);
+        const db = rideDateFor(b.fields, wk);
+        if (da - db !== 0) return da - db;
+        return (a.fields[R.time] || '').localeCompare(b.fields[R.time] || '');
+      })[0];
+
+    if (nextRide) {
+      const nf       = nextRide.fields;
+      const nd       = rideDateFor(nf, wk);
+      const nDay     = DAYS[nd.getDay()];
+      const nName    = nf[R.name] || nf[R.org] || 'Upcoming Ride';
+      const nTime    = nf[R.time] ? ` · ${escHtml(nf[R.time])}` : '';
+      container.innerHTML = `
+        <p class="no-rides">No rides today or tomorrow.</p>
+        <div class="next-ride-hint">
+          <span class="next-ride-label">Next ride:</span>
+          <strong>${escHtml(nName)}</strong> · ${escHtml(nDay)}${nTime}
+        </div>`;
+    } else {
+      container.innerHTML = '<p class="no-rides">No rides in the next 48 hours.</p>';
+    }
     return;
   }
 
@@ -1550,11 +1651,18 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
     websiteUrl ? `<a href="${escHtml(websiteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
   ].filter(Boolean).join('');
 
+  // Pace color dot
+  const paceVal    = f[R.pace] || '';
+  const paceUpper  = paceVal.trim().toUpperCase();
+  const paceDotCls = paceUpper.startsWith('A') ? 'pace-a' : paceUpper.startsWith('B') ? 'pace-b' : paceUpper.startsWith('C') ? 'pace-c' : '';
+  const paceDot    = paceDotCls ? `<span class="pace-dot ${paceDotCls}"></span>` : '';
+
   return `
     <div class="ride-card ${cardClass}"
          data-status="${escHtml(status)}"
          data-organizer="${escHtml(normalizeOrg(orgName))}"
-         data-ride-name="${escHtml(f[R.name] || '')}">
+         data-ride-name="${escHtml(f[R.name] || '')}"
+         onclick="if(!event.target.closest('a,button')) this.classList.toggle('expanded')">
       <div class="ride-header">
         ${avatarUrl
           ? `<img class="avatar avatar-img" src="${escHtml(avatarUrl)}" alt="${escHtml(orgName)}" loading="lazy">`
@@ -1565,15 +1673,16 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
           <div class="ride-meta">
             ${statusBadge(f[R.status])}
             ${dayLabel ? `<span>${dayLabel}</span>` : ''}
-            ${f[R.time] ? `<span>· ${escHtml(f[R.time])}</span>` : ''}
           </div>
         </div>
       </div>
+      <div class="ride-chips">
+        ${f[R.time] ? `<span class="ride-chip">🕐 ${escHtml(f[R.time])}</span>` : ''}
+        ${f[R.dist] ? `<span class="ride-chip">📏 ${escHtml(f[R.dist])} mi</span>` : ''}
+        ${paceVal   ? `<span class="ride-chip">${paceDot}${escHtml(paceVal)}</span>` : ''}
+        <span class="chip-chevron">▾</span>
+      </div>
       <div class="ride-details">
-        <div class="detail-item">
-          <div class="detail-label">Location</div>
-          <div class="detail-value ${!f[R.loc] ? 'muted' : ''}">${escHtml(f[R.loc] || '—')}</div>
-        </div>
         <div class="detail-item">
           <div class="detail-label">Distance</div>
           <div class="detail-value ${!f[R.dist] ? 'muted' : ''}">
@@ -1598,6 +1707,12 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
       </div>` : ''}
       <div class="card-footer">
         <div class="social-links">${socialLinks}</div>
+        <button class="calendar-btn"
+          data-name="${escHtml(f[R.name] || orgName)}"
+          data-date="${escHtml(dateStr || '')}"
+          data-time="${escHtml(f[R.time] || '')}"
+          data-location="${escHtml(locParts.join(', '))}"
+          data-organizer="${escHtml(orgName)}">📅 Add to calendar</button>
       </div>
     </div>`;
 }
@@ -2089,6 +2204,62 @@ document.querySelectorAll('.filter-select').forEach(sel => {
   });
 });
 
+// ─────────────────────────────────────────────────────
+//  ICS CALENDAR DOWNLOAD
+// ─────────────────────────────────────────────────────
+function downloadICS(name, dateStr, timeStr, location, organizer) {
+  // Parse timeStr e.g. "6:30 AM", "7:00 AM", "5:30 PM"
+  let hours = 6, minutes = 0;
+  if (timeStr) {
+    const m = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (m) {
+      hours   = parseInt(m[1], 10);
+      minutes = parseInt(m[2], 10);
+      if (/PM/i.test(m[3]) && hours !== 12) hours += 12;
+      if (/AM/i.test(m[3]) && hours === 12) hours = 0;
+    }
+  }
+
+  // Date components
+  let year = new Date().getFullYear(), month = new Date().getMonth() + 1, day = new Date().getDate();
+  if (dateStr) {
+    const parts = dateStr.split('-');
+    if (parts.length === 3) { year = +parts[0]; month = +parts[1]; day = +parts[2]; }
+  }
+
+  const pad = n => String(n).padStart(2, '0');
+  const dtStart = `${year}${pad(month)}${pad(day)}T${pad(hours)}${pad(minutes)}00`;
+  // DTEND = +3 hours (floating local time — no TZ suffix)
+  const endHours = hours + 3;
+  const dtEnd   = `${year}${pad(month)}${pad(day)}T${pad(endHours)}${pad(minutes)}00`;
+  const uid     = `${dtStart}-${Math.random().toString(36).slice(2)}@ridetrackerfl.com`;
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//RideTrackerFL//EN',
+    'BEGIN:VEVENT',
+    `UID:${uid}`,
+    `DTSTART:${dtStart}`,
+    `DTEND:${dtEnd}`,
+    `SUMMARY:${name}`,
+    location ? `LOCATION:${location}` : '',
+    organizer ? `DESCRIPTION:Organized by ${organizer}. More at ridetrackerfl.com` : 'DESCRIPTION:More at ridetrackerfl.com',
+    'END:VEVENT',
+    'END:VCALENDAR',
+  ].filter(Boolean).join('\r\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 // Event delegation for dynamically rendered content (ride cards, links)
 document.addEventListener('click', function (e) {
   // Ride card click
@@ -2129,6 +2300,14 @@ document.addEventListener('click', function (e) {
     const parent = regBtn.closest('.ride-card');
     const name   = parent ? (parent.dataset.rideName || parent.querySelector('h3')?.textContent) : 'Unknown Event';
     gaEvent('register_click', { event_category: 'conversion', event_label: name, value: 1 });
+  }
+
+  // Calendar download
+  const calBtn = e.target.closest('.calendar-btn');
+  if (calBtn) {
+    const { name, date, time, location, organizer } = calBtn.dataset;
+    downloadICS(name || 'Ride', date || '', time || '', location || '', organizer || '');
+    gaEvent('calendar_add', { event_category: 'engagement', event_label: name || 'Unknown Ride' });
   }
 });
 
