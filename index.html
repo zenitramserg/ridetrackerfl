@@ -2232,7 +2232,8 @@ function downloadICS(name, dateStr, timeStr, location, organizer) {
   // DTEND = +3 hours (floating local time — no TZ suffix)
   const endHours = hours + 3;
   const dtEnd   = `${year}${pad(month)}${pad(day)}T${pad(endHours)}${pad(minutes)}00`;
-  const uid     = `${dtStart}-${Math.random().toString(36).slice(2)}@ridetrackerfl.com`;
+  const _rb = new Uint8Array(8); window.crypto.getRandomValues(_rb);
+  const uid = `${dtStart}-${Array.from(_rb, b => b.toString(16).padStart(2,'0')).join('')}@ridetrackerfl.com`;
 
   const ics = [
     'BEGIN:VCALENDAR',
