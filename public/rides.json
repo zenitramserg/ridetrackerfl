@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T16:43:39.752716+00:00",
+  "generated_at": "2026-06-16T19:50:47.544010+00:00",
   "rides": {
     "records": [
       {
@@ -296,8 +296,8 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 2.0,
-          "Rain Probability": 0.0,
+          "Wind Speed": 2,
+          "Rain Probability": 0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-06-16T12:43:22.000Z",
@@ -456,28 +456,6 @@
           "Ride Date": "2026-06-13",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
-        }
-      },
-      {
-        "id": "reczqnPaUd9kMMQgG",
-        "createdTime": "2026-06-10T01:29:00.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 2.4,
-          "Rain Probability": 0.01,
-          "Location": "Griffin & Flamingo",
-          "Organizer Instagram Profile": "https://www.instagram.com/teamgaliz/",
-          "Featured": true,
-          "Weather Summary": "Dry (1% rain), light winds 2 mph",
-          "Distance": "50",
-          "Ride Name": "Team Galiz Coffee Ride - Parkland Bound",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-14",
-          "Organizer": "Team Galiz",
-          "Notes": "Controlled Pace - SAG Vehicle "
         }
       }
     ]
