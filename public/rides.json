@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T16:32:11.936958+00:00",
+  "generated_at": "2026-06-16T16:43:39.752716+00:00",
   "rides": {
     "records": [
       {
@@ -9,18 +9,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 5.4,
+          "Wind Speed": 4.5,
           "Rain Probability": 0.01,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-05-27T15:12:30.000Z",
-          "Weather Summary": "Dry (1% rain), light winds 5 mph",
+          "Last Checked At": "2026-06-16T12:43:22.000Z",
+          "Weather Summary": "Dry (1% rain), winds 4 mph",
           "Pace": "22/23 mph",
           "Distance": "30",
           "Ride Name": "Wednesday Favorite Ride",
           "Day of Week": "Wednesday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-10",
+          "Ride Date": "2026-06-17",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
         }
@@ -296,16 +296,16 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.01,
+          "Wind Speed": 2.0,
+          "Rain Probability": 0.0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-06-04T19:38:46.000Z",
-          "Weather Summary": "Dry (1% rain), light winds 4 mph",
+          "Last Checked At": "2026-06-16T12:43:22.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 2 mph",
           "Ride Name": "OMG Cycling - The Boys High Tempo Ride",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-09",
+          "Ride Date": "2026-06-16",
           "Organizer": "OMG Cycling",
           "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
         }
