@@ -1853,9 +1853,8 @@ function renderAllRides(rideRecords, weatherMap) {
 //  RENDER: SPECIAL EVENTS TAB
 // ─────────────────────────────────────────────────────
 function renderSpecialEvents(rides, weatherMap) {
-  const now          = new Date();
-  const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const wk           = weekDates();
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const wk    = weekDates();
 
   const SPECIAL_TYPES = ['special_event', 'annual', 'special event'];
 
@@ -1865,7 +1864,7 @@ function renderSpecialEvents(rides, weatherMap) {
       const rideType = (f[R.rideType] || '').toLowerCase();
       if (!SPECIAL_TYPES.includes(rideType)) return false;
       const d = rideDateFor(f, wk);
-      return d && d >= sevenDaysAgo;
+      return d && d >= today;  // hide events whose date has already passed
     })
     .sort((a, b) => rideDateFor(a.fields, wk) - rideDateFor(b.fields, wk));
 
