@@ -2208,57 +2208,9 @@ document.querySelectorAll('.filter-select').forEach(sel => {
 //  ICS CALENDAR DOWNLOAD
 // ─────────────────────────────────────────────────────
 function downloadICS(name, dateStr, timeStr, location, organizer) {
-  // Parse timeStr e.g. "6:30 AM", "7:00 AM", "5:30 PM"
-  let hours = 6, minutes = 0;
-  if (timeStr) {
-    const m = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    if (m) {
-      hours   = parseInt(m[1], 10);
-      minutes = parseInt(m[2], 10);
-      if (/PM/i.test(m[3]) && hours !== 12) hours += 12;
-      if (/AM/i.test(m[3]) && hours === 12) hours = 0;
-    }
-  }
-
-  // Date components
-  let year = new Date().getFullYear(), month = new Date().getMonth() + 1, day = new Date().getDate();
-  if (dateStr) {
-    const parts = dateStr.split('-');
-    if (parts.length === 3) { year = +parts[0]; month = +parts[1]; day = +parts[2]; }
-  }
-
-  const pad = n => String(n).padStart(2, '0');
-  const dtStart = `${year}${pad(month)}${pad(day)}T${pad(hours)}${pad(minutes)}00`;
-  // DTEND = +3 hours (floating local time — no TZ suffix)
-  const endHours = hours + 3;
-  const dtEnd   = `${year}${pad(month)}${pad(day)}T${pad(endHours)}${pad(minutes)}00`;
-  const _rb = new Uint8Array(8); window.crypto.getRandomValues(_rb);
-  const uid = `${dtStart}-${Array.from(_rb, b => b.toString(16).padStart(2,'0')).join('')}@ridetrackerfl.com`;
-
-  const ics = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//RideTrackerFL//EN',
-    'BEGIN:VEVENT',
-    `UID:${uid}`,
-    `DTSTART:${dtStart}`,
-    `DTEND:${dtEnd}`,
-    `SUMMARY:${name}`,
-    location ? `LOCATION:${location}` : '',
-    organizer ? `DESCRIPTION:Organized by ${organizer}. More at ridetrackerfl.com` : 'DESCRIPTION:More at ridetrackerfl.com',
-    'END:VEVENT',
-    'END:VCALENDAR',
-  ].filter(Boolean).join('\r\n');
-
-  const blob = new Blob([ics], { type: 'text/calendar' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-  a.download = `${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  // Serve via Netlify function so iOS Safari hands off to Calendar app
+  const p = new URLSearchParams({ name, date: dateStr, time: timeStr, location, organizer });
+  window.location.href = `/.netlify/functions/ics?${p}`;
 }
 
 // Event delegation for dynamically rendered content (ride cards, links)
