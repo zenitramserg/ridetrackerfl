@@ -1,10 +1,10 @@
 exports.handler = async (event) => {
-  const params   = new URLSearchParams(event.rawQueryString);
-  const name     = params.get('name')      || 'Ride';
-  const dateStr  = params.get('date')      || '';
-  const timeStr  = params.get('time')      || '';
-  const location = params.get('location')  || '';
-  const organizer= params.get('organizer') || '';
+  const q        = event.queryStringParameters || {};
+  const name     = q.name      || 'Ride';
+  const dateStr  = q.date      || '';
+  const timeStr  = q.time      || '';
+  const location = q.location  || '';
+  const organizer= q.organizer || '';
 
   // Parse time e.g. "6:30 AM"
   let hours = 6, minutes = 0;
