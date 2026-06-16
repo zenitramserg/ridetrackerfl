@@ -962,7 +962,6 @@
         <span id="current-temp">☀️ --°F</span>
         <span id="current-wind">💨 -- mph</span>
         <span id="current-rain">💧 --%</span>
-        <span id="scan-status-text" class="scan-status-text"></span>
       </div>
     </div>
     <div class="featured-events">
@@ -2148,8 +2147,6 @@ async function init() {
     allActiveRides = activeRides;
     logDuplicates();
 
-    // Show last scan timestamp in header
-    updateScanStatus(rides);
 
     // Apply visibility filter before rendering
     const visibleRides = activeRides.filter(r => shouldShowRide(r));
