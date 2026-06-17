@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T17:45:30.925342+00:00",
+  "generated_at": "2026-06-17T17:52:43.208968+00:00",
   "rides": {
     "records": [
       {
@@ -340,17 +340,16 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "6:30 PM",
-          "Wind Speed": 9.6,
-          "Rain Probability": 0.09,
+          "Wind Speed": 4.8,
+          "Rain Probability": 0.44,
           "Location": "Weston Branch Library",
-          "Weather Summary": "Dry (9% rain), light winds 10 mph",
+          "Weather Summary": "Chance of rain (44%), light winds 5 mph",
           "Distance": "35",
           "Ride Name": "Team Galiz Wednesday Evening Ride",
           "Day of Week": "Wednesday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-10",
-          "Organizer": "Team Galiz",
-          "Notes": "Cancelled today due to rain."
+          "Ride Date": "2026-06-17",
+          "Organizer": "Team Galiz"
         }
       },
       {
