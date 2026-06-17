@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T18:32:57.260151+00:00",
+  "generated_at": "2026-06-17T18:36:34.434432+00:00",
   "rides": {
     "records": [
       {
@@ -121,7 +121,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 3.0,
+          "Wind Speed": 3,
           "Rain Probability": 0.08,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
@@ -130,7 +130,7 @@
           "Weather Summary": "Dry (8% rain), light winds 3 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
-          "Ride Name": "Father's Day Ride",
+          "Ride Name": "Father's Day Ride | OMG & Team Recovery",
           "Day of Week": "Sunday",
           "Status": "confirmed",
           "Ride Date": "2026-06-21",
