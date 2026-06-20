@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T13:24:00.277820+00:00",
+  "generated_at": "2026-06-20T13:51:12.731804+00:00",
   "rides": {
     "records": [
       {
@@ -507,12 +507,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 1.9,
+          "Wind Speed": 7.4,
           "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-05-29T18:27:19.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 2 mph",
+          "Last Checked At": "2026-06-20T09:50:13.000Z",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
