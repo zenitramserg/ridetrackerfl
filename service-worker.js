@@ -1,5 +1,5 @@
-const CACHE_NAME = 'ridetrackerfl-v4';
-const RUNTIME_CACHE = 'ridetrackerfl-runtime-v4';
+const CACHE_NAME = 'ridetrackerfl-v5';
+const RUNTIME_CACHE = 'ridetrackerfl-runtime-v5';
 
 // Assets to cache immediately on install
 const STATIC_ASSETS = [
@@ -48,8 +48,8 @@ self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (request.method !== 'GET') return;
 
-  // API requests (Netlify functions) - Network First
-  if (url.pathname.startsWith('/.netlify/functions/')) {
+  // Data requests (rides JSON + Netlify functions) - Network First
+  if (url.pathname === '/public/rides.json' || url.pathname.startsWith('/.netlify/functions/')) {
     event.respondWith(
       fetch(request)
         .then((response) => {

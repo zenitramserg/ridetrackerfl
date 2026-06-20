@@ -2279,6 +2279,7 @@ document.addEventListener('visibilitychange', () => {
   // (avoids double-fetch on rapid tab switches)
   if (now - _lastRefresh > 60_000) {
     _lastRefresh = now;
+    _ridesJson = null; // force fresh fetch from network
     init();
   }
 });
@@ -2286,6 +2287,7 @@ document.addEventListener('visibilitychange', () => {
 setInterval(() => {
   if (!document.hidden) {
     _lastRefresh = Date.now();
+    _ridesJson = null; // force fresh fetch from network
     init();
   }
 }, REFRESH_INTERVAL_MS);
