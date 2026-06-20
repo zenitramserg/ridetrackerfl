@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T20:41:14.640469+00:00",
+  "generated_at": "2026-06-20T13:20:37.517646+00:00",
   "rides": {
     "records": [
       {
@@ -26,6 +26,27 @@
         }
       },
       {
+        "id": "rec53Sf8AL12fxf5J",
+        "createdTime": "2026-06-20T13:12:25.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "5:00 AM",
+          "Location": "1798 Market St, Weston FL 33326",
+          "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
+          "Pace": "A: 23-26 mph",
+          "Distance": "20",
+          "Ride Name": "5am Pull Club",
+          "Day of Week": "Friday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-26",
+          "Organizer": "Pull Club",
+          "Notes": "Rotating Ride — everyone pulls. Mondays, Wednesdays & Fridays 5am. Road surface.",
+          "Weather Summary": "Dry (4% rain), light winds 6 mph",
+          "Rain Probability": 0.04,
+          "Wind Speed": 6.0
+        }
+      },
+      {
         "id": "rec5pXok7XiOHyShs",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -42,7 +63,7 @@
           "Ride Name": "Ride84",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-13",
+          "Ride Date": "2026-06-20",
           "Address Note": "16098 W State Rd 84, Weston",
           "Organizer": "Ride84",
           "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
@@ -76,11 +97,11 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 3.0,
-          "Rain Probability": 0.03,
+          "Wind Speed": 1.4,
+          "Rain Probability": 0.0,
           "Location": "Griffin & Flamingo",
           "Featured": true,
-          "Weather Summary": "Dry (3% rain), light winds 3 mph",
+          "Weather Summary": "Dry (0% rain), light winds 1 mph",
           "Pace": "20-22 mph (B) / 23+ mph (A)",
           "Distance": "52",
           "Ride Name": "Team Galiz Saturday - Fathers Day Ride",
@@ -165,6 +186,27 @@
         }
       },
       {
+        "id": "recG5teEsQh9OnfX4",
+        "createdTime": "2026-06-20T13:12:25.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "5:00 AM",
+          "Location": "1798 Market St, Weston FL 33326",
+          "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
+          "Pace": "A: 23-26 mph",
+          "Distance": "20",
+          "Ride Name": "5am Pull Club",
+          "Day of Week": "Wednesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-24",
+          "Organizer": "Pull Club",
+          "Notes": "Rotating Ride — everyone pulls. Mondays, Wednesdays & Fridays 5am. Road surface.",
+          "Weather Summary": "Dry (2% rain), light winds 1 mph",
+          "Rain Probability": 0.02,
+          "Wind Speed": 1.1
+        }
+      },
+      {
         "id": "recHtSoEzNTxyHQBY",
         "createdTime": "2026-04-16T00:43:55.000Z",
         "fields": {
@@ -185,6 +227,27 @@
           "Ride Date": "2026-06-11",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
+        }
+      },
+      {
+        "id": "recIAauWKBDCybH8h",
+        "createdTime": "2026-06-20T13:12:25.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "5:00 AM",
+          "Location": "1798 Market St, Weston FL 33326",
+          "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
+          "Pace": "A: 23-26 mph",
+          "Distance": "20",
+          "Ride Name": "5am Pull Club",
+          "Day of Week": "Monday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-22",
+          "Organizer": "Pull Club",
+          "Notes": "Rotating Ride — everyone pulls. Mondays, Wednesdays & Fridays 5am. Road surface.",
+          "Weather Summary": "Dry (1% rain), light winds 1 mph",
+          "Rain Probability": 0.01,
+          "Wind Speed": 1.1
         }
       },
       {
@@ -247,7 +310,7 @@
           "Ride Name": "Alligators Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-13",
+          "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
         }
       },
@@ -299,12 +362,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 5.1,
-          "Rain Probability": 0.03,
+          "Wind Speed": 2.7,
+          "Rain Probability": 0.06,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-06-17T13:45:17.000Z",
-          "Weather Summary": "Dry (3% rain), winds 5 mph",
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
           "Ride Name": "OMG Cycling - The Boys High Tempo Ride",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
@@ -455,7 +518,7 @@
           "Ride Name": "Saturday Palomos 2.0",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-13",
+          "Ride Date": "2026-06-20",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
         }
@@ -678,6 +741,18 @@
           "Type": "Shop",
           "Instagram URL": "https://www.instagram.com/alligators.cycling/",
           "Instagram Handle": "alligators.cycling"
+        }
+      },
+      {
+        "id": "rechHh68Y3xcorQSA",
+        "createdTime": "2026-06-20T13:16:29.000Z",
+        "fields": {
+          "Name": "Pull Club",
+          "Active": true,
+          "Type": "Group",
+          "Strava URL": "https://www.strava.com/clubs/1921796",
+          "Instagram URL": "https://www.instagram.com/pullclub.cc/",
+          "Instagram Handle": "pullclub.cc"
         }
       },
       {
