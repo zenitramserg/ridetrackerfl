@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T20:09:40.672395+00:00",
+  "generated_at": "2026-06-20T20:14:18.283661+00:00",
   "rides": {
     "records": [
       {
@@ -749,8 +749,8 @@
         "fields": {
           "Avatar": [
             {
-              "url": "/public/organizers/pull_club.jpg",
-              "filename": "pull_club.jpg"
+              "url": "/public/organizers/pull_club.png",
+              "filename": "pull_club.png"
             }
           ],
           "Name": "Pull Club",
