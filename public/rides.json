@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T20:14:18.283661+00:00",
+  "generated_at": "2026-06-21T17:16:02.786895+00:00",
   "rides": {
     "records": [
       {
@@ -76,10 +76,10 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 3.4,
-          "Rain Probability": 0.03,
+          "Wind Speed": 0.6,
+          "Rain Probability": 0.0,
           "Location": "Griffin & Flamingo",
-          "Weather Summary": "Dry (3% rain), light winds 3 mph",
+          "Weather Summary": "Dry (0% rain), light winds 1 mph",
           "Pace": "Controlled pace, no drop",
           "Distance": "40",
           "Ride Name": "Team Galiz Sunday Recovery Ride",
@@ -144,13 +144,13 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 3.4,
-          "Rain Probability": 0.03,
+          "Wind Speed": 0.6,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Featured": true,
           "Last Checked At": "2026-06-14T19:02:56.000Z",
-          "Weather Summary": "Dry (3% rain), light winds 3 mph",
+          "Weather Summary": "Dry (0% rain), light winds 1 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "Father's Day Ride | OMG & Team Recovery",
