@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T20:35:00.574067+00:00",
+  "generated_at": "2026-06-22T21:51:27.028074+00:00",
   "rides": {
     "records": [
       {
@@ -190,10 +190,10 @@
           "Display on Site": true,
           "Time": "5:00 AM",
           "Wind Speed": 2.9,
-          "Rain Probability": 0.13,
+          "Rain Probability": 0.09,
           "Location": "1798 Market St, Weston FL 33326",
           "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (13% rain), light winds 3 mph",
+          "Weather Summary": "Dry (9% rain), light winds 3 mph",
           "Pace": "A: 23-26 mph",
           "Distance": "20",
           "Ride Name": "5am Pull Club",
@@ -366,7 +366,9 @@
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-06-22T16:34:27.000Z",
           "Weather Summary": "Dry (3% rain), winds 5 mph",
-          "Ride Name": "OMG Cycling - The Boys High Tempo Ride",
+          "Pace": "24/26",
+          "Distance": "43",
+          "Ride Name": "OMG Cycling - Tuesday New Season ",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
           "Ride Date": "2026-06-23",
