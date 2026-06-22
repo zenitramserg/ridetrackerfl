@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-21T17:16:02.786895+00:00",
+  "generated_at": "2026-06-22T00:03:16.438342+00:00",
   "rides": {
     "records": [
       {
@@ -77,7 +77,7 @@
           "Display on Site": true,
           "Time": "7:00 AM",
           "Wind Speed": 0.6,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Griffin & Flamingo",
           "Weather Summary": "Dry (0% rain), light winds 1 mph",
           "Pace": "Controlled pace, no drop",
@@ -145,7 +145,7 @@
           "Display on Site": true,
           "Time": "07:00 AM",
           "Wind Speed": 0.6,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Featured": true,
@@ -383,18 +383,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 3,
-          "Rain Probability": 0,
+          "Wind Speed": 3.4,
+          "Rain Probability": 0.01,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-05-17T16:51:46.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 3 mph",
+          "Last Checked At": "2026-06-21T20:02:36.000Z",
+          "Weather Summary": "Dry (1% rain), winds 3 mph",
           "Pace": "22/24 mph",
           "Distance": "30",
           "Ride Name": "Monday Ride",
           "Day of Week": "Monday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-08",
+          "Ride Date": "2026-06-22",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
         }
