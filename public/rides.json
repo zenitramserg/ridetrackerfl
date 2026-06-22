@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T00:03:16.438342+00:00",
+  "generated_at": "2026-06-22T20:18:23.658394+00:00",
   "rides": {
     "records": [
       {
@@ -31,11 +31,11 @@
         "fields": {
           "Display on Site": true,
           "Time": "5:00 AM",
-          "Wind Speed": 6,
-          "Rain Probability": 0.04,
+          "Wind Speed": 3.7,
+          "Rain Probability": 0.02,
           "Location": "1798 Market St, Weston FL 33326",
           "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (4% rain), light winds 6 mph",
+          "Weather Summary": "Dry (2% rain), light winds 4 mph",
           "Pace": "A: 23-26 mph",
           "Distance": "20",
           "Ride Name": "5am Pull Club",
@@ -191,11 +191,11 @@
         "fields": {
           "Display on Site": true,
           "Time": "5:00 AM",
-          "Wind Speed": 3.6,
-          "Rain Probability": 0.04,
+          "Wind Speed": 2.9,
+          "Rain Probability": 0.13,
           "Location": "1798 Market St, Weston FL 33326",
           "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (4% rain), light winds 4 mph",
+          "Weather Summary": "Dry (13% rain), light winds 3 mph",
           "Pace": "A: 23-26 mph",
           "Distance": "20",
           "Ride Name": "5am Pull Club",
