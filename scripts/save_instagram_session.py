@@ -59,7 +59,13 @@ async def save_session():
             input("Press ENTER when logged in... ")
 
         cookies = await context.cookies()
-        ig_cookies = [c for c in cookies if "instagram.com" in c.get("domain", "")]
+        # Use suffix check (not substring) so "evilinstagram.com" can't match.
+        # Instagram sets cookies with domain ".instagram.com" (leading dot), so strip it first.
+        ig_cookies = [
+            c for c in cookies
+            if (lambda d: d == "instagram.com" or d.endswith(".instagram.com"))
+               (c.get("domain", "").lstrip("."))
+        ]
 
         if not ig_cookies:
             print("✗ No Instagram cookies found. Make sure you're logged in.")
