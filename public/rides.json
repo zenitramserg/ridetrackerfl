@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T14:08:30.596247+00:00",
+  "generated_at": "2026-06-24T14:30:46.151181+00:00",
   "rides": {
     "records": [
       {
@@ -9,12 +9,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 2.9,
+          "Wind Speed": 2.2,
           "Rain Probability": 0.04,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-06-23T16:06:12.000Z",
-          "Weather Summary": "Dry (4% rain), light winds 3 mph",
+          "Weather Summary": "Dry (4% rain), light winds 2 mph",
           "Pace": "22/23 mph",
           "Distance": "30",
           "Ride Name": "Wednesday Favorite Ride",
@@ -31,7 +31,7 @@
         "fields": {
           "Display on Site": true,
           "Time": "5:00 AM",
-          "Wind Speed": 3.0,
+          "Wind Speed": 3,
           "Rain Probability": 0.05,
           "Location": "1798 Market St, Weston FL 33326",
           "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
@@ -215,14 +215,14 @@
           "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-06-10T16:54:27.000Z",
+          "Last Checked At": "2026-06-24T10:30:31.000Z",
           "Weather Summary": "Dry (0% rain), winds 2 mph",
           "Pace": "24 /26 mph",
           "Distance": "40",
           "Ride Name": "Thursday Tempo Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-11",
+          "Ride Date": "2026-06-25",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
         }
@@ -360,12 +360,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 1.8,
-          "Rain Probability": 0,
+          "Wind Speed": 5.1,
+          "Rain Probability": 0.03,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-06-23T16:06:12.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 2 mph",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
