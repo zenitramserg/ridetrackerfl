@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T20:06:40.326747+00:00",
+  "generated_at": "2026-06-24T14:08:30.596247+00:00",
   "rides": {
     "records": [
       {
@@ -31,11 +31,11 @@
         "fields": {
           "Display on Site": true,
           "Time": "5:00 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.02,
+          "Wind Speed": 3.0,
+          "Rain Probability": 0.05,
           "Location": "1798 Market St, Weston FL 33326",
           "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (2% rain), light winds 4 mph",
+          "Weather Summary": "Dry (5% rain), light winds 3 mph",
           "Pace": "A: 23-26 mph",
           "Distance": "20",
           "Ride Name": "5am Pull Club",
@@ -189,11 +189,11 @@
         "fields": {
           "Display on Site": true,
           "Time": "5:00 AM",
-          "Wind Speed": 2.9,
-          "Rain Probability": 0.09,
+          "Wind Speed": 1.6,
+          "Rain Probability": 0.01,
           "Location": "1798 Market St, Weston FL 33326",
           "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (9% rain), light winds 3 mph",
+          "Weather Summary": "Dry (1% rain), light winds 2 mph",
           "Pace": "A: 23-26 mph",
           "Distance": "20",
           "Ride Name": "5am Pull Club",
@@ -361,7 +361,7 @@
           "Display on Site": true,
           "Time": "5:30 AM",
           "Wind Speed": 1.8,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-06-23T16:06:12.000Z",
