@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T13:08:42.213981+00:00",
+  "generated_at": "2026-06-28T19:25:25.283250+00:00",
   "rides": {
     "records": [
       {
@@ -350,7 +350,10 @@
           "Status": "confirmed",
           "Ride Date": "2026-07-05",
           "Organizer": "MBO Ten Cycling",
-          "Notes": "MBO Ten Cycling 1-year anniversary ride. Multiple cycling teams and groups joining to celebrate the community. Note: starts in Miami at 1100 SW 2nd Ave, not Weston."
+          "Notes": "MBO Ten Cycling 1-year anniversary ride. Multiple cycling teams and groups joining to celebrate the community. Note: starts in Miami at 1100 SW 2nd Ave, not Weston.",
+          "Weather Summary": "Dry (6% rain), light winds 8 mph",
+          "Rain Probability": 0.06,
+          "Wind Speed": 7.9
         }
       },
       {
