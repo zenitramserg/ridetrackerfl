@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T16:39:45.792323+00:00",
+  "generated_at": "2026-06-29T17:04:59.325726+00:00",
   "rides": {
     "records": [
       {
@@ -29,6 +29,7 @@
         "id": "rec53Sf8AL12fxf5J",
         "createdTime": "2026-06-20T13:12:25.000Z",
         "fields": {
+          "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:00 AM",
           "Wind Speed": 5.1,
@@ -187,6 +188,7 @@
         "id": "recG5teEsQh9OnfX4",
         "createdTime": "2026-06-20T13:12:25.000Z",
         "fields": {
+          "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:00 AM",
           "Wind Speed": 1.6,
@@ -231,6 +233,7 @@
         "id": "recIAauWKBDCybH8h",
         "createdTime": "2026-06-20T13:12:25.000Z",
         "fields": {
+          "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:00 AM",
           "Wind Speed": 1.1,
@@ -365,7 +368,7 @@
           "Display on Site": true,
           "Time": "5:30 AM",
           "Wind Speed": 1.8,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-06-29T12:39:42.000Z",
