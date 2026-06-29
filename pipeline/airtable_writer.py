@@ -82,6 +82,7 @@ INSTAGRAM_URLS = {
     "mbo_tencycling":    "https://www.instagram.com/mbo_tencycling/",
     "pd.cyclingclub":    "https://www.instagram.com/pd.cyclingclub/",
     "letourdeweston":    "https://www.instagram.com/letourdeweston/",
+    "pullclub.cc":       "https://www.instagram.com/pullclub.cc/",
 }
 
 def _upload_screenshot(api_key: str, record_id: str, screenshot_path: str) -> bool:
@@ -218,6 +219,18 @@ def build_airtable_record(ride: dict) -> dict:
     # Recurring checkbox — weekly rides are recurring
     ride_type = ride.get("ride_type") or ride.get("item_type", "")
     fields[FIELD_MAP["is_recurring"]] = ride_type in ("weekly", "weekly_ride")
+
+    # Ride Type (singleSelect) — map internal classifier labels to Airtable option names
+    _ride_type_map = {
+        "weekly":       "weekly",
+        "weekly_ride":  "weekly",
+        "ride_event":   "special_event",
+        "special_event": "special_event",
+        "annual":       "annual",
+    }
+    airtable_ride_type = _ride_type_map.get(ride_type.lower(), "")
+    if airtable_ride_type:
+        fields[FIELD_MAP["ride_type"]] = airtable_ride_type
 
     # Ride Date (ISO format for Airtable)
     date_iso = _parse_date_for_airtable(ride.get("date", ""))
