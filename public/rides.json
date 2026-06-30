@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T19:11:50.940943+00:00",
+  "generated_at": "2026-06-30T19:36:34.702165+00:00",
   "rides": {
     "records": [
       {
@@ -9,18 +9,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 2.2,
-          "Rain Probability": 0.04,
+          "Wind Speed": 4.5,
+          "Rain Probability": 0.01,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-06-23T16:06:12.000Z",
-          "Weather Summary": "Dry (4% rain), light winds 2 mph",
+          "Last Checked At": "2026-06-30T15:36:25.000Z",
+          "Weather Summary": "Dry (1% rain), winds 4 mph",
           "Pace": "22/23 mph",
           "Distance": "30",
           "Ride Name": "Wednesday Favorite Ride",
           "Day of Week": "Wednesday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-24",
+          "Ride Date": "2026-07-01",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
         }
@@ -316,6 +316,27 @@
         }
       },
       {
+        "id": "recRCQfYNoYEw5fJK",
+        "createdTime": "2026-06-30T19:36:29.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "06:30 AM",
+          "Wind Speed": 2.5,
+          "Rain Probability": 0.08,
+          "Location": "Weston T.C. Behind Bank of America",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-06-30T15:36:25.000Z",
+          "Weather Summary": "Dry (8% rain), winds 2 mph",
+          "Ride Name": "Independence 4th of July Ride 2026",
+          "Day of Week": "Saturday",
+          "Status": "planned",
+          "Ride Date": "2026-07-04",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Weston T.C. Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nAn Instagram story flyer for a Fourth of July 2026 cycling event organized by OMG Cycling and Team Recovery, featuring a patriotic red-white-and-blue design, Zelle donation details for Venezuela fundraising, and event logistics including location, time, distance, and pace, with imagery of a cyclist, sausages, and beer mugs advertising a post-ride choripán gathering."
+        }
+      },
+      {
         "id": "recU4u7cZ1aYEIWNV",
         "createdTime": "2026-03-30T01:33:52.000Z",
         "fields": {
@@ -367,12 +388,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 1.8,
-          "Rain Probability": 0,
+          "Wind Speed": 4.3,
+          "Rain Probability": 0.0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-06-29T12:39:42.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 2 mph",
+          "Last Checked At": "2026-06-30T15:36:25.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 4 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
