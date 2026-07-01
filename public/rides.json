@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T00:01:50.712119+00:00",
+  "generated_at": "2026-07-01T00:04:19.993759+00:00",
   "rides": {
     "records": [
       {
@@ -77,9 +77,12 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "6:30 AM",
+          "Wind Speed": 3,
+          "Rain Probability": 0.04,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Featured": true,
+          "Weather Summary": "Dry (4% rain), light winds 3 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "Independence 4th of July Ride",
@@ -88,10 +91,7 @@
           "Ride Date": "2026-07-04",
           "Address Note": "Behind Bank of America",
           "Organizer": "OMG Cycling",
-          "Notes": "Charity ride — all funds raised go to Venezuela. $15 USD donation via Zelle: omgcyclinggroup@gmail.com. Choripán post-ride. Co-hosted with Team Recovery Weston.",
-          "Weather Summary": "Dry (4% rain), light winds 3 mph",
-          "Rain Probability": 0.04,
-          "Wind Speed": 3.0
+          "Notes": "Charity ride — all funds raised go to Venezuela. $15 USD donation via Zelle: omgcyclinggroup@gmail.com. Choripán post-ride. Co-hosted with Team Recovery Weston."
         }
       },
       {
@@ -337,27 +337,6 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
-        }
-      },
-      {
-        "id": "recRCQfYNoYEw5fJK",
-        "createdTime": "2026-06-30T19:36:29.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "06:30 AM",
-          "Wind Speed": 3.0,
-          "Rain Probability": 0.04,
-          "Location": "Weston T.C. Behind Bank of America",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-06-30T15:36:25.000Z",
-          "Weather Summary": "Dry (4% rain), light winds 3 mph",
-          "Ride Name": "Independence 4th of July Ride 2026",
-          "Day of Week": "Saturday",
-          "Status": "planned",
-          "Ride Date": "2026-07-04",
-          "Organizer": "OMG Cycling",
-          "Notes": "Address: Weston T.C. Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nAn Instagram story flyer for a Fourth of July 2026 cycling event organized by OMG Cycling and Team Recovery, featuring a patriotic red-white-and-blue design, Zelle donation details for Venezuela fundraising, and event logistics including location, time, distance, and pace, with imagery of a cyclist, sausages, and beer mugs advertising a post-ride choripán gathering."
         }
       },
       {
