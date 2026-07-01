@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T00:04:19.993759+00:00",
+  "generated_at": "2026-07-01T00:05:55.414366+00:00",
   "rides": {
     "records": [
       {
@@ -367,19 +367,19 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "6:30 AM",
-          "Wind Speed": 2.9,
-          "Rain Probability": 0,
+          "Wind Speed": 6.1,
+          "Rain Probability": 0.07,
           "Location": "1100 SW 2nd Ave, Miami, FL 33130",
           "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
           "Featured": true,
           "Last Checked At": "2026-06-28T18:32:00.000Z",
-          "Weather Summary": "Dry (0% rain), winds 3 mph",
+          "Weather Summary": "Dry (7% rain), light winds 6 mph",
           "Pace": "20-22 mph",
           "Distance": "62",
           "Ride Name": "MBO 1st Anniversary Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-28",
+          "Ride Date": "2026-07-05",
           "Organizer": "MBO Ten Cycling",
           "Notes": "MBO Ten Cycling 1-year anniversary ride. Multiple cycling teams and groups joining to celebrate the community. Note: starts in Miami at 1100 SW 2nd Ave, not Weston."
         }
