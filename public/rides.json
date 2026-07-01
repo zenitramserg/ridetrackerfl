@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T02:16:26.919401+00:00",
+  "generated_at": "2026-07-01T19:26:33.536098+00:00",
   "rides": {
     "records": [
       {
@@ -437,8 +437,11 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 3.6,
+          "Rain Probability": 0.03,
           "Location": "Flamingo & Griffin",
           "Featured": true,
+          "Weather Summary": "Dry (3% rain), light winds 4 mph",
           "Pace": "A: 23+ mph / B: 22-23 mph",
           "Distance": "58 / 52",
           "Ride Name": "Team Galiz Pre-4th of July Ride",
@@ -446,10 +449,7 @@
           "Status": "confirmed",
           "Ride Date": "2026-07-03",
           "Organizer": "Team Galiz",
-          "Notes": "Pre-4th of July special ride. Group A: 23+ mph, 58 miles. Group B: 22-23 mph, 52 miles. SAG vehicle.",
-          "Weather Summary": "Dry (3% rain), light winds 4 mph",
-          "Rain Probability": 0.03,
-          "Wind Speed": 3.6
+          "Notes": "Pre-4th of July special ride. Group A: 23+ mph, 58 miles. Group B: 22-23 mph, 52 miles. SAG vehicle."
         }
       },
       {
@@ -603,8 +603,11 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 2.9,
+          "Rain Probability": 0.04,
           "Location": "Markham Park",
           "Featured": true,
+          "Weather Summary": "Dry (4% rain), light winds 3 mph",
           "Pace": "A: 23+ mph / B: 20-22 mph",
           "Distance": "45 / 40",
           "Ride Name": "Team Galiz 4th of July BBQ Ride",
@@ -613,10 +616,7 @@
           "Ride Date": "2026-07-04",
           "Address Note": "South Boat Ramp",
           "Organizer": "Team Galiz",
-          "Notes": "4th of July special ride + BBQ post-ride. Group A: 23+ mph, 45 miles. Group B: 20-22 mph, 40 miles. SAG vehicle. $10 donation.",
-          "Weather Summary": "Dry (4% rain), light winds 3 mph",
-          "Rain Probability": 0.04,
-          "Wind Speed": 2.9
+          "Notes": "4th of July special ride + BBQ post-ride. Group A: 23+ mph, 45 miles. Group B: 20-22 mph, 40 miles. SAG vehicle. $10 donation."
         }
       }
     ]
