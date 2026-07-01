@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T19:36:34.702165+00:00",
+  "generated_at": "2026-07-01T00:01:50.712119+00:00",
   "rides": {
     "records": [
       {
@@ -68,6 +68,30 @@
           "Address Note": "16098 W State Rd 84, Weston",
           "Organizer": "Ride84",
           "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
+        }
+      },
+      {
+        "id": "rec5rhC6yWoKFgGlV",
+        "createdTime": "2026-06-30T23:58:48.000Z",
+        "fields": {
+          "Ride Type": "Special Event",
+          "Display on Site": true,
+          "Time": "6:30 AM",
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Featured": true,
+          "Pace": "22/24 mph",
+          "Distance": "40",
+          "Ride Name": "Independence 4th of July Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-04",
+          "Address Note": "Behind Bank of America",
+          "Organizer": "OMG Cycling",
+          "Notes": "Charity ride — all funds raised go to Venezuela. $15 USD donation via Zelle: omgcyclinggroup@gmail.com. Choripán post-ride. Co-hosted with Team Recovery Weston.",
+          "Weather Summary": "Dry (4% rain), light winds 3 mph",
+          "Rain Probability": 0.04,
+          "Wind Speed": 3.0
         }
       },
       {
@@ -322,12 +346,12 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "06:30 AM",
-          "Wind Speed": 2.5,
-          "Rain Probability": 0.08,
+          "Wind Speed": 3.0,
+          "Rain Probability": 0.04,
           "Location": "Weston T.C. Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-06-30T15:36:25.000Z",
-          "Weather Summary": "Dry (8% rain), winds 2 mph",
+          "Weather Summary": "Dry (4% rain), light winds 3 mph",
           "Ride Name": "Independence 4th of July Ride 2026",
           "Day of Week": "Saturday",
           "Status": "planned",
@@ -389,7 +413,7 @@
           "Display on Site": true,
           "Time": "5:30 AM",
           "Wind Speed": 4.3,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-06-30T15:36:25.000Z",
@@ -566,7 +590,7 @@
           "Ride Name": "Saturday Palomos 2.0",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-20",
+          "Ride Date": "2026-07-11",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
         }
