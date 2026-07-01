@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T00:05:55.414366+00:00",
+  "generated_at": "2026-07-01T02:16:26.919401+00:00",
   "rides": {
     "records": [
       {
@@ -131,7 +131,7 @@
           "Ride Name": "Team Galiz Saturday",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-20",
+          "Ride Date": "2026-07-11",
           "Address Note": "1100 SW 2nd Ave, Miami, FL 33130",
           "Organizer": "Team Galiz",
           "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
@@ -431,6 +431,28 @@
         }
       },
       {
+        "id": "recZrd8kf60L5NcYz",
+        "createdTime": "2026-07-01T02:15:55.000Z",
+        "fields": {
+          "Ride Type": "Special Event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Flamingo & Griffin",
+          "Featured": true,
+          "Pace": "A: 23+ mph / B: 22-23 mph",
+          "Distance": "58 / 52",
+          "Ride Name": "Team Galiz Pre-4th of July Ride",
+          "Day of Week": "Friday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-03",
+          "Organizer": "Team Galiz",
+          "Notes": "Pre-4th of July special ride. Group A: 23+ mph, 58 miles. Group B: 22-23 mph, 52 miles. SAG vehicle.",
+          "Weather Summary": "Dry (3% rain), light winds 4 mph",
+          "Rain Probability": 0.03,
+          "Wind Speed": 3.6
+        }
+      },
+      {
         "id": "recaE1xja2682w4yI",
         "createdTime": "2026-06-03T20:54:09.000Z",
         "fields": {
@@ -572,6 +594,29 @@
           "Ride Date": "2026-07-11",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
+        }
+      },
+      {
+        "id": "reczCjag1mwTAF7Zy",
+        "createdTime": "2026-07-01T02:15:55.000Z",
+        "fields": {
+          "Ride Type": "Special Event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Markham Park",
+          "Featured": true,
+          "Pace": "A: 23+ mph / B: 20-22 mph",
+          "Distance": "45 / 40",
+          "Ride Name": "Team Galiz 4th of July BBQ Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-04",
+          "Address Note": "South Boat Ramp",
+          "Organizer": "Team Galiz",
+          "Notes": "4th of July special ride + BBQ post-ride. Group A: 23+ mph, 45 miles. Group B: 20-22 mph, 40 miles. SAG vehicle. $10 donation.",
+          "Weather Summary": "Dry (4% rain), light winds 3 mph",
+          "Rain Probability": 0.04,
+          "Wind Speed": 2.9
         }
       }
     ]
