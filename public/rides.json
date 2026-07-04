@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T01:31:07.444096+00:00",
+  "generated_at": "2026-07-04T01:35:14.858796+00:00",
   "rides": {
     "records": [
       {
@@ -491,26 +491,6 @@
           "Ride Date": "2026-06-06",
           "Organizer": "Best Buddies Challenge Miami",
           "Notes": "Charity ride — Riding for Inclusion. Roll-out 6:30 AM. Short option: 42 miles to Blackpoint Marina and back. Post-ride pastries and drinks for 72-mile riders. Note: starts in Miami at 1451 Brickell Ave, not Weston."
-        }
-      },
-      {
-        "id": "recibvwXHSJ1aJOK2",
-        "createdTime": "2026-06-26T12:04:36.000Z",
-        "fields": {
-          "Display on Site": true,
-          "Time": "05:35 AM",
-          "Wind Speed": 5.1,
-          "Rain Probability": 0.02,
-          "Location": "Tropical Park",
-          "Organizer Instagram Profile": "https://www.instagram.com/ride.84/",
-          "Last Checked At": "2026-06-26T08:04:27.000Z",
-          "Weather Summary": "Dry (2% rain), winds 5 mph",
-          "Ride Name": "Friday Workout at Tropical Park",
-          "Day of Week": "Friday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-26",
-          "Organizer": "Alex's Bicycle Pro Shop",
-          "Notes": "---\nA man speaking to camera outdoors in front of green hedges, with Instagram story overlays announcing a Friday workout at Tropical Park at 5:35am and a request to bring donations in connection with an earthquake in Venezuela."
         }
       },
       {
