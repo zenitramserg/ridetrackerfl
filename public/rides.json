@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T01:35:14.858796+00:00",
+  "generated_at": "2026-07-05T16:08:02.513559+00:00",
   "rides": {
     "records": [
       {
@@ -122,10 +122,10 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 1.4,
-          "Rain Probability": 0,
+          "Wind Speed": 3.2,
+          "Rain Probability": 0.03,
           "Location": "Griffin & Flamingo",
-          "Weather Summary": "Dry (0% rain), light winds 1 mph",
+          "Weather Summary": "Dry (3% rain), light winds 3 mph",
           "Pace": "20-22 mph (B) / 23+ mph (A)",
           "Distance": "52",
           "Ride Name": "Team Galiz Saturday",
@@ -560,12 +560,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 7.4,
-          "Rain Probability": 0,
+          "Wind Speed": 3.8,
+          "Rain Probability": 0.03,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-06-20T09:50:13.000Z",
-          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Weather Summary": "Dry (3% rain), light winds 4 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
