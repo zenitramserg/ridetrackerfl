@@ -294,8 +294,47 @@
     }
     .clear-filters:hover { border-color: #a3a3a3; color: #0d0d0d; }
 
+    /* ── PAGE LAYOUT (2-col on desktop) ─────────────── */
+    .page-layout {
+      display: flex;
+      flex-direction: column;
+    }
+    /* Mobile: sidebar (featured events strip) above the ride list */
+    .sidebar {
+      order: -1;
+      background: #0d0d0d;
+      padding: 16px 24px;
+    }
+    /* Desktop: 2-col grid, sidebar sticky on the right */
+    @media (min-width: 960px) {
+      .page-layout {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .page-layout.sidebar-visible {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        align-items: start;
+      }
+      .page-layout.sidebar-visible main {
+        max-width: none;
+        margin: 0;
+        min-width: 0;
+      }
+      .sidebar {
+        order: 2;
+        padding: 24px 20px;
+        position: sticky;
+        top: 120px;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        align-self: start;
+      }
+    }
+
     /* ── MAIN LAYOUT ─────────────────────────────── */
     main {
+      width: 100%;
       max-width: 1400px;
       margin: 0 auto;
       padding: 32px 24px 64px;
@@ -479,7 +518,7 @@
     .tl-badge-unknown   { background: #f5f5f5; color: #737373; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
     .ride-details {
       display: none;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
       padding: 12px 0;
       border-top: 1px solid #f5f5f5;
@@ -964,21 +1003,15 @@
         <span id="current-rain">💧 --%</span>
       </div>
     </div>
-    <div class="featured-events">
-      <h4>Featured Events</h4>
-      <div id="featured-events-list">
-        <div class="featured-empty">Loading events…</div>
-      </div>
-    </div>
   </div>
 </header>
 
 <!-- ── TABS BAR ───────────────────────────────────── -->
 <div class="tabs-bar" id="tabs-bar">
   <div class="tabs">
-    <button class="tab active" data-tab="upcoming">Upcoming</button>
+    <button class="tab active" data-tab="upcoming">This Week</button>
     <button class="tab" data-tab="all-rides">All Rides</button>
-    <button class="tab" data-tab="special-events">Special Events</button>
+    <button class="tab" data-tab="special-events">Events</button>
   </div>
 </div>
 
@@ -1021,6 +1054,7 @@
 </div>
 
 <!-- ── MAIN CONTENT ───────────────────────────────── -->
+<div class="page-layout" id="page-layout">
 <main>
 
   <!-- TAB: UPCOMING (default) ─────────────────────── -->
@@ -1030,14 +1064,6 @@
     <div class="section-block" id="events-48h-block" style="display:none">
       <div class="section-title">Special Events · Next 48 Hours</div>
       <div id="events-48h-list"></div>
-    </div>
-
-    <!-- Compact timeline: next 48h recurring rides -->
-    <div class="section-block">
-      <div class="section-title">Next 48 Hours</div>
-      <div class="timeline" id="timeline-list">
-        <div class="loading"><div class="spinner"></div><p>Loading rides…</p></div>
-      </div>
     </div>
 
     <!-- Full cards: all recurring rides this week -->
@@ -1073,6 +1099,15 @@
   </div>
 
 </main>
+<aside class="sidebar" id="sidebar" style="display:none">
+  <div class="featured-events">
+    <h4>Featured Events</h4>
+    <div id="featured-events-list">
+      <div class="featured-empty">Loading events…</div>
+    </div>
+  </div>
+</aside>
+</div>
 
 <!-- ── EMAIL SIGNUP ───────────────────────────────── -->
 <div class="email-signup-container">
@@ -1449,10 +1484,18 @@ function renderFeaturedEvents(featuredRideRecords, weatherMap) {
 
   const container = document.getElementById('featured-events-list');
 
+  const sidebarEl = document.getElementById('sidebar');
+  const layoutEl  = document.getElementById('page-layout');
+
   if (!upcoming.length) {
-    container.innerHTML = '<div class="featured-empty">No upcoming events in the next 30 days.</div>';
+    if (sidebarEl) sidebarEl.style.display = 'none';
+    if (layoutEl)  layoutEl.classList.remove('sidebar-visible');
     return;
   }
+
+  // Show sidebar with featured events
+  if (sidebarEl) sidebarEl.style.display = '';
+  if (layoutEl)  layoutEl.classList.add('sidebar-visible');
 
   container.innerHTML = upcoming.map(item => {
     const dateLabel = `${DAYS[item.date.getDay()].substring(0, 3)} ${fmt(item.date)}`;
@@ -1669,10 +1712,7 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
         <div class="ride-title-block">
           <h3>${escHtml(f[R.name] || 'Unnamed Ride')}</h3>
           ${orgName ? `<div class="ride-organizer-name">${escHtml(orgName)}</div>` : ''}
-          <div class="ride-meta">
-            ${statusBadge(f[R.status])}
-            ${dayLabel ? `<span>${dayLabel}</span>` : ''}
-          </div>
+          ${(status === 'canceled' || status === 'cancelled') ? `<div class="ride-meta">${statusBadge(f[R.status])}</div>` : ''}
         </div>
       </div>
       <div class="ride-chips">
@@ -1682,6 +1722,14 @@ function buildRideCard(f, dayDate, weatherMap, recordId) {
         <span class="chip-chevron">▾</span>
       </div>
       <div class="ride-details">
+        ${dayLabel ? `<div class="detail-item">
+          <div class="detail-label">Date</div>
+          <div class="detail-value">${escHtml(dayLabel)}</div>
+        </div>` : ''}
+        <div class="detail-item">
+          <div class="detail-label">Status</div>
+          <div class="detail-value">${statusBadge(f[R.status])}</div>
+        </div>
         <div class="detail-item">
           <div class="detail-label">Distance</div>
           <div class="detail-value ${!f[R.dist] ? 'muted' : ''}">
@@ -1743,9 +1791,8 @@ function renderUpcomingRides(rideRecords, weatherMap) {
     const dateStr  = d.toISOString().split('T')[0];
     const wx       = weatherMap[dateStr];
     const label    = isToday(d) ? 'Today' : isTomorrow(d) ? 'Tomorrow' : `${DAYS[d.getDay()]}, ${fmt(d)}`;
-    const todayBadge = isToday(d) ? '<span class="today-badge">Today</span>' : '';
     html += `<div class="section-block">
-      <div class="section-title">${label}${todayBadge ? ' ' + todayBadge : ''}
+      <div class="section-title">${label}
         ${wx ? `<span class="weather-day-pill">
           ${wx.rain >= 60 ? '🌧' : wx.rain >= 30 ? '🌦' : '☀️'} ${wx.rain}%
           <span style="opacity:0.4">·</span> 💨 ${wx.wind} mph
@@ -1973,11 +2020,13 @@ function updateStickyPositions() {
   const headerEl  = document.getElementById('main-header');
   const tabsEl    = document.getElementById('tabs-bar');
   const filtersEl = document.getElementById('filters-bar');
+  const sidebarEl = document.getElementById('sidebar');
   if (!headerEl || !tabsEl || !filtersEl) return;
   const headerH = headerEl.offsetHeight;
   const tabsH   = tabsEl.offsetHeight;
   tabsEl.style.top    = headerH + 'px';
   filtersEl.style.top = (headerH + tabsH) + 'px';
+  if (sidebarEl) sidebarEl.style.top = (headerH + tabsH) + 'px';
 }
 window.addEventListener('resize', updateStickyPositions);
 
@@ -2162,7 +2211,6 @@ async function init() {
     populateOrganizerFilter(visibleRides);
 
     renderFeaturedEvents(featuredRides, weatherMap);
-    renderTimeline(visibleRides, weatherMap);
     renderUpcomingRides(visibleRides, weatherMap);
     renderUpcomingEvents(rides, weatherMap);
     renderAllRides(visibleRides, weatherMap);
@@ -2173,7 +2221,7 @@ async function init() {
 
   } catch (err) {
     console.error(err);
-    document.getElementById('timeline-list').innerHTML =
+    document.getElementById('upcoming-rides-list').innerHTML =
       `<div class="error-msg">⚠️ Could not load rides. Please try again later.<br>
        <small>${escHtml(err.message)}</small></div>`;
   }
