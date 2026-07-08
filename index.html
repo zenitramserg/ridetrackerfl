@@ -334,6 +334,7 @@
 
     /* ── MAIN LAYOUT ─────────────────────────────── */
     main {
+      width: 100%;
       max-width: 1400px;
       margin: 0 auto;
       padding: 32px 24px 64px;
@@ -1790,9 +1791,8 @@ function renderUpcomingRides(rideRecords, weatherMap) {
     const dateStr  = d.toISOString().split('T')[0];
     const wx       = weatherMap[dateStr];
     const label    = isToday(d) ? 'Today' : isTomorrow(d) ? 'Tomorrow' : `${DAYS[d.getDay()]}, ${fmt(d)}`;
-    const todayBadge = isToday(d) ? '<span class="today-badge">Today</span>' : '';
     html += `<div class="section-block">
-      <div class="section-title">${label}${todayBadge ? ' ' + todayBadge : ''}
+      <div class="section-title">${label}
         ${wx ? `<span class="weather-day-pill">
           ${wx.rain >= 60 ? '🌧' : wx.rain >= 30 ? '🌦' : '☀️'} ${wx.rain}%
           <span style="opacity:0.4">·</span> 💨 ${wx.wind} mph
