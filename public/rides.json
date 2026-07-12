@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T19:28:58.995211+00:00",
+  "generated_at": "2026-07-12T15:04:06.313318+00:00",
   "rides": {
     "records": [
       {
@@ -492,31 +492,6 @@
           "Ride Date": "2026-06-06",
           "Organizer": "Best Buddies Challenge Miami",
           "Notes": "Charity ride — Riding for Inclusion. Roll-out 6:30 AM. Short option: 42 miles to Blackpoint Marina and back. Post-ride pastries and drinks for 72-mile riders. Note: starts in Miami at 1451 Brickell Ave, not Weston."
-        }
-      },
-      {
-        "id": "recke6Hxce9MDpQ7h",
-        "createdTime": "2026-04-05T01:58:50.000Z",
-        "fields": {
-          "Ride Type": "Regular",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 5,
-          "Rain Probability": 0.05,
-          "Location": "Coconut Grove Store",
-          "Organizer Instagram Profile": "https://www.instagram.com/pd.cyclingclub/",
-          "Featured": true,
-          "Last Checked At": "2026-04-04T21:58:43.000Z",
-          "Weather Summary": "Dry (5% rain), light winds 5 mph",
-          "Pace": "20/22 mph",
-          "Distance": "60",
-          "Ride Name": "Specialized Sunday Ride - No Drop",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-07",
-          "Address Note": "3208 Grand Ave, Coconut Grove, FL 33133",
-          "Organizer": "PD Cycling Club",
-          "Notes": "Pace: 20-22 mph\nDistance: 60 mi\n---\nA dark-themed promotional Instagram story showing a Specialized S-Works cycling helmet centered on the image, announcing a Sunday group ride on April 12th from the Coconut Grove store at 7:00 AM, covering 60 miles at a 20-22 mph pace, described as a no-drop ride where everyone is welcome."
         }
       },
       {
