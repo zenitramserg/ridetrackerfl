@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T15:04:06.313318+00:00",
+  "generated_at": "2026-07-12T15:37:45.793449+00:00",
   "rides": {
     "records": [
       {
@@ -169,18 +169,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 0.6,
-          "Rain Probability": 0,
+          "Wind Speed": 5.6,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-06-14T19:02:56.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 1 mph",
+          "Last Checked At": "2026-07-12T11:37:39.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 6 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "OMG Sunday Chill Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-21",
+          "Ride Date": "2026-07-12",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details."
         }
@@ -563,7 +563,7 @@
           "Rain Probability": 0.01,
           "Location": "Tomás House",
           "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-07-10T15:28:50.000Z",
+          "Last Checked At": "2026-07-12T11:37:39.000Z",
           "Weather Summary": "Dry (1% rain), winds 3 mph",
           "Ride Name": "Sunday Adventure - West Palm Beach Ride",
           "Day of Week": "Sunday",
