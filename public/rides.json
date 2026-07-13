@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T15:37:45.793449+00:00",
+  "generated_at": "2026-07-13T21:47:14.653609+00:00",
   "rides": {
     "records": [
       {
@@ -170,7 +170,7 @@
           "Display on Site": true,
           "Time": "07:00 AM",
           "Wind Speed": 5.6,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-07-12T11:37:39.000Z",
