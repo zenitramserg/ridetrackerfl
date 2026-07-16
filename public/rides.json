@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T17:11:01.349908+00:00",
+  "generated_at": "2026-07-16T18:07:08.064335+00:00",
   "rides": {
     "records": [
       {
@@ -571,6 +571,27 @@
           "Ride Date": "2026-07-12",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Address: 1340 North East 155 Street, North Miami Beach, FL 33162\nPace: 20-22 mph\nDistance: 70 miles\n---\nAn Instagram story from MBO Miami cycling club announcing a Sunday Adventure West Palm Beach Ride on July 12, featuring a photo of cyclists riding on a bridge with a Tri-Rail train in the background, along with detailed ride logistics including meeting time, distance, pace, train return, and a post-ride Chinese food gathering."
+        }
+      },
+      {
+        "id": "recxVskrJg3q1mVxN",
+        "createdTime": "2026-07-16T17:13:42.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Specialized Miami - Coconut Grove",
+          "Pace": "20-22 mph (No Drop)",
+          "Distance": "42",
+          "Ride Name": "Specialized Miami Coconut Grove Sunday Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-19",
+          "Address Note": "3208 Grand Ave, Miami, FL 33133",
+          "Organizer": "Specialized Miami Coconut Grove",
+          "Notes": "Route: KB Lap + Black Point Marina. No Drop ride. Flyer: #RIDEFASTTAKECHANCES. Good People. Good Vibes. Great Ride.",
+          "Weather Summary": "Dry (0% rain), light winds 8 mph",
+          "Rain Probability": 0.0,
+          "Wind Speed": 7.8
         }
       },
       {
