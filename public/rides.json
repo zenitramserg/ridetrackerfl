@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T18:07:08.064335+00:00",
+  "generated_at": "2026-07-17T19:06:04.863571+00:00",
   "rides": {
     "records": [
       {
@@ -579,7 +579,10 @@
         "fields": {
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 7.8,
+          "Rain Probability": 0,
           "Location": "Specialized Miami - Coconut Grove",
+          "Weather Summary": "Dry (0% rain), light winds 8 mph",
           "Pace": "20-22 mph (No Drop)",
           "Distance": "42",
           "Ride Name": "Specialized Miami Coconut Grove Sunday Ride",
@@ -588,10 +591,7 @@
           "Ride Date": "2026-07-19",
           "Address Note": "3208 Grand Ave, Miami, FL 33133",
           "Organizer": "Specialized Miami Coconut Grove",
-          "Notes": "Route: KB Lap + Black Point Marina. No Drop ride. Flyer: #RIDEFASTTAKECHANCES. Good People. Good Vibes. Great Ride.",
-          "Weather Summary": "Dry (0% rain), light winds 8 mph",
-          "Rain Probability": 0.0,
-          "Wind Speed": 7.8
+          "Notes": "Route: KB Lap + Black Point Marina. No Drop ride. Flyer: #RIDEFASTTAKECHANCES. Good People. Good Vibes. Great Ride."
         }
       },
       {
