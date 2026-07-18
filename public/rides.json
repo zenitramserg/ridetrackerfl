@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T19:23:54.641872+00:00",
+  "generated_at": "2026-07-18T22:11:47.122658+00:00",
   "rides": {
     "records": [
       {
@@ -536,12 +536,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 7.4,
-          "Rain Probability": 0,
+          "Wind Speed": 1.9,
+          "Rain Probability": 0.02,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-07-17T15:23:44.000Z",
-          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Weather Summary": "Dry (2% rain), light winds 2 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
@@ -579,10 +579,10 @@
         "fields": {
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 7.8,
-          "Rain Probability": 0,
+          "Wind Speed": 1.6,
+          "Rain Probability": 0.25,
           "Location": "Specialized Miami - Coconut Grove",
-          "Weather Summary": "Dry (0% rain), light winds 8 mph",
+          "Weather Summary": "Dry (25% rain), light winds 2 mph",
           "Pace": "20-22 mph (No Drop)",
           "Distance": "42",
           "Ride Name": "Specialized Miami Coconut Grove Sunday Ride",
