@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T22:11:47.122658+00:00",
+  "generated_at": "2026-07-19T13:25:35.288046+00:00",
   "rides": {
     "records": [
       {
@@ -579,10 +579,10 @@
         "fields": {
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 1.6,
-          "Rain Probability": 0.25,
+          "Wind Speed": 2.2,
+          "Rain Probability": 0.04,
           "Location": "Specialized Miami - Coconut Grove",
-          "Weather Summary": "Dry (25% rain), light winds 2 mph",
+          "Weather Summary": "Dry (4% rain), light winds 2 mph",
           "Pace": "20-22 mph (No Drop)",
           "Distance": "42",
           "Ride Name": "Specialized Miami Coconut Grove Sunday Ride",
