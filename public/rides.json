@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T13:25:35.288046+00:00",
+  "generated_at": "2026-07-19T13:40:49.762471+00:00",
   "rides": {
     "records": [
       {
@@ -492,6 +492,27 @@
           "Ride Date": "2026-06-06",
           "Organizer": "Best Buddies Challenge Miami",
           "Notes": "Charity ride — Riding for Inclusion. Roll-out 6:30 AM. Short option: 42 miles to Blackpoint Marina and back. Post-ride pastries and drinks for 72-mile riders. Note: starts in Miami at 1451 Brickell Ave, not Weston."
+        }
+      },
+      {
+        "id": "recrd30eBkttJvCIn",
+        "createdTime": "2026-07-19T13:40:46.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "4:45 AM",
+          "Wind Speed": 6.9,
+          "Rain Probability": 0.02,
+          "Location": "Miami - City views & Biscayne Bay",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-07-19T09:40:45.000Z",
+          "Weather Summary": "Dry (2% rain), winds 7 mph",
+          "Ride Name": "Miami to Key West Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-26",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Address: 1100 Southwest 1st Avenue, Florida\nPace: 20-22 mph\nDistance: ~165 miles\n---\nA vibrant promotional flyer for an MBO Bike Club group cycling event from Miami to Key West on July 26, 2026, featuring a route map of the Florida Keys, event details, and cost breakdown."
         }
       },
       {
