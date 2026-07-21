@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T20:07:17.860434+00:00",
+  "generated_at": "2026-07-21T16:23:17.170469+00:00",
   "rides": {
     "records": [
       {
@@ -411,7 +411,7 @@
           "Display on Site": true,
           "Time": "5:30 AM",
           "Wind Speed": 4.9,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-07-20T16:07:10.000Z",
