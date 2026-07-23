@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T20:08:14.472442+00:00",
+  "generated_at": "2026-07-23T19:01:34.924219+00:00",
   "rides": {
     "records": [
       {
@@ -519,12 +519,12 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "4:45 AM",
-          "Wind Speed": 6.9,
-          "Rain Probability": 0.02,
+          "Wind Speed": 6.4,
+          "Rain Probability": 0.04,
           "Location": "Miami - City views & Biscayne Bay",
           "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
           "Last Checked At": "2026-07-19T09:40:45.000Z",
-          "Weather Summary": "Dry (2% rain), winds 7 mph",
+          "Weather Summary": "Dry (4% rain), light winds 6 mph",
           "Ride Name": "Miami to Key West Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
