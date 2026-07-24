@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T15:59:03.640774+00:00",
+  "generated_at": "2026-07-24T16:15:27.370396+00:00",
   "rides": {
     "records": [
       {
@@ -575,18 +575,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 1.9,
-          "Rain Probability": 0.02,
+          "Wind Speed": 2.1,
+          "Rain Probability": 0.03,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-07-17T15:23:44.000Z",
-          "Weather Summary": "Dry (2% rain), light winds 2 mph",
+          "Last Checked At": "2026-07-24T12:15:21.000Z",
+          "Weather Summary": "Dry (3% rain), light winds 2 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-07-18",
+          "Ride Date": "2026-07-25",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
         }
