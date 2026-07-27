@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T21:55:49.402747+00:00",
+  "generated_at": "2026-07-27T22:07:27.775153+00:00",
   "rides": {
     "records": [
       {
@@ -344,18 +344,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 4.9,
-          "Rain Probability": 0,
+          "Wind Speed": 5.1,
+          "Rain Probability": 0.03,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-07-20T16:07:10.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 5 mph",
+          "Last Checked At": "2026-07-27T18:07:22.000Z",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
-          "Ride Date": "2026-07-21",
+          "Ride Date": "2026-07-28",
           "Organizer": "OMG Cycling",
           "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
         }
