@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T21:54:00.958979+00:00",
+  "generated_at": "2026-07-27T21:55:49.402747+00:00",
   "rides": {
     "records": [
       {
@@ -23,28 +23,6 @@
           "Ride Date": "2026-07-22",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
-        }
-      },
-      {
-        "id": "rec53Sf8AL12fxf5J",
-        "createdTime": "2026-06-20T13:12:25.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "5:00 AM",
-          "Wind Speed": 5.1,
-          "Rain Probability": 0.02,
-          "Location": "1798 Market St, Weston FL 33326",
-          "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (2% rain), light winds 5 mph",
-          "Pace": "A: 23-26 mph",
-          "Distance": "20",
-          "Ride Name": "5am Pull Club",
-          "Day of Week": "Friday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-26",
-          "Organizer": "Pull Club",
-          "Notes": "Rotating Ride — everyone pulls. Mondays, Wednesdays & Fridays 5am. Road surface."
         }
       },
       {
@@ -210,28 +188,6 @@
         }
       },
       {
-        "id": "recG5teEsQh9OnfX4",
-        "createdTime": "2026-06-20T13:12:25.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "5:00 AM",
-          "Wind Speed": 1.6,
-          "Rain Probability": 0.01,
-          "Location": "1798 Market St, Weston FL 33326",
-          "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (1% rain), light winds 2 mph",
-          "Pace": "A: 23-26 mph",
-          "Distance": "20",
-          "Ride Name": "5am Pull Club",
-          "Day of Week": "Wednesday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-24",
-          "Organizer": "Pull Club",
-          "Notes": "Rotating Ride — everyone pulls. Mondays, Wednesdays & Fridays 5am. Road surface."
-        }
-      },
-      {
         "id": "recHtSoEzNTxyHQBY",
         "createdTime": "2026-04-16T00:43:55.000Z",
         "fields": {
@@ -252,28 +208,6 @@
           "Ride Date": "2026-07-16",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
-        }
-      },
-      {
-        "id": "recIAauWKBDCybH8h",
-        "createdTime": "2026-06-20T13:12:25.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "5:00 AM",
-          "Wind Speed": 1.1,
-          "Rain Probability": 0.01,
-          "Location": "1798 Market St, Weston FL 33326",
-          "Organizer Instagram Profile": "https://www.instagram.com/pullclub.cc/",
-          "Weather Summary": "Dry (1% rain), light winds 1 mph",
-          "Pace": "A: 23-26 mph",
-          "Distance": "20",
-          "Ride Name": "5am Pull Club",
-          "Day of Week": "Monday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-22",
-          "Organizer": "Pull Club",
-          "Notes": "Rotating Ride — everyone pulls. Mondays, Wednesdays & Fridays 5am. Road surface."
         }
       },
       {
