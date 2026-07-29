@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T00:16:02.534630+00:00",
+  "generated_at": "2026-07-29T00:20:17.055865+00:00",
   "rides": {
     "records": [
       {
@@ -447,6 +447,24 @@
         }
       },
       {
+        "id": "reck35UmKabTDKKaP",
+        "createdTime": "2026-03-27T14:43:19.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:30 AM",
+          "Location": "Weston Town Center",
+          "Pace": "20/24 mph",
+          "Distance": "35 mi",
+          "Ride Name": "Wild Hogs Thursday Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Address Note": "Japan Inn inside Weston Town Center Plaza",
+          "Organizer": "Wild Hogs Cycling",
+          "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        }
+      },
+      {
         "id": "recrd30eBkttJvCIn",
         "createdTime": "2026-07-19T13:40:46.000Z",
         "fields": {
@@ -483,6 +501,24 @@
           "Ride Date": "2026-05-03",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Pace: 20-23 mph\nDistance: 60 miles\n---\nA promotional flyer for the MBO Girls Community Ride in Miami featuring three female cyclists in MBO team kit riding road bikes together, overlaid with event details for May 3rd."
+        }
+      },
+      {
+        "id": "recuaipPr38uAnkhq",
+        "createdTime": "2026-03-27T14:43:19.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:30 AM",
+          "Location": "Weston Town Center",
+          "Pace": "20/24 mph",
+          "Distance": "35 mi",
+          "Ride Name": "Wild Hogs Tuesday Ride",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Address Note": "Japan Inn inside Weston Town Center Plaza",
+          "Organizer": "Wild Hogs Cycling",
+          "Notes": "No-drop group. 32-40 miles, 20-24 mph. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
         }
       },
       {
