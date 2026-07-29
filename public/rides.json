@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T17:50:57.808122+00:00",
+  "generated_at": "2026-07-29T19:37:30.340125+00:00",
   "rides": {
     "records": [
       {
@@ -454,8 +454,8 @@
           "Display on Site": true,
           "Time": "07:30 AM",
           "Location": "Weston Town Center",
-          "Pace": "20/24 mph",
-          "Distance": "35 mi",
+          "Pace": "20/24 mph | Controlled Pace | No Drop",
+          "Distance": "35 ",
           "Ride Name": "Wild Hogs Thursday Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
@@ -511,8 +511,8 @@
           "Display on Site": true,
           "Time": "07:30 AM",
           "Location": "Weston Town Center",
-          "Pace": "20/24 mph",
-          "Distance": "35 mi",
+          "Pace": "20/24 mph | Controlled Pace | No Drop",
+          "Distance": "35",
           "Ride Name": "Wild Hogs Tuesday Ride",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
