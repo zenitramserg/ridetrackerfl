@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T11:51:59.618240+00:00",
+  "generated_at": "2026-08-01T18:33:56.692395+00:00",
   "rides": {
     "records": [
       {
@@ -71,27 +71,6 @@
           "Address Note": "Behind Bank of America",
           "Organizer": "OMG Cycling",
           "Notes": "Charity ride — all funds raised go to Venezuela. $15 USD donation via Zelle: omgcyclinggroup@gmail.com. Choripán post-ride. Co-hosted with Team Recovery Weston."
-        }
-      },
-      {
-        "id": "rec5zqHIC90jmqFmi",
-        "createdTime": "2026-05-29T22:07:39.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 0.6,
-          "Rain Probability": 0,
-          "Location": "Griffin & Flamingo",
-          "Weather Summary": "Dry (0% rain), light winds 1 mph",
-          "Pace": "Controlled pace, no drop",
-          "Distance": "40",
-          "Ride Name": "Team Galiz Sunday Recovery Ride",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-21",
-          "Organizer": "Team Galiz",
-          "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
         }
       },
       {
@@ -211,6 +190,27 @@
         }
       },
       {
+        "id": "recJREVGPLy5snKv6",
+        "createdTime": "2026-08-01T18:32:53.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "6:45 AM",
+          "Location": "Markham Park",
+          "Featured": true,
+          "Distance": "40",
+          "Ride Name": "Coach Peter Aldridge Charity Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-02",
+          "Address Note": "16001 W State Rd 84, Sunrise, FL",
+          "Organizer": "Team Galiz",
+          "Notes": "Charity ride featuring Coach Peter Aldridge, 3X Olympian. Jamaican Emancipation Day. Proceeds support Jamaican school children's cycling program. $15 donation recommended. Cash on site or Zelle/Venmo: Arlyne Salcedo / Lonepalm1220@gmail.com / 239-851-8408. Meet 6:45 AM, pedals up 7:00 AM.",
+          "Weather Summary": "Dry (3% rain), light winds 3 mph",
+          "Rain Probability": 0.03,
+          "Wind Speed": 3.2
+        }
+      },
+      {
         "id": "recJgnwpRsAuba1yA",
         "createdTime": "2026-03-30T01:33:52.000Z",
         "fields": {
@@ -239,7 +239,7 @@
           "Display on Site": true,
           "Time": "06:00 AM",
           "Wind Speed": 2.5,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-07-31T07:51:44.000Z",
@@ -272,24 +272,6 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
-        }
-      },
-      {
-        "id": "recR4dUXG876ibsrC",
-        "createdTime": "2026-07-20T20:07:13.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "5:45 AM",
-          "Location": "MBO Store",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-07-20T16:07:10.000Z",
-          "Ride Name": "MBO Sunday Ride",
-          "Day of Week": "Sunday",
-          "Status": "planned",
-          "Ride Date": "2026-07-19",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1100 SW 2nd Ave, Miami, FL 33130\nPace: 20-22 mph\nDistance: 75 mi\n---\nA promotional Instagram story flyer for the MBO Sunday Ride on July 19, featuring cyclist photos on a road and an image of the Robert Is Here fruit stand sign, with event details listed on the left side."
         }
       },
       {
