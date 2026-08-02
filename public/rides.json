@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T22:26:44.176379+00:00",
+  "generated_at": "2026-08-02T22:59:47.206861+00:00",
   "rides": {
     "records": [
       {
@@ -444,6 +444,27 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        }
+      },
+      {
+        "id": "recqjGia0zOsDKwPK",
+        "createdTime": "2026-08-02T22:57:26.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "6:00 AM",
+          "Location": "Weston Town Center — GRIT. Bike Lab",
+          "Featured": true,
+          "Pace": "23-25 mph",
+          "Distance": "42/52/62",
+          "Ride Name": "Palomos 2.0 × GRIT. Bike Lab Opening Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-08",
+          "Organizer": "OMG Cycling",
+          "Notes": "Special collab: OMG Cycling × GRIT. Bike Lab Opening Ride. In front of GRIT. Bike Lab at Weston Town Center. 9:00 AM post-ride party at GRIT. Bike Lab — drinks, gifts & more. Sponsors: SRAM, GU, Equilibrio Coffee, Argon 18, Keforma.",
+          "Weather Summary": "Dry (8% rain), light winds 9 mph",
+          "Rain Probability": 0.08,
+          "Wind Speed": 9.1
         }
       },
       {
