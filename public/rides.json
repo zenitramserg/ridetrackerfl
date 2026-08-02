@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T23:05:39.041806+00:00",
+  "generated_at": "2026-08-02T23:06:27.365495+00:00",
   "rides": {
     "records": [
       {
@@ -198,7 +198,6 @@
           "Wind Speed": 3.2,
           "Rain Probability": 0.03,
           "Location": "Markham Park",
-          "Featured": true,
           "Weather Summary": "Dry (3% rain), light winds 3 mph",
           "Distance": "40",
           "Ride Name": "Coach Peter Aldridge Charity Ride",
