@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T23:01:29.303226+00:00",
+  "generated_at": "2026-08-02T23:05:39.041806+00:00",
   "rides": {
     "records": [
       {
@@ -450,6 +450,7 @@
         "id": "recqjGia0zOsDKwPK",
         "createdTime": "2026-08-02T22:57:26.000Z",
         "fields": {
+          "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "6:00 AM",
           "Wind Speed": 9.1,
