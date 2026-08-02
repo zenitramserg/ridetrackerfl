@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T18:33:56.692395+00:00",
+  "generated_at": "2026-08-02T21:57:57.674302+00:00",
   "rides": {
     "records": [
       {
@@ -195,8 +195,11 @@
         "fields": {
           "Display on Site": true,
           "Time": "6:45 AM",
+          "Wind Speed": 3.2,
+          "Rain Probability": 0.03,
           "Location": "Markham Park",
           "Featured": true,
+          "Weather Summary": "Dry (3% rain), light winds 3 mph",
           "Distance": "40",
           "Ride Name": "Coach Peter Aldridge Charity Ride",
           "Day of Week": "Sunday",
@@ -204,10 +207,7 @@
           "Ride Date": "2026-08-02",
           "Address Note": "16001 W State Rd 84, Sunrise, FL",
           "Organizer": "Team Galiz",
-          "Notes": "Charity ride featuring Coach Peter Aldridge, 3X Olympian. Jamaican Emancipation Day. Proceeds support Jamaican school children's cycling program. $15 donation recommended. Cash on site or Zelle/Venmo: Arlyne Salcedo / Lonepalm1220@gmail.com / 239-851-8408. Meet 6:45 AM, pedals up 7:00 AM.",
-          "Weather Summary": "Dry (3% rain), light winds 3 mph",
-          "Rain Probability": 0.03,
-          "Wind Speed": 3.2
+          "Notes": "Charity ride featuring Coach Peter Aldridge, 3X Olympian. Jamaican Emancipation Day. Proceeds support Jamaican school children's cycling program. $15 donation recommended. Cash on site or Zelle/Venmo: Arlyne Salcedo / Lonepalm1220@gmail.com / 239-851-8408. Meet 6:45 AM, pedals up 7:00 AM."
         }
       },
       {
