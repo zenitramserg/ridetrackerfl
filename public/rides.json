@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T18:52:40.337735+00:00",
+  "generated_at": "2026-08-06T23:52:54.927483+00:00",
   "rides": {
     "records": [
       {
@@ -452,11 +452,11 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 11.1,
-          "Rain Probability": 0.15,
+          "Wind Speed": 3.8,
+          "Rain Probability": 0.08,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Featured": true,
-          "Weather Summary": "Dry (15% rain), light winds 11 mph",
+          "Weather Summary": "Dry (8% rain), light winds 4 mph",
           "Pace": "23-25 mph",
           "Distance": "42/52/62",
           "Ride Name": "Palomos 2.0 × GRIT. Bike Lab Opening Ride",
