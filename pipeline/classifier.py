@@ -96,8 +96,12 @@ def is_valid_group_ride(ride: dict) -> bool:
     if is_suppressed_title(ride.get("title", "")):
         return False
 
-    # Must pass the confidence threshold set during vision extraction
-    if float(ride.get("confidence", 0)) < 0.5:
+    # Must pass the confidence threshold set during vision extraction.
+    # Use `or 0` instead of default=0 — the vision model can return an
+    # explicit `null` confidence, and default= only covers a missing key,
+    # not a present-but-null value. float(None) would raise TypeError and
+    # crash the whole batch (same bug class fixed in deduplicator.py).
+    if float(ride.get("confidence") or 0) < 0.5:
         return False
 
     # Treat the literal sentinel "empty string" (returned by the vision model
