@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T16:23:08.500641+00:00",
+  "generated_at": "2026-08-07T18:20:42.445553+00:00",
   "rides": {
     "records": [
       {
@@ -71,6 +71,27 @@
           "Address Note": "Behind Bank of America",
           "Organizer": "OMG Cycling",
           "Notes": "Charity ride — all funds raised go to Venezuela. $15 USD donation via Zelle: omgcyclinggroup@gmail.com. Choripán post-ride. Co-hosted with Team Recovery Weston."
+        }
+      },
+      {
+        "id": "rec5zqHIC90jmqFmi",
+        "createdTime": "2026-05-29T22:07:39.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 0.6,
+          "Rain Probability": 0,
+          "Location": "Griffin & Flamingo",
+          "Weather Summary": "Dry (0% rain), light winds 1 mph",
+          "Pace": "Controlled pace, no drop",
+          "Distance": "40",
+          "Ride Name": "Team Galiz Sunday Recovery Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-21",
+          "Organizer": "Team Galiz",
+          "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
         }
       },
       {
@@ -385,6 +406,27 @@
         }
       },
       {
+        "id": "recZKsp5g9TmP7W1J",
+        "createdTime": "2026-08-07T18:15:56.000Z",
+        "fields": {
+          "Display on Site": true,
+          "Time": "6:30 AM",
+          "Location": "Sunrise Sports Complex",
+          "Pace": "24 mph",
+          "Distance": "40",
+          "Ride Name": "Sunrise Cycling Family Saturday Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-08",
+          "Address Note": "9101 NW 50th St, Sunrise, FL 33351",
+          "Organizer": "Sunrise Cycling Family",
+          "Notes": "Weekly Saturday group ride. Info: 561-305-8244. No Instagram yet — to be added when available.",
+          "Weather Summary": "Dry (3% rain), light winds 2 mph",
+          "Rain Probability": 0.03,
+          "Wind Speed": 2.0
+        }
+      },
+      {
         "id": "recZrd8kf60L5NcYz",
         "createdTime": "2026-07-01T02:15:55.000Z",
         "fields": {
@@ -472,7 +514,7 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 4.0,
+          "Wind Speed": 4,
           "Rain Probability": 0.02,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Featured": true,
@@ -679,6 +721,21 @@
           "Type": "Group",
           "Instagram URL": "https://www.instagram.com/ride.84/",
           "Instagram Handle": "ride.84"
+        }
+      },
+      {
+        "id": "recDpWrnCntetL38Y",
+        "createdTime": "2026-08-07T18:18:04.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "url": "/public/organizers/sunrise_cycling_family.png",
+              "filename": "sunrise_cycling_family.png"
+            }
+          ],
+          "Name": "Sunrise Cycling Family",
+          "Active": true,
+          "Type": "Group"
         }
       },
       {
