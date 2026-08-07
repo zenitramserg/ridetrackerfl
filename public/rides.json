@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T18:20:42.445553+00:00",
+  "generated_at": "2026-08-07T18:25:16.757664+00:00",
   "rides": {
     "records": [
       {
@@ -409,9 +409,13 @@
         "id": "recZKsp5g9TmP7W1J",
         "createdTime": "2026-08-07T18:15:56.000Z",
         "fields": {
+          "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "6:30 AM",
+          "Wind Speed": 2,
+          "Rain Probability": 0.03,
           "Location": "Sunrise Sports Complex",
+          "Weather Summary": "Dry (3% rain), light winds 2 mph",
           "Pace": "24 mph",
           "Distance": "40",
           "Ride Name": "Sunrise Cycling Family Saturday Ride",
@@ -420,10 +424,7 @@
           "Ride Date": "2026-08-08",
           "Address Note": "9101 NW 50th St, Sunrise, FL 33351",
           "Organizer": "Sunrise Cycling Family",
-          "Notes": "Weekly Saturday group ride. Info: 561-305-8244. No Instagram yet — to be added when available.",
-          "Weather Summary": "Dry (3% rain), light winds 2 mph",
-          "Rain Probability": 0.03,
-          "Wind Speed": 2.0
+          "Notes": "Weekly Saturday group ride. Info: 561-305-8244. No Instagram yet — to be added when available."
         }
       },
       {
