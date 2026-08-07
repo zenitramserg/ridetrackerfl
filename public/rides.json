@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T15:42:27.948306+00:00",
+  "generated_at": "2026-08-07T16:23:08.500641+00:00",
   "rides": {
     "records": [
       {
@@ -365,6 +365,26 @@
         }
       },
       {
+        "id": "recYcHtPZ53y679oQ",
+        "createdTime": "2026-08-07T16:22:56.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "6:00 AM",
+          "Wind Speed": 4,
+          "Rain Probability": 0.02,
+          "Location": "Town Center Weston",
+          "Last Checked At": "2026-08-07T12:22:52.000Z",
+          "Weather Summary": "Dry (2% rain), winds 4 mph",
+          "Ride Name": "Saturday Opening Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-08",
+          "Organizer": "Team Recovery Weston",
+          "Notes": "Distance: 62 mi\n---\nAn aerial-view promotional flyer showing cyclists riding on a road, overlaid with bold yellow text announcing a Saturday Opening Ride on August 8 at 6:00 AM from Town Center Weston, branded by Grit Bike Lab."
+        }
+      },
+      {
         "id": "recZrd8kf60L5NcYz",
         "createdTime": "2026-07-01T02:15:55.000Z",
         "fields": {
@@ -453,10 +473,10 @@
           "Display on Site": true,
           "Time": "6:00 AM",
           "Wind Speed": 4.0,
-          "Rain Probability": 0.05,
+          "Rain Probability": 0.02,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Featured": true,
-          "Weather Summary": "Dry (5% rain), light winds 4 mph",
+          "Weather Summary": "Dry (2% rain), light winds 4 mph",
           "Pace": "23-25 mph",
           "Distance": "42/52/62",
           "Ride Name": "Palomos 2.0 × GRIT. Bike Lab Opening Ride",
