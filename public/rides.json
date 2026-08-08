@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T20:48:20.146585+00:00",
+  "generated_at": "2026-08-08T21:05:55.113228+00:00",
   "rides": {
     "records": [
       {
@@ -585,6 +585,29 @@
         }
       },
       {
+        "id": "recwsRk8IafsKiFac",
+        "createdTime": "2026-04-11T10:17:14.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:00 AM",
+          "Wind Speed": 5.2,
+          "Rain Probability": 0.05,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-08-08T17:05:50.000Z",
+          "Weather Summary": "Dry (5% rain), light winds 5 mph",
+          "Pace": "23-25mph",
+          "Distance": "42/52/62",
+          "Ride Name": "Saturday Palomos 2.0",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-08",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
+        }
+      },
+      {
         "id": "recxBHwtH1HWtdeB9",
         "createdTime": "2026-07-10T19:28:54.000Z",
         "fields": {
@@ -603,27 +626,6 @@
           "Ride Date": "2026-07-12",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Address: 1340 North East 155 Street, North Miami Beach, FL 33162\nPace: 20-22 mph\nDistance: 70 miles\n---\nAn Instagram story from MBO Miami cycling club announcing a Sunday Adventure West Palm Beach Ride on July 12, featuring a photo of cyclists riding on a bridge with a Tri-Rail train in the background, along with detailed ride logistics including meeting time, distance, pace, train return, and a post-ride Chinese food gathering."
-        }
-      },
-      {
-        "id": "recxVskrJg3q1mVxN",
-        "createdTime": "2026-07-16T17:13:42.000Z",
-        "fields": {
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 2.2,
-          "Rain Probability": 0.04,
-          "Location": "Specialized Miami - Coconut Grove",
-          "Weather Summary": "Dry (4% rain), light winds 2 mph",
-          "Pace": "20-22 mph (No Drop)",
-          "Distance": "42",
-          "Ride Name": "Specialized Miami Coconut Grove Sunday Ride",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-07-19",
-          "Address Note": "3208 Grand Ave, Miami, FL 33133",
-          "Organizer": "Specialized Miami Coconut Grove",
-          "Notes": "Route: KB Lap + Black Point Marina. No Drop ride. Flyer: #RIDEFASTTAKECHANCES. Good People. Good Vibes. Great Ride."
         }
       },
       {
