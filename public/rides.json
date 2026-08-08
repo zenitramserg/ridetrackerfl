@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T01:23:58.485742+00:00",
+  "generated_at": "2026-08-08T20:35:03.816548+00:00",
   "rides": {
     "records": [
       {
@@ -392,10 +392,10 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "6:30 AM",
-          "Wind Speed": 3.2,
-          "Rain Probability": 0.09,
+          "Wind Speed": 5.2,
+          "Rain Probability": 0.05,
           "Location": "Sunrise Sports Complex",
-          "Weather Summary": "Dry (9% rain), light winds 3 mph",
+          "Weather Summary": "Dry (5% rain), light winds 5 mph",
           "Pace": "24 mph",
           "Distance": "40",
           "Ride Name": "Sunrise Cycling Family Saturday Ride",
@@ -495,11 +495,11 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 3.2,
-          "Rain Probability": 0.09,
+          "Wind Speed": 5.2,
+          "Rain Probability": 0.05,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Featured": true,
-          "Weather Summary": "Dry (9% rain), light winds 3 mph",
+          "Weather Summary": "Dry (5% rain), light winds 5 mph",
           "Pace": "23-25 mph",
           "Distance": "42/52/62",
           "Ride Name": "Palomos 2.0 × GRIT. Bike Lab Opening Ride",
