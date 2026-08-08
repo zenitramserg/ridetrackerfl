@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T22:12:34.744186+00:00",
+  "generated_at": "2026-08-08T01:23:58.485742+00:00",
   "rides": {
     "records": [
       {
@@ -386,36 +386,16 @@
         }
       },
       {
-        "id": "recYcHtPZ53y679oQ",
-        "createdTime": "2026-08-07T16:22:56.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "6:00 AM",
-          "Wind Speed": 4,
-          "Rain Probability": 0.02,
-          "Location": "Town Center Weston",
-          "Last Checked At": "2026-08-07T12:22:52.000Z",
-          "Weather Summary": "Dry (2% rain), winds 4 mph",
-          "Ride Name": "Saturday Opening Ride",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-08",
-          "Organizer": "Team Recovery Weston",
-          "Notes": "Distance: 62 mi\n---\nAn aerial-view promotional flyer showing cyclists riding on a road, overlaid with bold yellow text announcing a Saturday Opening Ride on August 8 at 6:00 AM from Town Center Weston, branded by Grit Bike Lab."
-        }
-      },
-      {
         "id": "recZKsp5g9TmP7W1J",
         "createdTime": "2026-08-07T18:15:56.000Z",
         "fields": {
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "6:30 AM",
-          "Wind Speed": 2,
-          "Rain Probability": 0.03,
+          "Wind Speed": 3.2,
+          "Rain Probability": 0.09,
           "Location": "Sunrise Sports Complex",
-          "Weather Summary": "Dry (3% rain), light winds 2 mph",
+          "Weather Summary": "Dry (9% rain), light winds 3 mph",
           "Pace": "24 mph",
           "Distance": "40",
           "Ride Name": "Sunrise Cycling Family Saturday Ride",
@@ -515,11 +495,11 @@
           "Ride Type": "Special Event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 4,
-          "Rain Probability": 0.02,
+          "Wind Speed": 3.2,
+          "Rain Probability": 0.09,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Featured": true,
-          "Weather Summary": "Dry (2% rain), light winds 4 mph",
+          "Weather Summary": "Dry (9% rain), light winds 3 mph",
           "Pace": "23-25 mph",
           "Distance": "42/52/62",
           "Ride Name": "Palomos 2.0 × GRIT. Bike Lab Opening Ride",
