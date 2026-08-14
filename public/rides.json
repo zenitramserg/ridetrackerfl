@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T17:25:39.536916+00:00",
+  "generated_at": "2026-08-14T18:15:40.188548+00:00",
   "rides": {
     "records": [
       {
@@ -337,8 +337,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 3.1,
+          "Rain Probability": 0.06,
           "Location": "Sunrise Sports Plex",
           "Featured": true,
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
           "Pace": "Group A & B / Group C",
           "Distance": "64 / 40",
           "Ride Name": "Jamaica's Independence Day Ride",
@@ -347,10 +350,7 @@
           "Ride Date": "2026-08-15",
           "Address Note": "9101 NW 50th St, Sunrise, FL",
           "Organizer": "Sunrise Cycling Family",
-          "Notes": "Celebrating Jamaica's 64th Independence Day. Group A & B: 64 miles. Group C: 40 miles. Destination: Wellington. SAG support. Post-ride: Free body massage by Dlanco Lozano, refreshments, food, music, lot's of fun. Sponsors: Dr. Ayanna Mille Neuro-Wellness, The Body Mechanic's Pop Up Shop, Team Galiz Body Massage.",
-          "Weather Summary": "Dry (6% rain), light winds 3 mph",
-          "Rain Probability": 0.06,
-          "Wind Speed": 3.1
+          "Notes": "Celebrating Jamaica's 64th Independence Day. Group A & B: 64 miles. Group C: 40 miles. Destination: Wellington. SAG support. Post-ride: Free body massage by Dlanco Lozano, refreshments, food, music, lot's of fun. Sponsors: Dr. Ayanna Mille Neuro-Wellness, The Body Mechanic's Pop Up Shop, Team Galiz Body Massage."
         }
       },
       {
