@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T13:05:54.859668+00:00",
+  "generated_at": "2026-08-14T17:25:39.536916+00:00",
   "rides": {
     "records": [
       {
@@ -274,7 +274,7 @@
           "Display on Site": true,
           "Time": "06:00 AM",
           "Wind Speed": 1.4,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-08-13T14:15:59.000Z",
@@ -328,6 +328,29 @@
           "Ride Date": "2026-06-09",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        }
+      },
+      {
+        "id": "recUd1G6gsDBQsqwf",
+        "createdTime": "2026-08-14T17:23:38.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Sunrise Sports Plex",
+          "Featured": true,
+          "Pace": "Group A & B / Group C",
+          "Distance": "64 / 40",
+          "Ride Name": "Jamaica's Independence Day Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-15",
+          "Address Note": "9101 NW 50th St, Sunrise, FL",
+          "Organizer": "Sunrise Cycling Family",
+          "Notes": "Celebrating Jamaica's 64th Independence Day. Group A & B: 64 miles. Group C: 40 miles. Destination: Wellington. SAG support. Post-ride: Free body massage by Dlanco Lozano, refreshments, food, music, lot's of fun. Sponsors: Dr. Ayanna Mille Neuro-Wellness, The Body Mechanic's Pop Up Shop, Team Galiz Body Massage.",
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
+          "Rain Probability": 0.06,
+          "Wind Speed": 3.1
         }
       },
       {
@@ -398,28 +421,6 @@
           "Ride Date": "2026-06-22",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
-        }
-      },
-      {
-        "id": "recZKsp5g9TmP7W1J",
-        "createdTime": "2026-08-07T18:15:56.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "6:30 AM",
-          "Wind Speed": 5.2,
-          "Rain Probability": 0.05,
-          "Location": "Sunrise Sports Complex",
-          "Weather Summary": "Dry (5% rain), light winds 5 mph",
-          "Pace": "24 mph",
-          "Distance": "40",
-          "Ride Name": "Sunrise Cycling Family Saturday Ride",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-08",
-          "Address Note": "9101 NW 50th St, Sunrise, FL 33351",
-          "Organizer": "Sunrise Cycling Family",
-          "Notes": "Weekly Saturday group ride. Info: 561-305-8244. No Instagram yet — to be added when available."
         }
       },
       {
