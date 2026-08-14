@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T12:34:31.636924+00:00",
+  "generated_at": "2026-08-14T13:05:54.859668+00:00",
   "rides": {
     "records": [
       {
@@ -69,6 +69,27 @@
           "Ride Date": "2026-06-21",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
+        }
+      },
+      {
+        "id": "rec6gl3tewloDBwPa",
+        "createdTime": "2026-08-14T13:05:51.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 1.8,
+          "Rain Probability": 0.03,
+          "Location": "Markham Park",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Last Checked At": "2026-08-14T09:05:46.000Z",
+          "Weather Summary": "Dry (3% rain), winds 2 mph",
+          "Ride Name": "Ride 84 Group Ride - 50 Miles",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-22",
+          "Organizer": "Alex's Bicycle Pro Shop",
+          "Notes": "Distance: 50 mi\n---\nAn Instagram story slide shared by ride.84 showing a repost from vanesaaromagnoli announcing a 50-mile group ride on Saturday August 22, 2026 at 7:00 AM with Ride 84, featuring a flyer with ride details including a Group A & B split at Markham Park and food and drink provided by Alex's Bicycle Pro Shop."
         }
       },
       {
