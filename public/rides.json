@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T18:16:22.460572+00:00",
+  "generated_at": "2026-08-14T19:59:05.649898+00:00",
   "rides": {
     "records": [
       {
@@ -135,6 +135,29 @@
           "Address Note": "1100 SW 2nd Ave, Miami, FL 33130",
           "Organizer": "Team Galiz",
           "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
+        }
+      },
+      {
+        "id": "recA1XtjWE9uJLdRX",
+        "createdTime": "2026-08-14T19:56:35.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "5:30 AM",
+          "Location": "Weston Town Center",
+          "Featured": true,
+          "Pace": "23-25 mph",
+          "Distance": "100",
+          "Ride Name": "Palomos 2.0 Training — Six Gap / Giro de Rigo",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-15",
+          "Address Note": "Behind Graziano's",
+          "Organizer": "OMG Cycling",
+          "Notes": "Training ride for Six Gap / Giro de Rigo. Robert is here. 100 miles. $15 donation. SAG via Zelle: omgcyclinggroup@gmail.com. Tagline: Challenge Yourself. Ride Together.",
+          "Weather Summary": "Dry (2% rain), light winds 2 mph",
+          "Rain Probability": 0.02,
+          "Wind Speed": 2.4
         }
       },
       {
@@ -662,29 +685,6 @@
           "Ride Date": "2026-05-24",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Address: 1100 SW 2nd Ave, Miami, FL\n---\nA promotional flyer for the MBO Cycling Coast to Coast Ride featuring cyclists riding along a coastal road at sunset with a glowing neon outline of Florida in the background, showing the route from Miami to Naples."
-        }
-      },
-      {
-        "id": "recwsRk8IafsKiFac",
-        "createdTime": "2026-04-11T10:17:14.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "06:00 AM",
-          "Wind Speed": 5.2,
-          "Rain Probability": 0.05,
-          "Location": "Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-08-08T17:05:50.000Z",
-          "Weather Summary": "Dry (5% rain), light winds 5 mph",
-          "Pace": "23-25mph",
-          "Distance": "42/52/62",
-          "Ride Name": "Saturday Palomos 2.0",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-08",
-          "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
         }
       },
       {
