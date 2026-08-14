@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T19:59:05.649898+00:00",
+  "generated_at": "2026-08-14T21:40:08.122466+00:00",
   "rides": {
     "records": [
       {
@@ -144,8 +144,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
+          "Wind Speed": 2.4,
+          "Rain Probability": 0.02,
           "Location": "Weston Town Center",
           "Featured": true,
+          "Weather Summary": "Dry (2% rain), light winds 2 mph",
           "Pace": "23-25 mph",
           "Distance": "100",
           "Ride Name": "Palomos 2.0 Training — Six Gap / Giro de Rigo",
@@ -154,10 +157,7 @@
           "Ride Date": "2026-08-15",
           "Address Note": "Behind Graziano's",
           "Organizer": "OMG Cycling",
-          "Notes": "Training ride for Six Gap / Giro de Rigo. Robert is here. 100 miles. $15 donation. SAG via Zelle: omgcyclinggroup@gmail.com. Tagline: Challenge Yourself. Ride Together.",
-          "Weather Summary": "Dry (2% rain), light winds 2 mph",
-          "Rain Probability": 0.02,
-          "Wind Speed": 2.4
+          "Notes": "Training ride for Six Gap / Giro de Rigo. Robert is here. 100 miles. $15 donation. SAG via Zelle: omgcyclinggroup@gmail.com. Tagline: Challenge Yourself. Ride Together."
         }
       },
       {
@@ -383,18 +383,18 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 3.1,
-          "Rain Probability": 0.06,
-          "Location": "Sunrise Sports Plex",
+          "Wind Speed": 2.1,
+          "Rain Probability": 0.1,
+          "Location": "Markham Park Pavilion Shelter 2",
           "Featured": true,
-          "Weather Summary": "Dry (6% rain), light winds 3 mph",
+          "Weather Summary": "Dry (10% rain), light winds 2 mph",
           "Pace": "Group A & B / Group C",
           "Distance": "64 / 40",
           "Ride Name": "Jamaica's Independence Day Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
           "Ride Date": "2026-08-15",
-          "Address Note": "9101 NW 50th St, Sunrise, FL",
+          "Address Note": "Markham Park Pavilion Shelter 2",
           "Organizer": "Sunrise Cycling Family",
           "Notes": "Celebrating Jamaica's 64th Independence Day. Group A & B: 64 miles. Group C: 40 miles. Destination: Wellington. SAG support. Post-ride: Free body massage by Dlanco Lozano, refreshments, food, music, lot's of fun. Sponsors: Dr. Ayanna Mille Neuro-Wellness, The Body Mechanic's Pop Up Shop, Team Galiz Body Massage."
         }
