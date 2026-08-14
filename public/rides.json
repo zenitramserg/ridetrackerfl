@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T18:16:05.887873+00:00",
+  "generated_at": "2026-08-14T12:34:31.636924+00:00",
   "rides": {
     "records": [
       {
@@ -23,29 +23,6 @@
           "Ride Date": "2026-08-05",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
-        }
-      },
-      {
-        "id": "rec5pXok7XiOHyShs",
-        "createdTime": "2026-03-27T14:43:19.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "07:00 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.01,
-          "Location": "Alex's Bicycles",
-          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Weather Summary": "Dry (1% rain), light winds 4 mph",
-          "Pace": "A & B / C Groups",
-          "Distance": "40 / 30",
-          "Ride Name": "Ride84",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-20",
-          "Address Note": "16098 W State Rd 84, Weston",
-          "Organizer": "Ride84",
-          "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
         }
       },
       {
@@ -275,12 +252,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.9,
-          "Rain Probability": 0.03,
+          "Wind Speed": 1.4,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-08-13T14:15:59.000Z",
-          "Weather Summary": "Dry (3% rain), winds 5 mph",
+          "Weather Summary": "Dry (0% rain), light winds 1 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
@@ -503,6 +480,26 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        }
+      },
+      {
+        "id": "recl39JG3caykg38M",
+        "createdTime": "2026-08-14T12:28:30.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Alex's Bicycles",
+          "Featured": true,
+          "Pace": "Group A & B Split",
+          "Distance": "50",
+          "Ride Name": "Ride84 Group Ride — August 22",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-22",
+          "Address Note": "16098 W State Rd 84, Weston",
+          "Organizer": "Ride84",
+          "Notes": "Special longer ride — 50 miles. Group A & B split at Markham Park (same as always). Food & drink provided by Alex's Bicycle Pro Shop. Tagline: Ride Strong. Ride Together."
         }
       },
       {
