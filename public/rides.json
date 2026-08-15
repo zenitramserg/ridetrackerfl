@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T13:48:24.412079+00:00",
+  "generated_at": "2026-08-15T13:58:57.784036+00:00",
   "rides": {
     "records": [
       {
@@ -557,8 +557,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 4.7,
+          "Rain Probability": 0.03,
           "Location": "Alex's Bicycles",
           "Featured": true,
+          "Weather Summary": "Dry (3% rain), light winds 5 mph",
           "Pace": "Group A & B Split",
           "Distance": "50",
           "Ride Name": "Ride84 Group Ride — August 22",
@@ -567,10 +570,7 @@
           "Ride Date": "2026-08-22",
           "Address Note": "16098 W State Rd 84, Weston",
           "Organizer": "Ride84",
-          "Notes": "Special longer ride — 50 miles. Group A & B split at Markham Park (same as always). Food & drink provided by Alex's Bicycle Pro Shop. Tagline: Ride Strong. Ride Together.",
-          "Weather Summary": "Dry (3% rain), light winds 5 mph",
-          "Rain Probability": 0.03,
-          "Wind Speed": 4.7
+          "Notes": "Special longer ride — 50 miles. Group A & B split at Markham Park (same as always). Food & drink provided by Alex's Bicycle Pro Shop. Tagline: Ride Strong. Ride Together."
         }
       },
       {
