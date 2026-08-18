@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T14:27:47.336815+00:00",
+  "generated_at": "2026-08-18T18:11:11.425437+00:00",
   "rides": {
     "records": [
       {
@@ -451,7 +451,7 @@
           "Display on Site": true,
           "Time": "5:30 AM",
           "Wind Speed": 7.3,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-08-18T10:27:35.000Z",
@@ -634,27 +634,6 @@
           "Ride Date": "2026-07-26",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Address: 1100 Southwest 1st Avenue, Florida\nPace: 20-22 mph\nDistance: ~165 miles\n---\nA vibrant promotional flyer for an MBO Bike Club group cycling event from Miami to Key West on July 26, 2026, featuring a route map of the Florida Keys, event details, and cost breakdown."
-        }
-      },
-      {
-        "id": "recu4AXHgjabdutFY",
-        "createdTime": "2026-08-12T17:11:49.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "06:30 PM",
-          "Wind Speed": 11.1,
-          "Rain Probability": 0.46,
-          "Location": "FP Bike Shop",
-          "Organizer Instagram Profile": "https://www.instagram.com/fpbikeshop/",
-          "Last Checked At": "2026-08-12T13:11:45.000Z",
-          "Weather Summary": "Possible rain (46% rain), winds 11 mph",
-          "Ride Name": "Unicosta Cycling Ride from FP Bike Shop",
-          "Day of Week": "Wednesday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-12",
-          "Organizer": "Unicosta Cycling",
-          "Notes": "Pace: 27+ mph (A Group), 24/26 mph (B Group)\n---\nA flyer announcing a group cycling ride today at 6:30 PM from FP Bike Shop, organized by @unicosta_cycling, showing cyclists riding on a palm-tree-lined road with pace group details for A and B groups."
         }
       },
       {
