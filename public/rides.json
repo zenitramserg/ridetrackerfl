@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T13:25:33.075240+00:00",
+  "generated_at": "2026-08-18T14:27:47.336815+00:00",
   "rides": {
     "records": [
       {
@@ -101,18 +101,38 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 1.8,
-          "Rain Probability": 0.03,
+          "Wind Speed": 4.1,
+          "Rain Probability": 0.01,
           "Location": "Markham Park",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-08-14T09:05:46.000Z",
-          "Weather Summary": "Dry (3% rain), winds 2 mph",
+          "Last Checked At": "2026-08-18T10:27:35.000Z",
+          "Weather Summary": "Dry (1% rain), winds 4 mph",
           "Ride Name": "Ride 84 Group Ride - 50 Miles",
           "Day of Week": "Saturday",
           "Status": "confirmed",
           "Ride Date": "2026-08-22",
           "Organizer": "Alex's Bicycle Pro Shop",
           "Notes": "Distance: 50 mi\n---\nAn Instagram story slide shared by ride.84 showing a repost from vanesaaromagnoli announcing a 50-mile group ride on Saturday August 22, 2026 at 7:00 AM with Ride 84, featuring a flyer with ride details including a Group A & B split at Markham Park and food and drink provided by Alex's Bicycle Pro Shop."
+        }
+      },
+      {
+        "id": "rec778YvwOYdiAugw",
+        "createdTime": "2026-08-18T14:27:41.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 2.9,
+          "Rain Probability": 0.01,
+          "Location": "Specialized Miami",
+          "Last Checked At": "2026-08-18T10:27:35.000Z",
+          "Weather Summary": "Dry (1% rain), winds 3 mph",
+          "Ride Name": "Monthly Inclusion Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-23",
+          "Organizer": "Team Recovery Weston",
+          "Notes": "Address: 3208 Grand Ave, Coconut Grove\nPace: 18-20 mph\nDistance: 32 mi\n---\nA promotional flyer for a monthly inclusion cycling ride hosted by Miami Cycling Girls in partnership with Specialized Miami, featuring photos of cyclists riding and posing together, scheduled for Sunday August 23, 2026."
         }
       },
       {
@@ -430,18 +450,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 5.1,
-          "Rain Probability": 0.03,
+          "Wind Speed": 7.3,
+          "Rain Probability": 0.0,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-08-03T11:18:47.000Z",
-          "Weather Summary": "Dry (3% rain), winds 5 mph",
+          "Last Checked At": "2026-08-18T10:27:35.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 7 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
-          "Ride Date": "2026-08-04",
+          "Ride Date": "2026-08-18",
           "Organizer": "OMG Cycling",
           "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
         }
