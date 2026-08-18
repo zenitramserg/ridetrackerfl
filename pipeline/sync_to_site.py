@@ -102,6 +102,19 @@ def _slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
 
 
+def _find_cached_avatar(slug: str) -> str | None:
+    """
+    Look for a previously downloaded avatar for this slug, regardless of
+    extension. Used as a fallback when a fresh download fails, so a
+    transient network error doesn't leave Airtable's ephemeral attachment
+    URL in rides.json (that URL expires in a few hours and breaks the logo).
+    """
+    for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif"):
+        if (AVATARS_PATH / f"{slug}{ext}").exists():
+            return f"/public/organizers/{slug}{ext}"
+    return None
+
+
 def _sync_avatar(attachment: dict, slug: str) -> str | None:
     """
     Download organizer avatar from Airtable and save to public/organizers/.
@@ -276,6 +289,13 @@ def generate_rides_json(token: str) -> dict:
             continue
         slug      = _slug(name)
         local_url = _sync_avatar(avatars[0], slug)
+        if not local_url:
+            # Fresh download failed — fall back to a previously cached local
+            # copy instead of leaving Airtable's ephemeral attachment URL
+            # (which expires in a few hours) in rides.json.
+            local_url = _find_cached_avatar(slug)
+            if local_url:
+                print(f"[sync] ⚠ Using cached avatar for {slug} (fresh download failed)")
         if local_url:
             # Replace the Airtable attachment array with a simple local URL string
             # The frontend checks: org['Avatar'][0].url — we keep the same shape
