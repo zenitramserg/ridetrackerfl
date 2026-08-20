@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T16:16:53.952950+00:00",
+  "generated_at": "2026-08-20T16:21:34.967215+00:00",
   "rides": {
     "records": [
       {
@@ -463,6 +463,28 @@
           "Ride Date": "2026-06-22",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
+        }
+      },
+      {
+        "id": "recZKsp5g9TmP7W1J",
+        "createdTime": "2026-08-07T18:15:56.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:30 AM",
+          "Wind Speed": 5.2,
+          "Rain Probability": 0.05,
+          "Location": "Sunrise Sports Complex",
+          "Weather Summary": "Dry (5% rain), light winds 5 mph",
+          "Pace": "24 mph",
+          "Distance": "40",
+          "Ride Name": "Sunrise Cycling Family Saturday Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-08",
+          "Address Note": "9101 NW 50th St, Sunrise, FL 33351",
+          "Organizer": "Sunrise Cycling Family",
+          "Notes": "Weekly Saturday group ride. Info: 561-305-8244. No Instagram yet — to be added when available."
         }
       },
       {
