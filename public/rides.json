@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T16:21:34.967215+00:00",
+  "generated_at": "2026-08-20T16:24:09.278666+00:00",
   "rides": {
     "records": [
       {
@@ -295,17 +295,17 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 1.4,
-          "Rain Probability": 0,
+          "Wind Speed": 4.9,
+          "Rain Probability": 0.03,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-08-13T14:15:59.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 1 mph",
+          "Last Checked At": "2026-08-20T12:24:03.000Z",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
           "Status": "confirmed",
-          "Ride Date": "2026-08-14",
+          "Ride Date": "2026-08-21",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from OMG Cycling announcing a Friday Recovery group ride, featuring the OMG Cycling logo over a background photo of cyclists riding on a road, with ride details including time, distance, pace, and meeting location."
         }
