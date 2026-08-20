@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T12:43:41.324172+00:00",
+  "generated_at": "2026-08-20T15:53:54.472402+00:00",
   "rides": {
     "records": [
       {
@@ -373,6 +373,26 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
+        }
+      },
+      {
+        "id": "recTldgVJv7zeoJZZ",
+        "createdTime": "2026-08-20T15:51:54.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "6:00 AM",
+          "Location": "Alex's Bicycle Pro Shop",
+          "Featured": true,
+          "Pace": "Group A: 26+ mph / Group B: 23–25 mph",
+          "Distance": "100",
+          "Ride Name": "Ride for Colombia — Century Ride Charity Event",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-29",
+          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "Organizer": "OMG Cycling",
+          "Notes": "Century ride with purpose — 100 miles, South Bay. Building homes and restoring hope in Colombia. Police escort. SAG, hydration, raffles included. $25 donation (Zelle: omgcyclinggroup@gmail.com). Colombia Earthquake Relief — all proceeds go toward building homes and roofs in Colombia. Tagline: Together We Ride. Together We Build."
         }
       },
       {
