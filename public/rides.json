@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T13:40:54.262445+00:00",
+  "generated_at": "2026-08-21T15:08:07.294310+00:00",
   "rides": {
     "records": [
       {
@@ -78,11 +78,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 2.9,
-          "Rain Probability": 0.01,
+          "Wind Speed": 1.4,
+          "Rain Probability": 0.05,
           "Location": "Specialized Miami",
           "Last Checked At": "2026-08-18T10:27:35.000Z",
-          "Weather Summary": "Dry (1% rain), winds 3 mph",
+          "Weather Summary": "Dry (5% rain), light winds 1 mph",
           "Ride Name": "Monthly Inclusion Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
@@ -329,27 +329,6 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
-        }
-      },
-      {
-        "id": "recPW5UcQaU9FlFIx",
-        "createdTime": "2026-08-21T13:40:48.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 0.9,
-          "Rain Probability": 0.0,
-          "Location": "Markham Park",
-          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-08-21T09:40:43.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 1 mph",
-          "Ride Name": "Ride 84 x Alex Bicycles 50-Mile Group Ride",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-22",
-          "Organizer": "Alex's Bicycle Pro Shop",
-          "Notes": "Distance: 50 mi\n---\nAn Instagram story slide shared by ride.84 showing a repost from vanesaaromagnoli announcing a 50-mile group ride on Saturday August 22, 2026 at 7:00 AM with Ride 84, featuring a flyer with ride details including a Group A & B split at Markham Park and food and drink provided by Alex's Bicycle Pro Shop."
         }
       },
       {
