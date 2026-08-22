@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T19:07:44.134149+00:00",
+  "generated_at": "2026-08-22T19:15:20.512025+00:00",
   "rides": {
     "records": [
       {
@@ -9,15 +9,17 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "6:00 AM",
+          "Wind Speed": 2.7,
+          "Rain Probability": 0.01,
           "Location": "Sunrise Sports Complex",
+          "Weather Summary": "Dry (1% rain), light winds 3 mph",
           "Pace": "24 mph",
           "Distance": "35",
           "Ride Name": "Sunrise Cycling Family Sunday Ride — Miramar",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
           "Ride Date": "2026-08-23",
-          "Organizer": "Sunrise Cycling Family",
-          "Weather Summary": "Dry (1% rain), light winds 3 mph",
-          "Rain Probability": 0.01,
-          "Wind Speed": 2.7
+          "Organizer": "Sunrise Cycling Family"
         }
       },
       {
