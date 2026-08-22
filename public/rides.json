@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T15:08:07.294310+00:00",
+  "generated_at": "2026-08-22T16:00:40.128009+00:00",
   "rides": {
     "records": [
       {
@@ -78,11 +78,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 1.4,
-          "Rain Probability": 0.05,
+          "Wind Speed": 2.3,
+          "Rain Probability": 0.0,
           "Location": "Specialized Miami",
           "Last Checked At": "2026-08-18T10:27:35.000Z",
-          "Weather Summary": "Dry (5% rain), light winds 1 mph",
+          "Weather Summary": "Dry (0% rain), light winds 2 mph",
           "Ride Name": "Monthly Inclusion Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
@@ -348,7 +348,10 @@
           "Ride Date": "2026-08-29",
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "OMG Cycling",
-          "Notes": "Century ride with purpose — 100 miles, South Bay. Building homes and restoring hope in Colombia. Police escort. SAG, hydration, raffles included. $25 donation (Zelle: omgcyclinggroup@gmail.com). Colombia Earthquake Relief — all proceeds go toward building homes and roofs in Colombia. Tagline: Together We Ride. Together We Build."
+          "Notes": "Century ride with purpose — 100 miles, South Bay. Building homes and restoring hope in Colombia. Police escort. SAG, hydration, raffles included. $25 donation (Zelle: omgcyclinggroup@gmail.com). Colombia Earthquake Relief — all proceeds go toward building homes and roofs in Colombia. Tagline: Together We Ride. Together We Build.",
+          "Weather Summary": "Dry (4% rain), light winds 9 mph",
+          "Rain Probability": 0.04,
+          "Wind Speed": 9.4
         }
       },
       {
