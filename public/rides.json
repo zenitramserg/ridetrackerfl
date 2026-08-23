@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T23:40:14.699842+00:00",
+  "generated_at": "2026-08-23T14:48:19.177489+00:00",
   "rides": {
     "records": [
       {
@@ -174,7 +174,10 @@
           "Status": "planned",
           "Ride Date": "2026-08-30",
           "Organizer": "Team Recovery Weston",
-          "Notes": "---\nA black promotional slide announcing a meetup or ride event at Weston Town Center hosted by The20EightClub, scheduled for August 30th from 11am to 2pm."
+          "Notes": "---\nA black promotional slide announcing a meetup or ride event at Weston Town Center hosted by The20EightClub, scheduled for August 30th from 11am to 2pm.",
+          "Weather Summary": "Dry (28% rain), light winds 10 mph",
+          "Rain Probability": 0.28,
+          "Wind Speed": 9.9
         }
       },
       {
@@ -184,18 +187,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.02,
+          "Wind Speed": 2.0,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-08-02T18:26:37.000Z",
-          "Weather Summary": "Dry (2% rain), winds 4 mph",
+          "Last Checked At": "2026-08-23T10:48:11.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 2 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "OMG Sunday Chill Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
-          "Ride Date": "2026-08-02",
+          "Ride Date": "2026-08-23",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details."
         }
