@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T14:48:19.177489+00:00",
+  "generated_at": "2026-08-23T19:26:30.215708+00:00",
   "rides": {
     "records": [
       {
@@ -43,6 +43,22 @@
           "Ride Date": "2026-08-19",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
+        }
+      },
+      {
+        "id": "rec0JirVJ21vT4DDJ",
+        "createdTime": "2026-08-23T19:25:22.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:30 AM",
+          "Location": "Einstein Bros. Bagels, Indian Trace Shopping Center, 1356 Weston Rd, Weston, FL 33326",
+          "Ride Name": "Wild Hogs Special Tuesday — Einstein Bros. Bagel Run",
+          "Ride Date": "2026-08-25",
+          "Organizer": "Wild Hogs Cycling",
+          "Weather Summary": "Dry (2% rain), light winds 3 mph",
+          "Rain Probability": 0.02,
+          "Wind Speed": 3.2
         }
       },
       {
@@ -167,17 +183,17 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "11:00 AM",
+          "Wind Speed": 9.9,
+          "Rain Probability": 0.28,
           "Location": "Weston Town Center",
           "Last Checked At": "2026-08-11T09:22:00.000Z",
+          "Weather Summary": "Dry (28% rain), light winds 10 mph",
           "Ride Name": "The20EightClub x Weston Town Center Ride",
           "Day of Week": "Sunday",
           "Status": "planned",
           "Ride Date": "2026-08-30",
           "Organizer": "Team Recovery Weston",
-          "Notes": "---\nA black promotional slide announcing a meetup or ride event at Weston Town Center hosted by The20EightClub, scheduled for August 30th from 11am to 2pm.",
-          "Weather Summary": "Dry (28% rain), light winds 10 mph",
-          "Rain Probability": 0.28,
-          "Wind Speed": 9.9
+          "Notes": "---\nA black promotional slide announcing a meetup or ride event at Weston Town Center hosted by The20EightClub, scheduled for August 30th from 11am to 2pm."
         }
       },
       {
@@ -187,8 +203,8 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 2.0,
-          "Rain Probability": 0.0,
+          "Wind Speed": 2,
+          "Rain Probability": 0,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-08-23T10:48:11.000Z",
@@ -341,11 +357,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 9.4,
-          "Rain Probability": 0.04,
+          "Wind Speed": 9.1,
+          "Rain Probability": 0.02,
           "Location": "Alex's Bicycle Pro Shop",
           "Featured": true,
-          "Weather Summary": "Dry (4% rain), light winds 9 mph",
+          "Weather Summary": "Dry (2% rain), light winds 9 mph",
           "Pace": "Group A: 26+ mph / Group B: 23–25 mph",
           "Distance": "100",
           "Ride Name": "Ride for Colombia — Century Ride Charity Event",
