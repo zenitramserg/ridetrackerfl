@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T19:31:15.949312+00:00",
+  "generated_at": "2026-08-23T19:32:23.195240+00:00",
   "rides": {
     "records": [
       {
@@ -58,6 +58,7 @@
           "Weather Summary": "Dry (2% rain), light winds 3 mph",
           "Ride Name": "Wild Hogs Special Tuesday — Einstein Bros. Bagel Run",
           "Day of Week": "Tuesday",
+          "Status": "confirmed",
           "Ride Date": "2026-08-25",
           "Address Note": "Einstein's (Indian Trace & Weston Rd)",
           "Organizer": "Wild Hogs Cycling"
