@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T19:32:23.195240+00:00",
+  "generated_at": "2026-08-24T13:13:01.599365+00:00",
   "rides": {
     "records": [
       {
@@ -186,11 +186,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "11:00 AM",
-          "Wind Speed": 9.9,
-          "Rain Probability": 0.28,
+          "Wind Speed": 12.6,
+          "Rain Probability": 0.38,
           "Location": "Weston Town Center",
           "Last Checked At": "2026-08-11T09:22:00.000Z",
-          "Weather Summary": "Dry (28% rain), light winds 10 mph",
+          "Weather Summary": "Dry (38% rain), moderate winds 13 mph",
           "Ride Name": "The20EightClub x Weston Town Center Ride",
           "Day of Week": "Sunday",
           "Status": "planned",
@@ -478,14 +478,14 @@
           "Rain Probability": 0.01,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-06-21T20:02:36.000Z",
+          "Last Checked At": "2026-08-24T09:12:51.000Z",
           "Weather Summary": "Dry (1% rain), winds 3 mph",
           "Pace": "22/24 mph",
           "Distance": "30",
           "Ride Name": "Monday Ride",
           "Day of Week": "Monday",
           "Status": "confirmed",
-          "Ride Date": "2026-06-22",
+          "Ride Date": "2026-08-24",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
         }
