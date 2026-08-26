@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T14:10:03.326605+00:00",
+  "generated_at": "2026-08-26T16:51:54.695587+00:00",
   "rides": {
     "records": [
       {
@@ -186,7 +186,7 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "11:00 AM",
-          "Wind Speed": 10.0,
+          "Wind Speed": 10,
           "Rain Probability": 0.33,
           "Location": "Weston Town Center",
           "Last Checked At": "2026-08-11T09:22:00.000Z",
@@ -360,11 +360,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 9.9,
-          "Rain Probability": 0.05,
+          "Wind Speed": 7.9,
+          "Rain Probability": 0.09,
           "Location": "Alex's Bicycle Pro Shop",
           "Featured": true,
-          "Weather Summary": "Dry (5% rain), light winds 10 mph",
+          "Weather Summary": "Dry (9% rain), light winds 8 mph",
           "Pace": "Group A: 26+ mph / Group B: 23–25 mph",
           "Distance": "100",
           "Ride Name": "Ride for Colombia — Century Ride Charity Event",
