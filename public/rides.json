@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T16:24:37.384735+00:00",
+  "generated_at": "2026-08-28T14:28:14.315975+00:00",
   "rides": {
     "records": [
       {
@@ -62,6 +62,29 @@
           "Ride Date": "2026-08-25",
           "Address Note": "Einstein's (Indian Trace & Weston Rd)",
           "Organizer": "Wild Hogs Cycling"
+        }
+      },
+      {
+        "id": "rec5pXok7XiOHyShs",
+        "createdTime": "2026-03-27T14:43:19.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:00 AM",
+          "Wind Speed": 3.7,
+          "Rain Probability": 0.01,
+          "Location": "Alex's Bicycles",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Weather Summary": "Dry (1% rain), light winds 4 mph",
+          "Pace": "A & B / C Groups",
+          "Distance": "40 / 30",
+          "Ride Name": "Ride84",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-20",
+          "Address Note": "16098 W State Rd 84, Weston",
+          "Organizer": "Ride84",
+          "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
         }
       },
       {
@@ -186,11 +209,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "11:00 AM",
-          "Wind Speed": 12.2,
-          "Rain Probability": 0.4,
+          "Wind Speed": 10.5,
+          "Rain Probability": 0.38,
           "Location": "Weston Town Center",
           "Last Checked At": "2026-08-11T09:22:00.000Z",
-          "Weather Summary": "Chance of rain (40%), moderate winds 12 mph",
+          "Weather Summary": "Dry (38% rain), light winds 10 mph",
           "Ride Name": "The20EightClub x Weston Town Center Ride",
           "Day of Week": "Sunday",
           "Status": "planned",
@@ -360,11 +383,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 4.4,
-          "Rain Probability": 0.13,
+          "Wind Speed": 2.0,
+          "Rain Probability": 0.08,
           "Location": "Alex's Bicycle Pro Shop",
           "Featured": true,
-          "Weather Summary": "Dry (13% rain), light winds 4 mph",
+          "Weather Summary": "Dry (8% rain), light winds 2 mph",
           "Pace": "Group A: 26+ mph / Group B: 23–25 mph",
           "Distance": "100",
           "Ride Name": "Ride for Colombia — Century Ride Charity Event",
@@ -499,7 +522,7 @@
           "Time": "6:00 AM",
           "Wind Speed": 5.2,
           "Rain Probability": 0.05,
-          "Location": "Sunrise Sports Complex",
+          "Location": "Sunrise Sportsplex",
           "Weather Summary": "Dry (5% rain), light winds 5 mph",
           "Pace": "24 mph",
           "Distance": "35",
@@ -508,8 +531,7 @@
           "Status": "confirmed",
           "Ride Date": "2026-08-08",
           "Address Note": "9101 NW 50th St, Sunrise, FL 33351",
-          "Organizer": "Sunrise Cycling Family",
-          "Notes": "Weekly Saturday group ride to Miramar. Info: 561-305-8244. No Instagram yet — to be added when available."
+          "Organizer": "Sunrise Cycling Family"
         }
       },
       {
