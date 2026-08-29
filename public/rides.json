@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-29T18:37:12.803603+00:00",
+  "generated_at": "2026-08-29T18:39:06.039494+00:00",
   "rides": {
     "records": [
       {
@@ -200,26 +200,6 @@
           "Address Note": "Origamy Gelato Weston - meet in parking lot",
           "Organizer": "Team Recovery Weston",
           "Notes": "Added manually - Team Recovery Weston. Bio says \"LUNES Y MIERCOLES 30 millas\" (Monday & Wednesday 30 miles). Spanish-speaking group."
-        }
-      },
-      {
-        "id": "recBFnnogN0xLoNWe",
-        "createdTime": "2026-08-11T13:22:03.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "11:00 AM",
-          "Wind Speed": 3.8,
-          "Rain Probability": 0.14,
-          "Location": "Weston Town Center",
-          "Last Checked At": "2026-08-11T09:22:00.000Z",
-          "Weather Summary": "Dry (14% rain), light winds 4 mph",
-          "Ride Name": "The20EightClub x Weston Town Center Ride",
-          "Day of Week": "Sunday",
-          "Status": "planned",
-          "Ride Date": "2026-08-30",
-          "Organizer": "Team Recovery Weston",
-          "Notes": "---\nA black promotional slide announcing a meetup or ride event at Weston Town Center hosted by The20EightClub, scheduled for August 30th from 11am to 2pm."
         }
       },
       {
