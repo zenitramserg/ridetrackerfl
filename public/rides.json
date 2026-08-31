@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T17:52:02.812510+00:00",
+  "generated_at": "2026-08-31T18:24:33.894544+00:00",
   "rides": {
     "records": [
       {
@@ -320,16 +320,16 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
+          "Wind Speed": 8.8,
+          "Rain Probability": 0.03,
           "Location": "Weston Town Center - In front of the store",
           "Featured": true,
+          "Weather Summary": "Dry (3% rain), light winds 9 mph",
           "Pace": "Control pace 23-25 mph",
           "Distance": "80",
           "Ride Name": "OMG × GRIT Bike Lab — Palomos Beach XCRIT",
           "Ride Date": "2026-09-05",
-          "Organizer": "OMG Cycling",
-          "Weather Summary": "Dry (3% rain), light winds 9 mph",
-          "Rain Probability": 0.03,
-          "Wind Speed": 8.8
+          "Organizer": "OMG Cycling"
         }
       },
       {
@@ -696,6 +696,24 @@
           "Ride Date": "2026-05-03",
           "Organizer": "MBO Ten Cycling",
           "Notes": "Pace: 20-23 mph\nDistance: 60 miles\n---\nA promotional flyer for the MBO Girls Community Ride in Miami featuring three female cyclists in MBO team kit riding road bikes together, overlaid with event details for May 3rd."
+        }
+      },
+      {
+        "id": "recuaipPr38uAnkhq",
+        "createdTime": "2026-03-27T14:43:19.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:30 AM",
+          "Location": "Weston Town Center",
+          "Pace": "20/23 mph | Controlled Pace | No Drop",
+          "Distance": "30",
+          "Ride Name": "Wild Hogs Tuesday Ride",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Address Note": "Japan Inn inside Weston Town Center Plaza",
+          "Organizer": "Wild Hogs Cycling",
+          "Notes": "No-drop group. 32-40 miles, 20-24 mph. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
         }
       },
       {
