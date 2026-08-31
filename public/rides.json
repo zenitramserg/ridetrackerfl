@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T12:50:30.055846+00:00",
+  "generated_at": "2026-08-31T17:52:02.812510+00:00",
   "rides": {
     "records": [
       {
@@ -311,6 +311,25 @@
           "Ride Date": "2026-06-11",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        }
+      },
+      {
+        "id": "recJyDAA154hSzVaG",
+        "createdTime": "2026-08-31T17:50:19.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "5:30 AM",
+          "Location": "Weston Town Center - In front of the store",
+          "Featured": true,
+          "Pace": "Control pace 23-25 mph",
+          "Distance": "80",
+          "Ride Name": "OMG × GRIT Bike Lab — Palomos Beach XCRIT",
+          "Ride Date": "2026-09-05",
+          "Organizer": "OMG Cycling",
+          "Weather Summary": "Dry (3% rain), light winds 9 mph",
+          "Rain Probability": 0.03,
+          "Wind Speed": 8.8
         }
       },
       {
