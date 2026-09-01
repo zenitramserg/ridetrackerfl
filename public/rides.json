@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T22:52:24.663111+00:00",
+  "generated_at": "2026-09-01T14:06:25.848743+00:00",
   "rides": {
     "records": [
       {
@@ -320,11 +320,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 8.8,
-          "Rain Probability": 0.03,
+          "Wind Speed": 6.2,
+          "Rain Probability": 0.1,
           "Location": "Weston Town Center - In front of the store",
           "Featured": true,
-          "Weather Summary": "Dry (3% rain), light winds 9 mph",
+          "Weather Summary": "Dry (10% rain), light winds 6 mph",
           "Pace": "Control pace 23-25 mph",
           "Distance": "80",
           "Ride Name": "OMG × GRIT Bike Lab — Palomos Beach XCRIT",
