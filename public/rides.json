@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T14:06:25.848743+00:00",
+  "generated_at": "2026-09-01T14:49:01.439526+00:00",
   "rides": {
     "records": [
       {
@@ -162,17 +162,18 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 3.3,
-          "Rain Probability": 0.13,
+          "Wind Speed": 6.2,
+          "Rain Probability": 0.1,
           "Location": "Weston Town Center",
           "Featured": true,
-          "Weather Summary": "Dry (13% rain), light winds 3 mph",
+          "Last Checked At": "2026-09-01T10:48:54.000Z",
+          "Weather Summary": "Dry (10% rain), winds 6 mph",
           "Pace": "23-25 mph",
           "Distance": "100",
           "Ride Name": "Palomos 2.0 Training — Six Gap / Giro de Rigo",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-08-15",
+          "Ride Date": "2026-09-05",
           "Address Note": "Behind Graziano's",
           "Organizer": "OMG Cycling",
           "Notes": "Training ride for Six Gap / Giro de Rigo. Robert is here. 100 miles. $15 donation. SAG via Zelle: omgcyclinggroup@gmail.com. Tagline: Challenge Yourself. Ride Together."
