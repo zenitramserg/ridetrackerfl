@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T21:59:46.412602+00:00",
+  "generated_at": "2026-09-03T22:02:59.419180+00:00",
   "rides": {
     "records": [
       {
@@ -156,54 +156,6 @@
         }
       },
       {
-        "id": "recA1XtjWE9uJLdRX",
-        "createdTime": "2026-08-14T19:56:35.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "5:30 AM",
-          "Wind Speed": 3.2,
-          "Rain Probability": 0.06,
-          "Location": "Weston Town Center",
-          "Featured": true,
-          "Last Checked At": "2026-09-03T11:04:56.000Z",
-          "Weather Summary": "Dry (6% rain), light winds 3 mph",
-          "Pace": "23-25 mph",
-          "Distance": "100",
-          "Ride Name": "Palomos 2.0 Training — Six Gap / Giro de Rigo",
-          "Day of Week": "Saturday",
-          "Status": "hidden",
-          "Ride Date": "2026-09-05",
-          "Address Note": "Behind Graziano's",
-          "Organizer": "OMG Cycling",
-          "Notes": "Training ride for Six Gap / Giro de Rigo. Robert is here. 100 miles. $15 donation. SAG via Zelle: omgcyclinggroup@gmail.com. Tagline: Challenge Yourself. Ride Together."
-        }
-      },
-      {
-        "id": "recB81Wo3kz8Xh6gT",
-        "createdTime": "2026-04-07T02:47:41.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "6:30 PM",
-          "Wind Speed": 12.4,
-          "Rain Probability": 0.03,
-          "Location": "Origamy Gelato, Weston",
-          "Organizer Instagram Profile": "https://www.instagram.com/teamrecoveryweston/",
-          "Last Checked At": "2026-04-06T00:00:00.000Z",
-          "Weather Summary": "Dry (3% rain), moderate winds 12 mph",
-          "Pace": "Recovery (C/D pace)",
-          "Distance": "30",
-          "Ride Name": "Team Recovery Weston - Monday evening ride",
-          "Day of Week": "Monday",
-          "Status": "hidden",
-          "Ride Date": "2026-06-08",
-          "Address Note": "Origamy Gelato Weston - meet in parking lot",
-          "Organizer": "Team Recovery Weston",
-          "Notes": "Added manually - Team Recovery Weston. Bio says \"LUNES Y MIERCOLES 30 millas\" (Monday & Wednesday 30 miles). Spanish-speaking group."
-        }
-      },
-      {
         "id": "recDJ1wXrKxpGMj9f",
         "createdTime": "2026-03-28T23:22:32.000Z",
         "fields": {
@@ -329,6 +281,8 @@
           "Pace": "Control pace 23-25 mph",
           "Distance": "80",
           "Ride Name": "OMG × GRIT Bike Lab — Palomos Beach XCRIT",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
           "Ride Date": "2026-09-05",
           "Organizer": "OMG Cycling"
         }
@@ -491,29 +445,6 @@
         }
       },
       {
-        "id": "recYIhjXHLzbywyG2",
-        "createdTime": "2026-04-05T20:15:44.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "06:00 AM",
-          "Wind Speed": 3.4,
-          "Rain Probability": 0.01,
-          "Location": "Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-08-24T09:12:51.000Z",
-          "Weather Summary": "Dry (1% rain), winds 3 mph",
-          "Pace": "22/24 mph",
-          "Distance": "30",
-          "Ride Name": "Monday Ride",
-          "Day of Week": "Monday",
-          "Status": "hidden",
-          "Ride Date": "2026-08-24",
-          "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
-        }
-      },
-      {
         "id": "recZKsp5g9TmP7W1J",
         "createdTime": "2026-08-07T18:15:56.000Z",
         "fields": {
@@ -573,28 +504,6 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-17",
           "Organizer": "Team Galiz"
-        }
-      },
-      {
-        "id": "reciRDrDLKyaNmRLB",
-        "createdTime": "2026-06-03T23:17:15.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "6:20 AM",
-          "Wind Speed": 4.1,
-          "Rain Probability": 0,
-          "Location": "Best Buddies x Rosetta Bakery — 1451 Brickell Ave, Miami",
-          "Featured": true,
-          "Weather Summary": "Dry (0% rain), light winds 4 mph",
-          "Pace": "19-21 mph",
-          "Distance": "72",
-          "Ride Name": "Best Buddies Community Ride",
-          "Day of Week": "Saturday",
-          "Status": "past",
-          "Ride Date": "2026-06-06",
-          "Organizer": "Best Buddies Challenge Miami",
-          "Notes": "Charity ride — Riding for Inclusion. Roll-out 6:30 AM. Short option: 42 miles to Blackpoint Marina and back. Post-ride pastries and drinks for 72-mile riders. Note: starts in Miami at 1451 Brickell Ave, not Weston."
         }
       },
       {
@@ -703,24 +612,6 @@
         }
       },
       {
-        "id": "recu9ZDwLMybK8isf",
-        "createdTime": "2026-04-18T00:09:30.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "06:45 AM",
-          "Location": "MBO Store",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-04-28T18:11:58.000Z",
-          "Ride Name": "MBO Girls Community Ride - Miami",
-          "Day of Week": "Sunday",
-          "Status": "past",
-          "Ride Date": "2026-05-03",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Pace: 20-23 mph\nDistance: 60 miles\n---\nA promotional flyer for the MBO Girls Community Ride in Miami featuring three female cyclists in MBO team kit riding road bikes together, overlaid with event details for May 3rd."
-        }
-      },
-      {
         "id": "recuaipPr38uAnkhq",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -736,23 +627,6 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. 32-40 miles, 20-24 mph. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
-        }
-      },
-      {
-        "id": "recvP1Z0oAtXYT8pc",
-        "createdTime": "2026-04-07T22:56:48.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Location": "MBO Store",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-04-22T17:50:25.000Z",
-          "Ride Name": "Coast to Coast Ride - MBO Cycling - Miami - Naples",
-          "Day of Week": "Sunday",
-          "Status": "past",
-          "Ride Date": "2026-05-24",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1100 SW 2nd Ave, Miami, FL\n---\nA promotional flyer for the MBO Cycling Coast to Coast Ride featuring cyclists riding along a coastal road at sunset with a glowing neon outline of Florida in the background, showing the route from Miami to Naples."
         }
       },
       {
