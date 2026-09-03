@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T15:05:15.408398+00:00",
+  "generated_at": "2026-09-03T15:38:45.671933+00:00",
   "rides": {
     "records": [
       {
@@ -8,7 +8,7 @@
         "fields": {
           "Ride Type": "weekly",
           "Display on Site": true,
-          "Time": "6:00 AM",
+          "Time": "5:30 AM",
           "Wind Speed": 2.7,
           "Rain Probability": 0.01,
           "Location": "Sunrise Sports Complex",
