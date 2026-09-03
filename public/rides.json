@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T21:52:09.410735+00:00",
+  "generated_at": "2026-09-03T21:58:47.311317+00:00",
   "rides": {
     "records": [
       {
@@ -172,7 +172,7 @@
           "Distance": "100",
           "Ride Name": "Palomos 2.0 Training — Six Gap / Giro de Rigo",
           "Day of Week": "Saturday",
-          "Status": "confirmed",
+          "Status": "hidden",
           "Ride Date": "2026-09-05",
           "Address Note": "Behind Graziano's",
           "Organizer": "OMG Cycling",
@@ -645,18 +645,18 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:30 AM",
+          "Wind Speed": 5.8,
+          "Rain Probability": 0.07,
           "Location": "Weston Town Center - Behind Bank of America",
           "Featured": true,
+          "Weather Summary": "Dry (7% rain), light winds 6 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "OMG × Team Recovery Weston - Labor Day Special Ride",
           "Day of Week": "Monday",
           "Status": "confirmed",
           "Ride Date": "2026-09-07",
-          "Organizer": "OMG Cycling",
-          "Weather Summary": "Dry (7% rain), light winds 6 mph",
-          "Rain Probability": 0.07,
-          "Wind Speed": 5.8
+          "Organizer": "OMG Cycling"
         }
       },
       {
