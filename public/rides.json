@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T22:02:59.419180+00:00",
+  "generated_at": "2026-09-03T22:04:29.039492+00:00",
   "rides": {
     "records": [
       {
@@ -46,25 +46,6 @@
         }
       },
       {
-        "id": "rec0JirVJ21vT4DDJ",
-        "createdTime": "2026-08-23T19:25:22.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:30 AM",
-          "Wind Speed": 2.6,
-          "Rain Probability": 0,
-          "Location": "Einstein Bros. Bagels, Indian Trace Shopping Center, 1356 Weston Rd, Weston, FL 33326",
-          "Weather Summary": "Dry (0% rain), light winds 3 mph",
-          "Ride Name": "Wild Hogs Special Tuesday — Einstein Bros. Bagel Run",
-          "Day of Week": "Tuesday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-25",
-          "Address Note": "Einstein's (Indian Trace & Weston Rd)",
-          "Organizer": "Wild Hogs Cycling"
-        }
-      },
-      {
         "id": "rec5pXok7XiOHyShs",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -85,31 +66,6 @@
           "Address Note": "16098 W State Rd 84, Weston",
           "Organizer": "Ride84",
           "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
-        }
-      },
-      {
-        "id": "rec5rhC6yWoKFgGlV",
-        "createdTime": "2026-06-30T23:58:48.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "6:30 AM",
-          "Wind Speed": 2.5,
-          "Rain Probability": 0.08,
-          "Location": "Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Featured": true,
-          "Last Checked At": "2026-07-01T16:04:48.000Z",
-          "Weather Summary": "Dry (8% rain), winds 2 mph",
-          "Pace": "22/24 mph",
-          "Distance": "40",
-          "Ride Name": "Independence 4th of July Ride",
-          "Day of Week": "Saturday",
-          "Status": "planned",
-          "Ride Date": "2026-07-04",
-          "Address Note": "Behind Bank of America",
-          "Organizer": "OMG Cycling",
-          "Notes": "Charity ride — all funds raised go to Venezuela. $15 USD donation via Zelle: omgcyclinggroup@gmail.com. Choripán post-ride. Co-hosted with Team Recovery Weston."
         }
       },
       {
@@ -226,26 +182,6 @@
         }
       },
       {
-        "id": "recJREVGPLy5snKv6",
-        "createdTime": "2026-08-01T18:32:53.000Z",
-        "fields": {
-          "Display on Site": true,
-          "Time": "6:45 AM",
-          "Wind Speed": 3.2,
-          "Rain Probability": 0.03,
-          "Location": "Markham Park",
-          "Weather Summary": "Dry (3% rain), light winds 3 mph",
-          "Distance": "40",
-          "Ride Name": "Coach Peter Aldridge Charity Ride",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-02",
-          "Address Note": "16001 W State Rd 84, Sunrise, FL",
-          "Organizer": "Team Galiz",
-          "Notes": "Charity ride featuring Coach Peter Aldridge, 3X Olympian. Jamaican Emancipation Day. Proceeds support Jamaican school children's cycling program. $15 donation recommended. Cash on site or Zelle/Venmo: Arlyne Salcedo / Lonepalm1220@gmail.com / 239-851-8408. Meet 6:45 AM, pedals up 7:00 AM."
-        }
-      },
-      {
         "id": "recJgnwpRsAuba1yA",
         "createdTime": "2026-03-30T01:33:52.000Z",
         "fields": {
@@ -331,29 +267,6 @@
         }
       },
       {
-        "id": "recTldgVJv7zeoJZZ",
-        "createdTime": "2026-08-20T15:51:54.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "6:00 AM",
-          "Wind Speed": 5.2,
-          "Rain Probability": 0.04,
-          "Location": "Alex's Bicycle Pro Shop",
-          "Featured": true,
-          "Weather Summary": "Dry (4% rain), light winds 5 mph",
-          "Pace": "Group A: 26+ mph / Group B: 23–25 mph",
-          "Distance": "100",
-          "Ride Name": "Ride for Colombia — Century Ride Charity Event",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-29",
-          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
-          "Organizer": "OMG Cycling",
-          "Notes": "Century ride with purpose — 100 miles, South Bay. Building homes and restoring hope in Colombia. Police escort. SAG, hydration, raffles included. $25 donation (Zelle: omgcyclinggroup@gmail.com). Colombia Earthquake Relief — all proceeds go toward building homes and roofs in Colombia. Tagline: Together We Ride. Together We Build."
-        }
-      },
-      {
         "id": "recU4u7cZ1aYEIWNV",
         "createdTime": "2026-03-30T01:33:52.000Z",
         "fields": {
@@ -372,53 +285,6 @@
           "Ride Date": "2026-06-09",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
-        }
-      },
-      {
-        "id": "recUd1G6gsDBQsqwf",
-        "createdTime": "2026-08-14T17:23:38.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 3.4,
-          "Rain Probability": 0.14,
-          "Location": "Markham Park Pavilion Shelter 2",
-          "Featured": true,
-          "Weather Summary": "Dry (14% rain), light winds 3 mph",
-          "Pace": "Group A & B / Group C",
-          "Distance": "64 / 40",
-          "Ride Name": "Jamaica's Independence Day Ride",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-15",
-          "Address Note": "Markham Park Pavilion Shelter 2",
-          "Organizer": "Sunrise Cycling Family",
-          "Notes": "Celebrating Jamaica's 64th Independence Day. Group A & B: 64 miles. Group C: 40 miles. Destination: Wellington. SAG support. Post-ride: Free body massage by Dlanco Lozano, refreshments, food, music, lot's of fun. Sponsors: Dr. Ayanna Mille Neuro-Wellness, The Body Mechanic's Pop Up Shop, Team Galiz Body Massage."
-        }
-      },
-      {
-        "id": "recVtvAFoBiUcQnOc",
-        "createdTime": "2026-05-29T01:09:49.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "6:30 AM",
-          "Wind Speed": 0.6,
-          "Rain Probability": 0.01,
-          "Location": "1100 SW 2nd Ave, Miami, FL 33130",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Featured": true,
-          "Last Checked At": "2026-06-28T18:32:00.000Z",
-          "Weather Summary": "Dry (1% rain), light winds 1 mph",
-          "Pace": "20-22 mph",
-          "Distance": "62",
-          "Ride Name": "MBO 1st Anniversary Ride",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-07-05",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "MBO Ten Cycling 1-year anniversary ride. Multiple cycling teams and groups joining to celebrate the community. Note: starts in Miami at 1100 SW 2nd Ave, not Weston."
         }
       },
       {
@@ -466,28 +332,6 @@
         }
       },
       {
-        "id": "recZrd8kf60L5NcYz",
-        "createdTime": "2026-07-01T02:15:55.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 3.6,
-          "Rain Probability": 0.03,
-          "Location": "Flamingo & Griffin",
-          "Featured": true,
-          "Weather Summary": "Dry (3% rain), light winds 4 mph",
-          "Pace": "A: 23+ mph / B: 22-23 mph",
-          "Distance": "58 / 52",
-          "Ride Name": "Team Galiz Pre-4th of July Ride",
-          "Day of Week": "Friday",
-          "Status": "confirmed",
-          "Ride Date": "2026-07-03",
-          "Organizer": "Team Galiz",
-          "Notes": "Pre-4th of July special ride. Group A: 23+ mph, 58 miles. Group B: 22-23 mph, 52 miles. SAG vehicle."
-        }
-      },
-      {
         "id": "recaE1xja2682w4yI",
         "createdTime": "2026-06-03T20:54:09.000Z",
         "fields": {
@@ -525,29 +369,6 @@
         }
       },
       {
-        "id": "recl39JG3caykg38M",
-        "createdTime": "2026-08-14T12:28:30.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 0.9,
-          "Rain Probability": 0,
-          "Location": "Alex's Bicycles",
-          "Featured": true,
-          "Weather Summary": "Dry (0% rain), light winds 1 mph",
-          "Pace": "Group A & B Split",
-          "Distance": "50",
-          "Ride Name": "Ride84 Group Ride — August 22",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-22",
-          "Address Note": "16098 W State Rd 84, Weston",
-          "Organizer": "Ride84",
-          "Notes": "Special longer ride — 50 miles. Group A & B split at Markham Park (same as always). Food & drink provided by Alex's Bicycle Pro Shop. Tagline: Ride Strong. Ride Together."
-        }
-      },
-      {
         "id": "recoLCMIJVruobxEW",
         "createdTime": "2026-09-03T21:51:52.000Z",
         "fields": {
@@ -569,49 +390,6 @@
         }
       },
       {
-        "id": "recqjGia0zOsDKwPK",
-        "createdTime": "2026-08-02T22:57:26.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "6:00 AM",
-          "Wind Speed": 5.2,
-          "Rain Probability": 0.05,
-          "Location": "Weston Town Center — GRIT. Bike Lab",
-          "Featured": true,
-          "Weather Summary": "Dry (5% rain), light winds 5 mph",
-          "Pace": "23-25 mph",
-          "Distance": "42/52/62",
-          "Ride Name": "Palomos 2.0 × GRIT. Bike Lab Opening Ride",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-08-08",
-          "Organizer": "OMG Cycling",
-          "Notes": "Special collab: OMG Cycling × GRIT. Bike Lab Opening Ride. In front of GRIT. Bike Lab at Weston Town Center. 9:00 AM post-ride party at GRIT. Bike Lab — drinks, gifts & more. Sponsors: SRAM, GU, Equilibrio Coffee, Argon 18, Keforma."
-        }
-      },
-      {
-        "id": "recrd30eBkttJvCIn",
-        "createdTime": "2026-07-19T13:40:46.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "4:45 AM",
-          "Wind Speed": 0.9,
-          "Rain Probability": 0.01,
-          "Location": "Miami - City views & Biscayne Bay",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-07-19T09:40:45.000Z",
-          "Weather Summary": "Dry (1% rain), light winds 1 mph",
-          "Ride Name": "Miami to Key West Ride",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-07-26",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1100 Southwest 1st Avenue, Florida\nPace: 20-22 mph\nDistance: ~165 miles\n---\nA vibrant promotional flyer for an MBO Bike Club group cycling event from Miami to Key West on July 26, 2026, featuring a route map of the Florida Keys, event details, and cost breakdown."
-        }
-      },
-      {
         "id": "recuaipPr38uAnkhq",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -627,50 +405,6 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. 32-40 miles, 20-24 mph. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
-        }
-      },
-      {
-        "id": "recxBHwtH1HWtdeB9",
-        "createdTime": "2026-07-10T19:28:54.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "05:30 AM",
-          "Wind Speed": 2.9,
-          "Rain Probability": 0.01,
-          "Location": "Tomás House",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-07-12T11:37:39.000Z",
-          "Weather Summary": "Dry (1% rain), winds 3 mph",
-          "Ride Name": "Sunday Adventure - West Palm Beach Ride",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-07-12",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "Address: 1340 North East 155 Street, North Miami Beach, FL 33162\nPace: 20-22 mph\nDistance: 70 miles\n---\nAn Instagram story from MBO Miami cycling club announcing a Sunday Adventure West Palm Beach Ride on July 12, featuring a photo of cyclists riding on a bridge with a Tri-Rail train in the background, along with detailed ride logistics including meeting time, distance, pace, train return, and a post-ride Chinese food gathering."
-        }
-      },
-      {
-        "id": "reczCjag1mwTAF7Zy",
-        "createdTime": "2026-07-01T02:15:55.000Z",
-        "fields": {
-          "Ride Type": "Special Event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 4,
-          "Rain Probability": 0.18,
-          "Location": "Markham Park",
-          "Featured": true,
-          "Weather Summary": "Dry (18% rain), light winds 4 mph",
-          "Pace": "A: 23+ mph / B: 20-22 mph",
-          "Distance": "45 / 40",
-          "Ride Name": "Team Galiz 4th of July BBQ Ride",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-07-04",
-          "Address Note": "South Boat Ramp",
-          "Organizer": "Team Galiz",
-          "Notes": "4th of July special ride + BBQ post-ride. Group A: 23+ mph, 45 miles. Group B: 20-22 mph, 40 miles. SAG vehicle. $10 donation."
         }
       }
     ]
