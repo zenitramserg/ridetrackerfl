@@ -1,5 +1,5 @@
-const CACHE_NAME = 'ridetrackerfl-v6';
-const RUNTIME_CACHE = 'ridetrackerfl-runtime-v6';
+const CACHE_NAME = 'ridetrackerfl-v7';
+const RUNTIME_CACHE = 'ridetrackerfl-runtime-v7';
 
 // Assets to cache immediately on install
 const STATIC_ASSETS = [
@@ -47,6 +47,15 @@ self.addEventListener('fetch', (event) => {
 
   // Skip non-GET requests
   if (request.method !== 'GET') return;
+
+  // Live weather API (Open-Meteo) - Network only, never cache.
+  // The header widget and weekly forecast poll this same URL on a timer;
+  // caching it would freeze the response at whatever it was on first load
+  // (same bug class as the rides.json Network-First fix below).
+  if (url.hostname === 'api.open-meteo.com') {
+    event.respondWith(fetch(request));
+    return;
+  }
 
   // Data requests (rides JSON + Netlify functions) - Network First
   if (url.pathname === '/public/rides.json' || url.pathname.startsWith('/.netlify/functions/')) {
