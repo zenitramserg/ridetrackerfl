@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T21:37:59.701490+00:00",
+  "generated_at": "2026-09-05T01:11:30.318275+00:00",
   "rides": {
     "records": [
       {
@@ -405,6 +405,27 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. 32-40 miles, 20-24 mph. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        }
+      },
+      {
+        "id": "recuuv1s11r5JSUbD",
+        "createdTime": "2026-09-05T01:11:19.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Flamingo & Griffin",
+          "Featured": true,
+          "Pace": "Controlled pace, one group",
+          "Distance": "50",
+          "Ride Name": "Team Galiz Labor Day Ride — Beach Bound",
+          "Day of Week": "Monday",
+          "Status": "confirmed",
+          "Ride Date": "2026-09-07",
+          "Organizer": "Team Galiz",
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
+          "Rain Probability": 0.06,
+          "Wind Speed": 3.0
         }
       }
     ]
