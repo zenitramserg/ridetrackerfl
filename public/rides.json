@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T01:11:30.318275+00:00",
+  "generated_at": "2026-09-05T01:15:14.962815+00:00",
   "rides": {
     "records": [
       {
@@ -414,8 +414,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 3,
+          "Rain Probability": 0.06,
           "Location": "Flamingo & Griffin",
           "Featured": true,
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
           "Pace": "Controlled pace, one group",
           "Distance": "50",
           "Ride Name": "Team Galiz Labor Day Ride — Beach Bound",
@@ -423,9 +426,7 @@
           "Status": "confirmed",
           "Ride Date": "2026-09-07",
           "Organizer": "Team Galiz",
-          "Weather Summary": "Dry (6% rain), light winds 3 mph",
-          "Rain Probability": 0.06,
-          "Wind Speed": 3.0
+          "Notes": "Labor Day special — Beach Bound. One group, controlled pace. Pedals up at 7:00 AM. SAG vehicle on deck."
         }
       }
     ]
