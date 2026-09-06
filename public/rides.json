@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T01:15:14.962815+00:00",
+  "generated_at": "2026-09-06T14:17:32.613007+00:00",
   "rides": {
     "records": [
       {
@@ -375,11 +375,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:30 AM",
-          "Wind Speed": 5.8,
-          "Rain Probability": 0.07,
+          "Wind Speed": 2.5,
+          "Rain Probability": 0.05,
           "Location": "Weston Town Center - Behind Bank of America",
           "Featured": true,
-          "Weather Summary": "Dry (7% rain), light winds 6 mph",
+          "Weather Summary": "Dry (5% rain), light winds 2 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "OMG × Team Recovery Weston - Labor Day Special Ride",
