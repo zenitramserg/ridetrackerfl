@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T14:17:32.613007+00:00",
+  "generated_at": "2026-09-07T14:17:01.005798+00:00",
   "rides": {
     "records": [
       {
@@ -375,11 +375,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:30 AM",
-          "Wind Speed": 2.5,
-          "Rain Probability": 0.05,
+          "Wind Speed": 2.0,
+          "Rain Probability": 0.01,
           "Location": "Weston Town Center - Behind Bank of America",
           "Featured": true,
-          "Weather Summary": "Dry (5% rain), light winds 2 mph",
+          "Weather Summary": "Dry (1% rain), light winds 2 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "OMG × Team Recovery Weston - Labor Day Special Ride",
@@ -414,11 +414,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 3,
-          "Rain Probability": 0.06,
+          "Wind Speed": 1.8,
+          "Rain Probability": 0.02,
           "Location": "Flamingo & Griffin",
           "Featured": true,
-          "Weather Summary": "Dry (6% rain), light winds 3 mph",
+          "Weather Summary": "Dry (2% rain), light winds 2 mph",
           "Pace": "Controlled pace, one group",
           "Distance": "50",
           "Ride Name": "Team Galiz Labor Day Ride — Beach Bound",
