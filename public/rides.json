@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T14:17:01.005798+00:00",
+  "generated_at": "2026-09-08T15:47:48.031767+00:00",
   "rides": {
     "records": [
       {
@@ -375,7 +375,7 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:30 AM",
-          "Wind Speed": 2.0,
+          "Wind Speed": 2,
           "Rain Probability": 0.01,
           "Location": "Weston Town Center - Behind Bank of America",
           "Featured": true,
