@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T19:34:53.972937+00:00",
+  "generated_at": "2026-09-11T19:35:46.393980+00:00",
   "rides": {
     "records": [
       {
@@ -251,11 +251,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 1.6,
-          "Rain Probability": 0.04,
+          "Wind Speed": 2.9,
+          "Rain Probability": 0.07,
           "Location": "Markham Park",
           "Featured": true,
-          "Weather Summary": "Dry (4% rain), light winds 2 mph",
+          "Weather Summary": "Dry (7% rain), light winds 3 mph",
           "Distance": "40 / 25",
           "Ride Name": "Ride for Team USA — Jason Canon Fundraiser",
           "Day of Week": "Saturday",
