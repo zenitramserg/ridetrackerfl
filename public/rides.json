@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:26:12.928460+00:00",
+  "generated_at": "2026-09-11T17:42:56.958610+00:00",
   "rides": {
     "records": [
       {
@@ -221,6 +221,23 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
+        }
+      },
+      {
+        "id": "recSvTJiQEk45M4gD",
+        "createdTime": "2026-09-11T17:42:54.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "07:00 AM",
+          "Location": "Markham Park",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-09-11T13:42:50.000Z",
+          "Ride Name": "Ride for Team USA – Support Jason Canon's Road to the World Championships",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Organizer": "OMG Cycling",
+          "Notes": "Distance: 55 mi or 30 mi\n---\nA promotional flyer featuring a young athlete in a speed skating suit with medals, posing in front of an American flag, advertising a charity group cycling ride to support his journey to the 2026 World Skate Games in Paraguay."
         }
       },
       {
