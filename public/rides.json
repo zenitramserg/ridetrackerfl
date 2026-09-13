@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T18:54:10.966710+00:00",
+  "generated_at": "2026-09-13T19:54:01.381805+00:00",
   "rides": {
     "records": [
       {
@@ -87,6 +87,30 @@
           "Ride Date": "2026-06-21",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
+        }
+      },
+      {
+        "id": "recB81Wo3kz8Xh6gT",
+        "createdTime": "2026-04-07T02:47:41.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:30 PM",
+          "Wind Speed": 12.4,
+          "Rain Probability": 0.03,
+          "Location": "Origamy Gelato, Weston",
+          "Organizer Instagram Profile": "https://www.instagram.com/teamrecoveryweston/",
+          "Last Checked At": "2026-04-06T00:00:00.000Z",
+          "Weather Summary": "Dry (3% rain), moderate winds 12 mph",
+          "Pace": "Recovery (C/D pace)",
+          "Distance": "30",
+          "Ride Name": "Team Recovery Weston - Monday evening ride",
+          "Day of Week": "Monday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-08",
+          "Address Note": "Origamy Gelato Weston - meet in parking lot",
+          "Organizer": "Team Recovery Weston",
+          "Notes": "Added manually - Team Recovery Weston. Bio says \"LUNES Y MIERCOLES 30 millas\" (Monday & Wednesday 30 miles). Spanish-speaking group."
         }
       },
       {
@@ -286,6 +310,29 @@
           "Ride Date": "2026-08-25",
           "Organizer": "OMG Cycling",
           "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
+        }
+      },
+      {
+        "id": "recYIhjXHLzbywyG2",
+        "createdTime": "2026-04-05T20:15:44.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:00 AM",
+          "Wind Speed": 3.4,
+          "Rain Probability": 0.01,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-08-24T09:12:51.000Z",
+          "Weather Summary": "Dry (1% rain), winds 3 mph",
+          "Pace": "22/24 mph",
+          "Distance": "30",
+          "Ride Name": "Monday Ride",
+          "Day of Week": "Monday",
+          "Status": "confirmed",
+          "Ride Date": "2026-08-24",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
         }
       },
       {
