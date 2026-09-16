@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T16:26:37.528909+00:00",
+  "generated_at": "2026-09-16T13:12:30.287922+00:00",
   "rides": {
     "records": [
       {
@@ -167,18 +167,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "05:30 AM",
-          "Wind Speed": 1.1,
-          "Rain Probability": 0.05,
+          "Wind Speed": 5.3,
+          "Rain Probability": 0.3,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-03T11:04:56.000Z",
-          "Weather Summary": "Dry (5% rain), light winds 1 mph",
+          "Last Checked At": "2026-09-16T09:12:18.000Z",
+          "Weather Summary": "Dry (30% rain), light winds 5 mph",
           "Pace": "24 /26 mph",
           "Distance": "40",
           "Ride Name": "Thursday Tempo Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
-          "Ride Date": "2026-09-03",
+          "Ride Date": "2026-09-17",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
         }
