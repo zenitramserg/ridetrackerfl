@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T17:03:36.759547+00:00",
+  "generated_at": "2026-09-17T14:44:47.095692+00:00",
   "rides": {
     "records": [
       {
@@ -167,12 +167,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "05:30 AM",
-          "Wind Speed": 5.7,
-          "Rain Probability": 0.14,
+          "Wind Speed": 2.1,
+          "Rain Probability": 0.24,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-09-16T09:12:18.000Z",
-          "Weather Summary": "Dry (14% rain), light winds 6 mph",
+          "Weather Summary": "Dry (24% rain), light winds 2 mph",
           "Pace": "24 /26 mph",
           "Distance": "40",
           "Ride Name": "Thursday Tempo Ride",
@@ -373,6 +373,27 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-17",
           "Organizer": "Team Galiz"
+        }
+      },
+      {
+        "id": "recf29KF9pue92DDD",
+        "createdTime": "2026-09-17T14:44:42.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "05:35 AM",
+          "Wind Speed": 7.6,
+          "Rain Probability": 0.12,
+          "Location": "Brickell Miami",
+          "Organizer Instagram Profile": "https://www.instagram.com/fpbikeshop/",
+          "Last Checked At": "2026-09-17T10:44:37.000Z",
+          "Weather Summary": "Dry (12% rain), winds 8 mph",
+          "Ride Name": "Wednesday Morning Ride - Brickell Miami",
+          "Day of Week": "Wednesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-09-23",
+          "Organizer": "FP Bike Shop",
+          "Notes": "---\nTwo high-end road bikes — a Cervélo and a Canyon — parked on a bike rack outdoors in what appears to be Brickell, Miami, with trees in the background."
         }
       },
       {
