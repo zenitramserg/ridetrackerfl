@@ -261,10 +261,10 @@ def generate_rides_json(token: str) -> dict:
     Returns the combined payload that public/rides.json will contain.
     """
     print("[sync] Fetching rides from Airtable...")
-    # Only export rides that should show on site
+    # Only export rides that should show on site AND are not hidden/past
     rides = _fetch_table(
         token, RIDES_TABLE, RIDE_FIELDS,
-        filter_formula="{Display on Site}=TRUE()"
+        filter_formula='AND({Display on Site}=TRUE(), NOT(OR({Status}="hidden", {Status}="past")))'
     )
     print(f"[sync] {len(rides)} rides fetched.")
 

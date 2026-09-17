@@ -85,6 +85,20 @@
       "type": "shop",
       "active": true,
       "max_slides": 24
+    },
+    {
+      "handle": "pullclub.cc",
+      "display_name": "Pull Club",
+      "type": "group",
+      "active": true,
+      "max_slides": 24
+    },
+    {
+      "handle": "wildhogscycling",
+      "display_name": "Wild Hogs Cycling",
+      "type": "group",
+      "active": true,
+      "max_slides": 24
     }
   ]
 }

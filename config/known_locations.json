@@ -30,6 +30,11 @@
       "origamy gelato",
       "origamy",
       "origami gelato"
+    ],
+    "1798 Market St, Weston": [
+      "1798 market st",
+      "market st weston",
+      "market street weston"
     ]
   },
   "address_notes": {
@@ -143,6 +148,28 @@
       ],
       "accounts": [
         "teamrecoveryweston"
+      ]
+    },
+    "Pull Club": {
+      "type": "group",
+      "aliases": [
+        "pull club",
+        "pullclub",
+        "5am pull club"
+      ],
+      "accounts": [
+        "pullclub.cc"
+      ]
+    },
+    "Wild Hogs Cycling": {
+      "type": "group",
+      "aliases": [
+        "wild hogs",
+        "wild hogs cycling",
+        "wildhogs"
+      ],
+      "accounts": [
+        "wildhogscycling"
       ]
     }
   },
