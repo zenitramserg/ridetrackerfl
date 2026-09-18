@@ -90,8 +90,9 @@
       "handle": "pullclub.cc",
       "display_name": "Pull Club",
       "type": "group",
-      "active": true,
-      "max_slides": 24
+      "active": false,
+      "max_slides": 24,
+      "inactive_reason": "Group dissolved — no longer organizing rides (2026-09-18)"
     },
     {
       "handle": "wildhogscycling",

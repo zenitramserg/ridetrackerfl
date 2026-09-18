@@ -150,17 +150,6 @@
         "teamrecoveryweston"
       ]
     },
-    "Pull Club": {
-      "type": "group",
-      "aliases": [
-        "pull club",
-        "pullclub",
-        "5am pull club"
-      ],
-      "accounts": [
-        "pullclub.cc"
-      ]
-    },
     "Wild Hogs Cycling": {
       "type": "group",
       "aliases": [
