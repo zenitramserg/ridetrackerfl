@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T14:26:58.966410+00:00",
+  "generated_at": "2026-09-18T15:19:14.210108+00:00",
   "rides": {
     "records": [
       {
@@ -706,24 +706,6 @@
           "Type": "Shop",
           "Instagram URL": "https://www.instagram.com/alligators.cycling/",
           "Instagram Handle": "alligators.cycling"
-        }
-      },
-      {
-        "id": "rechHh68Y3xcorQSA",
-        "createdTime": "2026-06-20T13:16:29.000Z",
-        "fields": {
-          "Avatar": [
-            {
-              "url": "/public/organizers/pull_club.png",
-              "filename": "pull_club.png"
-            }
-          ],
-          "Name": "Pull Club",
-          "Active": true,
-          "Type": "Group",
-          "Strava URL": "https://www.strava.com/clubs/1921796",
-          "Instagram URL": "https://www.instagram.com/pullclub.cc/",
-          "Instagram Handle": "pullclub.cc"
         }
       },
       {
