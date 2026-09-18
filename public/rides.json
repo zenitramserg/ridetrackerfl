@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T14:15:25.696529+00:00",
+  "generated_at": "2026-09-18T14:26:58.966410+00:00",
   "rides": {
     "records": [
       {
@@ -412,6 +412,24 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        }
+      },
+      {
+        "id": "recnLbHR8vRWjaGyU",
+        "createdTime": "2026-09-18T14:26:56.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:20 PM",
+          "Location": "MBO Brickell",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-09-18T10:26:52.000Z",
+          "Ride Name": "Thirsty Thursday Group Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2025-09-17",
+          "Organizer": "MBO Ten Cycling",
+          "Notes": "Address: 1100 SW 2nd Ave, Miami, FL\nPace: Tempo+\nDistance: ~30 miles\n---\nA promotional flyer for the Thirsty Thursday Group Ride showing cyclists riding along a Miami waterfront at dusk with a city skyline in the background, overlaid with event details including location, time, pace, and distance."
         }
       },
       {
