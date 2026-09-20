@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T15:54:56.157065+00:00",
+  "generated_at": "2026-09-20T21:26:45.643637+00:00",
   "rides": {
     "records": [
       {
@@ -382,12 +382,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "05:35 AM",
-          "Wind Speed": 3.1,
-          "Rain Probability": 0.21,
+          "Wind Speed": 5.5,
+          "Rain Probability": 0.15,
           "Location": "Brickell Miami",
           "Organizer Instagram Profile": "https://www.instagram.com/fpbikeshop/",
           "Last Checked At": "2026-09-17T10:44:37.000Z",
-          "Weather Summary": "Dry (21% rain), light winds 3 mph",
+          "Weather Summary": "Dry (15% rain), light winds 6 mph",
           "Ride Name": "Wednesday Morning Ride - Brickell Miami",
           "Day of Week": "Wednesday",
           "Status": "confirmed",
