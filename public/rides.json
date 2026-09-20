@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T21:26:45.643637+00:00",
+  "generated_at": "2026-09-20T22:28:08.369408+00:00",
   "rides": {
     "records": [
       {
@@ -319,18 +319,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 3.4,
-          "Rain Probability": 0.01,
+          "Wind Speed": 4.1,
+          "Rain Probability": 0.06,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-14T08:47:46.000Z",
-          "Weather Summary": "Dry (1% rain), winds 3 mph",
+          "Last Checked At": "2026-09-20T18:28:04.000Z",
+          "Weather Summary": "Dry (6% rain), light winds 4 mph",
           "Pace": "22/24 mph",
           "Distance": "30",
           "Ride Name": "Monday Ride",
           "Day of Week": "Monday",
           "Status": "confirmed",
-          "Ride Date": "2026-09-14",
+          "Ride Date": "2026-09-21",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
         }
