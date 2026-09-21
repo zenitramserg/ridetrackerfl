@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T17:11:15.771681+00:00",
+  "generated_at": "2026-09-21T19:54:27.566022+00:00",
   "rides": {
     "records": [
       {
@@ -318,7 +318,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 2.0,
+          "Wind Speed": 2,
           "Rain Probability": 0.09,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
