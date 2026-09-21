@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T22:28:08.369408+00:00",
+  "generated_at": "2026-09-21T17:11:15.771681+00:00",
   "rides": {
     "records": [
       {
@@ -205,6 +205,28 @@
         }
       },
       {
+        "id": "recJyDAA154hSzVaG",
+        "createdTime": "2026-08-31T17:50:19.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "5:30 AM",
+          "Wind Speed": 1.6,
+          "Rain Probability": 0.03,
+          "Location": "Weston Town Center - In front of the store",
+          "Featured": true,
+          "Last Checked At": "2026-09-21T13:10:57.000Z",
+          "Weather Summary": "Dry (3% rain), light winds 2 mph",
+          "Pace": "Control pace 23-25 mph",
+          "Distance": "80",
+          "Ride Name": "OMG × GRIT Bike Lab — Palomos Beach XCRIT",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-07",
+          "Organizer": "OMG Cycling"
+        }
+      },
+      {
         "id": "recNVXs6XqsKevcQK",
         "createdTime": "2026-04-09T20:42:34.000Z",
         "fields": {
@@ -296,18 +318,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 4.7,
-          "Rain Probability": 0,
+          "Wind Speed": 2.0,
+          "Rain Probability": 0.09,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-08-25T09:26:31.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 5 mph",
+          "Last Checked At": "2026-09-21T13:10:57.000Z",
+          "Weather Summary": "Dry (9% rain), light winds 2 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
-          "Ride Date": "2026-08-25",
+          "Ride Date": "2026-09-22",
           "Organizer": "OMG Cycling",
           "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
         }
@@ -319,12 +341,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.1,
-          "Rain Probability": 0.06,
+          "Wind Speed": 1.6,
+          "Rain Probability": 0.1,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-09-20T18:28:04.000Z",
-          "Weather Summary": "Dry (6% rain), light winds 4 mph",
+          "Weather Summary": "Dry (10% rain), light winds 2 mph",
           "Pace": "22/24 mph",
           "Distance": "30",
           "Ride Name": "Monday Ride",
@@ -382,12 +404,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "05:35 AM",
-          "Wind Speed": 5.5,
-          "Rain Probability": 0.15,
+          "Wind Speed": 5.8,
+          "Rain Probability": 0.18,
           "Location": "Brickell Miami",
           "Organizer Instagram Profile": "https://www.instagram.com/fpbikeshop/",
           "Last Checked At": "2026-09-17T10:44:37.000Z",
-          "Weather Summary": "Dry (15% rain), light winds 6 mph",
+          "Weather Summary": "Dry (18% rain), light winds 6 mph",
           "Ride Name": "Wednesday Morning Ride - Brickell Miami",
           "Day of Week": "Wednesday",
           "Status": "confirmed",
