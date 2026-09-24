@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T18:00:28.157213+00:00",
+  "generated_at": "2026-09-24T12:57:51.319654+00:00",
   "rides": {
     "records": [
       {
@@ -167,12 +167,12 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "9:30 AM",
-          "Wind Speed": 10.3,
-          "Rain Probability": 0.03,
+          "Wind Speed": 8.7,
+          "Rain Probability": 0.0,
           "Location": "Stone Pile Gap (Bottom of Woody), Dahlonega",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-09-23T14:00:20.000Z",
-          "Weather Summary": "Dry (3% rain), winds 10 mph",
+          "Weather Summary": "Dry (0% rain), light winds 9 mph",
           "Ride Name": "3 Gap South Florida Social Ride",
           "Day of Week": "Friday",
           "Status": "planned",
@@ -254,12 +254,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.9,
-          "Rain Probability": 0.03,
+          "Wind Speed": 8.8,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-09-23T14:00:20.000Z",
-          "Weather Summary": "Dry (3% rain), winds 5 mph",
+          "Weather Summary": "Dry (0% rain), light winds 9 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
