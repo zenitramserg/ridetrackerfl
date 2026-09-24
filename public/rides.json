@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T12:57:51.319654+00:00",
+  "generated_at": "2026-09-24T17:12:37.729902+00:00",
   "rides": {
     "records": [
       {
@@ -168,7 +168,7 @@
           "Display on Site": true,
           "Time": "9:30 AM",
           "Wind Speed": 8.7,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Stone Pile Gap (Bottom of Woody), Dahlonega",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-09-23T14:00:20.000Z",
@@ -255,7 +255,7 @@
           "Display on Site": true,
           "Time": "06:00 AM",
           "Wind Speed": 8.8,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-09-23T14:00:20.000Z",
