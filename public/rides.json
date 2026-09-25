@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T13:24:15.795521+00:00",
+  "generated_at": "2026-09-25T19:44:00.555844+00:00",
   "rides": {
     "records": [
       {
@@ -234,7 +234,7 @@
           "Display on Site": true,
           "Time": "06:00 AM",
           "Wind Speed": 8.2,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-09-25T09:24:00.000Z",
