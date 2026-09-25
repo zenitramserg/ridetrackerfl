@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T17:12:37.729902+00:00",
+  "generated_at": "2026-09-25T13:24:15.795521+00:00",
   "rides": {
     "records": [
       {
@@ -161,27 +161,6 @@
         }
       },
       {
-        "id": "recH1OPzCeRi99lSJ",
-        "createdTime": "2026-09-23T18:00:23.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "9:30 AM",
-          "Wind Speed": 8.7,
-          "Rain Probability": 0,
-          "Location": "Stone Pile Gap (Bottom of Woody), Dahlonega",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-23T14:00:20.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 9 mph",
-          "Ride Name": "3 Gap South Florida Social Ride",
-          "Day of Week": "Friday",
-          "Status": "planned",
-          "Ride Date": "2026-09-25",
-          "Organizer": "OMG Cycling",
-          "Notes": "---\nAn Instagram story slide with a colorful mountain sunset background announcing a time change for the 3 Gap South Florida Social Ride on Friday 09/25, with the new start time of 9:30 AM at Stone Pile Gap in Dahlonega."
-        }
-      },
-      {
         "id": "recHtSoEzNTxyHQBY",
         "createdTime": "2026-04-16T00:43:55.000Z",
         "fields": {
@@ -236,7 +215,7 @@
           "Rain Probability": 0.03,
           "Location": "Weston Town Center - In front of the store",
           "Featured": true,
-          "Last Checked At": "2026-09-23T14:00:20.000Z",
+          "Last Checked At": "2026-09-25T09:24:00.000Z",
           "Weather Summary": "Dry (3% rain), light winds 2 mph",
           "Pace": "Control pace 23-25 mph",
           "Distance": "80",
@@ -254,12 +233,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 8.8,
-          "Rain Probability": 0,
+          "Wind Speed": 8.2,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-23T14:00:20.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 9 mph",
+          "Last Checked At": "2026-09-25T09:24:00.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 8 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
