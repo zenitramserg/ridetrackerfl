@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T19:44:00.555844+00:00",
+  "generated_at": "2026-09-26T14:12:26.506192+00:00",
   "rides": {
     "records": [
       {
@@ -46,6 +46,27 @@
         }
       },
       {
+        "id": "rec0JirVJ21vT4DDJ",
+        "createdTime": "2026-08-23T19:25:22.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:30 AM",
+          "Wind Speed": 0.3,
+          "Rain Probability": 0.07,
+          "Location": "Einstein Bros. Bagels, Indian Trace Shopping Center, 1356 Weston Rd, Weston, FL 33326",
+          "Featured": true,
+          "Weather Summary": "Dry (7% rain), light winds 0 mph",
+          "Ride Name": "Wild Hogs Special Tuesday — Einstein Bros. Bagel Run",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-09-29",
+          "Address Note": "Einstein's (Indian Trace & Weston Rd)",
+          "Organizer": "Wild Hogs Cycling",
+          "Notes": "Monthly special — Wild Hogs run this once a month in place of the standard Tuesday ride. Starts at Einstein Bros. Bagels (Indian Trace & Weston Rd) instead of Weston Town Center. Pedals up 7:30 AM. Bagels afterwards. Standard Wild Hogs Tuesday ride is hidden for this date."
+        }
+      },
+      {
         "id": "rec5pXok7XiOHyShs",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -87,6 +108,28 @@
           "Ride Date": "2026-06-21",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
+        }
+      },
+      {
+        "id": "rec9tOGet7nqICQib",
+        "createdTime": "2026-05-29T22:07:39.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 2.7,
+          "Rain Probability": 0.06,
+          "Location": "Griffin & Flamingo",
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
+          "Pace": "20-22 mph (B) / 23+ mph (A)",
+          "Distance": "52",
+          "Ride Name": "Team Galiz Saturday",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-11",
+          "Address Note": "1100 SW 2nd Ave, Miami, FL 33130",
+          "Organizer": "Team Galiz",
+          "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
         }
       },
       {
@@ -205,28 +248,6 @@
         }
       },
       {
-        "id": "recJyDAA154hSzVaG",
-        "createdTime": "2026-08-31T17:50:19.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "5:30 AM",
-          "Wind Speed": 1.6,
-          "Rain Probability": 0.03,
-          "Location": "Weston Town Center - In front of the store",
-          "Featured": true,
-          "Last Checked At": "2026-09-25T09:24:00.000Z",
-          "Weather Summary": "Dry (3% rain), light winds 2 mph",
-          "Pace": "Control pace 23-25 mph",
-          "Distance": "80",
-          "Ride Name": "OMG × GRIT Bike Lab — Palomos Beach XCRIT",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-11-07",
-          "Organizer": "OMG Cycling"
-        }
-      },
-      {
         "id": "recNVXs6XqsKevcQK",
         "createdTime": "2026-04-09T20:42:34.000Z",
         "fields": {
@@ -288,27 +309,6 @@
           "Ride Date": "2026-06-09",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
-        }
-      },
-      {
-        "id": "recV9fvT48u7pvQ0n",
-        "createdTime": "2026-09-10T21:48:19.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 2.9,
-          "Rain Probability": 0.07,
-          "Location": "Markham Park",
-          "Featured": true,
-          "Weather Summary": "Dry (7% rain), light winds 3 mph",
-          "Distance": "40 / 25",
-          "Ride Name": "Ride for Team USA — Jason Canon Fundraiser",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-09-12",
-          "Organizer": "Team Galiz",
-          "Notes": "Charity ride supporting Jason Canon's road to the World Championships. Jason made Team USA for Inline Speed Skating and will represent the country at the 2026 World Skate Games in Asuncion, Paraguay. Hosted with Speed Elite Team (SET); Team Galiz supporting. Choose your distance: 40-mile group ride or 25-mile option. Finish back at Markham Park for hotdogs, music, a drink, and raffles. $20 donation per rider via Zelle: 954-665-3034 — any additional donation greatly appreciated."
         }
       },
       {
@@ -413,24 +413,6 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
-        }
-      },
-      {
-        "id": "recuaipPr38uAnkhq",
-        "createdTime": "2026-03-27T14:43:19.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "07:30 AM",
-          "Location": "Weston Town Center",
-          "Pace": "20/23 mph | Controlled Pace | No Drop",
-          "Distance": "30",
-          "Ride Name": "Wild Hogs Tuesday Ride",
-          "Day of Week": "Tuesday",
-          "Status": "confirmed",
-          "Address Note": "Japan Inn inside Weston Town Center Plaza",
-          "Organizer": "Wild Hogs Cycling",
-          "Notes": "No-drop group. 32-40 miles, 20-24 mph. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
         }
       },
       {
