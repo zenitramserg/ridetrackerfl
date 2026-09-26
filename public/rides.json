@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T14:12:26.506192+00:00",
+  "generated_at": "2026-09-26T14:22:20.040378+00:00",
   "rides": {
     "records": [
       {
@@ -416,24 +416,42 @@
         }
       },
       {
+        "id": "rectExWwQrTrr8JFr",
+        "createdTime": "2026-09-26T14:22:16.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "05:30 AM",
+          "Location": "Alex's Bicycle Pro Shop",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Last Checked At": "2026-09-26T10:22:15.000Z",
+          "Ride Name": "North to Lox / Quiet Waters / WaWa Levee Ride",
+          "Day of Week": "Thursday",
+          "Status": "planned",
+          "Ride Date": "2026-09-24",
+          "Organizer": "Alex's Bicycle Pro Shop",
+          "Notes": "---\nAn Instagram story slide showing a FL Cycling Magazine cover dated Sep 24, 2026, featuring a selfie of a cyclist in Alex's Bicycle Pro Shop kit standing in front of the shop, along with a second image of a cyclist riding, and text announcing a group ride rolling at 5:30 going north to Lox, east to Quiet Waters for 2 laps, then back via WaWa and the levee."
+        }
+      },
+      {
         "id": "recwsRk8IafsKiFac",
         "createdTime": "2026-04-11T10:17:14.000Z",
         "fields": {
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 1.6,
-          "Rain Probability": 0.07,
+          "Wind Speed": 7.4,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-11T13:42:50.000Z",
-          "Weather Summary": "Dry (7% rain), light winds 2 mph",
+          "Last Checked At": "2026-09-26T10:22:15.000Z",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-09-12",
+          "Ride Date": "2026-09-26",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
         }
