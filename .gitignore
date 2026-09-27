@@ -24,3 +24,5 @@ config/secrets.env
 *.pdf
 ~$*
 .claude/settings.local.json
+config/instagram_cookies.json
+config/instagram_cookies.json
