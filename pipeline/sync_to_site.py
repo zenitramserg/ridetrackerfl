@@ -253,13 +253,156 @@ def _refresh_weather(token: str, rides: list[dict]) -> None:
     print(msg)
 
 
+# ── Expire specials / restore displaced recurring rides ───────────────────────
+
+# Notes markers that mean "this record is hidden on purpose — never auto-restore".
+# Used for scraper false positives and out-of-scope rides that happen to sit on
+# the same weekday as a real special event.
+_NO_RESTORE_MARKERS = (
+    "NO AUTO-RESTORE",
+    "FALSE POSITIVE",
+    "NOT LISTED",
+    "NEEDS REVIEW",
+)
+
+_SPECIAL_TYPES = ("special_event", "special event", "featured event")
+
+
+def _patch_ride(token: str, record_id: str, fields: dict) -> None:
+    """PATCH a single Rides record by field name."""
+    url = f"https://api.airtable.com/v0/{BASE_ID}/{RIDES_TABLE}/{record_id}"
+    body = json.dumps({"fields": fields}).encode("utf-8")
+    req = urllib.request.Request(
+        url, data=body, method="PATCH",
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=15):
+        pass
+
+
+def _expire_and_restore(token: str, dry_run: bool = False) -> None:
+    """
+    Housekeeping pass, run before the display set is fetched.
+
+    With dry_run=True nothing is written back to Airtable; the actions that
+    would be taken are printed instead.
+
+    1. Any special_event whose Ride Date has passed is set to 'past' and
+       un-featured, so stale events stop showing on the site.
+    2. Any weekly ride that was hidden to make room for such a special is
+       restored (Status -> confirmed AND Display on Site -> true; both are
+       independent gates and a ride needs both to appear).
+       Matching is deliberately narrow: same Organizer AND same Day of Week.
+       Conservative by design — it would rather miss a restore than wrongly
+       un-hide something hidden for another reason.
+    3. Anything still hidden that rule 2 did not cover is reported, so a
+       deliberately-hidden ride is never silently resurrected, and an
+       accidentally-hidden one is never silently forgotten.
+    """
+    from datetime import date as _date
+
+    today = _date.today()
+
+    try:
+        all_rides = _fetch_table(
+            token, RIDES_TABLE,
+            ["Ride Name", "Organizer", "Day of Week", "Ride Date",
+             "Ride Type", "Status", "Display on Site", "Featured", "Notes"],
+        )
+    except RuntimeError as e:
+        print(f"[sync] ⚠ Housekeeping skipped — could not fetch rides: {e}")
+        return
+
+    def _parse(d):
+        try:
+            y, m, dd = map(int, d.split("-"))
+            return _date(y, m, dd)
+        except Exception:
+            return None
+
+    expired_keys = set()   # (organizer, weekday) freed up by a past special
+    upcoming_keys = set()  # (organizer, weekday) still claimed by a future special
+    to_expire = []
+
+    for rec in all_rides:
+        f = rec.get("fields", {})
+        if str(f.get("Ride Type", "")).lower() not in _SPECIAL_TYPES:
+            continue
+        rd = _parse(f.get("Ride Date") or "")
+        if not rd:
+            continue
+        key = (f.get("Organizer"), f.get("Day of Week"))
+        if rd < today:
+            expired_keys.add(key)
+            if f.get("Status") in ("confirmed", "planned"):
+                to_expire.append((rec["id"], f.get("Ride Name"), f.get("Ride Date")))
+        else:
+            upcoming_keys.add(key)
+
+    # 1. Expire past specials
+    for rid, name, rdate in to_expire:
+        if dry_run:
+            print(f"[sync] [dry-run] would expire special: {name} ({rdate}) -> past")
+            continue
+        try:
+            _patch_ride(token, rid, {"Status": "past", "Featured": False})
+            print(f"[sync] Expired special: {name} ({rdate}) -> past")
+        except Exception as e:
+            print(f"[sync] ⚠ Could not expire {name}: {e}")
+
+    # 2. Restore weekly rides displaced by a special that has now passed
+    restored, orphans = 0, []
+    for rec in all_rides:
+        f = rec.get("fields", {})
+        if f.get("Status") != "hidden":
+            continue
+        if str(f.get("Ride Type", "")).lower() != "weekly":
+            continue
+
+        notes = str(f.get("Notes") or "").upper()
+        if any(marker in notes for marker in _NO_RESTORE_MARKERS):
+            continue  # hidden on purpose
+
+        key = (f.get("Organizer"), f.get("Day of Week"))
+        if key in upcoming_keys:
+            continue  # another special still occupies this slot — leave hidden
+        if key not in expired_keys:
+            orphans.append(f.get("Ride Name"))
+            continue
+
+        if dry_run:
+            print(f"[sync] [dry-run] would restore recurring ride: {f.get('Ride Name')}")
+            restored += 1
+            continue
+        try:
+            _patch_ride(token, rec["id"],
+                        {"Status": "confirmed", "Display on Site": True})
+            print(f"[sync] Restored recurring ride: {f.get('Ride Name')}")
+            restored += 1
+        except Exception as e:
+            print(f"[sync] ⚠ Could not restore {f.get('Ride Name')}: {e}")
+
+    # 3. Report anything still hidden that we did not touch
+    if orphans:
+        print(f"[sync] ⚠ {len(orphans)} hidden weekly ride(s) with no expired "
+              f"special to explain them — review manually:")
+        for name in orphans:
+            print(f"[sync]     · {name}")
+
+    if not to_expire and not restored and not orphans:
+        print("[sync] Housekeeping: nothing to expire or restore.")
+
+
 # ── Generate JSON ──────────────────────────────────────────────────────────────
 
-def generate_rides_json(token: str) -> dict:
+def generate_rides_json(token: str, dry_run: bool = False) -> dict:
     """
     Pull rides (display_on_site only) and all active organizers from Airtable.
     Returns the combined payload that public/rides.json will contain.
     """
+    print("[sync] Housekeeping — expiring past specials, restoring recurring rides...")
+    _expire_and_restore(token, dry_run=dry_run)
+
     print("[sync] Fetching rides from Airtable...")
     # Only export rides that should show on site AND are not hidden/past
     rides = _fetch_table(
@@ -401,7 +544,7 @@ def main():
     print("=" * 56)
 
     try:
-        payload = generate_rides_json(token)
+        payload = generate_rides_json(token, dry_run=args.dry_run)
     except RuntimeError as e:
         print(f"[sync] ✗ Failed to fetch from Airtable: {e}")
         print("[sync] ⚠ Keeping existing rides.json — site remains live.")
