@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T18:17:57.990922+00:00",
+  "generated_at": "2026-09-29T19:21:13.335650+00:00",
   "rides": {
     "records": [
       {
@@ -52,11 +52,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Wind Speed": 1.9,
-          "Rain Probability": 0.07,
+          "Wind Speed": 3.9,
+          "Rain Probability": 0.05,
           "Location": "Einstein Bros. Bagels, Indian Trace Shopping Center, 1356 Weston Rd, Weston, FL 33326",
           "Featured": true,
-          "Weather Summary": "Dry (7% rain), light winds 2 mph",
+          "Weather Summary": "Dry (5% rain), light winds 4 mph",
           "Ride Name": "Wild Hogs Special Tuesday — Einstein Bros. Bagel Run",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
