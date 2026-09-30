@@ -10,20 +10,24 @@ session (typically 3–6 months).
 
 Usage:
     python scripts/save_instagram_session.py
+    python scripts/save_instagram_session.py --output config/test_cookies.json
 
 Run this:
   - Once on initial setup
   - If the scraper starts seeing login pages instead of stories
+  - With --output pointed at a different file when testing a separate
+    account, so the real production cookies are never touched
 """
 
+import argparse
 import asyncio
 import json
 from pathlib import Path
 
-COOKIES_PATH = Path(__file__).parent.parent / "config" / "instagram_cookies.json"
+DEFAULT_COOKIES_PATH = Path(__file__).parent.parent / "config" / "instagram_cookies.json"
 
 
-async def save_session():
+async def save_session(cookies_path: Path = DEFAULT_COOKIES_PATH):
     try:
         from playwright.async_api import async_playwright
     except ImportError:
@@ -72,15 +76,22 @@ async def save_session():
             await browser.close()
             return
 
-        COOKIES_PATH.parent.mkdir(parents=True, exist_ok=True)
-        with open(COOKIES_PATH, "w", encoding="utf-8") as f:
+        cookies_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(cookies_path, "w", encoding="utf-8") as f:
             json.dump(ig_cookies, f, indent=2)
 
-        print(f"\n✓ Saved {len(ig_cookies)} cookies → {COOKIES_PATH}")
+        print(f"\n✓ Saved {len(ig_cookies)} cookies → {cookies_path}")
         print("  The scraper is now ready to run.\n")
 
         await browser.close()
 
 
 if __name__ == "__main__":
-    asyncio.run(save_session())
+    parser = argparse.ArgumentParser(description="Save an Instagram login session as cookies")
+    parser.add_argument(
+        "--output", metavar="PATH", default=None,
+        help=f"Where to save the cookies (default: {DEFAULT_COOKIES_PATH})"
+    )
+    args = parser.parse_args()
+    output_path = Path(args.output) if args.output else DEFAULT_COOKIES_PATH
+    asyncio.run(save_session(output_path))
