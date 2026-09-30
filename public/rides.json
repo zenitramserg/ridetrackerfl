@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T13:01:53.629322+00:00",
+  "generated_at": "2026-09-30T13:28:08.726966+00:00",
   "rides": {
     "records": [
       {
@@ -392,24 +392,6 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
-        }
-      },
-      {
-        "id": "rectExWwQrTrr8JFr",
-        "createdTime": "2026-09-26T14:22:16.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "05:30 AM",
-          "Location": "Alex's Bicycle Pro Shop",
-          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-09-26T10:22:15.000Z",
-          "Ride Name": "North to Lox / Quiet Waters / WaWa Levee Ride",
-          "Day of Week": "Thursday",
-          "Status": "planned",
-          "Ride Date": "2026-09-24",
-          "Organizer": "Alex's Bicycle Pro Shop",
-          "Notes": "---\nAn Instagram story slide showing a FL Cycling Magazine cover dated Sep 24, 2026, featuring a selfie of a cyclist in Alex's Bicycle Pro Shop kit standing in front of the shop, along with a second image of a cyclist riding, and text announcing a group ride rolling at 5:30 going north to Lox, east to Quiet Waters for 2 laps, then back via WaWa and the levee."
         }
       },
       {
