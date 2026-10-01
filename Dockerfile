@@ -23,6 +23,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # the image itself stays safe to push to a registry.
 COPY pipeline/ ./pipeline/
 COPY config/accounts.json config/known_locations.json ./config/
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 # A container filesystem is not the laptop's: these point at writable,
 # ephemeral locations. The state file is mounted or synced in; screenshots
@@ -32,4 +33,5 @@ ENV RIDETRACKER_SCREENSHOTS_DIR=/tmp/screenshots \
     RIDETRACKER_DB_PATH=/data/rides_database.json \
     PYTHONUNBUFFERED=1
 
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["python3", "-m", "pipeline.run_scan"]

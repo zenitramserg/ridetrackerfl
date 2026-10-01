@@ -14,6 +14,11 @@ pyairtable==3.3.0
 pytesseract==0.3.13
 pillow==12.2.0
 
+# Only used when RIDETRACKER_DB_S3_URI is set (i.e. running on AWS, where
+# the state file lives in S3). The import is lazy, so the laptop does not
+# need this installed.
+boto3==1.43.107
+
 # Optional — only used by `run_scan.py --use-ollama` (local vision
 # pre-filter). The import is guarded, so the pipeline runs without it.
 # ollama==0.6.1

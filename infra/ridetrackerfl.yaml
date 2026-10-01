@@ -1,0 +1,422 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  RideTrackerFL scraper — scheduled Fargate task.
+
+  Plain CloudFormation rather than SAM: there is no Lambda or API Gateway
+  here, so SAM's transforms would add nothing.
+
+  Deploy order matters. The schedule ships DISABLED so the stack can be
+  created before an image exists, then:
+    1. deploy this stack          (creates ECR, S3, roles, task definition)
+    2. push an image to the ECR repo it created
+    3. put the three secrets in SSM (see SecretsHint output)
+    4. run the task by hand once and watch it
+    5. redeploy with ScheduleEnabled=ENABLED
+
+# ---------------------------------------------------------------------------
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: ridetrackerfl
+
+  ImageTag:
+    Type: String
+    Default: latest
+    Description: Tag in the ECR repo that the task definition should run.
+
+  ScheduleEnabled:
+    Type: String
+    Default: DISABLED
+    AllowedValues: [ENABLED, DISABLED]
+    Description: >
+      Leave DISABLED until an image is pushed and a manual run has been
+      verified. Nothing runs on a timer while this is DISABLED.
+
+  ScheduleExpression:
+    Type: String
+    Default: "cron(0 10,19 * * ? *)"
+    Description: Twice daily, 10:00 and 19:00, in ScheduleTimezone.
+
+  ScheduleTimezone:
+    Type: String
+    Default: America/New_York
+
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: >
+      Public subnets in the default VPC. The task needs a public IP to
+      reach Instagram, Anthropic and Airtable — a private subnet would
+      require a NAT Gateway at roughly $32/month, which dwarfs every
+      other cost in this stack.
+
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: The default VPC, used only to anchor the security group.
+
+  AlertEmail:
+    Type: String
+    Description: >
+      Address for failure alerts. AWS sends a confirmation link that must
+      be clicked before any alert can be delivered.
+
+  TaskCpu:
+    Type: String
+    Default: "1024"
+    Description: 1 vCPU. Chromium is the constraint, not the Python.
+
+  TaskMemory:
+    Type: String
+    Default: "4096"
+    Description: >
+      4 GB. Screenshots land on ephemeral disk rather than in memory, so
+      this is sized for Chromium itself.
+
+# ---------------------------------------------------------------------------
+
+Conditions:
+  ScheduleIsEnabled: !Equals [!Ref ScheduleEnabled, ENABLED]
+
+# ---------------------------------------------------------------------------
+
+Resources:
+
+  # --- Image registry ------------------------------------------------------
+
+  EcrRepository:
+    Type: AWS::ECR::Repository
+    # Keep images if the stack is torn down — re-pushing 4 GB is slow.
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      RepositoryName: !Ref ProjectName
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      # The image is ~4 GB, mostly Chromium. Past the 500 MB free tier
+      # that is real money, so keep only what a rollback would need.
+      LifecyclePolicy:
+        LifecyclePolicyText: |
+          {
+            "rules": [
+              {
+                "rulePriority": 1,
+                "description": "Keep only the 2 most recent images",
+                "selection": {
+                  "tagStatus": "any",
+                  "countType": "imageCountMoreThan",
+                  "countNumber": 2
+                },
+                "action": { "type": "expire" }
+              }
+            ]
+          }
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  # --- Scraper state -------------------------------------------------------
+
+  StateBucket:
+    Type: AWS::S3::Bucket
+    # rides_database.json is the dedup index and every airtable_record_id.
+    # Losing it means duplicate Airtable records, so never auto-delete.
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketName: !Sub "${ProjectName}-state-${AWS::AccountId}"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        # Cheap insurance: a bad write can be rolled back by version.
+        Status: Enabled
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireOldVersions
+            Status: Enabled
+            NoncurrentVersionExpirationInDays: 30
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  # --- Logs ----------------------------------------------------------------
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/ecs/${ProjectName}"
+      RetentionInDays: 14
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  # --- Alerting ------------------------------------------------------------
+
+  AlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: !Sub "${ProjectName}-alerts"
+      DisplayName: RideTrackerFL
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  AlertSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      TopicArn: !Ref AlertTopic
+      Protocol: email
+      Endpoint: !Ref AlertEmail
+
+  AlertTopicPolicy:
+    Type: AWS::SNS::TopicPolicy
+    Properties:
+      Topics: [!Ref AlertTopic]
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Service: events.amazonaws.com }
+            Action: sns:Publish
+            Resource: !Ref AlertTopic
+
+  # Exit codes come from run_scan.py: 2 = Instagram session rejected,
+  # 3 = scan completed but captured nothing. Any non-zero exit alerts.
+  TaskFailureRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: !Sub "${ProjectName}-task-failed"
+      Description: Scraper task stopped with a non-zero exit code.
+      EventPattern:
+        source: [aws.ecs]
+        detail-type: ["ECS Task State Change"]
+        detail:
+          clusterArn: [!GetAtt Cluster.Arn]
+          lastStatus: [STOPPED]
+          containers:
+            exitCode: [{ "anything-but": 0 }]
+      Targets:
+        - Id: NotifySns
+          Arn: !Ref AlertTopic
+          InputTransformer:
+            InputPathsMap:
+              taskArn: "$.detail.taskArn"
+              stopCode: "$.detail.stopCode"
+              reason: "$.detail.stoppedReason"
+            InputTemplate: |
+              "RideTrackerFL scraper failed."
+              ""
+              "Task:   <taskArn>"
+              "Stop:   <stopCode>"
+              "Reason: <reason>"
+              ""
+              "Exit 2 = Instagram session rejected; refresh the cookies and"
+              "update the SSM parameter. Exit 3 = scan captured no slides."
+              "Logs are in CloudWatch under /ecs/ridetrackerfl."
+
+  # --- Networking ----------------------------------------------------------
+
+  TaskSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Scraper task — outbound only, nothing listens.
+      VpcId: !Ref VpcId
+      SecurityGroupEgress:
+        - IpProtocol: -1
+          CidrIp: 0.0.0.0/0
+          Description: Instagram, Anthropic, Airtable, S3, ECR, CloudWatch.
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  # --- IAM -----------------------------------------------------------------
+
+  # Used by the ECS agent to start the task: pull the image, write logs,
+  # and read the secrets it injects as environment variables.
+  TaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Service: ecs-tasks.amazonaws.com }
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+      Policies:
+        - PolicyName: ReadScraperSecrets
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: [ssm:GetParameters]
+                Resource: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/*"
+              - Effect: Allow
+                Action: [kms:Decrypt]
+                Resource: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:key/*"
+                Condition:
+                  StringEquals:
+                    kms:ViaService: !Sub "ssm.${AWS::Region}.amazonaws.com"
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  # The application's own permissions: read and write its state file.
+  # Deliberately narrow — this role cannot touch Airtable or anything else
+  # in AWS, because those credentials are injected, not assumed.
+  TaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Service: ecs-tasks.amazonaws.com }
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: ScraperStateAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetObject, s3:PutObject]
+                Resource: !Sub "${StateBucket.Arn}/state/*"
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  SchedulerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Service: scheduler.amazonaws.com }
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Policies:
+        - PolicyName: RunScraperTask
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: [ecs:RunTask]
+                Resource: !Ref TaskDefinition
+                Condition:
+                  ArnEquals:
+                    ecs:cluster: !GetAtt Cluster.Arn
+              - Effect: Allow
+                Action: [iam:PassRole]
+                Resource:
+                  - !GetAtt TaskExecutionRole.Arn
+                  - !GetAtt TaskRole.Arn
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  # --- Compute -------------------------------------------------------------
+
+  Cluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Ref ProjectName
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Ref ProjectName
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: !Ref TaskCpu
+      Memory: !Ref TaskMemory
+      RuntimePlatform:
+        # Graviton: ~20% cheaper, and the image is built natively on an
+        # Apple Silicon Mac, so no cross-compilation.
+        CpuArchitecture: ARM64
+        OperatingSystemFamily: LINUX
+      ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
+      TaskRoleArn: !GetAtt TaskRole.Arn
+      ContainerDefinitions:
+        - Name: scraper
+          Image: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ProjectName}:${ImageTag}"
+          Essential: true
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref LogGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: scraper
+          Environment:
+            - Name: RIDETRACKER_DB_S3_URI
+              Value: !Sub "s3://${StateBucket}/state/rides_database.json"
+            - Name: AWS_DEFAULT_REGION
+              Value: !Ref AWS::Region
+          Secrets:
+            # Injected by the ECS agent at start; never baked into the image.
+            - Name: INSTAGRAM_COOKIES
+              ValueFrom: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/instagram-cookies"
+            - Name: AIRTABLE_API_KEY
+              ValueFrom: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/airtable-api-key"
+            - Name: ANTHROPIC_API_KEY
+              ValueFrom: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/anthropic-api-key"
+      Tags:
+        - { Key: Project, Value: !Ref ProjectName }
+
+  # --- Schedule ------------------------------------------------------------
+
+  Schedule:
+    Type: AWS::Scheduler::Schedule
+    Condition: ScheduleIsEnabled
+    Properties:
+      Name: !Ref ProjectName
+      Description: Run the RideTrackerFL scraper.
+      State: !Ref ScheduleEnabled
+      ScheduleExpression: !Ref ScheduleExpression
+      ScheduleExpressionTimezone: !Ref ScheduleTimezone
+      FlexibleTimeWindow:
+        # A scraper has no need to start on the exact second, and a window
+        # lets AWS smooth capacity.
+        Mode: FLEXIBLE
+        MaximumWindowInMinutes: 15
+      Target:
+        Arn: !GetAtt Cluster.Arn
+        RoleArn: !GetAtt SchedulerRole.Arn
+        EcsParameters:
+          TaskDefinitionArn: !Ref TaskDefinition
+          LaunchType: FARGATE
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              # Public IP is how the task reaches the internet without a
+              # NAT Gateway. The security group allows no inbound traffic.
+              AssignPublicIp: ENABLED
+              Subnets: !Ref SubnetIds
+              SecurityGroups: [!Ref TaskSecurityGroup]
+        RetryPolicy:
+          # A failed scrape should alert, not silently retry into a
+          # rate limit. The next scheduled run is the retry.
+          MaximumRetryAttempts: 0
+
+# ---------------------------------------------------------------------------
+
+Outputs:
+  EcrRepositoryUri:
+    Description: Push the image here.
+    Value: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ProjectName}"
+
+  StateBucketName:
+    Description: Holds rides_database.json under state/.
+    Value: !Ref StateBucket
+
+  ClusterName:
+    Value: !Ref Cluster
+
+  TaskDefinitionArn:
+    Value: !Ref TaskDefinition
+
+  SecretsHint:
+    Description: The three SSM parameters the task expects (create these by hand).
+    Value: !Sub "/${ProjectName}/instagram-cookies, /${ProjectName}/airtable-api-key, /${ProjectName}/anthropic-api-key"
