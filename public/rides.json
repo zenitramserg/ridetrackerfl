@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T17:27:26.100246+00:00",
+  "generated_at": "2026-10-01T17:45:13.660754+00:00",
   "rides": {
     "records": [
       {
@@ -233,17 +233,17 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 8.2,
-          "Rain Probability": 0,
+          "Wind Speed": 3.7,
+          "Rain Probability": 0.14,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-25T09:24:00.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 8 mph",
+          "Last Checked At": "2026-10-01T13:45:06.000Z",
+          "Weather Summary": "Dry (14% rain), light winds 4 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
           "Status": "confirmed",
-          "Ride Date": "2026-09-25",
+          "Ride Date": "2026-10-02",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from OMG Cycling announcing a Friday Recovery group ride, featuring the OMG Cycling logo over a background photo of cyclists riding on a road, with ride details including time, distance, pace, and meeting location."
         }
@@ -419,18 +419,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 7.4,
-          "Rain Probability": 0,
+          "Wind Speed": 1.6,
+          "Rain Probability": 0.04,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-26T10:22:15.000Z",
-          "Weather Summary": "Dry (0% rain), winds 7 mph",
+          "Last Checked At": "2026-10-01T13:45:06.000Z",
+          "Weather Summary": "Dry (4% rain), winds 2 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-09-26",
+          "Ride Date": "2026-10-10",
           "Organizer": "OMG Cycling",
           "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
         }
