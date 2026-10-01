@@ -95,6 +95,7 @@ def main():
             headless=not args.visible,
             handle_filter=args.account,
         ))
+        _check_scrape_health(scan_dir)
 
     # ── Phase 2: Vision extraction ────────────────────────────────────────────
     _banner("Phase 2 · Vision Extraction (Claude API)")
@@ -190,6 +191,39 @@ def main():
             print("[sync] Site continues serving previous rides.json — no outage.")
     else:
         print("[sync] Dry run — skipping site sync.")
+
+
+def _check_scrape_health(scan_dir: Path):
+    """
+    Stop the run if the scrape produced nothing usable.
+
+    Exit codes let an unattended caller tell the two cases apart:
+      2 — Instagram rejected the session (cookies dead; needs a human)
+      3 — scrape ran clean but captured zero slides (possibly upstream breakage)
+
+    Without this, a dead session reads as "no active stories" on every
+    account and the pipeline exits 0, quietly serving stale data.
+    """
+    meta_path = scan_dir / "scan_metadata.json"
+    if not meta_path.exists():
+        return
+
+    with open(meta_path, encoding="utf-8") as f:
+        metadata = json.load(f)
+
+    auth_failures = metadata.get("auth_failures", 0)
+    accounts      = metadata.get("accounts_checked", [])
+    total_slides  = len(metadata.get("screenshots", []))
+
+    if auth_failures:
+        print(f"\n✗ Aborting — Instagram session rejected on {auth_failures} account(s).")
+        print("  Refresh it with:  python3 scripts/save_instagram_session.py")
+        sys.exit(2)
+
+    if accounts and total_slides == 0:
+        print(f"\n✗ Aborting — 0 slides captured across {len(accounts)} account(s).")
+        print("  Either every account is genuinely quiet, or something upstream broke.")
+        sys.exit(3)
 
 
 def _cleanup_non_ride_screenshots(scan_dir: Path, ride_candidates: list[dict]):

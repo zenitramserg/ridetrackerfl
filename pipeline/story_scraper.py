@@ -21,14 +21,25 @@ Usage:
 
 import asyncio
 import json
+import os
 import sys
 from datetime import datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent
-ACCOUNTS_PATH = BASE_DIR / "config" / "accounts.json"
-COOKIES_PATH  = BASE_DIR / "config" / "instagram_cookies.json"
-SCREENSHOTS_BASE = BASE_DIR / "data" / "screenshots"
+
+# Paths are env-overridable so the scraper can run somewhere other than
+# the laptop (a container has its own filesystem layout, and credentials
+# arrive from a secret store rather than config/).
+ACCOUNTS_PATH    = Path(os.environ.get("RIDETRACKER_ACCOUNTS_PATH",    BASE_DIR / "config" / "accounts.json"))
+COOKIES_PATH     = Path(os.environ.get("RIDETRACKER_COOKIES_PATH",     BASE_DIR / "config" / "instagram_cookies.json"))
+SCREENSHOTS_BASE = Path(os.environ.get("RIDETRACKER_SCREENSHOTS_DIR",  BASE_DIR / "data" / "screenshots"))
+
+# A redirect to any of these means Instagram rejected the session itself —
+# not that the account has no stories. Without this distinction a dead
+# session reads as "no active stories" on every account and the scan
+# exits 0, silently serving stale data until someone notices.
+_AUTH_FAIL_MARKERS = ("/accounts/login", "/challenge", "/checkpoint")
 
 # ── Story viewer layout (1280 × 900 viewport) ─────────────────────────────────
 # Instagram's story panel sits roughly centered. These coordinates advance slides.
@@ -97,6 +108,7 @@ async def scrape_stories(
         "accounts_checked":  [],
         "screenshots":       [],
     }
+    auth_failures = 0
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=headless)
@@ -129,8 +141,19 @@ async def scrape_stories(
                 })
                 continue
 
-            # If Instagram redirected away, this account has no active stories
+            # Instagram redirected away — either the session is dead, or
+            # this account simply has no active stories right now.
             if f"/stories/{handle}/" not in page.url:
+                if any(m in page.url for m in _AUTH_FAIL_MARKERS):
+                    print(f"[scraper]   ✗ SESSION REJECTED — sent to {page.url[:70]}")
+                    auth_failures += 1
+                    metadata["accounts_checked"].append({
+                        "handle": handle,
+                        "slides_captured": 0,
+                        "error": "session_rejected",
+                    })
+                    continue
+
                 print(f"[scraper]   ○ No active stories (redirected to {page.url[:60]})")
                 metadata["accounts_checked"].append({
                     "handle": handle,
@@ -199,11 +222,16 @@ async def scrape_stories(
         await browser.close()
 
     # ── Write metadata index ──────────────────────────────────────────────────
+    metadata["auth_failures"] = auth_failures
     meta_path = scan_dir / "scan_metadata.json"
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2, ensure_ascii=False)
 
     total_slides = len(metadata["screenshots"])
+    if auth_failures:
+        print(f"\n[scraper] ✗ Instagram rejected the session on {auth_failures} "
+              f"of {len(accounts)} account(s) — the saved cookies are dead.")
+        print("[scraper]   Refresh with:  python3 scripts/save_instagram_session.py")
     print(f"\n[scraper] ✓ Done — {total_slides} screenshots across "
           f"{len(accounts)} accounts → {scan_dir.name}/")
     return scan_dir

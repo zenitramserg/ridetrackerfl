@@ -1,0 +1,23 @@
+# RideTrackerFL pipeline dependencies.
+#
+# Pinned to the versions currently running on the production Mac so a
+# container build matches local behaviour exactly — important while the
+# AWS version runs side-by-side with the laptop for comparison.
+#
+# System packages also required (not installable via pip):
+#   - tesseract-ocr   (pytesseract is only a wrapper around the binary)
+#   - chromium        (installed via: playwright install chromium)
+
+playwright==1.60.0
+anthropic==0.105.2
+pyairtable==3.3.0
+pytesseract==0.3.13
+pillow==12.2.0
+
+# Optional — only used by `run_scan.py --use-ollama` (local vision
+# pre-filter). The import is guarded, so the pipeline runs without it.
+# ollama==0.6.1
+
+# Optional — only used by the doc generators in scripts/, never by the
+# pipeline itself.
+# reportlab==4.2.5
