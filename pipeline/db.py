@@ -12,7 +12,11 @@ import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent
-DB_PATH = BASE_DIR / "data" / "rides_database.json"
+
+# Env-overridable so the scraper can run off-laptop, where the state file
+# lives on a mounted volume (or, later, is synced from object storage)
+# rather than next to the code.
+DB_PATH = Path(os.environ.get("RIDETRACKER_DB_PATH", BASE_DIR / "data" / "rides_database.json"))
 
 
 def load_db(path: Path = DB_PATH) -> list[dict]:

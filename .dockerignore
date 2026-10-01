@@ -1,0 +1,30 @@
+# The Dockerfile copies an explicit allow-list, not the whole tree.
+# This is the second layer: even a careless `COPY . .` must never pull
+# credentials or local state into an image that gets pushed to a registry.
+
+config/secrets.env
+config/*cookies*.json
+
+data/
+logs/
+docs/
+netlify/
+public/
+scripts/
+icons/
+
+.git/
+.gitignore
+.claude/
+__pycache__/
+*.pyc
+.DS_Store
+
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.html
+*-backup-*
+*.bak-*
