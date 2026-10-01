@@ -226,10 +226,9 @@ def _cleanup_non_ride_screenshots(scan_dir: Path, ride_candidates: list[dict]):
 def _enrich_weather():
     """Fetch weather for any rides in rides_database.json that are missing it."""
     import urllib.request
+    from pipeline.db import load_db, save_db
 
-    DB_PATH = BASE_DIR / "data" / "rides_database.json"
-    with open(DB_PATH, encoding="utf-8") as f:
-        db = json.load(f)
+    db = load_db()
 
     # Weston FL coordinates
     LAT, LON = 26.1004, -80.3997
@@ -302,8 +301,7 @@ def _enrich_weather():
             print(f"  ✗ Weather fetch failed for '{ride.get('title', '?')}': {e}")
 
     if updated_count:
-        with open(DB_PATH, "w", encoding="utf-8") as f:
-            json.dump(db, f, indent=2, ensure_ascii=False)
+        save_db(db)
         print(f"  Weather updated for {updated_count} ride(s).")
     else:
         print("  No rides needed weather enrichment.")

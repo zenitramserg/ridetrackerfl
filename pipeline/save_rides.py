@@ -23,9 +23,9 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from pipeline.organizer import infer_organizer
 from pipeline.classifier import is_valid_group_ride, classify_ride, is_promo_post
 from pipeline.deduplicator import deduplicate
+from pipeline.db import load_db, save_db
 
 BASE_DIR = Path(__file__).parent.parent
-DB_PATH = BASE_DIR / "data" / "rides_database.json"
 CSV_PATH = BASE_DIR / "data" / "master_rides.csv"
 
 CSV_FIELDS = [
@@ -127,11 +127,7 @@ def process_batch(batch_path: Path, dry_run: bool = False) -> dict:
     scan_date = datetime.now()
 
     # Load existing database
-    if DB_PATH.exists():
-        with open(DB_PATH, "r", encoding="utf-8") as f:
-            existing = json.load(f)
-    else:
-        existing = []
+    existing = load_db()
 
     # Validate and enrich incoming records
     valid_rides = []
@@ -162,8 +158,7 @@ def process_batch(batch_path: Path, dry_run: bool = False) -> dict:
     }
 
     if not dry_run:
-        with open(DB_PATH, "w", encoding="utf-8") as f:
-            json.dump(merged_db, f, indent=2, ensure_ascii=False)
+        save_db(merged_db)
         _write_csv(merged_db)
         print(f"[save_rides] Saved {added} new, {updated} updated → {len(merged_db)} total rides in DB")
     else:

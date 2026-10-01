@@ -12,6 +12,8 @@ If the table schema changes, update the FIELD_MAP below.
 import json
 from pathlib import Path
 
+from pipeline.db import load_db, save_db, DB_PATH
+
 # =============================================================================
 # Airtable IDs — RideTrackerFL_MAIN > Rides
 # =============================================================================
@@ -402,13 +404,10 @@ def push_new_rides(dry_run: bool = False) -> int:
         print("[airtable] ✗ AIRTABLE_API_KEY not set. Add it to config/secrets.env")
         return 0
 
-    db_path = Path(__file__).parent.parent / "data" / "rides_database.json"
-    if not db_path.exists():
+    if not DB_PATH.exists():
         print("[airtable] ✗ rides_database.json not found")
         return 0
-
-    with open(db_path, encoding="utf-8") as f:
-        db = json.load(f)
+    db = load_db()
 
     # Only process rides that haven't been synced yet
     pending = [r for r in db if not r.get("airtable_record_id")]
@@ -487,8 +486,7 @@ def push_new_rides(dry_run: bool = False) -> int:
     # Save record IDs back to the local database (both new + linked)
     resolved = created + linked
     if resolved:
-        with open(db_path, "w", encoding="utf-8") as f:
-            json.dump(db, f, indent=2, ensure_ascii=False)
+        save_db(db)
         print(f"[airtable] ✓ Done — {created} created, {linked} linked to existing records.")
 
     return created
@@ -525,12 +523,9 @@ def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = Fal
         print("[airtable] ✗ AIRTABLE_API_KEY not set.")
         return 0
 
-    db_path = Path(__file__).parent.parent / "data" / "rides_database.json"
-    if not db_path.exists():
+    if not DB_PATH.exists():
         return 0
-
-    with open(db_path, encoding="utf-8") as f:
-        db = json.load(f)
+    db = load_db()
 
     # Fields that are safe to overwrite on existing records
     UPDATABLE_FIELDS = [
@@ -604,8 +599,7 @@ def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = Fal
             ride.pop("airtable_record_id", None)  # Clear stale ID so next run retries cleanly
             # Persist the cleared ID back to disk so the next run doesn't
             # keep hitting the same 403/404 for a deleted Airtable record.
-            with open(db_path, "w", encoding="utf-8") as f:
-                json.dump(db, f, indent=2, ensure_ascii=False)
+            save_db(db)
 
     return updated
 
@@ -640,11 +634,9 @@ def push_ride_history(rides: list[dict] | None = None, dry_run: bool = False) ->
         return 0
 
     if rides is None:
-        db_path = Path(__file__).parent.parent / "data" / "rides_database.json"
-        if not db_path.exists():
+        if not DB_PATH.exists():
             return 0
-        with open(db_path, encoding="utf-8") as f:
-            db = json.load(f)
+        db = load_db()
         cutoff = datetime.now(timezone.utc) - timedelta(hours=24)
         def _recent(r):
             ts = r.get("last_updated") or r.get("last_verified_at", "")
