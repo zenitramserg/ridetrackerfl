@@ -331,7 +331,11 @@ def _expire_and_restore(token: str, dry_run: bool = False) -> None:
         rd = _parse(f.get("Ride Date") or "")
         if not rd:
             continue
-        key = (f.get("Organizer"), f.get("Day of Week"))
+        org, dow = f.get("Organizer"), f.get("Day of Week")
+        if not org or not dow:
+            continue  # can't match reliably; a blank field would collide with
+                      # every other blank-field record on the same weekday
+        key = (org, dow)
         if rd < today:
             expired_keys.add(key)
             if f.get("Status") in ("confirmed", "planned"):
@@ -363,7 +367,11 @@ def _expire_and_restore(token: str, dry_run: bool = False) -> None:
         if any(marker in notes for marker in _NO_RESTORE_MARKERS):
             continue  # hidden on purpose
 
-        key = (f.get("Organizer"), f.get("Day of Week"))
+        org, dow = f.get("Organizer"), f.get("Day of Week")
+        if not org or not dow:
+            orphans.append(f"{f.get('Ride Name')} (missing Organizer/Day — cannot match)")
+            continue
+        key = (org, dow)
         if key in upcoming_keys:
             continue  # another special still occupies this slot — leave hidden
         if key not in expired_keys:
