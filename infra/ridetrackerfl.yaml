@@ -35,8 +35,8 @@ Parameters:
 
   ScheduleExpression:
     Type: String
-    Default: "cron(0 10,19 * * ? *)"
-    Description: Twice daily, 10:00 and 19:00, in ScheduleTimezone.
+    Default: "cron(0 10 * * ? *)"
+    Description: Once daily at 10:00, in ScheduleTimezone.
 
   ScheduleTimezone:
     Type: String
@@ -262,9 +262,10 @@ Resources:
       Tags:
         - { Key: Project, Value: !Ref ProjectName }
 
-  # The application's own permissions: read and write its state file.
-  # Deliberately narrow — this role cannot touch Airtable or anything else
-  # in AWS, because those credentials are injected, not assumed.
+  # The application's own permissions: read and write its state file, and
+  # publish its own end-of-run report. Deliberately narrow — this role
+  # cannot touch Airtable or anything else in AWS, because those
+  # credentials are injected, not assumed.
   TaskRole:
     Type: AWS::IAM::Role
     Properties:
@@ -282,6 +283,13 @@ Resources:
               - Effect: Allow
                 Action: [s3:GetObject, s3:PutObject]
                 Resource: !Sub "${StateBucket.Arn}/state/*"
+        - PolicyName: ScraperReportPublish
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: [sns:Publish]
+                Resource: !Ref AlertTopic
       Tags:
         - { Key: Project, Value: !Ref ProjectName }
 
@@ -355,6 +363,8 @@ Resources:
               Value: !Sub "s3://${StateBucket}/state/rides_database.json"
             - Name: AWS_DEFAULT_REGION
               Value: !Ref AWS::Region
+            - Name: RIDETRACKER_REPORT_SNS_TOPIC_ARN
+              Value: !Ref AlertTopic
           Secrets:
             # Injected by the ECS agent at start; never baked into the image.
             - Name: INSTAGRAM_COOKIES

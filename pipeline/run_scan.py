@@ -50,6 +50,24 @@ def _banner(label: str):
     print(f"{'─'*60}")
 
 
+def _send_report(subject: str, body: str) -> None:
+    """
+    Email a summary of this run via SNS, if configured.
+
+    Unset on the laptop — this is strictly an unattended-deployment
+    feature, so a missing topic ARN is silent, not an error. A failure
+    to send must never fail the run itself.
+    """
+    topic_arn = os.environ.get("RIDETRACKER_REPORT_SNS_TOPIC_ARN")
+    if not topic_arn:
+        return
+    import boto3
+    try:
+        boto3.client("sns").publish(TopicArn=topic_arn, Subject=subject, Message=body)
+    except Exception as e:
+        print(f"[report] ⚠ Failed to send SNS report: {e}")
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -109,6 +127,11 @@ def main():
 
     if not ride_candidates:
         print("\nNo ride posts detected in this scan. All done.")
+        if not args.dry_run:
+            _send_report(
+                "RideTrackerFL: no new rides",
+                f"Scan directory: {scan_dir.name}\nRide posts found: 0\nNo changes to the database or Airtable.",
+            )
         return
 
     # Write batch file (preserves raw extractions for debugging)
@@ -148,6 +171,7 @@ def main():
     # ── Phase 5: Airtable sync ────────────────────────────────────────────────
     _banner("Phase 5 · Airtable Sync")
 
+    pushed = synced = logged = 0
     if added > 0 or updated > 0:
         from pipeline.airtable_writer import push_new_rides, push_updated_rides, push_ride_history
 
@@ -172,6 +196,7 @@ def main():
 
     # ── Phase 6: Sync to site ─────────────────────────────────────────────────
     _banner("Phase 6 · Sync to Site")
+    site_sync_status = "skipped (dry run)"
     if not args.dry_run:
         try:
             from pipeline.sync_to_site import generate_rides_json, write_json, git_push
@@ -189,11 +214,29 @@ def main():
             payload  = generate_rides_json(token)
             write_json(payload)
             git_push(_Path(__file__).parent.parent)
+            site_sync_status = "ok"
         except Exception as e:
             print(f"[sync] ⚠ Site sync failed: {e}")
             print("[sync] Site continues serving previous rides.json — no outage.")
+            site_sync_status = f"failed: {e}"
     else:
         print("[sync] Dry run — skipping site sync.")
+
+    if not args.dry_run:
+        _send_report(
+            f"RideTrackerFL: {added} added, {updated} updated",
+            "\n".join([
+                f"Scan directory:      {scan_dir.name}",
+                f"Ride posts found:    {len(ride_candidates)}",
+                f"Added to DB:         {added}",
+                f"Updated in DB:       {updated}",
+                f"Total in DB:         {total}",
+                f"Pushed to Airtable:  {pushed}",
+                f"Synced to Airtable:  {synced}",
+                f"Ride history logged: {logged}",
+                f"Site sync:           {site_sync_status}",
+            ]),
+        )
 
 
 def _check_scrape_health(scan_dir: Path):
