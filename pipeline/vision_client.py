@@ -27,6 +27,7 @@ from pathlib import Path
 # Sonnet balances quality vs cost well. Switch to haiku to go faster/cheaper,
 # opus for difficult or low-quality flyer images.
 CLAUDE_MODEL  = "claude-sonnet-4-6"
+HAIKU_MODEL   = "claude-haiku-4-5"  # cheap relevance pre-filter, see _haiku_prefilter
 OLLAMA_MODEL  = "llama3.2-vision"   # fallback: "llava"
 
 # ── Extraction prompt ─────────────────────────────────────────────────────────
@@ -134,6 +135,73 @@ def has_readable_text(image_path: Path) -> bool:
         return True
 
 
+# ── Haiku relevance pre-filter ───────────────────────────────────────────────
+
+HAIKU_PREFILTER_PROMPT = """Look at this Instagram story screenshot from a cycling club.
+
+Answer NO if this is any of:
+- A post-ride activity recap/stats card — shows distance, elapsed time, avg \
+speed, power, or calories from a ride that already happened (e.g. a \
+Strava-style summary overlaid on a photo)
+- A repost of a member's ride photo or results with no upcoming event details
+- A product ad, merchandise sale, or other generic promotional content
+- A generic lifestyle/team photo with no date or ride details
+
+Answer YES if this could be announcing a SPECIFIC UPCOMING group ride — look \
+for a future date, day of week, meeting time, or invitation language (e.g. \
+"Saturday Ride", "Join us", a countdown timer, or an event flyer), in \
+English or Spanish. If you are genuinely unsure whether there's a future \
+ride announcement here, answer YES — it's cheaper to double-check than to \
+miss one.
+
+Reply with ONLY one word: YES or NO."""
+
+
+def _haiku_prefilter(image_path: Path) -> bool:
+    """
+    Cheap relevance check via Claude Haiku before paying for the full Sonnet
+    extraction call. Returns True (send to Sonnet) or False (skip — clearly
+    not a ride post).
+
+    Fails open on any error (API error, timeout, unexpected response) or any
+    answer other than an explicit "NO" — the cost of an extra Sonnet call on
+    a non-ride slide is a few cents; the cost of silently dropping a real
+    ride announcement because this filter misfired is a missed ride.
+    """
+    try:
+        import anthropic
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            return True
+
+        client = anthropic.Anthropic(api_key=api_key)
+        message = client.messages.create(
+            model=HAIKU_MODEL,
+            max_tokens=5,
+            messages=[{
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {
+                            "type":       "base64",
+                            "media_type": "image/png",
+                            "data":       _b64(image_path),
+                        },
+                    },
+                    {"type": "text", "text": HAIKU_PREFILTER_PROMPT},
+                ],
+            }],
+        )
+        if not message.content:
+            return True
+        answer = message.content[0].text.strip().upper()
+        return not answer.startswith("NO")
+    except Exception as e:
+        print(f"[vision]   ⚠ Haiku pre-filter failed ({image_path.name}): {e}")
+        return True  # fail open
+
+
 # ── Ollama pre-filter ─────────────────────────────────────────────────────────
 
 def ollama_prefilter(image_path: Path) -> bool:
@@ -173,12 +241,13 @@ def analyze_screenshot(
     image_path: Path,
     source_account: str,
     use_ollama: bool = False,
+    use_haiku_prefilter: bool = True,
 ) -> dict | None:
     """
     Analyze a single story screenshot via the Claude API.
 
     Returns a ride extraction dict, or None if:
-      - Ollama pre-filter rejected it
+      - A pre-filter rejected it
       - The API call failed
       - The response was unparseable JSON
     """
@@ -190,7 +259,17 @@ def analyze_screenshot(
         print(f"[vision]   ○ No text detected, skipping")
         return None
 
-    # Layer 2: Optional Ollama pre-filter — free, local, ~1-2s
+    # Layer 2: Haiku relevance pre-filter — cheap API call, no Sonnet cost
+    # unless it plausibly looks like a ride post. On by default; disable
+    # with --skip-prefilter if it ever needs to be bypassed without a redeploy.
+    if use_haiku_prefilter:
+        passed = _haiku_prefilter(image_path)
+        tag = "✓ Haiku pass" if passed else "○ Haiku filtered"
+        print(f"[vision]   {tag}: {image_path.name}")
+        if not passed:
+            return None
+
+    # Layer 3: Optional Ollama pre-filter — free, local, ~1-2s
     if use_ollama:
         passed = ollama_prefilter(image_path)
         tag = "✓ Ollama pass" if passed else "○ Ollama filtered"
@@ -276,6 +355,7 @@ def analyze_screenshot(
 def analyze_scan_directory(
     scan_dir: Path,
     use_ollama: bool = False,
+    use_haiku_prefilter: bool = True,
 ) -> list[dict]:
     """
     Process every screenshot in a scan directory (produced by story_scraper).
@@ -295,7 +375,8 @@ def analyze_scan_directory(
 
     screenshots = metadata.get("screenshots", [])
     print(f"[vision] Analyzing {len(screenshots)} screenshots"
-          f" (Ollama pre-filter: {'on' if use_ollama else 'off'})...")
+          f" (Haiku pre-filter: {'on' if use_haiku_prefilter else 'off'},"
+          f" Ollama pre-filter: {'on' if use_ollama else 'off'})...")
 
     results = []
     ride_count = 0
@@ -309,7 +390,9 @@ def analyze_scan_directory(
             continue
 
         print(f"[vision] → {img_path.name}  (@{account})")
-        result = analyze_screenshot(img_path, account, use_ollama=use_ollama)
+        result = analyze_screenshot(
+            img_path, account, use_ollama=use_ollama, use_haiku_prefilter=use_haiku_prefilter
+        )
 
         if result is None:
             continue
@@ -339,6 +422,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run vision extraction on a scan directory")
     parser.add_argument("scan_dir", help="Path to scan directory (output of story_scraper)")
     parser.add_argument("--use-ollama", action="store_true", help="Enable Ollama pre-filter")
+    parser.add_argument("--skip-prefilter", action="store_true",
+                         help="Disable the Haiku relevance pre-filter (send everything to Sonnet)")
     args = parser.parse_args()
 
     scan_dir = Path(args.scan_dir)
@@ -346,5 +431,7 @@ if __name__ == "__main__":
         print(f"✗ Directory not found: {scan_dir}")
         sys.exit(1)
 
-    rides = analyze_scan_directory(scan_dir, use_ollama=args.use_ollama)
+    rides = analyze_scan_directory(
+        scan_dir, use_ollama=args.use_ollama, use_haiku_prefilter=not args.skip_prefilter
+    )
     print(json.dumps(rides, indent=2, ensure_ascii=False))

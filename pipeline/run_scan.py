@@ -12,6 +12,7 @@ Runs all five phases in sequence without any Claude chat context:
 Usage:
     python -m pipeline.run_scan                     # full scan
     python -m pipeline.run_scan --use-ollama        # with Ollama pre-filter
+    python -m pipeline.run_scan --skip-prefilter    # disable the Haiku pre-filter
     python -m pipeline.run_scan --dry-run           # validate only, no writes
     python -m pipeline.run_scan --visible           # show browser window
     python -m pipeline.run_scan --skip-scrape data/screenshots/2026-03-27_1130
@@ -77,6 +78,10 @@ def main():
         help="Enable Ollama pre-filter to reduce Claude API calls by ~65%%"
     )
     parser.add_argument(
+        "--skip-prefilter", action="store_true",
+        help="Disable the Haiku relevance pre-filter (send every slide straight to Sonnet)"
+    )
+    parser.add_argument(
         "--dry-run", action="store_true",
         help="Validate and extract without writing to DB or Airtable"
     )
@@ -119,7 +124,9 @@ def main():
     _banner("Phase 2 · Vision Extraction (Claude API)")
 
     from pipeline.vision_client import analyze_scan_directory
-    ride_candidates = analyze_scan_directory(scan_dir, use_ollama=args.use_ollama)
+    ride_candidates = analyze_scan_directory(
+        scan_dir, use_ollama=args.use_ollama, use_haiku_prefilter=not args.skip_prefilter
+    )
 
     # ── Screenshot cleanup: keep only ride-post images ───────────────────────
     if not args.dry_run:
