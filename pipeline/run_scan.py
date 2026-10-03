@@ -112,8 +112,11 @@ def main():
         return
 
     # Write batch file (preserves raw extractions for debugging)
-    batch_path = BASE_DIR / "data" / "scan_batch_latest.json"
+    batch_path = Path(os.environ.get(
+        "RIDETRACKER_SCAN_BATCH_PATH", BASE_DIR / "data" / "scan_batch_latest.json"
+    ))
     if not args.dry_run:
+        batch_path.parent.mkdir(parents=True, exist_ok=True)
         with open(batch_path, "w", encoding="utf-8") as f:
             json.dump(ride_candidates, f, indent=2, ensure_ascii=False)
         print(f"\nWrote {len(ride_candidates)} candidates → {batch_path.name}")

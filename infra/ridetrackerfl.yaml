@@ -221,7 +221,7 @@ Resources:
   TaskSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Scraper task — outbound only, nothing listens.
+      GroupDescription: Scraper task - outbound only, nothing listens.
       VpcId: !Ref VpcId
       SecurityGroupEgress:
         - IpProtocol: -1
