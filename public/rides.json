@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T18:31:58.765952+00:00",
+  "generated_at": "2026-10-09T22:30:44.317605+00:00",
   "rides": {
     "records": [
       {
@@ -179,6 +179,29 @@
           "Address Note": "Origamy Gelato Weston - meet in parking lot",
           "Organizer": "Team Recovery Weston",
           "Notes": "Added manually - Team Recovery Weston. Bio says \"LUNES Y MIERCOLES 30 millas\" (Monday & Wednesday 30 miles). Spanish-speaking group."
+        }
+      },
+      {
+        "id": "recEiv3zdpNe6FF88",
+        "createdTime": "2026-10-08T20:33:55.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "6:00 AM",
+          "Wind Speed": 4.2,
+          "Rain Probability": 0.09,
+          "Location": "Alex's Bicycle Pro Shop",
+          "Featured": true,
+          "Weather Summary": "Dry (9% rain), light winds 4 mph",
+          "Pace": "22–25 mph",
+          "Distance": "67",
+          "Ride Name": "Collective Thirteen Ride Day — Alex's Bicycle Pro Shop × ASSOS",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-10",
+          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "Organizer": "Alex's Bicycle Pro Shop",
+          "Notes": "Collaboration between Alex's Bicycle Pro Shop and ASSOS. Meet up 5:45 AM, roll out 6:00 AM. 67 miles at 22-25 mph. REGISTRATION REQUIRED — link in @alexbicycles Instagram bio. Packet pickup Friday, October 9th, 4-6 PM at the shop. Raffles, food and drinks after the ride. Tagline: Better together."
         }
       },
       {
@@ -418,12 +441,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 1.6,
-          "Rain Probability": 0.04,
+          "Wind Speed": 4.2,
+          "Rain Probability": 0.09,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-10-01T13:45:06.000Z",
-          "Weather Summary": "Dry (4% rain), winds 2 mph",
+          "Weather Summary": "Dry (9% rain), light winds 4 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
