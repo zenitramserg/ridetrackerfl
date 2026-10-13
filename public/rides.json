@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T18:30:01.416550+00:00",
+  "generated_at": "2026-10-13T18:35:24.377870+00:00",
   "rides": {
     "records": [
       {
@@ -223,6 +223,26 @@
           "Ride Date": "2026-06-11",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        }
+      },
+      {
+        "id": "recLwXQwGIdP5YCzR",
+        "createdTime": "2026-10-13T18:31:59.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "5:30 AM",
+          "Location": "Alex Bicycle Pro Shop",
+          "Featured": true,
+          "Pace": "22-24 mph",
+          "Distance": "60",
+          "Ride Name": "OMG Girls 5th Edition",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-07",
+          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "Organizer": "OMG Cycling",
+          "Notes": "5th edition of the OMG Girls ride. PAID EVENT — $80 + fees, REGISTRATION REQUIRED via signup link (in @omg_cycling bio). Includes jersey and t-shirt post ride, nutrition, food and raffles. Tagline: Ride together. Shine together. Sponsors include Alex Bicycle Pro Shop, YBEAUTY, JAM Sports Wear. Source: OMG Cycling Instagram story, Sept 23 2026 scan."
         }
       },
       {
