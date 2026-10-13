@@ -16,10 +16,12 @@ Cron (every 15 min):
 """
 
 import argparse
+import base64
 import json
 import os
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 import urllib.parse
 from datetime import datetime, timezone
@@ -30,6 +32,7 @@ from pathlib import Path
 BASE_ID      = "appp3CTtWpqVcTn6e"
 RIDES_TABLE  = "tbl7xURgDo5wU4z5t"
 ORGS_TABLE   = "tblYXWvRSgqWkvaVE"
+GITHUB_REPO  = "zenitramserg/ridetrackerfl"
 
 # Fields to export for rides — matches what index.html requests
 RIDE_FIELDS = [
@@ -475,11 +478,95 @@ def write_json(payload: dict) -> Path:
 
 # ── Git push ───────────────────────────────────────────────────────────────────
 
+def _github_api_push_file(repo_path: str, local_path: Path, token: str, commit_message: str) -> bool:
+    """
+    Create or update a single file in the GitHub repo via the Contents API.
+
+    Returns True if a commit was made, False if the file content is
+    already identical (no-op, not an error).
+    """
+    api_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{repo_path}"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept":        "application/vnd.github+json",
+        "User-Agent":    "RideTrackerFL/2.0",
+    }
+
+    new_content = local_path.read_bytes()
+    new_b64     = base64.b64encode(new_content).decode("ascii")
+
+    # Look up the file's current sha — required by the API to update an
+    # existing file, and doubles as our "did anything change" check.
+    sha = None
+    req = urllib.request.Request(f"{api_url}?ref=main", headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            current = json.loads(resp.read().decode("utf-8"))
+        sha = current.get("sha")
+        if current.get("content", "").replace("\n", "") == new_b64:
+            return False  # identical — nothing to push
+    except urllib.error.HTTPError as e:
+        if e.code != 404:  # 404 = file doesn't exist yet, which is fine
+            raise
+
+    body = json.dumps({
+        "message": commit_message,
+        "content": new_b64,
+        "branch":  "main",
+        **({"sha": sha} if sha else {}),
+    }).encode("utf-8")
+
+    req = urllib.request.Request(
+        api_url, data=body, method="PUT",
+        headers={**headers, "Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        resp.read()
+    return True
+
+
+def _git_push_via_api(repo_root: Path) -> bool:
+    """
+    Fallback for environments with no local git working copy (e.g. the
+    ECS container, which deliberately excludes .git to keep the image
+    small). Pushes public/rides.json straight to GitHub via the REST API
+    instead of shelling out to git — same end result (a commit on main
+    that Netlify's connected auto-deploy picks up), no local repo needed.
+
+    Organizer avatar syncing (public/organizers/) is NOT handled here —
+    those change rarely and this keeps the fix scoped to the actual pain
+    point (ride data not reaching the live site). Still handled normally
+    by the laptop/local git path.
+    """
+    token = os.environ.get("GITHUB_TOKEN")
+    if not token:
+        print("[sync] ⚠ No local .git and GITHUB_TOKEN not set — cannot push rides.json.")
+        return False
+
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M")
+    try:
+        pushed = _github_api_push_file(
+            "public/rides.json", repo_root / "public" / "rides.json",
+            token, f"chore: sync rides.json [{ts}]",
+        )
+        if pushed:
+            print(f"[sync] Pushed to GitHub via API at {ts}.")
+        else:
+            print("[sync] No changes detected — skipping GitHub push.")
+        return pushed
+    except Exception as e:
+        print(f"[sync] ⚠ GitHub API push failed: {e}")
+        return False
+
+
 def git_push(repo_root: Path) -> bool:
     """
     Stage rides.json, commit if changed, push.
     Returns True if a push was made, False if nothing changed.
     """
+    if not (repo_root / ".git").exists():
+        return _git_push_via_api(repo_root)
+
     # Clear any stale git lock files left by interrupted processes on mounted filesystems
     for lock_file in ["index.lock", "HEAD.lock", "COMMIT_EDITMSG.lock"]:
         lock_path = repo_root / ".git" / lock_file
