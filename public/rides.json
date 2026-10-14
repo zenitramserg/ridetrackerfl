@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T17:54:23.863043+00:00",
+  "generated_at": "2026-10-14T19:30:04.709096+00:00",
   "rides": {
     "records": [
       {
@@ -286,6 +286,29 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
+        }
+      },
+      {
+        "id": "recROiDAeAJCe2T2W",
+        "createdTime": "2026-10-14T19:22:26.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "6:30 PM",
+          "Wind Speed": 8.2,
+          "Rain Probability": 0.1,
+          "Location": "Weston Town Center",
+          "Featured": true,
+          "Weather Summary": "Dry (10% rain), light winds 8 mph",
+          "Pace": "22-24 mph",
+          "Distance": "30",
+          "Ride Name": "The GRIT Ride N° 001",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-15",
+          "Address Note": "1797 Bell Tower LN, Weston, FL",
+          "Organizer": "GRIT. Bike Lab",
+          "Notes": "Inaugural GRIT Bike Lab ride (N° 001). 30 miles at 22-24 mph. Recovery flow — we rotate. SIGN UP: gritbikelab.com/ride. Partners featured on flyer: Jayco, MAAP, Alula. Source: @gritbikelab Instagram story, Oct 14 2026. Note: \"N° 001\" suggests the start of a series — check whether it becomes a recurring Thursday ride."
         }
       },
       {
