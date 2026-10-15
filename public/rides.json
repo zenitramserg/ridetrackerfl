@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T17:00:04.026286+00:00",
+  "generated_at": "2026-10-15T17:15:09.120669+00:00",
   "rides": {
     "records": [
       {
@@ -268,6 +268,22 @@
         }
       },
       {
+        "id": "recPCHcIlSfCUCWeN",
+        "createdTime": "2026-10-15T17:04:06.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "6:00 AM",
+          "Location": "Specialized Miami — Coconut Grove",
+          "Ride Name": "ONE Ride Series — Specialized Miami Shop Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-24",
+          "Organizer": "Specialized Miami",
+          "Notes": "Shop ride, part of the ONE Ride Series. Presented with Velocio (@velocioapparel), a cycling apparel brand - sponsor, not a co-organizer. Route and details at the link in the @miamispecialized bio. No distance or pace published on the post. Note: starts in Coconut Grove, Miami - not Weston. Source: @miamispecialized Instagram post, Oct 2026."
+        }
+      },
+      {
         "id": "recROiDAeAJCe2T2W",
         "createdTime": "2026-10-14T19:22:26.000Z",
         "fields": {
@@ -349,7 +365,7 @@
           "Ride Date": "2026-12-05",
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "Alex's Bicycle Pro Shop",
-          "Notes": "Year-end community ride. Two options: 100 miles (Century) or 50 miles (Half Century). Chance to WIN A 2028 BMC BICYCLE. Raffles and giveaways, on-course support. Sponsors: Oakley, Spaiki, Shokz, Just Recovery. Tagline: Enjoy an unforgettable ride with the South Florida cycling community. START TIME NOT ON FLYER - confirm with shop before promoting. Registration details not stated on flyer either - check whether signup is required. Source: Alex's Bicycle Pro Shop flyer, Oct 2026."
+          "Notes": "Year-end community ride. START AND FINISH both at Alex's Bicycle Pro Shop (loop). Two options: 100 miles (Century) or 50 miles (Half Century). Chance to WIN A 2028 BMC BICYCLE. Raffles and giveaways, on-course support. Sponsors: Oakley, Spaiki, Shokz, Just Recovery. Tagline: Enjoy an unforgettable ride with the South Florida cycling community. START TIME NOT YET ANNOUNCED - confirm with shop before promoting. Registration requirements also not yet stated. Source: Alex's Bicycle Pro Shop flyer, Oct 2026."
         }
       },
       {
