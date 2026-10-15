@@ -207,7 +207,6 @@ def main():
     if not args.dry_run:
         try:
             from pipeline.sync_to_site import generate_rides_json, write_json, git_push
-            import os
             from pathlib import Path as _Path
 
             token = os.environ.get("AIRTABLE_API_KEY")
