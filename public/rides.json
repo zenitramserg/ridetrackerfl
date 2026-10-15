@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T09:00:16.910402+00:00",
+  "generated_at": "2026-10-15T17:00:04.026286+00:00",
   "rides": {
     "records": [
       {
@@ -87,27 +87,6 @@
           "Ride Date": "2026-06-21",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
-        }
-      },
-      {
-        "id": "rec9tOGet7nqICQib",
-        "createdTime": "2026-05-29T22:07:39.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 2.7,
-          "Rain Probability": 0.06,
-          "Location": "Griffin & Flamingo",
-          "Weather Summary": "Dry (6% rain), light winds 3 mph",
-          "Pace": "20-22 mph (B) / 23+ mph (A)",
-          "Distance": "52",
-          "Ride Name": "Team Galiz Saturday",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-07-11",
-          "Organizer": "Team Galiz",
-          "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
         }
       },
       {
@@ -295,11 +274,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:30 PM",
-          "Wind Speed": 8.2,
-          "Rain Probability": 0.1,
+          "Wind Speed": 7.4,
+          "Rain Probability": 0.05,
           "Location": "Weston Town Center",
           "Featured": true,
-          "Weather Summary": "Dry (10% rain), light winds 8 mph",
+          "Weather Summary": "Dry (5% rain), light winds 7 mph",
           "Pace": "22-24 mph",
           "Distance": "30",
           "Ride Name": "The GRIT Ride N° 001",
@@ -353,6 +332,24 @@
           "Ride Date": "2026-09-22",
           "Organizer": "OMG Cycling",
           "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
+        }
+      },
+      {
+        "id": "recWrmbSvuG0ERUs0",
+        "createdTime": "2026-10-15T16:55:02.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Location": "Alex's Bicycle Pro Shop",
+          "Featured": true,
+          "Distance": "100 / 50",
+          "Ride Name": "One Last Ride 2026 — Alex's Bicycle Pro Shop",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-12-05",
+          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "Organizer": "Alex's Bicycle Pro Shop",
+          "Notes": "Year-end community ride. Two options: 100 miles (Century) or 50 miles (Half Century). Chance to WIN A 2028 BMC BICYCLE. Raffles and giveaways, on-course support. Sponsors: Oakley, Spaiki, Shokz, Just Recovery. Tagline: Enjoy an unforgettable ride with the South Florida cycling community. START TIME NOT ON FLYER - confirm with shop before promoting. Registration details not stated on flyer either - check whether signup is required. Source: Alex's Bicycle Pro Shop flyer, Oct 2026."
         }
       },
       {
@@ -434,6 +431,28 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        }
+      },
+      {
+        "id": "reclp2qOtXLIm4cAU",
+        "createdTime": "2026-10-15T16:53:28.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 3.7,
+          "Rain Probability": 0.15,
+          "Location": "Griffin & Flamingo",
+          "Featured": true,
+          "Weather Summary": "Dry (15% rain), light winds 4 mph",
+          "Pace": "Controlled pace",
+          "Distance": "80 / 60",
+          "Ride Name": "Team Galiz 20 Years — Let's Ride to Miccosukee",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-17",
+          "Organizer": "Team Galiz",
+          "Notes": "Team Galiz 20th anniversary ride (badge: 20 Years Galiz, over 120,000 miles). Two options: 80 miles to south of Miccosukee OR 60 miles south to Miccosukee. Controlled pace, ONE STOP. SAG vehicle. Departs from Griffin & Flamingo. Source: Team Galiz flyer, Oct 2026. Note: flyer prints 'Griffing and Flamingo' - using 'Griffin & Flamingo' to match their other records; confirm spelling with organizer."
         }
       },
       {
