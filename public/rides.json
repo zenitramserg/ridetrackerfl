@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T21:08:42.570595+00:00",
+  "generated_at": "2026-10-16T01:30:24.555094+00:00",
   "rides": {
     "records": [
       {
@@ -290,11 +290,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:30 PM",
-          "Wind Speed": 7.7,
-          "Rain Probability": 0.07,
+          "Wind Speed": 8.2,
+          "Rain Probability": 0.05,
           "Location": "Weston Town Center",
           "Featured": true,
-          "Weather Summary": "Dry (7% rain), light winds 8 mph",
+          "Weather Summary": "Dry (5% rain), light winds 8 mph",
           "Pace": "22-24 mph",
           "Distance": "30",
           "Ride Name": "The GRIT Ride N° 001",
@@ -457,10 +457,10 @@
           "Display on Site": true,
           "Time": "7:00 AM",
           "Wind Speed": 1.5,
-          "Rain Probability": 0.03,
+          "Rain Probability": 0.06,
           "Location": "Griffin & Flamingo",
           "Featured": true,
-          "Weather Summary": "Dry (3% rain), light winds 2 mph",
+          "Weather Summary": "Dry (6% rain), light winds 2 mph",
           "Pace": "Controlled pace",
           "Distance": "80 / 60",
           "Ride Name": "Team Galiz 20 Years — Let's Ride to Miccosukee",
