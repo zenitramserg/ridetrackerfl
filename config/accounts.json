@@ -12,14 +12,14 @@
       "display_name": "Alex's Bicycle Pro Shop",
       "type": "shop",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "ride.84",
       "display_name": "Ride 84",
       "type": "group",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "revoltcyclery",
@@ -34,28 +34,28 @@
       "display_name": "FP Bike Shop",
       "type": "shop",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "unicosta_cycling",
       "display_name": "Unicosta Cycling",
       "type": "group",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "mbo_tencycling",
       "display_name": "MBO Ten Cycling",
       "type": "group",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "pd.cyclingclub",
       "display_name": "PD Cycling Club",
       "type": "group",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "letourdeweston",
@@ -70,21 +70,21 @@
       "display_name": "Weston Flyers",
       "type": "group",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "teamrecoveryweston",
       "display_name": "Team Recovery Weston",
       "type": "group",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "alligators.cycling",
       "display_name": "Alligators Cycling",
       "type": "shop",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     },
     {
       "handle": "pullclub.cc",
@@ -99,7 +99,7 @@
       "display_name": "Wild Hogs Cycling",
       "type": "group",
       "active": true,
-      "max_slides": 24
+      "max_slides": 120
     }
   ]
 }
