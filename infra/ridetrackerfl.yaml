@@ -373,6 +373,11 @@ Resources:
               ValueFrom: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/airtable-api-key"
             - Name: ANTHROPIC_API_KEY
               ValueFrom: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/anthropic-api-key"
+            # Fine-grained PAT, Contents:Read-and-write on this repo only.
+            # Used by sync_to_site.py's GitHub API fallback — the image has
+            # no .git directory, so a plain `git push` can't work here.
+            - Name: GITHUB_TOKEN
+              ValueFrom: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/github-token"
       Tags:
         - { Key: Project, Value: !Ref ProjectName }
 
@@ -428,5 +433,5 @@ Outputs:
     Value: !Ref TaskDefinition
 
   SecretsHint:
-    Description: The three SSM parameters the task expects (create these by hand).
-    Value: !Sub "/${ProjectName}/instagram-cookies, /${ProjectName}/airtable-api-key, /${ProjectName}/anthropic-api-key"
+    Description: The four SSM parameters the task expects (create these by hand).
+    Value: !Sub "/${ProjectName}/instagram-cookies, /${ProjectName}/airtable-api-key, /${ProjectName}/anthropic-api-key, /${ProjectName}/github-token"
