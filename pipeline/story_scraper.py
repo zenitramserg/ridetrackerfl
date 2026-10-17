@@ -20,6 +20,7 @@ Usage:
 """
 
 import asyncio
+import hashlib
 import json
 import os
 import sys
@@ -41,10 +42,12 @@ SCREENSHOTS_BASE = Path(os.environ.get("RIDETRACKER_SCREENSHOTS_DIR",  BASE_DIR 
 # exits 0, silently serving stale data until someone notices.
 _AUTH_FAIL_MARKERS = ("/accounts/login", "/challenge", "/checkpoint")
 
-# ── Story viewer layout (1280 × 900 viewport) ─────────────────────────────────
-# Instagram's story panel sits roughly centered. These coordinates advance slides.
-STORY_ADVANCE_X = 950   # right portion of story panel → next slide
-STORY_ADVANCE_Y = 350
+# ── Story viewer ──────────────────────────────────────────────────────────────
+# Slides are advanced with the keyboard rather than a click at fixed coordinates.
+# The panel's width depends on what the slide holds and on how the browser renders
+# it, so a point that lands inside the panel on the laptop lands on the backdrop in
+# the container, where clicking does nothing at all.
+STALL_RECOVERY_ATTEMPTS = 2   # advance retries before giving up on a frozen viewer
 MAX_SLIDES_PER_ACCOUNT = 24   # safety cap; most accounts have 1-5 active stories
 PAGE_LOAD_MS   = 3500         # wait after initial navigation (story must fully load)
 SLIDE_LOAD_MS  = 2500         # wait between slides (video stories need a moment; extra 500ms for animated flyers)
@@ -70,6 +73,33 @@ def _load_cookies() -> list[dict]:
         )
     with open(COOKIES_PATH, encoding="utf-8") as f:
         return json.load(f)
+
+
+async def _advance_slide(page, recovery: bool = False) -> bool:
+    """
+    Move the story viewer to the next slide.
+
+    Returns False only when the viewer could not be driven at all; a True return
+    says the attempt was made, not that the slide actually moved — the caller
+    decides that by comparing frames.
+    """
+    try:
+        await page.keyboard.press("ArrowRight")
+        if recovery:
+            # A frozen panel may have taken focus away from the viewer, leaving the
+            # keyboard shortcut with nothing to act on. The viewer's own Next control
+            # does not depend on focus, so it is worth a try before giving up.
+            try:
+                next_btn = page.get_by_role("button", name="Next")
+                if await next_btn.is_visible(timeout=1000):
+                    await next_btn.click()
+            except Exception:
+                pass
+        await page.wait_for_timeout(SLIDE_LOAD_MS)
+        return True
+    except Exception as e:
+        print(f"[scraper]   ✗ Advance failed: {e}")
+        return False
 
 
 def _story_id_from_url(url: str) -> str:
@@ -174,8 +204,11 @@ async def scrape_stories(
             except Exception:
                 pass  # No confirmation screen — already on the story, continue
 
-            # ── Click through slides ──────────────────────────────────────────
-            slide_idx = 0
+            # ── Step through slides ───────────────────────────────────────────
+            slide_idx    = 0     # slides actually captured
+            last_digest  = None  # fingerprint of the previous capture
+            stall_tries  = 0     # advances that produced no new frame
+
             while slide_idx < max_slides:
 
                 # Bail if Instagram has moved us off this account's stories
@@ -183,36 +216,67 @@ async def scrape_stories(
                     print(f"[scraper]   → Story ended after {slide_idx} slides")
                     break
 
-                filename = f"{handle}_{slide_idx:02d}.png"
-                out_path = scan_dir / filename
-
                 try:
-                    await page.screenshot(path=str(out_path), full_page=False)
-                    story_id = _story_id_from_url(page.url)
-                    print(f"[scraper]   ✓ slide {slide_idx:02d} saved  ({filename})")
-
-                    metadata["screenshots"].append({
-                        "path":        str(out_path),
-                        "filename":    filename,
-                        "account":     handle,
-                        "slide_index": slide_idx,
-                        "story_id":    story_id,
-                        "url":         page.url,
-                        "timestamp":   datetime.now().isoformat(timespec="seconds"),
-                    })
+                    shot = await page.screenshot(full_page=False)
                 except Exception as e:
                     print(f"[scraper]   ✗ Screenshot error: {e}")
                     break
 
+                digest = hashlib.sha256(shot).hexdigest()
+
+                # An identical frame means the viewer never moved. A story whose video
+                # this browser cannot play freezes the panel on an error card: the
+                # advance lands, nothing changes, and the URL keeps the handle, so the
+                # loop above never exits. Left alone it re-shoots that one frame up to
+                # max_slides — a vision call per copy, every later slide unseen, and
+                # nothing in the log to say the account was never actually read.
+                if digest == last_digest:
+                    if stall_tries < STALL_RECOVERY_ATTEMPTS:
+                        stall_tries += 1
+                        print(f"[scraper]   ⟳ Slide {slide_idx:02d} did not advance — "
+                              f"retry {stall_tries}/{STALL_RECOVERY_ATTEMPTS}")
+                        if not await _advance_slide(page, recovery=True):
+                            break
+                        continue
+                    print(f"[scraper]   ✗ Stuck at slide {slide_idx:02d} after "
+                          f"{stall_tries} retries — abandoning @{handle} with "
+                          f"{slide_idx} slide(s) captured. A story this browser "
+                          f"cannot render (usually video) is the usual cause.")
+                    break
+
+                last_digest = digest
+                stall_tries = 0
+
+                filename = f"{handle}_{slide_idx:02d}.png"
+                out_path = scan_dir / filename
+
+                try:
+                    out_path.write_bytes(shot)
+                except Exception as e:
+                    print(f"[scraper]   ✗ Could not write {filename}: {e}")
+                    break
+
+                story_id = _story_id_from_url(page.url)
+                print(f"[scraper]   ✓ slide {slide_idx:02d} saved  ({filename})")
+                metadata["screenshots"].append({
+                    "path":        str(out_path),
+                    "filename":    filename,
+                    "account":     handle,
+                    "slide_index": slide_idx,
+                    "story_id":    story_id,
+                    "url":         page.url,
+                    "timestamp":   datetime.now().isoformat(timespec="seconds"),
+                })
+
                 slide_idx += 1
 
-                # Advance to next slide by clicking right portion of story panel
-                try:
-                    await page.mouse.click(STORY_ADVANCE_X, STORY_ADVANCE_Y)
-                    await page.wait_for_timeout(SLIDE_LOAD_MS)
-                except Exception as e:
-                    print(f"[scraper]   ✗ Advance click failed: {e}")
+                if not await _advance_slide(page):
                     break
+            else:
+                # Ran out of budget rather than out of stories. Saying so turns a
+                # silently truncated account into something visible in the log.
+                print(f"[scraper]   ⚠ Reached the {max_slides}-slide cap for "
+                      f"@{handle} — it may have more stories than were captured.")
 
             metadata["accounts_checked"].append({
                 "handle":          handle,
