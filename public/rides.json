@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T13:53:27.328617+00:00",
+  "generated_at": "2026-10-17T14:00:49.846532+00:00",
   "rides": {
     "records": [
       {
@@ -274,16 +274,16 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
+          "Wind Speed": 9.8,
+          "Rain Probability": 0.04,
           "Location": "Specialized Miami — Coconut Grove",
+          "Weather Summary": "Dry (4% rain), light winds 10 mph",
           "Ride Name": "ONE Ride Series — Specialized Miami Shop Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
           "Ride Date": "2026-10-24",
           "Organizer": "Specialized Miami",
-          "Notes": "Shop ride, part of the ONE Ride Series. Presented with Velocio (@velocioapparel), a cycling apparel brand - sponsor, not a co-organizer. Route and details at the link in the @miamispecialized bio. No distance or pace published on the post. Note: starts in Coconut Grove, Miami - not Weston. Source: @miamispecialized Instagram post, Oct 2026.",
-          "Weather Summary": "Dry (4% rain), light winds 10 mph",
-          "Rain Probability": 0.04,
-          "Wind Speed": 9.8
+          "Notes": "Shop ride, part of the ONE Ride Series. Presented with Velocio (@velocioapparel), a cycling apparel brand - sponsor, not a co-organizer. Route and details at the link in the @miamispecialized bio. No distance or pace published on the post. Note: starts in Coconut Grove, Miami - not Weston. Source: @miamispecialized Instagram post, Oct 2026."
         }
       },
       {
