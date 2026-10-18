@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T01:30:04.466682+00:00",
+  "generated_at": "2026-10-18T13:15:05.958141+00:00",
   "rides": {
     "records": [
       {
@@ -87,6 +87,27 @@
           "Ride Date": "2026-06-21",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
+        }
+      },
+      {
+        "id": "rec9tOGet7nqICQib",
+        "createdTime": "2026-05-29T22:07:39.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 2.7,
+          "Rain Probability": 0.06,
+          "Location": "Griffin & Flamingo",
+          "Weather Summary": "Dry (6% rain), light winds 3 mph",
+          "Pace": "20-22 mph (B) / 23+ mph (A)",
+          "Distance": "52",
+          "Ride Name": "Team Galiz Saturday",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-07-11",
+          "Organizer": "Team Galiz",
+          "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
         }
       },
       {
@@ -427,28 +448,6 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
-        }
-      },
-      {
-        "id": "reclp2qOtXLIm4cAU",
-        "createdTime": "2026-10-15T16:53:28.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 1.5,
-          "Rain Probability": 0.06,
-          "Location": "Griffin & Flamingo",
-          "Featured": true,
-          "Weather Summary": "Dry (6% rain), light winds 2 mph",
-          "Pace": "Controlled pace",
-          "Distance": "80 / 60",
-          "Ride Name": "Team Galiz 20 Years — Let's Ride to Miccosukee",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-17",
-          "Organizer": "Team Galiz",
-          "Notes": "Team Galiz 20th anniversary ride (badge: 20 Years Galiz, over 120,000 miles). Two options: 80 miles to south of Miccosukee OR 60 miles south to Miccosukee. Controlled pace, ONE STOP. SAG vehicle. Departs from Griffin & Flamingo. Source: Team Galiz flyer, Oct 2026. Note: flyer prints 'Griffing and Flamingo' - using 'Griffin & Flamingo' to match their other records; confirm spelling with organizer."
         }
       },
       {
