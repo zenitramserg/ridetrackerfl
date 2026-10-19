@@ -32,6 +32,7 @@ ENV RIDETRACKER_SCREENSHOTS_DIR=/tmp/screenshots \
     RIDETRACKER_COOKIES_PATH=/tmp/instagram_cookies.json \
     RIDETRACKER_DB_PATH=/data/rides_database.json \
     RIDETRACKER_SCAN_BATCH_PATH=/tmp/scan_batch_latest.json \
+    RIDETRACKER_CSV_PATH=/tmp/master_rides.csv \
     PYTHONUNBUFFERED=1
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

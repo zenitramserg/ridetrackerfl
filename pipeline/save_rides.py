@@ -12,6 +12,7 @@ organizer inference, classification, and saves to rides_database.json + master_r
 import argparse
 import csv
 import json
+import os
 import sys
 import uuid
 from datetime import datetime, timedelta
@@ -26,7 +27,12 @@ from pipeline.deduplicator import deduplicate
 from pipeline.db import load_db, save_db
 
 BASE_DIR = Path(__file__).parent.parent
-CSV_PATH = BASE_DIR / "data" / "master_rides.csv"
+
+# Env-overridable like the other pipeline paths: the container has no /app/data
+# (the image copies only pipeline/ and config/), so a hardcoded path here crashes
+# the run *after* the database has already been saved — the work is done, the
+# report never arrives, and the exit code says total failure.
+CSV_PATH = Path(os.environ.get("RIDETRACKER_CSV_PATH", BASE_DIR / "data" / "master_rides.csv"))
 
 CSV_FIELDS = [
     "ride_id",
@@ -104,6 +110,7 @@ def _enrich(ride: dict, scan_timestamp: str, scan_date: datetime) -> dict:
 
 def _write_csv(rides: list):
     """Regenerate master_rides.csv from the full database."""
+    CSV_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=CSV_FIELDS, extrasaction="ignore")
         writer.writeheader()
