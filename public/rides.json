@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T14:11:21.076665+00:00",
+  "generated_at": "2026-10-20T14:12:45.633139+00:00",
   "rides": {
     "records": [
       {
@@ -295,10 +295,10 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 8.9,
-          "Rain Probability": 0.26,
+          "Wind Speed": 12.8,
+          "Rain Probability": 0.2,
           "Location": "Specialized Miami — Coconut Grove",
-          "Weather Summary": "Dry (26% rain), light winds 9 mph",
+          "Weather Summary": "Dry (20% rain), moderate winds 13 mph",
           "Ride Name": "ONE Ride Series — Specialized Miami Shop Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
@@ -326,6 +326,23 @@
           "Ride Date": "2026-06-09",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        }
+      },
+      {
+        "id": "recVO8hAVUO5vGUM7",
+        "createdTime": "2026-10-20T14:12:31.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:30 PM",
+          "Location": "GRIT Bike Lab",
+          "Last Checked At": "2026-10-20T14:12:26.000Z",
+          "Ride Name": "Team Recovery Weston - New Starting Location Ride",
+          "Day of Week": "Monday",
+          "Status": "planned",
+          "Ride Date": "2026-10-19",
+          "Organizer": "OMG Cycling",
+          "Notes": "Address: 1797 Bell Tower Ln, Weston, FL 33326 (Weston Town Center)\nDistance: ~30 miles\n---\nA promotional flyer announcing a new starting location for Team Recovery Weston group cycling rides, set against a background photo of cyclists riding at sunset, with the GRIT Bike Lab storefront shown and a map inset of the Weston Town Center area."
         }
       },
       {
