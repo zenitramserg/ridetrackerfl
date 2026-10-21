@@ -22,7 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pipeline.organizer import infer_organizer
-from pipeline.classifier import is_valid_group_ride, classify_ride, is_promo_post
+from pipeline.classifier import rejection_reason, classify_ride
 from pipeline.deduplicator import deduplicate
 from pipeline.db import load_db, save_db
 
@@ -138,16 +138,26 @@ def process_batch(batch_path: Path, dry_run: bool = False) -> dict:
 
     # Validate and enrich incoming records
     valid_rides = []
-    rejected = 0
+    rejections = []
+    skipped_not_ride = 0
     for ride in raw_batch:
         if not ride.get("is_ride_post"):
+            skipped_not_ride += 1
             continue  # Vision flagged as non-ride
-        if is_promo_post(ride.get("raw_visible_text", "")):
-            rejected += 1
-            continue  # Shop promo — excluded per project rules
-        if not is_valid_group_ride(ride):
-            rejected += 1
+
+        reason = rejection_reason(ride)
+        if reason:
+            # Named and explained. The source story expires within a day, so a
+            # rejection that is only counted is a rejection nobody can review.
+            label = ride.get("title") or "(untitled)"
+            where = ride.get("source_account") or "?"
+            shot = Path(ride.get("screenshot_path") or "").name or "?"
+            conf = ride.get("confidence")
+            print(f"[save_rides] ✗ Rejected: {label!r} (@{where}, {shot}, conf={conf}) — {reason}")
+            rejections.append({"title": label, "source_account": where,
+                               "screenshot": shot, "confidence": conf, "reason": reason})
             continue
+
         valid_rides.append(_enrich(ride, scan_timestamp, scan_date))
 
     # Deduplication + merge
@@ -158,7 +168,9 @@ def process_batch(batch_path: Path, dry_run: bool = False) -> dict:
         "batch_file": str(batch_path),
         "raw_extracted": len(raw_batch),
         "valid_rides": len(valid_rides),
-        "rejected": rejected,
+        "rejected": len(rejections),
+        "skipped_not_ride": skipped_not_ride,
+        "rejections": rejections,
         "added_to_db": added,
         "updated_in_db": updated,
         "total_in_db": len(merged_db),

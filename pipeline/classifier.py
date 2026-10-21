@@ -72,10 +72,20 @@ def classify_ride(ride: dict) -> str:
     return "review"
 
 
-def is_valid_group_ride(ride: dict) -> bool:
+# Below this, the vision extraction is not trusted enough to publish.
+CONFIDENCE_FLOOR = 0.5
+
+
+def rejection_reason(ride: dict) -> str | None:
     """
-    Gate check: returns True only for genuine group ride flyers.
-    Rejects: promos, performance stats, noise, and incomplete records.
+    Return a short, printable reason this ride fails the gate, or None if it
+    passes. is_valid_group_ride() is this function read as a boolean.
+
+    It exists because the gate used to reject silently: a run would report
+    "Valid rides: 1, Rejected: 3" with nothing to say which three or why, and
+    the stories they came from expire within 24 hours, so there was no way to
+    go back and look. Three high-confidence candidates were lost that way on
+    2026-10-18 before anyone could see what the gate disliked.
 
     Minimum required fields:
       - start_time   (when the ride leaves)
@@ -88,29 +98,44 @@ def is_valid_group_ride(ride: dict) -> bool:
     raw = ride.get("raw_visible_text", "") or ""
 
     if is_noise(raw):
-        return False
+        return "noise text"
     if is_performance_post(raw):
-        return False
+        return "performance post (ride stats, not an invitation)"
     if is_promo_post(raw):
-        return False
+        return "shop promo"
     if is_suppressed_title(ride.get("title", "")):
-        return False
+        return f"suppressed title: {ride.get('title', '')!r}"
 
     # Must pass the confidence threshold set during vision extraction.
     # Use `or 0` instead of default=0 — the vision model can return an
     # explicit `null` confidence, and default= only covers a missing key,
     # not a present-but-null value. float(None) would raise TypeError and
     # crash the whole batch (same bug class fixed in deduplicator.py).
-    if float(ride.get("confidence") or 0) < 0.5:
-        return False
+    confidence = float(ride.get("confidence") or 0)
+    if confidence < CONFIDENCE_FLOOR:
+        return f"confidence {confidence:.2f} below {CONFIDENCE_FLOOR:.2f}"
 
     # Treat the literal sentinel "empty string" (returned by the vision model
     # for missing fields) as falsy — same as None or "".
     def _present(val) -> bool:
         return bool(val) and str(val).strip().lower() != "empty string"
 
-    has_time       = _present(ride.get("start_time"))
-    has_location   = _present(ride.get("start_location"))
-    has_day_anchor = _present(ride.get("weekday")) or _present(ride.get("date"))
+    missing = []
+    if not _present(ride.get("start_time")):
+        missing.append(f"start_time={ride.get('start_time')!r}")
+    if not _present(ride.get("start_location")):
+        missing.append(f"start_location={ride.get('start_location')!r}")
+    if not (_present(ride.get("weekday")) or _present(ride.get("date"))):
+        missing.append(f"weekday={ride.get('weekday')!r} and date={ride.get('date')!r}")
+    if missing:
+        # The value is printed, not just the field name: "empty string" and a
+        # plausible-but-unusable value fail here for different reasons, and
+        # only the value tells you which.
+        return "missing required field(s) — " + "; ".join(missing)
 
-    return has_time and has_location and has_day_anchor
+    return None
+
+
+def is_valid_group_ride(ride: dict) -> bool:
+    """Gate check: True only for genuine, publishable group ride flyers."""
+    return rejection_reason(ride) is None

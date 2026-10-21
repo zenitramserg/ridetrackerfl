@@ -401,6 +401,8 @@ def _print_summary(summary: dict, scan_dir: Path):
     print(f"  Raw extracted:   {summary.get('raw_extracted', '—')}")
     print(f"  Valid rides:     {summary.get('valid_rides', '—')}")
     print(f"  Rejected:        {summary.get('rejected', '—')}")
+    for r in summary.get("rejections", []):
+        print(f"    · {r['title']} (@{r['source_account']}) — {r['reason']}")
     print(f"  Added to DB:     {summary.get('added_to_db', '—')}")
     print(f"  Updated in DB:   {summary.get('updated_in_db', '—')}")
     print(f"  Total in DB:     {summary.get('total_in_db', '—')}")
