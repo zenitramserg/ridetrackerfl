@@ -17,6 +17,7 @@ Cron (every 15 min):
 
 import argparse
 import base64
+import fcntl
 import json
 import os
 import subprocess
@@ -559,6 +560,63 @@ def _git_push_via_api(repo_root: Path) -> bool:
         return False
 
 
+# Paths this job owns. A local commit that touches anything else is real
+# work, not sync output, and must not be rewritten to clear a collision.
+SYNC_OWNED_PATHS = ("public/rides.json", "public/organizers/")
+
+
+def _reconcile_with_remote(repo_root: Path) -> bool:
+    """
+    Put the local branch back on top of origin/main before committing.
+
+    Two writers push this branch: this job on the laptop, and the Fargate
+    container after its daily scan. Nothing here ever pulled, so whoever
+    pushed second was rejected as non-fast-forward and stayed rejected —
+    one collision on 2026-10-19 wedged the laptop for two days and left the
+    site refreshing only once a day, when the container ran.
+
+    `reset --soft` moves HEAD to origin/main and leaves the index and working
+    tree alone, so the rides.json written moments ago survives and the stack
+    of superseded sync commits collapses into the one commit that follows.
+    Discarding commits is only safe while they hold nothing but sync output,
+    hence the guard.
+    """
+    try:
+        subprocess.run(["git", "fetch", "origin", "main"], cwd=repo_root,
+                       check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as e:
+        stderr = (e.stderr or "").strip() or "(no stderr)"
+        print(f"[sync] ⚠ Could not fetch origin — skipping push this run: {stderr}")
+        return False
+
+    def _count(rev_range: str) -> int:
+        out = subprocess.run(["git", "rev-list", "--count", rev_range],
+                             cwd=repo_root, check=True, capture_output=True, text=True)
+        return int(out.stdout.strip() or 0)
+
+    behind = _count("HEAD..origin/main")
+    if behind == 0:
+        return True
+
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", "origin/main...HEAD"],
+        cwd=repo_root, check=True, capture_output=True, text=True
+    ).stdout.split()
+    foreign = sorted({f for f in changed if not f.startswith(SYNC_OWNED_PATHS)})
+    if foreign:
+        print(f"[sync] ⚠ Behind origin/main by {behind} commit(s), and the local commits "
+              f"touch files this job does not own: {', '.join(foreign)}. "
+              f"Not reconciling automatically — merge or rebase by hand, then rerun.")
+        return False
+
+    ahead = _count("origin/main..HEAD")
+    subprocess.run(["git", "reset", "--soft", "origin/main"],
+                   cwd=repo_root, check=True, capture_output=True, text=True)
+    print(f"[sync] Reconciled with origin/main (was {ahead} ahead, {behind} behind) — "
+          f"dropped {ahead} superseded sync commit(s), kept the files just written.")
+    return True
+
+
 def git_push(repo_root: Path) -> bool:
     """
     Stage rides.json, commit if changed, push.
@@ -577,10 +635,14 @@ def git_push(repo_root: Path) -> bool:
             except OSError:
                 pass  # If we can't remove it, the commit will fail and report the real error
 
+    if not _reconcile_with_remote(repo_root):
+        return False
+
     try:
-        # Check if file actually changed
+        # Against HEAD, not the index: a soft reset in _reconcile_with_remote
+        # leaves the index holding the tree of a commit that no longer exists.
         result = subprocess.run(
-            ["git", "diff", "--quiet", "public/rides.json", "public/organizers/"],
+            ["git", "diff", "--quiet", "HEAD", "--", "public/rides.json", "public/organizers/"],
             cwd=repo_root, capture_output=True
         )
         if result.returncode == 0:
@@ -611,6 +673,28 @@ def git_push(repo_root: Path) -> bool:
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
+LOCK_PATH = Path(os.environ.get("RIDETRACKER_LOCK_PATH", "/tmp/ridetrackerfl-sync.lock"))
+
+
+def _acquire_single_run_lock():
+    """
+    Hold an exclusive lock for the length of the run, or return None.
+
+    Cron fires this every 15 minutes; a slow Airtable fetch or a stalled
+    avatar download can outlast that window, and two overlapping runs racing
+    on the same branch produced a ref-lock failure on 2026-10-18. macOS ships
+    no flock(1), so the lock lives here instead of in the crontab — which has
+    the side benefit of covering manual runs too.
+    """
+    handle = open(LOCK_PATH, "w")
+    try:
+        fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        handle.close()
+        return None
+    return handle
+
+
 def main():
     parser = argparse.ArgumentParser(description="Sync Airtable → public/rides.json")
     parser.add_argument("--dry-run", action="store_true",
@@ -618,6 +702,11 @@ def main():
     parser.add_argument("--no-push", action="store_true",
                         help="Write file but skip git push")
     args = parser.parse_args()
+
+    lock = _acquire_single_run_lock()  # released when the process exits
+    if lock is None:
+        print(f"[sync] Another sync is already running ({LOCK_PATH}) — exiting.")
+        return
 
     # Load API key from secrets.env or environment
     token = os.environ.get("AIRTABLE_API_KEY")

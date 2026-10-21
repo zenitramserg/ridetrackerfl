@@ -26,3 +26,4 @@ config/secrets.env
 ~$*
 .claude/settings.local.json
 config/*cookies*.json
+logs/
