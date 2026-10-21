@@ -87,14 +87,25 @@ INSTAGRAM_URLS = {
     "pullclub.cc":       "https://www.instagram.com/pullclub.cc/",
 }
 
+# Airtable rejects an upload whose base64 payload exceeds 5 MB.
+ATTACHMENT_MAX_B64_BYTES = 5 * 1024 * 1024
+
+
 def _upload_screenshot(api_key: str, record_id: str, screenshot_path: str) -> bool:
     """
     Upload a local screenshot file as an attachment to the Instagram Screenshot field.
 
-    Uses Airtable's upload attachment endpoint:
-        POST /v0/{baseId}/{tableId}/{recordId}/{fieldId}/uploadAttachment
+    Uses Airtable's upload attachment endpoint, which is NOT on the main API
+    host and takes no table ID — the record ID is enough to locate the row:
 
-    The file is base64-encoded and sent as JSON.
+        POST https://content.airtable.com/v0/{baseId}/{recordId}/{fieldId}/uploadAttachment
+
+    Posting the same body to api.airtable.com, or slipping the table ID into
+    the path, returns 404 NOT_FOUND. That is what every screenshot upload did
+    until 2026-10-21: the records were created correctly and only the
+    attachment was quietly missing.
+
+    The file is base64-encoded and sent as JSON, capped at 5 MB by Airtable.
     Returns True on success, False on failure.
     """
     import base64
@@ -108,6 +119,10 @@ def _upload_screenshot(api_key: str, record_id: str, screenshot_path: str) -> bo
 
     try:
         content_b64 = base64.b64encode(path.read_bytes()).decode("ascii")
+        if len(content_b64) > ATTACHMENT_MAX_B64_BYTES:
+            print(f"  ⚠ Screenshot too large for Airtable upload "
+                  f"({len(content_b64) / 1_048_576:.1f} MB base64, limit 5 MB): {path.name}")
+            return False
         payload = json.dumps({
             "contentType": "image/png",
             "filename":    path.name,
@@ -115,7 +130,7 @@ def _upload_screenshot(api_key: str, record_id: str, screenshot_path: str) -> bo
         }).encode("utf-8")
 
         url = (
-            f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_ID}"
+            f"https://content.airtable.com/v0/{BASE_ID}"
             f"/{record_id}/{SCREENSHOT_FIELD_ID}/uploadAttachment"
         )
         req = urllib.request.Request(
