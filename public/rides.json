@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T21:15:06.423826+00:00",
+  "generated_at": "2026-10-22T09:16:49.428835+00:00",
   "rides": {
     "records": [
       {
@@ -313,10 +313,10 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 9.9,
-          "Rain Probability": 0.14,
+          "Wind Speed": 10.1,
+          "Rain Probability": 0.04,
           "Location": "Specialized Miami — Coconut Grove",
-          "Weather Summary": "Dry (14% rain), light winds 10 mph",
+          "Weather Summary": "Dry (4% rain), light winds 10 mph",
           "Ride Name": "ONE Ride Series — Specialized Miami Shop Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
