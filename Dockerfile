@@ -9,14 +9,27 @@ FROM mcr.microsoft.com/playwright/python:v1.60.0-noble
 # to Claude Vision. pytesseract is only a wrapper around this binary — if
 # it is missing, has_readable_text() fails open and every single slide
 # becomes a paid API call, with no error to tell you.
+#
+# The openssl upgrade is deliberate and separate from the base image: the
+# Playwright image is current, but it ships 3.0.13-0ubuntu3.9 while
+# noble-security carries 3.0.13-0ubuntu3.16, which closes two high-severity
+# advisories. Only these packages are upgraded — a blanket `apt-get upgrade`
+# would move the browser's own pinned dependencies out from under Playwright.
 RUN apt-get update \
  && apt-get install -y --no-install-recommends tesseract-ocr \
+ && apt-get install -y --only-upgrade openssl libssl3t64 \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# virtualenv arrives with the base image, nothing depends on it (pip reports
+# an empty Required-by) and this container only ever runs one module, so it
+# is dead weight carrying eight high-severity advisories. Dropping it is the
+# difference between a scan that lists real work and one that lists noise.
+RUN pip uninstall -y virtualenv
 
 # Explicit allow-list. Credentials (secrets.env, instagram_cookies.json)
 # are deliberately absent — they arrive at runtime from a secret store, so

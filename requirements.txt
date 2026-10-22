@@ -12,7 +12,14 @@ playwright==1.60.0
 anthropic==0.105.2
 pyairtable==3.3.0
 pytesseract==0.3.13
-pillow==12.2.0
+pillow==13.0.0
+
+# Pinned, though nothing imports it directly: every HTTPS call the pipeline
+# makes (Anthropic, Airtable, S3) verifies against certifi's CA bundle, and
+# 2026.10.19 is the fix for GHSA-6q48-6c7w-9gw2 (improper certificate
+# validation, CVSS 9.1). Left unpinned, a rebuild resolves to whatever the
+# base image already satisfies — which is how 2026.7.22 shipped.
+certifi==2026.10.19
 
 # Only used when RIDETRACKER_DB_S3_URI is set (i.e. running on AWS, where
 # the state file lives in S3). The import is lazy, so the laptop does not
