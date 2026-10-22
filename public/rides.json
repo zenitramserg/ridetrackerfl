@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T21:30:26.577102+00:00",
+  "generated_at": "2026-10-22T22:00:04.039642+00:00",
   "rides": {
     "records": [
       {
@@ -205,9 +205,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 4.1,
+          "Rain Probability": 0.16,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-10-22T18:00:00.000Z",
+          "Weather Summary": "Dry (16% rain), light winds 4 mph",
           "Ride Name": "Alex Bike Shop Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
@@ -215,10 +218,7 @@
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "Alex's Bicycle Pro Shop",
           "Notes": "Alex's Bicycle Pro Shop now advertises the Saturday 7:00 AM ride under its own branding, starting from the shop. Previously this slot ran as Ride84 from Alex's; Ride84 has moved its start to GRIT. Bike Lab at Weston Town Center.",
-          "Is Primary Listing": true,
-          "Weather Summary": "Dry (16% rain), light winds 4 mph",
-          "Rain Probability": 0.16,
-          "Wind Speed": 4.1
+          "Is Primary Listing": true
         }
       },
       {
