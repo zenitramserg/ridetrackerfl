@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T17:30:07.833658+00:00",
+  "generated_at": "2026-10-22T17:45:05.796423+00:00",
   "rides": {
     "records": [
       {
@@ -270,7 +270,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.0,
+          "Wind Speed": 4,
           "Rain Probability": 0.07,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
@@ -313,7 +313,7 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 5.0,
+          "Wind Speed": 5,
           "Rain Probability": 0.22,
           "Location": "Specialized Miami — Coconut Grove",
           "Weather Summary": "Dry (22% rain), light winds 5 mph",
