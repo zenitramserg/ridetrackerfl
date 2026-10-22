@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T17:45:05.796423+00:00",
+  "generated_at": "2026-10-22T21:30:26.577102+00:00",
   "rides": {
     "records": [
       {
@@ -72,7 +72,7 @@
           "Time": "07:00 AM",
           "Wind Speed": 3.7,
           "Rain Probability": 0.01,
-          "Location": "Alex's Bicycles",
+          "Location": "Weston Town Center — GRIT. Bike Lab",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Weather Summary": "Dry (1% rain), light winds 4 mph",
           "Pace": "A & B / C Groups",
@@ -81,7 +81,6 @@
           "Day of Week": "Saturday",
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
-          "Address Note": "16098 W State Rd 84, Weston",
           "Organizer": "Ride84",
           "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
         }
@@ -200,6 +199,29 @@
         }
       },
       {
+        "id": "recG3IAsRXicb8ybd",
+        "createdTime": "2026-10-22T17:58:17.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Alex's Bicycle Pro Shop",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Last Checked At": "2026-10-22T18:00:00.000Z",
+          "Ride Name": "Alex Bike Shop Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-24",
+          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "Organizer": "Alex's Bicycle Pro Shop",
+          "Notes": "Alex's Bicycle Pro Shop now advertises the Saturday 7:00 AM ride under its own branding, starting from the shop. Previously this slot ran as Ride84 from Alex's; Ride84 has moved its start to GRIT. Bike Lab at Weston Town Center.",
+          "Is Primary Listing": true,
+          "Weather Summary": "Dry (16% rain), light winds 4 mph",
+          "Rain Probability": 0.16,
+          "Wind Speed": 4.1
+        }
+      },
+      {
         "id": "recHtSoEzNTxyHQBY",
         "createdTime": "2026-04-16T00:43:55.000Z",
         "fields": {
@@ -313,10 +335,10 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:00 AM",
-          "Wind Speed": 5,
-          "Rain Probability": 0.22,
+          "Wind Speed": 8.8,
+          "Rain Probability": 0.16,
           "Location": "Specialized Miami — Coconut Grove",
-          "Weather Summary": "Dry (22% rain), light winds 5 mph",
+          "Weather Summary": "Dry (16% rain), light winds 9 mph",
           "Ride Name": "ONE Ride Series — Specialized Miami Shop Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
@@ -438,11 +460,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "6:30 PM",
-          "Wind Speed": 5.4,
-          "Rain Probability": 0.07,
+          "Wind Speed": 4.5,
+          "Rain Probability": 0.05,
           "Location": "Weston Town Center",
           "Last Checked At": "2026-10-22T14:13:42.000Z",
-          "Weather Summary": "Dry (7% rain), winds 5 mph",
+          "Weather Summary": "Dry (5% rain), light winds 4 mph",
           "Ride Name": "The Grit Ride 002",
           "Day of Week": "Thursday",
           "Status": "confirmed",
