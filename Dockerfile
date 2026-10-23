@@ -3,7 +3,7 @@
 # in requirements.txt — the Python package and the browser build have to
 # agree, and this sidesteps the dependency problem that blocks Chromium on
 # Amazon Linux.
-FROM mcr.microsoft.com/playwright/python:v1.60.0-noble
+FROM mcr.microsoft.com/playwright/python:v1.64.1-noble
 
 # Tesseract is the OCR pre-filter deciding which slides are worth sending
 # to Claude Vision. pytesseract is only a wrapper around this binary — if

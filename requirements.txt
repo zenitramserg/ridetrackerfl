@@ -8,7 +8,7 @@
 #   - tesseract-ocr   (pytesseract is only a wrapper around the binary)
 #   - chromium        (installed via: playwright install chromium)
 
-playwright==1.60.0
+playwright==1.64.1
 anthropic==0.105.2
 pyairtable==3.3.0
 pytesseract==0.3.13
