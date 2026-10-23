@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T00:03:59.435580+00:00",
+  "generated_at": "2026-10-23T13:15:14.860619+00:00",
   "rides": {
     "records": [
       {
@@ -205,12 +205,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 4.1,
-          "Rain Probability": 0.04,
+          "Wind Speed": 6.1,
+          "Rain Probability": 0.0,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-10-22T18:00:00.000Z",
-          "Weather Summary": "Dry (4% rain), light winds 4 mph",
+          "Weather Summary": "Dry (0% rain), light winds 6 mph",
           "Ride Name": "Alex Bike Shop Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
@@ -451,26 +451,6 @@
           "Ride Date": "2026-08-08",
           "Address Note": "9101 NW 50th St, Sunrise, FL 33351",
           "Organizer": "Sunrise Cycling Family"
-        }
-      },
-      {
-        "id": "recaDIY8vNHWoeA3j",
-        "createdTime": "2026-10-22T14:13:47.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "6:30 PM",
-          "Wind Speed": 4.5,
-          "Rain Probability": 0.05,
-          "Location": "Weston Town Center",
-          "Last Checked At": "2026-10-22T14:13:42.000Z",
-          "Weather Summary": "Dry (5% rain), light winds 4 mph",
-          "Ride Name": "The Grit Ride 002",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-22",
-          "Organizer": "Team Recovery Weston",
-          "Notes": "Address: 1717 Bell Tower LN, Weston, FL\nPace: 22-24 mph\nDistance: 30 mi\n---\nA dark nighttime photo of cyclists riding together on a road, overlaid with event details for The Grit Ride 002 hosted by Grit Bike Lab."
         }
       },
       {
