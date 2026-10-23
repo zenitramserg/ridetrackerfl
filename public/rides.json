@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T13:30:11.225329+00:00",
+  "generated_at": "2026-10-23T13:45:07.877711+00:00",
   "rides": {
     "records": [
       {
@@ -206,11 +206,11 @@
           "Display on Site": true,
           "Time": "7:00 AM",
           "Wind Speed": 6.1,
-          "Rain Probability": 0,
+          "Rain Probability": 0.02,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-10-22T18:00:00.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 6 mph",
+          "Weather Summary": "Dry (2% rain), light winds 6 mph",
           "Ride Name": "Alex Bike Shop Ride",
           "Day of Week": "Saturday",
           "Status": "confirmed",
