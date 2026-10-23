@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T20:03:35.836399+00:00",
+  "generated_at": "2026-10-23T20:46:32.876869+00:00",
   "rides": {
     "records": [
       {
@@ -206,7 +206,7 @@
           "Display on Site": true,
           "Time": "7:00 AM",
           "Wind Speed": 6.7,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-10-22T18:00:00.000Z",
@@ -336,7 +336,7 @@
           "Display on Site": true,
           "Time": "6:00 AM",
           "Wind Speed": 5.4,
-          "Rain Probability": 0.0,
+          "Rain Probability": 0,
           "Location": "Specialized Miami — Coconut Grove",
           "Weather Summary": "Dry (0% rain), light winds 5 mph",
           "Ride Name": "ONE Ride Series — Specialized Miami Shop Ride",
