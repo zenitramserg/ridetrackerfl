@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T15:30:07.171146+00:00",
+  "generated_at": "2026-10-23T15:45:04.099573+00:00",
   "rides": {
     "records": [
       {
@@ -567,6 +567,17 @@
           "Type": "Group",
           "Instagram URL": "https://www.instagram.com/omg_cycling/",
           "Instagram Handle": "omg_cycling"
+        }
+      },
+      {
+        "id": "rec5Ewdio4vGaVQif",
+        "createdTime": "2026-10-23T15:42:13.000Z",
+        "fields": {
+          "Name": "Specialized Miami",
+          "Active": true,
+          "Type": "Shop",
+          "Instagram URL": "https://www.instagram.com/miamispecialized/",
+          "Instagram Handle": "miamispecialized"
         }
       },
       {
