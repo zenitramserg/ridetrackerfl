@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T23:00:06.023534+00:00",
+  "generated_at": "2026-10-24T23:15:04.311167+00:00",
   "rides": {
     "records": [
       {
@@ -20,6 +20,21 @@
           "Status": "confirmed",
           "Ride Date": "2026-08-23",
           "Organizer": "Sunrise Cycling Family"
+        },
+        "site": {
+          "time_min": 330,
+          "time_display": "5:30 AM",
+          "pace_label": "24 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "35 mi",
+          "venue": "Sunrise Sportsplex",
+          "venue_detail": "",
+          "area": "Sunrise",
+          "display_name": "Sunrise Cycling Family Sunday Ride"
         }
       },
       {
@@ -42,7 +57,22 @@
           "Status": "confirmed",
           "Ride Date": "2026-08-19",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 22/23 mph\nDistance: 30 miles\n---\nA dark-themed Instagram story graphic for OMG Cycling announcing a Wednesday morning group ride at 6:00 AM, covering 30 miles at a 22/23 mph control pace, departing from Weston Town Center behind Bank of America."
+          "Address Note": "Behind Bank of America"
+        },
+        "site": {
+          "time_min": 360,
+          "time_display": "6:00 AM",
+          "pace_label": "22–23 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Bank of America",
+          "area": "Weston",
+          "display_name": "Wednesday Favorite Ride"
         }
       },
       {
@@ -60,7 +90,20 @@
           "Status": "planned",
           "Ride Date": "2026-11-15",
           "Organizer": "MBO Ten Cycling",
-          "Notes": "---\nA promotional flyer for the Horrible Hundred 2026 cycling event in Clermont, Florida, featuring a group of cyclists riding and a detailed package itinerary offered by MBO Cycling for $200 USD per person, covering transportation from Miami, accommodation, and breakfasts for November 13-15, 2026."
+          "Notes": "A promotional flyer for the Horrible Hundred 2026 cycling event in Clermont, Florida, featuring a group of cyclists riding and a detailed package itinerary offered by MBO Cycling for $200 USD per person, covering transportation from Miami, accommodation, and breakfasts for November 13-15, 2026."
+        },
+        "site": {
+          "time_min": 960,
+          "time_display": "4:00 PM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "Departure from Miami",
+          "venue_detail": "",
+          "area": "Miami",
+          "display_name": "Horrible Hundred 2026 - MBO Cycling Trip"
         }
       },
       {
@@ -83,6 +126,23 @@
           "Ride Date": "2026-06-20",
           "Organizer": "Ride84",
           "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "A/B/C groups",
+          "pace_groups": [
+            "fast",
+            "mod",
+            "soc"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "40/30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "GRIT. Bike Lab",
+          "area": "Weston",
+          "display_name": "Ride84"
         }
       },
       {
@@ -104,6 +164,21 @@
           "Ride Date": "2026-06-21",
           "Organizer": "Team Galiz",
           "Notes": "Non-stop recovery ride, controlled pace. SAG vehicle."
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "No-drop",
+          "pace_groups": [
+            "soc"
+          ],
+          "pace_top": "soc",
+          "pace_nodrop": false,
+          "dist_display": "40 mi",
+          "venue": "Griffin & Flamingo",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Team Galiz Sunday Recovery Ride to Miramar"
         }
       },
       {
@@ -125,6 +200,22 @@
           "Ride Date": "2026-07-11",
           "Organizer": "Team Galiz",
           "Notes": "Two groups: B pace 20-22 mph, A pace 23+. Rest stop at mile 35. SAG vehicle. Post-ride refreshments."
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "20–23+ mph",
+          "pace_groups": [
+            "fast",
+            "mod"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "52 mi",
+          "venue": "Griffin & Flamingo",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Team Galiz Saturday"
         }
       },
       {
@@ -149,6 +240,21 @@
           "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
           "Organizer": "Team Recovery Weston",
           "Notes": "NEW STARTING LOCATION effective Monday October 19, 2026: moved from Origamy Gelato to GRIT Bike Lab, 1797 Bell Tower Ln, Weston FL 33326 (Weston Town Center). Time (6:30 PM), ride days (Mondays & Wednesdays) and distance (~30 miles) all unchanged. Tagline: Same team, same passion, new starting point. Spanish-speaking group. Source: Team Recovery Weston flyer, Oct 2026."
+        },
+        "site": {
+          "time_min": 1110,
+          "time_display": "6:30 PM",
+          "pace_label": "C/D groups",
+          "pace_groups": [
+            "soc"
+          ],
+          "pace_top": "soc",
+          "pace_nodrop": false,
+          "dist_display": "30 mi",
+          "venue": "GRIT Bike Lab",
+          "venue_detail": "Weston Town Center · 1797 Bell Tower Ln, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "Monday evening ride"
         }
       },
       {
@@ -171,7 +277,22 @@
           "Status": "confirmed",
           "Ride Date": "2026-09-13",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 40 miles\n---\nA dark blue and orange branded Instagram story slide for OMG Cycling announcing a Sunday Chilling Ride with time, distance, pace, and meeting location details."
+          "Address Note": "Behind Bank of America"
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "22–24 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "40 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Bank of America",
+          "area": "Weston",
+          "display_name": "OMG Sunday Chill Ride"
         }
       },
       {
@@ -196,6 +317,21 @@
           "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
           "Organizer": "Team Recovery Weston",
           "Notes": "NEW STARTING LOCATION effective Monday October 19, 2026: moved from Origamy Gelato to GRIT Bike Lab, 1797 Bell Tower Ln, Weston FL 33326 (Weston Town Center). Time (6:30 PM), ride days (Mondays & Wednesdays) and distance (~30 miles) all unchanged. Tagline: Same team, same passion, new starting point. Spanish-speaking group. Source: Team Recovery Weston flyer, Oct 2026."
+        },
+        "site": {
+          "time_min": 1110,
+          "time_display": "6:30 PM",
+          "pace_label": "C/D groups",
+          "pace_groups": [
+            "soc"
+          ],
+          "pace_top": "soc",
+          "pace_nodrop": false,
+          "dist_display": "30 mi",
+          "venue": "GRIT Bike Lab",
+          "venue_detail": "Weston Town Center · 1797 Bell Tower Ln, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "Wednesday evening ride"
         }
       },
       {
@@ -219,6 +355,19 @@
           "Organizer": "Alex's Bicycle Pro Shop",
           "Notes": "Alex's Bicycle Pro Shop now advertises the Saturday 7:00 AM ride under its own branding, starting from the shop. Previously this slot ran as Ride84 from Alex's; Ride84 has moved its start to GRIT. Bike Lab at Weston Town Center.",
           "Is Primary Listing": true
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "Alex's Bicycle Pro Shop",
+          "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "Alex Bike Shop Ride"
         }
       },
       {
@@ -241,7 +390,22 @@
           "Status": "confirmed",
           "Ride Date": "2026-09-17",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 24/26 mph\nDistance: 40 miles\n---\nAn orange-toned Instagram story graphic from OMG Cycling announcing a Thursday Tempo Ride at 5:30 AM, covering 40 miles at a 24/26 mph control pace, starting at Weston Town Center behind Bank of America, with a silhouette of a cyclist in the background."
+          "Address Note": "Behind Bank of America"
+        },
+        "site": {
+          "time_min": 330,
+          "time_display": "5:30 AM",
+          "pace_label": "24–26 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "40 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Bank of America",
+          "area": "Weston",
+          "display_name": "Thursday Tempo Ride"
         }
       },
       {
@@ -263,6 +427,21 @@
           "Ride Date": "2026-06-11",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        },
+        "site": {
+          "time_min": 1110,
+          "time_display": "6:30 PM",
+          "pace_label": "24–26+ mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "1800 N Commerce Pkwy",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Unicosta Thursday Ride"
         }
       },
       {
@@ -283,6 +462,21 @@
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "OMG Cycling",
           "Notes": "5th edition of the OMG Girls ride. PAID EVENT — $80 + fees, REGISTRATION REQUIRED via signup link (in @omg_cycling bio). Includes jersey and t-shirt post ride, nutrition, food and raffles. Tagline: Ride together. Shine together. Sponsors include Alex Bicycle Pro Shop, YBEAUTY, JAM Sports Wear. Source: OMG Cycling Instagram story, Sept 23 2026 scan."
+        },
+        "site": {
+          "time_min": 330,
+          "time_display": "5:30 AM",
+          "pace_label": "22–24 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "60 mi",
+          "venue": "Alex's Bicycle Pro Shop",
+          "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "OMG Girls 5th Edition"
         }
       },
       {
@@ -304,7 +498,23 @@
           "Status": "confirmed",
           "Ride Date": "2026-10-23",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from OMG Cycling announcing a Friday Recovery group ride, featuring the OMG Cycling logo over a background photo of cyclists riding on a road, with ride details including time, distance, pace, and meeting location."
+          "Pace": "22/24 mph",
+          "Address Note": "Behind Bank of America"
+        },
+        "site": {
+          "time_min": 360,
+          "time_display": "6:00 AM",
+          "pace_label": "22–24 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Bank of America",
+          "area": "Weston",
+          "display_name": "Friday Recovery Ride"
         }
       },
       {
@@ -326,6 +536,21 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-20",
           "Organizer": "Alligators Cycling"
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "22–25 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "48 mi",
+          "venue": "10430 Taft St",
+          "venue_detail": "",
+          "area": "Pembroke Pines",
+          "display_name": "Alligators Ride"
         }
       },
       {
@@ -345,6 +570,19 @@
           "Ride Date": "2026-10-24",
           "Organizer": "Specialized Miami",
           "Notes": "Shop ride, part of the ONE Ride Series. Presented with Velocio (@velocioapparel), a cycling apparel brand - sponsor, not a co-organizer. Route and details at the link in the @miamispecialized bio. No distance or pace published on the post. Note: starts in Coconut Grove, Miami - not Weston. Source: @miamispecialized Instagram post, Oct 2026."
+        },
+        "site": {
+          "time_min": 360,
+          "time_display": "6:00 AM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "Specialized Miami",
+          "venue_detail": "Coconut Grove",
+          "area": "Miami",
+          "display_name": "ONE Ride Series — Specialized Miami Shop Ride"
         }
       },
       {
@@ -366,6 +604,21 @@
           "Ride Date": "2026-06-09",
           "Organizer": "Unicosta Cycling",
           "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
+        },
+        "site": {
+          "time_min": 1110,
+          "time_display": "6:30 PM",
+          "pace_label": "24–26+ mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "1800 N Commerce Pkwy",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Unicosta Tuesday Ride"
         }
       },
       {
@@ -387,8 +640,22 @@
           "Day of Week": "Tuesday",
           "Status": "confirmed",
           "Ride Date": "2026-09-22",
-          "Organizer": "OMG Cycling",
-          "Notes": "Pace: High Tempo\n---\nA group of cyclists in riding gear sitting and relaxing at outdoor tables under red umbrellas at what appears to be Weston Town Center, with overlaid text announcing a recurring high tempo group cycling ride."
+          "Organizer": "OMG Cycling"
+        },
+        "site": {
+          "time_min": 330,
+          "time_display": "5:30 AM",
+          "pace_label": "24–26 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "43 mi",
+          "venue": "Alex's Bicycle Pro Shop",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Tuesday New Season"
         }
       },
       {
@@ -407,6 +674,19 @@
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "Alex's Bicycle Pro Shop",
           "Notes": "Year-end community ride. START AND FINISH both at Alex's Bicycle Pro Shop (loop). Two options: 100 miles (Century) or 50 miles (Half Century). Chance to WIN A 2028 BMC BICYCLE. Raffles and giveaways, on-course support. Sponsors: Oakley, Spaiki, Shokz, Just Recovery. Tagline: Enjoy an unforgettable ride with the South Florida cycling community. START TIME NOT YET ANNOUNCED - confirm with shop before promoting. Registration requirements also not yet stated. Source: Alex's Bicycle Pro Shop flyer, Oct 2026."
+        },
+        "site": {
+          "time_min": null,
+          "time_display": null,
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "100/50 mi",
+          "venue": "Alex's Bicycle Pro Shop",
+          "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "One Last Ride 2026"
         }
       },
       {
@@ -429,7 +709,22 @@
           "Status": "confirmed",
           "Ride Date": "2026-09-28",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Bank of America\nPace: 22/24 mph\nDistance: 30 miles\n---\nAn Instagram story from omg_cycling announcing a Monday group cycling ride at 6:00 AM, covering 30 miles at a controlled pace of 22-24 mph, starting at Weston Town Center behind Bank of America, displayed on a dark background with orange and white typography."
+          "Address Note": "Behind Bank of America"
+        },
+        "site": {
+          "time_min": 360,
+          "time_display": "6:00 AM",
+          "pace_label": "22–24 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Bank of America",
+          "area": "Weston",
+          "display_name": "Monday Ride"
         }
       },
       {
@@ -451,6 +746,21 @@
           "Ride Date": "2026-08-08",
           "Address Note": "9101 NW 50th St, Sunrise, FL 33351",
           "Organizer": "Sunrise Cycling Family"
+        },
+        "site": {
+          "time_min": 390,
+          "time_display": "6:30 AM",
+          "pace_label": "24 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "40 mi",
+          "venue": "Sunrise Sportsplex",
+          "venue_detail": "9101 NW 50th St, Sunrise, FL 33351",
+          "area": "Sunrise",
+          "display_name": "Sunrise Cycling Family Saturday Ride"
         }
       },
       {
@@ -470,6 +780,19 @@
           "Status": "confirmed",
           "Ride Date": "2026-06-17",
           "Organizer": "Team Galiz"
+        },
+        "site": {
+          "time_min": 1110,
+          "time_display": "6:30 PM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "35 mi",
+          "venue": "Weston Branch Library",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Team Galiz Wednesday Evening Ride"
         }
       },
       {
@@ -488,6 +811,23 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        },
+        "site": {
+          "time_min": 450,
+          "time_display": "7:30 AM",
+          "pace_label": "20–23 mph",
+          "pace_groups": [
+            "fast",
+            "mod",
+            "soc"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": true,
+          "dist_display": "30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Japan Inn inside Weston Town Center Plaza",
+          "area": "Weston",
+          "display_name": "Wild Hogs Thursday Ride"
         }
       },
       {
@@ -506,6 +846,23 @@
           "Address Note": "Japan Inn inside Weston Town Center Plaza",
           "Organizer": "Wild Hogs Cycling",
           "Notes": "No-drop group. 32-40 miles, 20-24 mph. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
+        },
+        "site": {
+          "time_min": 450,
+          "time_display": "7:30 AM",
+          "pace_label": "20–23 mph",
+          "pace_groups": [
+            "fast",
+            "mod",
+            "soc"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": true,
+          "dist_display": "30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Japan Inn inside Weston Town Center Plaza",
+          "area": "Weston",
+          "display_name": "Wild Hogs Tuesday Ride"
         }
       },
       {
@@ -528,7 +885,22 @@
           "Status": "confirmed",
           "Ride Date": "2026-10-10",
           "Organizer": "OMG Cycling",
-          "Notes": "Address: Behind Graziano's\nPace: 23/25 mph\nDistance: 42/52/62 miles\n---\nAn orange-themed Instagram story graphic from OMG Cycling announcing a Saturday group cycling ride called Palomos 2.0, departing at 6:00 AM from Weston Town Center with distance options of 42, 52, or 62 miles at a control pace of 23-25 mph."
+          "Address Note": "Behind Graziano's"
+        },
+        "site": {
+          "time_min": 360,
+          "time_display": "6:00 AM",
+          "pace_label": "23–25 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "42/52/62 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Graziano's",
+          "area": "Weston",
+          "display_name": "Saturday Palomos 2.0"
         }
       }
     ]
@@ -542,7 +914,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/alex_s_bicycle_pro_shop.jpg",
-              "filename": "alex_s_bicycle_pro_shop.jpg"
+              "filename": "alex_s_bicycle_pro_shop.jpg",
+              "thumb": "/public/organizers/thumbs/alex_s_bicycle_pro_shop.webp"
             }
           ],
           "Name": "Alex's Bicycle Pro Shop",
@@ -559,7 +932,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/omg_cycling.jpeg",
-              "filename": "omg_cycling.jpeg"
+              "filename": "omg_cycling.jpeg",
+              "thumb": "/public/organizers/thumbs/omg_cycling.webp"
             }
           ],
           "Name": "OMG Cycling",
@@ -587,7 +961,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/ride84.jpeg",
-              "filename": "ride84.jpeg"
+              "filename": "ride84.jpeg",
+              "thumb": "/public/organizers/thumbs/ride84.webp"
             }
           ],
           "Name": "Ride84",
@@ -604,7 +979,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/sunrise_cycling_family.png",
-              "filename": "sunrise_cycling_family.png"
+              "filename": "sunrise_cycling_family.png",
+              "thumb": "/public/organizers/thumbs/sunrise_cycling_family.webp"
             }
           ],
           "Name": "Sunrise Cycling Family",
@@ -619,7 +995,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/weston_flyers.jpeg",
-              "filename": "weston_flyers.jpeg"
+              "filename": "weston_flyers.jpeg",
+              "thumb": "/public/organizers/thumbs/weston_flyers.webp"
             }
           ],
           "Name": "Weston Flyers",
@@ -636,7 +1013,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/wild_hogs_cycling.jpg",
-              "filename": "wild_hogs_cycling.jpg"
+              "filename": "wild_hogs_cycling.jpg",
+              "thumb": "/public/organizers/thumbs/wild_hogs_cycling.webp"
             }
           ],
           "Name": "Wild Hogs Cycling",
@@ -654,7 +1032,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/pd_cycling_club.jpg",
-              "filename": "pd_cycling_club.jpg"
+              "filename": "pd_cycling_club.jpg",
+              "thumb": "/public/organizers/thumbs/pd_cycling_club.webp"
             }
           ],
           "Name": "PD Cycling Club",
@@ -671,7 +1050,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/unicosta_cycling.jpeg",
-              "filename": "unicosta_cycling.jpeg"
+              "filename": "unicosta_cycling.jpeg",
+              "thumb": "/public/organizers/thumbs/unicosta_cycling.webp"
             }
           ],
           "Name": "Unicosta Cycling",
@@ -688,7 +1068,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/mbo_ten_cycling.jpeg",
-              "filename": "mbo_ten_cycling.jpeg"
+              "filename": "mbo_ten_cycling.jpeg",
+              "thumb": "/public/organizers/thumbs/mbo_ten_cycling.webp"
             }
           ],
           "Name": "MBO Ten Cycling",
@@ -705,7 +1086,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/best_buddies_challenge_miami.webp",
-              "filename": "best_buddies_challenge_miami.webp"
+              "filename": "best_buddies_challenge_miami.webp",
+              "thumb": "/public/organizers/thumbs/best_buddies_challenge_miami.webp"
             }
           ],
           "Name": "Best Buddies Challenge Miami",
@@ -722,7 +1104,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/le_tour_de_weston.jpg",
-              "filename": "le_tour_de_weston.jpg"
+              "filename": "le_tour_de_weston.jpg",
+              "thumb": "/public/organizers/thumbs/le_tour_de_weston.webp"
             }
           ],
           "Name": "Le Tour de Weston",
@@ -750,7 +1133,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/team_recovery_weston.jpeg",
-              "filename": "team_recovery_weston.jpeg"
+              "filename": "team_recovery_weston.jpeg",
+              "thumb": "/public/organizers/thumbs/team_recovery_weston.webp"
             }
           ],
           "Name": "Team Recovery Weston",
@@ -767,7 +1151,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/alligators_cycling.webp",
-              "filename": "alligators_cycling.webp"
+              "filename": "alligators_cycling.webp",
+              "thumb": "/public/organizers/thumbs/alligators_cycling.webp"
             }
           ],
           "Name": "Alligators Cycling",
@@ -784,7 +1169,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/team_galiz.webp",
-              "filename": "team_galiz.webp"
+              "filename": "team_galiz.webp",
+              "thumb": "/public/organizers/thumbs/team_galiz.webp"
             }
           ],
           "Name": "Team Galiz",
@@ -801,7 +1187,8 @@
           "Avatar": [
             {
               "url": "/public/organizers/fp_bike_shop.jpeg",
-              "filename": "fp_bike_shop.jpeg"
+              "filename": "fp_bike_shop.jpeg",
+              "thumb": "/public/organizers/thumbs/fp_bike_shop.webp"
             }
           ],
           "Name": "FP Bike Shop",
