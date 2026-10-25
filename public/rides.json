@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T19:00:04.064747+00:00",
+  "generated_at": "2026-10-25T19:15:04.240217+00:00",
   "rides": {
     "records": [
       {
@@ -73,37 +73,6 @@
           "venue_detail": "Behind Bank of America",
           "area": "Weston",
           "display_name": "Wednesday Favorite Ride"
-        }
-      },
-      {
-        "id": "rec3niCJ1vxSMKFDx",
-        "createdTime": "2026-10-21T14:13:34.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "4:00 PM",
-          "Location": "Departure from Miami",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-10-21T14:13:29.000Z",
-          "Ride Name": "Horrible Hundred 2026 - MBO Cycling Trip",
-          "Day of Week": "Sunday",
-          "Status": "planned",
-          "Ride Date": "2026-11-15",
-          "Organizer": "MBO Ten Cycling",
-          "Notes": "A promotional flyer for the Horrible Hundred 2026 cycling event in Clermont, Florida, featuring a group of cyclists riding and a detailed package itinerary offered by MBO Cycling for $200 USD per person, covering transportation from Miami, accommodation, and breakfasts for November 13-15, 2026."
-        },
-        "site": {
-          "time_min": 960,
-          "time_display": "4:00 PM",
-          "pace_label": "",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "Departure from Miami",
-          "venue_detail": "",
-          "area": "Miami",
-          "display_name": "Horrible Hundred 2026 - MBO Cycling Trip"
         }
       },
       {
