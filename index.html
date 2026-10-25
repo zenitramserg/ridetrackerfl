@@ -1,2478 +1,866 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RideTrackerFL · Weston Cycling Rides</title>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WM5CNVPHZ2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WM5CNVPHZ2');
-  </script>
-  <meta name="description" content="Find all cycling group rides in Weston, Florida. Updated twice daily with confirmed status, weather, and details.">
-  <meta property="og:title" content="RideTrackerFL · Weston Cycling Rides">
-  <meta property="og:description" content="All confirmed group rides in Weston, FL — in one place.">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="/manifest.json">
-  <!-- iOS Specific Meta Tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="RideTrackerFL">
-  <!-- iOS App Icons -->
-  <link rel="apple-touch-icon" href="/icons/icon-180x180.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png">
-  <!-- Theme Color for Mobile Browser -->
-  <meta name="theme-color" content="#0d0d0d">
-  <!-- MS Tile (Windows) -->
-  <meta name="msapplication-TileColor" content="#D62B2B">
-  <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RideTrackerFL · Weston Cycling Rides</title>
+<meta name="description" content="Every cycling group ride in Weston, South Florida — times, pace, distance, start location and weather, updated twice daily.">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ridetrackerfl.com/">
+<meta property="og:title" content="RideTrackerFL · Weston Cycling Rides">
+<meta property="og:description" content="Every group ride in Weston, in one place — time, pace, distance and weather.">
+<meta property="og:image" content="https://ridetrackerfl.com/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ridetrackerfl.com/icons/og-image.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RideTrackerFL">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icons/icon-180x180.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Google Analytics 4 — skipped on localhost so test visits don't count -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if (!/^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname)) {
+    const s = document.createElement('script');
+    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WM5CNVPHZ2';
+    document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', 'G-WM5CNVPHZ2');
+  } else { window.__noGA = true; }
+</script>
+<style>
+:root{
+  --bg:#F5F4F1; --surface:#FFFFFF; --ink:#141414; --ink-2:#3D3D3D; --muted:#706D67;
+  --line:#E6E3DD; --line-2:#EFEDE8; --hover:#FAF9F7; --soft:#F2F0EC; --block:#FBFAF8;
+  --brand:#D62B2B; --brand-ink:#B01F1F; --night:#0E0E0E; --night-2:#1B1B1B;
+  --fast-bg:#FDE9E7; --fast-ink:#B3261E; --fast-dot:#E0453A;
+  --mod-bg:#FFF2D9; --mod-ink:#8A5300; --mod-dot:#E59A12;
+  --soc-bg:#E4F3E8; --soc-ink:#1D6B36; --soc-dot:#2E9E55;
+  --warn-bg:#FFF4E0; --warn-ink:#8A4B00;
+  --area-bg:#EEF2F7; --area-ink:#3B5476;
+  --r:12px; --r-sm:8px;
+  --shadow:0 1px 2px rgba(20,20,20,.04),0 1px 1px rgba(20,20,20,.03);
+  --hdr:56px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0F0F0F; --surface:#181818; --ink:#F2F2F2; --ink-2:#D2D2D2; --muted:#9A968F;
+    --line:#2A2A2A; --line-2:#222222; --hover:#1E1E1E; --soft:#242424; --block:#141414;
+    --fast-bg:#3A1715; --fast-ink:#FF8F85; --fast-dot:#F0574B;
+    --mod-bg:#3A2A0C; --mod-ink:#F5C060; --mod-dot:#E8A32A;
+    --soc-bg:#12301C; --soc-ink:#7FD69B; --soc-dot:#3DB868;
+    --warn-bg:#3A2A0C; --warn-ink:#F5C060;
+    --area-bg:#1C2633; --area-ink:#9DB7D8;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #fafaf9;
-      color: #0d0d0d;
-      min-height: 100vh;
-      line-height: 1.5;
-    }
+/* ── Header ── */
+header.top{background:var(--night);color:#fff;position:sticky;top:0;z-index:30}
+.top .wrap{height:var(--hdr);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:30px;height:30px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-word{font-weight:800;letter-spacing:.06em;font-size:16px}
+.brand-word b{color:var(--brand);font-weight:800}
+.brand-sub{font-size:10px;letter-spacing:.14em;color:#8C8C8C;font-weight:600;margin-top:1px}
+.top-right{display:flex;align-items:center;gap:14px}
+.now-wx{display:flex;gap:14px;font-size:13px;color:#CFCFCF;align-items:center}
+.now-wx span{display:inline-flex;align-items:center;gap:5px}
+.now-wx svg{opacity:.75}
+.install{background:var(--brand);color:#fff;font-size:12.5px;font-weight:700;border-radius:999px;padding:6px 12px}
 
-    /* ── HEADER ─────────────────────────────────── */
-    .header {
-      background: #0d0d0d;
-      padding: 20px 24px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .header-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 14px;
-      gap: 16px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .favicon {
-      width: 32px;
-      height: 32px;
-      background: #D62B2B;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .favicon svg { width: 20px; height: 20px; }
-    .logo-text { display: flex; flex-direction: column; }
-    .wordmark {
-      font-size: 20px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      line-height: 1.2;
-    }
-    .wordmark-main { color: #f2f0eb; }
-    .wordmark-accent { color: #D62B2B; }
-    .submark {
-      font-size: 9px;
-      color: #888888;
-      letter-spacing: 0.08em;
-      opacity: 0.7;
-      margin-top: 2px;
-    }
-    .weather-widget {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      padding: 8px 14px;
-      font-size: 13px;
-      color: #f2f0eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .featured-events {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      padding: 12px 16px;
-    }
-    .featured-events h4 {
-      font-size: 11px;
-      color: #888888;
-      letter-spacing: 0.05em;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-    .featured-item {
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      font-size: 13px;
-      color: #f2f0eb;
-      cursor: pointer;
-      user-select: none;
-    }
-    .featured-item:last-child { border-bottom: none; }
-    .featured-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .featured-name { font-weight: 500; }
-    .featured-org  { font-size: 11px; color: #a3a3a3; margin-top: 1px; }
-    .featured-meta { color: #888888; font-size: 12px; margin-top: 2px; }
-    .featured-expand-hint { font-size: 10px; color: #555; flex-shrink: 0; margin-top: 2px; transition: transform 0.2s; }
-    .featured-item.expanded .featured-expand-hint { display: none; }
-    .featured-details {
-      display: none;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      font-size: 12px;
-      color: #a3a3a3;
-      line-height: 1.6;
-    }
-    .featured-item.expanded .featured-details { display: block; }
-    .featured-details a { color: #D62B2B; text-decoration: none; }
-    .featured-details a:hover { text-decoration: underline; }
-    .featured-detail-row { margin-bottom: 3px; }
-    .featured-detail-label { color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .featured-empty { font-size: 13px; color: #888888; font-style: italic; }
-    /* Collapse social by default on all sizes — show only on expand */
-    .featured-social-row { display: none; }
-    .featured-item.expanded .featured-social-row { display: block; }
-    .featured-item.expanded .featured-expand-hint { transform: rotate(180deg); }
-    /* Mobile: also collapse org name by default */
-    @media (max-width: 600px) {
-      .featured-org { display: none; }
-      .featured-item.expanded .featured-org { display: block; }
-    }
+/* ── Banner (next ride / cancellation) ── */
+.next{background:var(--night-2);color:#fff;border-top:1px solid #262626}
+.next.alert{background:#4A1110;border-top-color:#5E1A18}
+.next .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px;cursor:pointer}
+.next-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--brand);white-space:nowrap}
+.next.alert .next-label{color:#FF9C94}
+.next-body{flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#E8E8E8}
+.next-body strong{color:#fff;font-weight:600}
+.next-count{font-weight:700;font-size:14px;background:#2A2A2A;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.next-count.soon{background:var(--brand)}
+.next.alert .next-count{background:#7A1E1A}
 
-    /* ── TABS BAR ───────────────────────────────── */
-    .tabs-bar {
-      background: #fff;
-      border-bottom: 1px solid #e5e5e5;
-      position: sticky;
-      top: 0;
-      z-index: 99;
-    }
-    .tabs {
-      display: flex;
-      padding: 0 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .tab {
-      padding: 14px 20px;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
-      font-size: 15px;
-      font-weight: 500;
-      color: #737373;
-      cursor: pointer;
-      font-family: inherit;
-      transition: color 0.15s;
-      white-space: nowrap;
-    }
-    .tab:hover { color: #0d0d0d; }
-    .tab.active { color: #0d0d0d; border-bottom-color: #D62B2B; }
+/* ── Day strip ── */
+.strip-bar{position:sticky;top:var(--hdr);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.strip{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.day-chip{flex:0 0 auto;min-width:62px;min-height:52px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 10px 7px;text-align:center;transition:border-color .15s,background .15s}
+.day-chip:hover{border-color:var(--muted)}
+.day-chip .dw{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.day-chip .dd{font-size:17px;font-weight:700;line-height:1.15;margin-left:3px}
+.day-chip .dc{font-size:11px;color:var(--muted);display:flex;gap:4px;justify-content:center;align-items:center;margin-top:1px}
+.day-chip .dc .wxdot{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.day-chip .dc .wxdot.bad{background:var(--mod-dot)}
+.day-chip .dc .cx{color:var(--fast-ink);font-weight:700}
+.day-chip.empty{opacity:.5}
+.day-chip.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.day-chip.active .dw,.day-chip.active .dc{color:var(--bg);opacity:.75}
+.day-chip.wide{min-width:auto;display:flex;flex-direction:column;justify-content:center;padding:6px 14px}
+.day-chip.wide .dd{font-size:14px;margin:0}
 
-    /* ── FILTERS ────────────────────────────────── */
-    .filters {
-      background: #fff;
-      border-bottom: 1px solid #e5e5e5;
-      position: sticky;
-      top: 0;
-      z-index: 98;
-    }
-    /* Toggle button row — always visible */
-    .filters-toggle-row {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 8px 24px;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .filters-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 14px;
-      background: transparent;
-      border: 1px solid #d4d4d4;
-      border-radius: 6px;
-      font-size: 13px;
-      color: #525252;
-      cursor: pointer;
-      font-family: inherit;
-      transition: border-color 0.15s, color 0.15s;
-      user-select: none;
-    }
-    .filters-toggle:hover,
-    .filters-toggle.open { border-color: #a3a3a3; color: #0d0d0d; }
-    /* Red dot — shown when any filter is active */
-    .filters-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #D62B2B;
-      display: none;
-      flex-shrink: 0;
-    }
-    .filters-dot.active { display: inline-block; }
-    /* Chevron rotates when open */
-    .filters-chevron {
-      width: 12px;
-      height: 12px;
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
-    .filters-toggle.open .filters-chevron { transform: rotate(180deg); }
-    /* Collapsible panel */
-    .filters-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease;
-    }
-    .filters-panel.open { max-height: 200px; }
-    .filters-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2px 24px 14px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .filter-dropdown { position: relative; display: inline-flex; align-items: center; }
-    .filter-select {
-      padding: 8px 32px 8px 14px;
-      background: #fafaf9;
-      border: 1px solid #d4d4d4;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      min-width: 150px;
-      appearance: none;
-      -webkit-appearance: none;
-      font-family: inherit;
-      color: #0d0d0d;
-    }
-    .filter-select:focus { outline: none; border-color: #a3a3a3; }
-    .filter-arrow {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 10px;
-      pointer-events: none;
-      color: #737373;
-    }
-    .clear-filters {
-      padding: 8px 16px;
-      background: transparent;
-      border: 1px solid #e5e5e5;
-      border-radius: 6px;
-      font-size: 13px;
-      color: #737373;
-      cursor: pointer;
-      font-family: inherit;
-      transition: border-color 0.15s, color 0.15s;
-    }
-    .clear-filters:hover { border-color: #a3a3a3; color: #0d0d0d; }
+/* ── Filters ── */
+.filters{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:12px 0 4px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:500;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;min-height:34px}
+.chip:hover{border-color:var(--muted)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .dot{width:7px;height:7px;border-radius:50%}
+.sep{width:1px;height:20px;background:var(--line);margin:0 4px;flex:none}
+.org-select{appearance:none;-webkit-appearance:none;border:1px solid var(--line);background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 16 16' fill='none' stroke='%238C8C8C' stroke-width='2'%3E%3Cpolyline points='4,6 8,10 12,6'/%3E%3C/svg%3E") no-repeat right 10px center;border-radius:999px;padding:7px 28px 7px 12px;font:inherit;font-size:13px;font-weight:500;color:var(--ink-2);max-width:200px;min-height:34px}
+.org-select.on{border-color:var(--ink);color:var(--ink)}
+.clear{font-size:13px;color:var(--brand);font-weight:600;padding:6px 4px;white-space:nowrap}
+.updated{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.stale{display:flex;align-items:center;gap:8px;background:var(--warn-bg);color:var(--warn-ink);border-radius:var(--r-sm);padding:9px 12px;font-size:13px;font-weight:500;margin-top:10px}
 
-    /* ── PAGE LAYOUT (2-col on desktop) ─────────────── */
-    .page-layout {
-      display: flex;
-      flex-direction: column;
-    }
-    /* Mobile: sidebar (featured events strip) above the ride list */
-    .sidebar {
-      order: -1;
-      background: #0d0d0d;
-      padding: 16px 24px;
-    }
-    /* Desktop: 2-col grid, sidebar sticky on the right */
-    @media (min-width: 960px) {
-      .page-layout {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .page-layout.sidebar-visible {
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        align-items: start;
-      }
-      .page-layout.sidebar-visible main {
-        max-width: none;
-        margin: 0;
-        min-width: 0;
-      }
-      .sidebar {
-        order: 2;
-        padding: 24px 20px;
-        position: sticky;
-        top: 120px;
-        max-height: calc(100vh - 140px);
-        overflow-y: auto;
-        align-self: start;
-      }
-    }
+/* ── Coming up ── */
+.coming{padding:14px 0 2px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ev-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.ev-card{flex:0 0 250px;display:flex;gap:12px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;box-shadow:var(--shadow)}
+.ev-card:hover{border-color:var(--muted)}
+.ev-date{flex:0 0 44px;height:48px;border-radius:8px;background:var(--fast-bg);color:var(--fast-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.ev-date .m{font-size:10px;font-weight:700;letter-spacing:.08em}
+.ev-date .d{font-size:19px;font-weight:800;margin-top:2px}
+.ev-name{font-weight:600;font-size:14px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ev-org{font-size:12px;color:var(--muted);margin-top:2px;display:block}
 
-    /* ── MAIN LAYOUT ─────────────────────────────── */
-    main {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 32px 24px 64px;
-    }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
+/* ── Day sections ── */
+main{padding:6px 0 28px;touch-action:pan-y}
+.day{margin-top:18px}
+.day-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 2px 8px}
+.day-head h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.day-head h2 .rel{color:var(--brand);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-right:8px;vertical-align:2px}
+.day-head h2 .sub{color:var(--muted);font-weight:500}
+.day-wx{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.day-wx span{display:inline-flex;align-items:center;gap:4px}
+.flag{background:var(--warn-bg);color:var(--warn-ink);font-weight:600;font-size:12px;border-radius:999px;padding:2px 9px}
+.list{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.block{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:10px 16px 6px;background:var(--block);border-bottom:1px solid var(--line-2)}
+.block:not(:first-child){border-top:1px solid var(--line-2)}
+.empty-day{padding:18px 16px;color:var(--muted);font-size:14px}
+.earlier{width:100%;display:flex;align-items:center;justify-content:space-between;padding:11px 16px;font-size:13px;font-weight:600;color:var(--muted);background:var(--block);border-bottom:1px solid var(--line-2)}
+.earlier:hover{color:var(--ink-2)}
+.earlier svg{transition:transform .2s}
+.earlier.open svg{transform:rotate(180deg)}
+.swipe-hint{display:none;text-align:center;font-size:12px;color:var(--muted);margin-top:12px}
 
-    /* ── SECTION HEADINGS ─────────────────────────── */
-    .section-title {
-      font-size: 18px;
-      font-weight: 500;
-      color: #0d0d0d;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #e5e5e5;
-    }
-    .section-block { margin-bottom: 40px; }
+/* ── Ride row ── */
+.ride + .ride{border-top:1px solid var(--line-2)}
+.ride-main{width:100%;display:grid;grid-template-columns:58px 34px minmax(0,1fr) auto 18px;grid-template-areas:"t av info meta chev";align-items:center;gap:0 12px;padding:12px 16px;text-align:left;min-height:60px}
+.ride-main:hover{background:var(--hover)}
+.t{grid-area:t;line-height:1.05}
+.t .hm{font-size:17px;font-weight:700;display:block}
+.t .ap{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em}
+.t .tba{font-size:12px;font-weight:600;color:var(--muted)}
+.av{grid-area:av;width:34px;height:34px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;font-size:11px;font-weight:700;color:#3D3D3D}
+.info{grid-area:info;min-width:0}
+.name{font-weight:600;font-size:15px;line-height:1.3;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.name .txt{min-width:0}
+.sub{display:block;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.meta{grid-area:meta;display:flex;gap:6px;align-items:center;justify-content:flex-end}
+.pill{font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+.pill.dist{background:var(--soft);color:var(--ink-2)}
+.pill.p-fast{background:var(--fast-bg);color:var(--fast-ink)}
+.pill.p-mod{background:var(--mod-bg);color:var(--mod-ink)}
+.pill.p-soc{background:var(--soc-bg);color:var(--soc-ink)}
+.pill.p-unk{background:var(--soft);color:var(--muted)}
+.tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:2px 6px;white-space:nowrap}
+.tag.ev{background:var(--ink);color:var(--bg)}
+.tag.cx{background:var(--fast-bg);color:var(--fast-ink)}
+.tag.un{background:var(--soft);color:var(--muted)}
+.tag.area{background:var(--area-bg);color:var(--area-ink)}
+.tag.nd{background:var(--soc-bg);color:var(--soc-ink)}
+.chev{grid-area:chev;color:var(--muted);opacity:.7;transition:transform .2s}
+.ride.open .chev{transform:rotate(180deg)}
+.ride.canceled .name .txt{text-decoration:line-through;text-decoration-color:var(--fast-dot)}
+.ride.canceled .t,.ride.canceled .meta,.ride.canceled .av{opacity:.45}
+.ride.past{opacity:.5}
+.ride.flash .ride-main{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{background:var(--warn-bg)}100%{background:transparent}}
 
-    /* ── TIMELINE CARDS ─────────────────────────── */
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 12px;
-    }
-    .timeline-card {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 6px;
-      padding: 12px;
-      cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      user-select: none;
-    }
-    .timeline-card:hover {
-      border-color: #a3a3a3;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-    .timeline-card.confirmed { border-left: 3px solid #059669; }
-    .timeline-card.canceled  { border-left: 3px solid #dc2626; opacity: 0.7; }
-    .timeline-card.planned   { border-left: 3px solid #d4d4d4; }
-    .timeline-card.past      { border-left: 3px solid #d4d4d4; opacity: 0.6; }
-    .timeline-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-    .timeline-organizer { font-size: 13px; font-weight: 500; color: #0d0d0d; }
-    .timeline-info { font-size: 12px; color: #737373; line-height: 1.5; }
-    .expand-hint {
-      font-size: 11px;
-      color: #a3a3a3;
-      margin-top: 6px;
-      text-align: right;
-    }
-    .timeline-card.expanded .expand-hint { display: none; }
-    .timeline-details {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #f5f5f5;
-      display: none;
-    }
-    .timeline-card.expanded .timeline-details { display: block; }
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .timeline-detail-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #a3a3a3;
-      margin-bottom: 2px;
-    }
-    .timeline-detail-value { font-size: 13px; color: #0d0d0d; font-weight: 500; }
-    .timeline-meeting {
-      font-size: 12px;
-      color: #737373;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-    .timeline-meeting a { color: #D62B2B; text-decoration: none; }
-    .timeline-meeting a:hover { text-decoration: underline; }
-    .timeline-social { display: flex; gap: 8px; flex-wrap: wrap; }
-    .social-link {
-      font-size: 12px;
-      color: #737373;
-      text-decoration: none;
-      padding: 4px 10px;
-      border: 1px solid #e5e5e5;
-      border-radius: 4px;
-      transition: border-color 0.15s, color 0.15s;
-    }
-    .social-link:hover { border-color: #a3a3a3; color: #0d0d0d; }
+.detail{display:none;padding:0 16px 16px calc(16px + 58px + 12px)}
+.ride.open .detail{display:block}
+.d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 20px;padding:12px 0;border-top:1px dashed var(--line)}
+.d-k{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.d-v{font-size:14px;color:var(--ink-2)}
+.d-v .mut{color:var(--muted)}
+.d-notes{font-size:13.5px;color:var(--ink-2);background:var(--block);border-radius:var(--r-sm);padding:10px 12px;margin-bottom:12px;white-space:pre-line}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:var(--r-sm);padding:10px 14px;font-size:13.5px;font-weight:600;text-decoration:none;min-height:44px}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 
-    /* ── RIDE CARDS ─────────────────────────────── */
-    .ride-card {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 12px;
-      transition: box-shadow 0.15s;
-    }
-    .ride-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .ride-card { cursor: pointer; user-select: none; }
-    .ride-card.confirmed { border-left: 3px solid #059669; }
-    .ride-card.canceled  { border-left: 3px solid #dc2626; opacity: 0.7; }
-    .ride-card.planned   { border-left: 3px solid #d4d4d4; }
-    .ride-card.past      { border-left: 3px solid #d4d4d4; opacity: 0.6; }
-    .ride-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #0d0d0d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: #fff;
-      flex-shrink: 0;
-      letter-spacing: 0.03em;
-    }
-    .avatar-img {
-      object-fit: cover;
-      background: #1a1a1a;
-    }
-    .ride-title-block { flex: 1; min-width: 0; }
-    .ride-title-block h3 {
-      font-size: 16px;
-      font-weight: 500;
-      color: #0d0d0d;
-      margin-bottom: 2px;
-    }
-    .ride-organizer-name {
-      font-size: 12px;
-      color: #a3a3a3;
-      margin-bottom: 5px;
-    }
-    .timeline-ride-title {
-      font-size: 12px;
-      color: #737373;
-      margin-top: 1px;
-    }
-    .scan-status-text {
-      font-size: 11px;
-      color: #a3a3a3;
-      white-space: nowrap;
-    }
-    .ride-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      font-size: 13px;
-      color: #737373;
-    }
-    .status-badge {
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-    .badge-confirmed { background: #d1fae5; color: #065f46; }
-    .badge-planned   { background: #fef3c7; color: #92400e; }
-    .badge-canceled  { background: #fee2e2; color: #991b1b; }
-    .badge-unknown   { background: #f5f5f5; color: #737373; }
-    .tl-badge-confirmed { background: #d1fae5; color: #065f46; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
-    .tl-badge-planned   { background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
-    .tl-badge-canceled  { background: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
-    .tl-badge-unknown   { background: #f5f5f5; color: #737373; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 500; white-space: nowrap; }
-    .ride-details {
-      display: none;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      padding: 12px 0;
-      border-top: 1px solid #f5f5f5;
-      border-bottom: 1px solid #f5f5f5;
-      margin-bottom: 12px;
-      margin-top: 12px;
-    }
-    .ride-card.expanded .ride-details { display: grid; }
-    .detail-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: #a3a3a3;
-      margin-bottom: 3px;
-    }
-    .detail-value { font-size: 14px; color: #0d0d0d; font-weight: 500; }
-    .detail-value.muted { color: #a3a3a3; font-weight: 400; }
-    .meeting-point {
-      display: none;
-      font-size: 13px;
-      color: #737373;
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    .ride-card.expanded .meeting-point { display: block; }
-    .meeting-point a { color: #D62B2B; text-decoration: none; }
-    .meeting-point a:hover { text-decoration: underline; }
-    .card-footer {
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      min-height: 32px;
-    }
-    .ride-card.expanded .card-footer { display: flex; }
-    .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
+/* ── Subscribe ── */
+.sub-strip{margin:8px 0 28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:var(--shadow)}
+.sub-strip .copy{flex:1 1 240px}
+.sub-strip .copy strong{display:block;font-size:15px}
+.sub-strip .copy span{font-size:13px;color:var(--muted)}
+.sub-form{display:flex;gap:8px;flex:1 1 300px}
+.sub-form input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:var(--r-sm);padding:10px 12px;font-size:14px;min-height:44px}
+.sub-msg{width:100%;font-size:13px;font-weight:500}
+.sub-msg.ok{color:var(--soc-ink)} .sub-msg.err{color:var(--fast-ink)}
 
-    /* ── CARD CHIPS (collapsed summary row) ───────── */
-    .ride-chips {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 8px;
-    }
-    .ride-chip {
-      font-size: 12px;
-      color: #737373;
-      background: #f5f5f5;
-      border-radius: 4px;
-      padding: 3px 8px;
-      white-space: nowrap;
-    }
-    .chip-chevron {
-      margin-left: auto;
-      font-size: 13px;
-      color: #a3a3a3;
-      transition: transform 0.2s;
-      flex-shrink: 0;
-    }
-    .ride-card.expanded .chip-chevron { transform: rotate(180deg); }
+/* ── Footer ── */
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink-2);font-weight:600;text-decoration:none}
+.legend{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend .dot{width:8px;height:8px;border-radius:50%}
 
-    /* ── PACE COLOUR DOT ─────────────────────────── */
-    .pace-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      margin-right: 3px;
-      vertical-align: middle;
-    }
-    .pace-a { background: #dc2626; }
-    .pace-b { background: #d97706; }
-    .pace-c { background: #059669; }
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;opacity:0;transition:.2s;pointer-events:none;z-index:50}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.offline{background:var(--warn-bg);color:var(--warn-ink);text-align:center;font-size:13px;font-weight:600;padding:6px}
+.loading{padding:60px 0;text-align:center;color:var(--muted)}
 
-    /* ── CALENDAR BUTTON ─────────────────────────── */
-    .calendar-btn {
-      font-size: 12px;
-      color: #737373;
-      padding: 5px 10px;
-      border: 1px solid #e5e5e5;
-      border-radius: 4px;
-      cursor: pointer;
-      background: transparent;
-      font-family: inherit;
-      transition: border-color 0.15s, color 0.15s;
-      white-space: nowrap;
-    }
-    .calendar-btn:hover { border-color: #a3a3a3; color: #0d0d0d; }
-
-    /* ── NEXT RIDE HINT (48h empty state) ─────────── */
-    .next-ride-hint {
-      font-size: 13px;
-      color: #737373;
-      padding: 10px 12px;
-      background: #f9f9f9;
-      border-radius: 6px;
-      border: 1px solid #e5e5e5;
-      margin-top: 8px;
-    }
-    .next-ride-label { color: #a3a3a3; margin-right: 2px; }
-
-
-    /* ── REGISTER BUTTON ─────────────────────────── */
-    .register-btn {
-      background: #D62B2B;
-      color: #fff;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 5px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s;
-      white-space: nowrap;
-    }
-    .register-btn:hover:not(:disabled) { background: #b52323; }
-    .register-btn:disabled { opacity: 0.5; cursor: default; }
-
-    /* ── DAY SECTION (All Rides tab) ─────────────── */
-    .day-section { margin-bottom: 36px; }
-    .day-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #e5e5e5;
-      flex-wrap: wrap;
-    }
-    .day-name { font-size: 18px; font-weight: 500; color: #0d0d0d; }
-    .day-date { font-size: 14px; color: #a3a3a3; }
-    .today-badge {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      background: #0d0d0d;
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 100px;
-    }
-    .weather-day-pill {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: #737373;
-      background: #f5f5f5;
-      border: 1px solid #e5e5e5;
-      border-radius: 100px;
-      padding: 3px 10px;
-    }
-    .no-rides { font-size: 14px; color: #a3a3a3; font-style: italic; padding: 8px 0; }
-
-    /* ── EVENT CARD EXTRAS ─────────────────────────── */
-    .past-badge {
-      font-size: 11px;
-      background: #f5f5f5;
-      color: #a3a3a3;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
-    /* ── LOADING & ERROR ─────────────────────────── */
-    .loading {
-      text-align: center;
-      padding: 48px 24px;
-      color: #a3a3a3;
-    }
-    .spinner {
-      width: 28px;
-      height: 28px;
-      border: 2px solid #e5e5e5;
-      border-top-color: #0d0d0d;
-      border-radius: 50%;
-      animation: spin 0.75s linear infinite;
-      margin: 0 auto 12px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .error-msg {
-      background: #fee2e2;
-      border: 1px solid #fca5a5;
-      border-radius: 8px;
-      padding: 16px 20px;
-      font-size: 14px;
-      color: #991b1b;
-    }
-
-    /* ── EMAIL SIGNUP ───────────────────────────── */
-    .email-signup-container {
-      max-width: 600px;
-      margin: 0 auto 64px;
-      padding: 0 24px;
-    }
-    .email-signup {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 32px;
-      text-align: center;
-    }
-    .email-signup h3 {
-      font-size: 20px;
-      font-weight: 500;
-      color: #0d0d0d;
-      margin-bottom: 8px;
-    }
-    .email-signup > p {
-      color: #737373;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-    .form-group {
-      display: flex;
-      gap: 10px;
-      max-width: 440px;
-      margin: 0 auto 12px;
-    }
-    #email-input {
-      flex: 1;
-      padding: 12px 16px;
-      border: 1px solid #d4d4d4;
-      border-radius: 6px;
-      font-size: 15px;
-      font-family: inherit;
-      outline: none;
-      color: #0d0d0d;
-      background: #fff;
-    }
-    #email-input:focus { border-color: #a3a3a3; }
-    #submit-btn {
-      padding: 12px 24px;
-      background: #D62B2B;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background 0.15s;
-      white-space: nowrap;
-    }
-    #submit-btn:hover:not(:disabled) { background: #b52323; }
-    #submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-    .form-message { min-height: 20px; font-size: 14px; margin-top: 8px; }
-    .form-message.success { color: #065f46; }
-    .form-message.error   { color: #991b1b; }
-    .privacy-note { font-size: 12px; color: #a3a3a3; margin-top: 12px; }
-
-    /* ── FOOTER ─────────────────────────────────── */
-    .footer {
-      background: #0d0d0d;
-      color: #f2f0eb;
-      padding: 48px 24px 32px;
-    }
-    .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 32px;
-    }
-    .footer h4 {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      color: #f2f0eb;
-    }
-    .footer p { font-size: 14px; color: #737373; line-height: 1.7; }
-    .footer-social { display: flex; gap: 8px; flex-wrap: wrap; }
-    .footer-social a {
-      color: #a3a3a3;
-      text-decoration: none;
-      padding: 7px 14px;
-      border: 1px solid #404040;
-      border-radius: 5px;
-      font-size: 13px;
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .footer-social a:hover { color: #f2f0eb; border-color: #737373; }
-    .footer-links { display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a {
-      color: #a3a3a3;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.15s;
-    }
-    .footer-links a:hover { color: #f2f0eb; }
-    .footer-bottom {
-      max-width: 1400px;
-      margin: 0 auto;
-      text-align: center;
-      padding-top: 24px;
-      border-top: 1px solid #262626;
-      color: #737373;
-      font-size: 13px;
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 900px) {
-      .header-top { flex-direction: column; }
-      .weather-widget { flex-wrap: wrap; gap: 8px; }
-      .ride-details { grid-template-columns: repeat(2, 1fr); }
-      .footer-content { grid-template-columns: 1fr; gap: 32px; }
-      .timeline { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .header { padding: 16px 16px 12px; }
-      .wordmark { font-size: 17px; }
-      .tabs { padding: 0 12px; }
-      .tab { padding: 12px 12px; font-size: 14px; }
-      .filters-toggle-row { padding: 8px 16px; }
-      .filters-content { flex-direction: column; align-items: stretch; padding: 2px 16px 14px; }
-      .filter-select { width: 100%; }
-      .clear-filters { width: 100%; }
-      main { padding: 24px 16px 48px; }
-      .form-group { flex-direction: column; }
-      #submit-btn { width: 100%; }
-      .email-signup { padding: 24px 16px; }
-      .email-signup-container { padding: 0 16px; }
-      .ride-details { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .card-footer { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* ── PWA INSTALL PROMPT ─────────────────────────────── */
-    .pwa-install-prompt {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #fff;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
-      padding: 20px;
-      z-index: 9999;
-      animation: slideUp 0.3s ease-out;
-    }
-    @keyframes slideUp {
-      from { transform: translateY(100%); opacity: 0; }
-      to   { transform: translateY(0);   opacity: 1; }
-    }
-    .pwa-prompt-content {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      position: relative;
-    }
-    .pwa-close-btn {
-      position: absolute;
-      top: -10px; right: -10px;
-      background: #e5e5e5;
-      border: none;
-      border-radius: 50%;
-      width: 32px; height: 32px;
-      font-size: 20px;
-      cursor: pointer;
-      color: #737373;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .pwa-close-btn:hover { background: #d4d4d4; color: #0d0d0d; }
-    .pwa-prompt-icon img { border-radius: 12px; display: block; }
-    .pwa-prompt-text h3 { margin: 0 0 4px; font-size: 18px; font-weight: 500; color: #0d0d0d; }
-    .pwa-prompt-text p  { margin: 0; font-size: 14px; color: #737373; line-height: 1.4; }
-    .pwa-prompt-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-left: auto;
-      flex-shrink: 0;
-    }
-    .pwa-install-btn {
-      background: #D62B2B;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s;
-    }
-    .pwa-install-btn:hover { background: #b82424; }
-    .pwa-later-btn {
-      background: transparent;
-      color: #737373;
-      border: 1px solid #e5e5e5;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-    .pwa-later-btn:hover { border-color: #d4d4d4; color: #0d0d0d; }
-    @media (max-width: 600px) {
-      .pwa-prompt-content { flex-direction: column; text-align: center; }
-      .pwa-prompt-icon { margin: 0 auto; }
-      .pwa-prompt-actions { width: 100%; margin-left: 0; }
-      .pwa-install-btn, .pwa-later-btn { width: 100%; }
-    }
-
-    /* ── OFFLINE INDICATOR ──────────────────────────────── */
-    .offline-indicator {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: #fef3c7;
-      color: #92400e;
-      padding: 8px 16px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 500;
-      border-bottom: 1px solid #fde68a;
-      z-index: 10000;
-      animation: slideDown 0.3s ease-out;
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-    body.offline { padding-top: 40px; }
-  </style>
+@media (max-width:640px){
+  .now-wx .hide-sm,.brand-sub{display:none}
+  .ride-main{grid-template-columns:50px 30px minmax(0,1fr) 16px;grid-template-areas:"t av info chev" "t av meta chev";gap:4px 10px;padding:12px 14px;align-items:start}
+  .t{padding-top:2px}
+  .av{width:30px;height:30px}
+  .meta{justify-content:flex-start;flex-wrap:wrap}
+  .chev{align-self:center}
+  .detail{padding:0 14px 14px 14px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:12px 16px 4px}
+  .filters::-webkit-scrollbar{display:none}
+  .updated{margin-left:8px}
+  .next-label{display:none}
+  .next.alert .next-label{display:inline}
+  .day-head h2{font-size:18px}
+  .sep{display:none}
+  .swipe-hint{display:block}
+  .btn{flex:1 1 auto}
+}
+</style>
 </head>
 <body>
 
-<!-- Offline Indicator -->
-<div id="offline-indicator" class="offline-indicator" style="display: none;">
-  <span>📡 You're offline — showing cached rides</span>
-</div>
-
-<!-- PWA Install Prompt (initially hidden) -->
-<div id="pwa-install-prompt" class="pwa-install-prompt" style="display: none;">
-  <div class="pwa-prompt-content">
-    <button class="pwa-close-btn" id="pwa-close-btn" aria-label="Close">×</button>
-    <div class="pwa-prompt-icon">
-      <img src="/icons/icon-192x192.png" alt="RideTrackerFL" width="64" height="64">
-    </div>
-    <div class="pwa-prompt-text">
-      <h3>Install RideTrackerFL</h3>
-      <p>Add to your home screen for quick access to Weston rides. Works like an app!</p>
-    </div>
-    <div class="pwa-prompt-actions">
-      <button class="pwa-install-btn" id="pwa-install-btn">Install App</button>
-      <button class="pwa-later-btn" id="pwa-later-btn">Maybe Later</button>
-    </div>
-  </div>
-</div>
-
-<!-- ── HEADER ─────────────────────────────────────── -->
-<header class="header" id="main-header">
-  <div class="header-content">
-    <div class="header-top">
-      <a href="/" class="logo">
-        <div class="favicon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="9"/>
-            <line x1="12" y1="3" x2="12" y2="21"/>
-            <line x1="3" y1="12" x2="21" y2="12"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <div class="wordmark">
-            <span class="wordmark-main">RIDETRACKER</span><span class="wordmark-accent">FL</span>
-          </div>
-          <div class="submark">WESTON · SOUTH FLORIDA</div>
-        </div>
-      </a>
-      <div class="weather-widget">
-        <span id="current-time">🕐 --:-- --</span>
-        <span id="current-temp">☀️ --°F</span>
-        <span id="current-wind">💨 -- mph</span>
-        <span id="current-rain">💧 --%</span>
-      </div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="RideTrackerFL home">
+      <span class="brand-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></span>
+      <span><div class="brand-word">RIDETRACKER<b>FL</b></div><div class="brand-sub">WESTON · SOUTH FLORIDA</div></span>
+    </a>
+    <div class="top-right">
+      <div class="now-wx num" id="now-wx"></div>
+      <button class="install" id="install-btn" hidden>Install app</button>
     </div>
   </div>
 </header>
+<div class="offline" id="offline" hidden>You're offline — showing the last rides loaded</div>
 
-<!-- ── TABS BAR ───────────────────────────────────── -->
-<div class="tabs-bar" id="tabs-bar">
-  <div class="tabs">
-    <button class="tab active" data-tab="upcoming">This Week</button>
-    <button class="tab" data-tab="all-rides">All Rides</button>
-    <button class="tab" data-tab="special-events">Events</button>
-  </div>
-</div>
+<div class="next" id="next" hidden><div class="wrap" id="next-inner"></div></div>
 
-<!-- ── FILTERS ────────────────────────────────────── -->
-<div class="filters" id="filters-bar">
-  <div class="filters-toggle-row">
-    <button class="filters-toggle" id="filters-toggle-btn" aria-expanded="false" aria-controls="filters-panel">
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="2" y1="4" x2="14" y2="4"/>
-        <line x1="4" y1="8" x2="12" y2="8"/>
-        <line x1="6" y1="12" x2="10" y2="12"/>
-      </svg>
-      Filters
-      <span class="filters-dot" id="filters-dot"></span>
-      <svg class="filters-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="4,6 8,10 12,6"/>
-      </svg>
-    </button>
-  </div>
-  <div class="filters-panel" id="filters-panel">
-    <div class="filters-content">
-      <div class="filter-dropdown">
-        <select class="filter-select" id="status-filter">
-          <option value="all">Status: All</option>
-          <option value="confirmed">Confirmed</option>
-          <option value="planned">Planned</option>
-          <option value="canceled">Canceled</option>
-        </select>
-        <span class="filter-arrow">▼</span>
-      </div>
-      <div class="filter-dropdown">
-        <select class="filter-select" id="organizer-filter">
-          <option value="all">Organizer: All</option>
-        </select>
-        <span class="filter-arrow">▼</span>
-      </div>
-      <button class="clear-filters" id="clear-filters-btn">Clear Filters</button>
-    </div>
-  </div>
-</div>
+<div class="strip-bar"><div class="wrap"><nav class="strip" id="strip" aria-label="Choose a day"></nav></div></div>
 
-<!-- ── MAIN CONTENT ───────────────────────────────── -->
-<div class="page-layout" id="page-layout">
-<main>
+<div class="wrap">
+  <div class="filters" id="filters"></div>
+  <div id="stale"></div>
+  <section class="coming" id="coming" hidden></section>
+  <main id="main"><div class="loading">Loading rides…</div></main>
 
-  <!-- TAB: UPCOMING (default) ─────────────────────── -->
-  <div id="upcoming-content" class="tab-content active">
-
-    <!-- Special events in next 48h (shown only if any exist) -->
-    <div class="section-block" id="events-48h-block" style="display:none">
-      <div class="section-title">Special Events · Next 48 Hours</div>
-      <div id="events-48h-list"></div>
-    </div>
-
-    <!-- Full cards: all recurring rides this week -->
-    <div class="section-block">
-      <div class="section-title">All Upcoming Rides</div>
-      <div id="upcoming-rides-list">
-        <div class="loading"><div class="spinner"></div></div>
-      </div>
-    </div>
-
-    <!-- Upcoming special events beyond 48h -->
-    <div class="section-block">
-      <div class="section-title">Upcoming Special Events</div>
-      <div id="upcoming-events-list">
-        <div class="loading"><div class="spinner"></div></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- TAB: ALL RIDES ───────────────────────────────── -->
-  <div id="all-rides-content" class="tab-content">
-    <div id="all-rides-list">
-      <div class="loading"><div class="spinner"></div><p>Loading…</p></div>
-    </div>
-  </div>
-
-  <!-- TAB: SPECIAL EVENTS ─────────────────────────── -->
-  <div id="special-events-content" class="tab-content">
-    <div id="special-events-list">
-      <div class="loading"><div class="spinner"></div><p>Loading…</p></div>
-    </div>
-  </div>
-
-</main>
-<aside class="sidebar" id="sidebar" style="display:none">
-  <div class="featured-events">
-    <h4>Featured Events</h4>
-    <div id="featured-events-list">
-      <div class="featured-empty">Loading events…</div>
-    </div>
-  </div>
-</aside>
-</div>
-
-<!-- ── EMAIL SIGNUP ───────────────────────────────── -->
-<div class="email-signup-container">
-  <div class="email-signup">
-    <h3>Never Miss a Ride</h3>
-    <p>Get weekly ride updates and weather alerts delivered to your inbox.</p>
-    <form id="signup-form" novalidate>
-      <div class="form-group">
-        <input type="email" id="email-input" placeholder="your@email.com" required autocomplete="email">
-        <button type="submit" id="submit-btn">
-          <span class="btn-text">Subscribe</span>
-          <span class="btn-loading" style="display:none">Subscribing…</span>
-        </button>
-      </div>
-      <div id="form-message" class="form-message"></div>
+  <section class="sub-strip" aria-label="Email updates">
+    <div class="copy"><strong>Never miss a ride</strong><span>Weekly ride roundup and weather alerts. No spam.</span></div>
+    <form class="sub-form" id="sub-form" novalidate>
+      <input type="email" id="sub-email" placeholder="you@email.com" autocomplete="email" aria-label="Email address" required>
+      <button class="btn primary" type="submit" id="sub-btn">Subscribe</button>
     </form>
-    <p class="privacy-note">No spam. Unsubscribe anytime.</p>
-  </div>
+    <div class="sub-msg" id="sub-msg" hidden></div>
+  </section>
 </div>
 
-<!-- ── FOOTER ─────────────────────────────────────── -->
-<footer class="footer">
-  <div class="footer-content">
+<footer>
+  <div class="wrap">
     <div>
-      <h4>RideTrackerFL</h4>
-      <p>The most reliable source for group rides in Weston, South Florida. Updated twice daily with weather forecasts and confirmed status.</p>
+      <div style="font-weight:700;color:var(--ink);margin-bottom:4px">RideTrackerFL</div>
+      Every group ride in Weston, in one place. Updated twice daily.<br>
+      Organizer with a correction? DM <a href="https://www.instagram.com/ridetrackerfl/" target="_blank" rel="noopener">@ridetrackerfl</a>
     </div>
-    <div>
-      <h4>Connect</h4>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/ridetrackerfl" target="_blank" rel="noopener">Instagram</a>
-        <a href="#" target="_blank" rel="noopener">Strava</a>
-        <a href="#" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-    <div>
-      <h4>Partner with us</h4>
-      <div class="footer-links">
-        <a href="mailto:hello@ridetrackerfl.com">List your rides</a>
-        <a href="mailto:hello@ridetrackerfl.com">Sponsorship</a>
-        <a href="mailto:hello@ridetrackerfl.com">Contact</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    © 2026 RideTrackerFL · Weston, South Florida
-    <div style="margin-top: 8px; font-size: 12px; color: #525252;">
-      Ride details are sourced from Instagram and updated automatically. Always confirm times, location, and cancellations directly with the organizer before heading out.
+    <div class="legend">
+      <span><i class="dot" style="background:var(--fast-dot)"></i>Fast 21+ mph</span>
+      <span><i class="dot" style="background:var(--mod-dot)"></i>Moderate 17–21</span>
+      <span><i class="dot" style="background:var(--soc-dot)"></i>Social / no-drop</span>
     </div>
   </div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-// ─────────────────────────────────────────────────────
-//  AIRTABLE CONFIG
-// ─────────────────────────────────────────────────────
-const RIDES      = 'tbl7xURgDo5wU4z5t';
-const ORGANIZERS = 'tblYXWvRSgqWkvaVE';
+/* ═════════════════════════════════════════════════════
+   RideTrackerFL v2
+   Data: /public/rides.json. Display fields come from each ride's `site`
+   object (written by pipeline/site_normalize.py during sync). If a ride has
+   no `site` object yet (older rides.json), the same values are computed here.
+   ═════════════════════════════════════════════════════ */
+const DATA_URL = '/public/rides.json';
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const DOW3 = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MON3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const WINDOW_DAYS = 7;
+const STALE_HOURS = 24;
+const PAST_GRACE_MIN = 90;   // a ride counts as "done" 90 min after its start
 
-// Ride field names (Airtable keys by name, not ID)
-const R = {
-  name:      'Ride Name',
-  org:       'Organizer',
-  day:       'Day of Week',
-  time:      'Time',
-  loc:       'Location',
-  addrNote:  'Address Note',
-  dist:      'Distance',
-  pace:      'Pace',
-  status:    'Status',
-  weather:   'Weather Summary',
-  rain:      'Rain Probability',
-  wind:      'Wind Speed',
-  rideDate:      'Ride Date',       // specific date (YYYY-MM-DD); overrides weekDates() slot when set
-  // Visibility & source control fields (added 2026-04-04):
-  rideType:      'Ride Type',
-  featured:      'Featured',        // checkbox — manually pin to header (max 3, any ride type)
-  displayOnSite: 'Display on Site',
-  isPrimary:     'Is Primary Listing',
-  needsReview:   'Needs Review',
-  lastChecked:   'Last Checked At',      // ISO datetime — set by scraper each scan
-  // Future fields (show gracefully when added to Airtable):
-  instagram: 'Organizer Instagram Profile',
-  strava:    'Strava URL',
-  website:   'Website URL',
-  mapsUrl:   'Google Maps URL',
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch { return null; } },
+  set(k,v){ try { localStorage.setItem(k, v); } catch {} },
+};
+const state = {
+  items: [], later: [], days: [], wx: {}, orgs: {}, view: null,
+  pace: store.get('rt_pace') || 'all', weston: false, org: 'all',
+  open: new Set(), showPast: false, generatedAt: null, lastLoad: 0,
 };
 
+const gaEvent = (n, p) => { if (!window.__noGA && typeof gtag !== 'undefined') gtag('event', n, p || {}); };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const keyOf = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const midnight = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+const nowMin = () => { const n = new Date(); return n.getHours()*60 + n.getMinutes(); };
+const allItems = () => [...state.items, ...state.later];
 
-// Organizer field names (Organizers table)
-const O = {
-  name:         'Name',
-  type:         'Type',
-  igHandle:     'Instagram Handle',
-  igUrl:        'Instagram URL',
-  website:      'Website URL',
-  whatsapp:     'WhatsApp Link',
-  strava:       'Strava URL',
-  email:        'Contact Email',
-  avatar:       'Avatar',
-  address:      'Address',
-  openingHours: 'Opening Hours',
-  active:       'Active',
-  notes:        'Notes',
+const I = {
+  drop:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>',
+  wind:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8"/></svg>',
+  temp:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0z"/></svg>',
+  chev:'<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 8,10 12,6"/></svg>',
+  pin:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  cal:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  ig:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  share:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>',
+  warn:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>',
 };
 
-// Organizer map — populated in init(), keyed by lowercase organizer name
-let organizerMap = {};
-
-const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-// ─────────────────────────────────────────────────────
-//  HELPERS
-// ─────────────────────────────────────────────────────
-function escHtml(s) {
-  return String(s || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+/* ── Fallback normalizers (mirror pipeline/site_normalize.py) ── */
+function parseTime(s){
+  if (!s) return null;
+  const str = String(s).trim();
+  let m = str.match(/(\d{1,2})(?::(\d{2}))?\s*([AaPp])\.?\s*[Mm]?\b/);
+  if (m) { let h = +m[1] % 12; if (/p/i.test(m[3])) h += 12; return h*60 + (+m[2] || 0); }
+  m = str.match(/^(\d{1,2}):(\d{2})$/);
+  return m ? (+m[1])*60 + (+m[2]) : null;
 }
-
-function fmt(d) { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
-
-function isToday(d) {
-  const t = new Date();
-  return d.toDateString() === t.toDateString();
+function fmtTime(min){
+  if (min == null) return null;
+  const h = Math.floor(min/60), mm = String(min%60).padStart(2,'0');
+  return { hm: `${h%12||12}:${mm}`, ap: h >= 12 ? 'PM' : 'AM' };
 }
-
-function isTomorrow(d) {
-  const t = new Date();
-  t.setDate(t.getDate() + 1);
-  return d.toDateString() === t.toDateString();
-}
-
-/**
- * Returns the Date to use for a ride record.
- * If the record has an explicit "Ride Date" (ISO YYYY-MM-DD), parse and return that.
- * Otherwise fall back to weekDates()[dayOfWeekIndex].
- * For weekly rides, if the explicit Ride Date is in the past (scraper set last week's date
- * and hasn't updated yet), ignore it and fall back to weekDates() so the card always shows
- * the correct upcoming date rather than disappearing until the scraper runs again.
- * Always use this instead of wk[dayIdx] when building individual ride cards.
- */
-function rideDateFor(fields, wk) {
-  const iso = fields[R.rideDate];
-  if (iso) {
-    const d = new Date(iso + 'T00:00:00');
-    if (!isNaN(d)) {
-      // For weekly rides: if the stored date is already past, fall back to weekDates()
-      // so the card renders on the next upcoming occurrence, not last week's slot.
-      const rideType = (fields[R.rideType] || '').toLowerCase();
-      if (rideType === 'weekly') {
-        const today = new Date(); today.setHours(0, 0, 0, 0);
-        if (d < today) {
-          const dayIdx = DAYS.indexOf(fields[R.day]);
-          return dayIdx === -1 ? null : wk[dayIdx];
-        }
-      }
-      return d;
-    }
+function paceInfo(raw){
+  if (!raw) return { pace_label:'', pace_groups:[], pace_top:'unk', pace_nodrop:false };
+  const s = String(raw), plus = /\+/.test(s);
+  const nums = (s.match(/\d+(?:\.\d+)?/g) || []).map(Number).filter(n => n >= 10 && n <= 35);
+  const nodrop = /no.?drop|recovery|chill|social|controlled/i.test(s);
+  const g = new Set(); let label = '';
+  const grp = n => n >= 21 ? 'fast' : n >= 17 ? 'mod' : 'soc';
+  if (nums.length) {
+    const lo = Math.min(...nums), hi = Math.max(...nums);
+    label = (lo === hi ? `${lo}` : `${lo}–${hi}`) + (plus ? '+' : '') + ' mph';
+    for (let n = Math.floor(lo); n <= hi; n++) g.add(grp(n));
+  } else {
+    const L = [...new Set(s.toUpperCase().match(/\b[A-D]\b/g) || [])].sort();
+    if (L.length) { label = L.join('/') + (L.length > 1 ? ' groups' : ' group'); L.forEach(l => g.add(l === 'A' ? 'fast' : l === 'B' ? 'mod' : 'soc')); }
   }
-  const dayIdx = DAYS.indexOf(fields[R.day]);
-  return dayIdx === -1 ? null : wk[dayIdx];
+  if (nodrop) g.add('soc');
+  if (!label && nodrop) label = 'No-drop';
+  const order = ['fast','mod','soc'];
+  return { pace_label: label || s, pace_groups: order.filter(x => g.has(x)), pace_top: order.find(x => g.has(x)) || 'unk', pace_nodrop: nodrop && nums.length > 0 };
 }
-
-function weekDates() {
-  // Returns an array indexed by day-of-week (0=Sun … 6=Sat), each containing the
-  // *next upcoming* date for that day (today counts as upcoming, not past).
-  // Example on Saturday Apr 4: wk[0]=Apr 5 (Sun), wk[6]=Apr 4 (Sat/today).
-  const today  = new Date();
-  const todayN = today.getDay();
-  const base   = new Date(today.getFullYear(), today.getMonth(), today.getDate()); // midnight today
-  return Array.from({ length: 7 }, (_, dayIdx) => {
-    const daysAhead = (dayIdx - todayN + 7) % 7;
-    const d = new Date(base);
-    d.setDate(base.getDate() + daysAhead);
-    return d;
+function fmtDist(raw){
+  if (!raw) return '';
+  const s = String(raw).trim().replace(/\s*(mi|miles?)\.?\s*$/i, '').replace(/\s*\/\s*/g, '/');
+  return /\d/.test(s) ? `${s} mi` : s;
+}
+const VENUE_ALIASES = [
+  [/alex'?s?\s+(bicycle|bike)\s*(pro\s*)?shop/i, "Alex's Bicycle Pro Shop"],
+  [/sunrise\s+sports\s*(plex|complex)/i, 'Sunrise Sportsplex'],
+  [/grit\.?\s*bike\s*lab/i, 'GRIT Bike Lab'],
+  [/weston\s+town\s+cent(er|re)/i, 'Weston Town Center'],
+];
+function splitLocation(loc){
+  const parts = String(loc || '').trim().split(/\s+[·—–]\s+|\s+-\s+/);
+  let venue = parts[0] || '', detail = parts.slice(1).join(', ');
+  if (venue.includes(',') && !/^\d/.test(venue)) { const [v, ...r] = venue.split(','); venue = v.trim(); detail = [r.join(',').trim(), detail].filter(Boolean).join(' · '); }
+  else if (venue.includes(',')) venue = venue.split(',')[0].trim();
+  for (const [re, n] of VENUE_ALIASES) if (re.test(venue)) { venue = n; break; }
+  return { venue, detail };
+}
+function areaOf(loc){
+  const s = String(loc || '');
+  if (/sunrise/i.test(s)) return 'Sunrise';
+  if (/pembroke|taft st/i.test(s)) return 'Pembroke Pines';
+  if (/miami|coconut grove|key biscayne/i.test(s)) return 'Miami';
+  if (/fort lauderdale|ft\.? lauderdale/i.test(s)) return 'Fort Lauderdale';
+  return 'Weston';
+}
+function displayName(name, org){
+  if (!name || !org) return name || org;
+  const o = org.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), sep = '\\s*[-–—:|]\\s*';
+  const s = name.replace(new RegExp(`^${o}${sep}`, 'i'), '').replace(new RegExp(`${sep}${o}$`, 'i'), '').trim();
+  return s ? s[0].toUpperCase() + s.slice(1) : name;
+}
+function cleanNotes(f){
+  // Anchored per line (see site_normalize.clean_notes): Notes can *begin*
+  // with the separator, leaving no newline in front of it to match.
+  const head = String(f['Notes'] || '').split(/^\s*-{3,}\s*$/m)[0];
+  const kv = {}, free = [];
+  head.split('\n').forEach(line => {
+    const m = line.match(/^\s*(Address|Pace|Distance)\s*:\s*(.+)$/i);
+    if (m) kv[m[1].toLowerCase()] = m[2].trim(); else if (line.trim() && !line.trim().startsWith('---')) free.push(line.trim());
   });
+  return { notes: free.join('\n'), pace: f['Pace'] || kv.pace, dist: f['Distance'] || kv.distance, addr: f['Address Note'] || kv.address };
+}
+function siteFields(r){
+  if (r.site) return r.site;
+  const f = r.fields || {};
+  const c = cleanNotes(f);
+  const { venue, detail } = splitLocation(f['Location']);
+  const t = parseTime(f['Time']);
+  const ft = fmtTime(t);
+  return { time_min: t, time_display: ft ? `${ft.hm} ${ft.ap}` : null, ...paceInfo(c.pace),
+    dist_display: fmtDist(c.dist), venue,
+    venue_detail: (c.addr && !detail.toLowerCase().includes(c.addr.toLowerCase()))
+      ? [detail, c.addr].filter(Boolean).join(' · ') : detail,
+    area: areaOf(f['Location']), display_name: displayName(f['Ride Name'] || '', f['Organizer'] || ''), _notes: c.notes, _pace_raw: c.pace };
 }
 
-function initials(name) {
-  if (!name) return '?';
-  const words = name.trim().split(/\s+/);
-  if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
-  return (words[0][0] + words[1][0]).toUpperCase();
+/* ── Helpers ── */
+function initials(name){ const w = String(name || '?').trim().split(/\s+/); return (w.length > 1 ? w[0][0] + w[1][0] : w[0].slice(0,2)).toUpperCase(); }
+function relDay(key){
+  const t = new Date(), tm = new Date(); tm.setDate(tm.getDate()+1);
+  return key === keyOf(t) ? 'Today' : key === keyOf(tm) ? 'Tomorrow' : '';
 }
-
-function normalizeOrg(name) {
-  return (name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function ago(iso){
+  const m = Math.round((Date.now() - new Date(iso).getTime())/60000);
+  if (isNaN(m)) return '';
+  if (m < 2) return 'just now';
+  if (m < 60) return `${m} min ago`;
+  const h = Math.round(m/60);
+  return h < 24 ? `${h}h ago` : `${Math.round(h/24)}d ago`;
 }
+const isPast = it => it.key === keyOf(new Date()) && it.min != null && it.min + PAST_GRACE_MIN < nowMin();
+function toast(msg){ const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2200); }
 
-function statusBadge(raw) {
-  const s = (raw || 'unknown').toLowerCase();
-  const cls   = s === 'confirmed'                    ? 'badge-confirmed'
-              : s === 'planned'                       ? 'badge-planned'
-              : (s === 'canceled' || s === 'cancelled') ? 'badge-canceled'
-              : 'badge-unknown';
-  const label = (s === 'canceled' || s === 'cancelled') ? 'Canceled'
-              : s.charAt(0).toUpperCase() + s.slice(1);
-  return `<span class="status-badge ${cls}">${label}</span>`;
-}
-
-function tlStatusBadge(raw) {
-  const s = (raw || 'unknown').toLowerCase();
-  const cls   = s === 'confirmed'                    ? 'tl-badge-confirmed'
-              : s === 'planned'                       ? 'tl-badge-planned'
-              : (s === 'canceled' || s === 'cancelled') ? 'tl-badge-canceled'
-              : 'tl-badge-unknown';
-  const label = s === 'confirmed'                    ? '✓ Confirmed'
-              : (s === 'canceled' || s === 'cancelled') ? '✕ Canceled'
-              : s.charAt(0).toUpperCase() + s.slice(1);
-  return `<span class="${cls}">${label}</span>`;
-}
-
-function buildMapsUrl(location, addrNote) {
-  const query = [location, addrNote].filter(Boolean).join(', ');
-  return query
-    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
-    : null;
-}
-
-function wxDisplay(wx, rainField, windField) {
-  // wx = { rain, wind } from daily map  |  fallback to per-card fields
-  const rain = wx ? wx.rain
-             : (rainField !== undefined && rainField !== null)
-               ? (rainField <= 1 ? Math.round(rainField * 100) : Math.round(rainField))
-               : null;
-  const wind = wx ? wx.wind
-             : (windField !== undefined && windField !== null)
-               ? Math.round(windField)
-               : null;
-  if (rain === null && wind === null) return '—';
-  if (rain !== null && wind !== null) return `${rain}% rain · ${wind} mph`;
-  if (rain !== null) return `${rain}% rain`;
-  return `${wind} mph wind`;
-}
-
-// ─────────────────────────────────────────────────────
-//  FETCH
-// ─────────────────────────────────────────────────────
-// Static JSON cache — loaded once per session
-let _ridesJson = null;
-async function _loadRidesJson() {
-  if (_ridesJson) return _ridesJson;
-  const res = await fetch('/public/rides.json');
-  if (!res.ok) throw new Error(`Could not load rides. Please try again later.\nAirtable ${res.status}: ${await res.text()}`);
-  _ridesJson = await res.json();
-  return _ridesJson;
-}
-
-async function fetchAll(tableId, fieldNames) {
-  const data = await _loadRidesJson();
-  if (tableId === RIDES)      return (data.rides      || {}).records || [];
-  if (tableId === ORGANIZERS) return (data.organizers || {}).records || [];
-  return [];
-}
-
-// Daily weather map for the week (Open-Meteo, no API key)
-async function fetchWeather() {
-  try {
-    const url = 'https://api.open-meteo.com/v1/forecast' +
-      '?latitude=26.1004&longitude=-80.3997' +
-      '&daily=precipitation_probability_max,windspeed_10m_max' +
-      '&timezone=America%2FNew_York&forecast_days=7&wind_speed_unit=mph';
-    const res  = await fetch(url);
-    if (!res.ok) return {};
-    const data = await res.json();
-    const map  = {};
-    (data.daily.time || []).forEach((date, i) => {
-      map[date] = {
-        rain: data.daily.precipitation_probability_max[i],
-        wind: Math.round(data.daily.windspeed_10m_max[i])
-      };
+/* ── Build items ── */
+function buildItems(records){
+  const today = midnight(new Date());
+  const winEnd = new Date(today); winEnd.setDate(winEnd.getDate() + WINDOW_DAYS);
+  const nextOcc = name => { const i = DAYS.indexOf(name); if (i < 0) return null; const d = new Date(today); d.setDate(d.getDate() + (i - today.getDay() + 7) % 7); return d; };
+  const out = [];
+  for (const r of records) {
+    const f = r.fields || {};
+    if (f['Display on Site'] === false) continue;
+    const status = String(f['Status'] || '').toLowerCase();
+    if (status === 'hidden' || status === 'past') continue;
+    const type = String(f['Ride Type'] || 'weekly').toLowerCase();
+    const weekly = type === 'weekly';
+    let date = f['Ride Date'] ? new Date(f['Ride Date'] + 'T00:00:00') : null;
+    // Treat an unparseable date as absent. Every comparison against an
+    // Invalid Date is false, so without this the weekly re-anchor below is
+    // skipped and the isNaN guard drops the ride instead of rescheduling it.
+    if (date && isNaN(date)) date = null;
+    if (weekly) { if (!date || date < today || date >= winEnd) date = nextOcc(f['Day of Week']); }
+    else if (!date) date = nextOcc(f['Day of Week']);
+    if (!date || isNaN(date) || date < today) continue;
+    const s = siteFields(r);
+    out.push({
+      id: r.id, weekly, status, date, key: keyOf(date), min: s.time_min,
+      name: s.display_name || f['Ride Name'] || f['Organizer'] || 'Group ride',
+      fullName: f['Ride Name'] || '', org: f['Organizer'] || '', loc: f['Location'] || '',
+      venue: s.venue, detail: s.venue_detail, area: s.area, dist: s.dist_display,
+      pace: s.pace_label ? { label: s.pace_label, groups: new Set(s.pace_groups), top: s.pace_top, nodrop: s.pace_nodrop, raw: s._pace_raw || f['Pace'] || s.pace_label } : null,
+      notes: s._notes !== undefined ? s._notes : (f['Notes'] || ''),
+      ig: f['Organizer Instagram Profile'] || '',
+      rain: f['Rain Probability'], wind: f['Wind Speed'], rideDateRaw: f['Ride Date'] || '',
+      primary: f['Is Primary Listing'] === true,
     });
+  }
+  // Dedup: same organizer + date + start → keep primary, else freshest Ride Date, else lowest id
+  const groups = new Map();
+  for (const it of out) { const k = `${it.org.toLowerCase()}|${it.key}|${it.min ?? it.name.toLowerCase()}`; (groups.get(k) || groups.set(k, []).get(k)).push(it); }
+  const kept = [...groups.values()].map(g => g.sort((a,b) => (b.primary - a.primary) || b.rideDateRaw.localeCompare(a.rideDateRaw) || a.id.localeCompare(b.id))[0]);
+  kept.sort((a,b) => a.date - b.date || (a.min ?? 9999) - (b.min ?? 9999) || a.name.localeCompare(b.name));
+  return { inWindow: kept.filter(i => i.date < winEnd), later: kept.filter(i => i.date >= winEnd) };
+}
+
+/* ── Weather ── */
+async function fetchDailyWx(){
+  try {
+    const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=26.1004&longitude=-80.3997&daily=precipitation_probability_max,windspeed_10m_max&timezone=America%2FNew_York&forecast_days=7&wind_speed_unit=mph');
+    if (!r.ok) return {};
+    const d = await r.json(), map = {};
+    (d.daily.time || []).forEach((k,i) => map[k] = { rain: d.daily.precipitation_probability_max[i], wind: Math.round(d.daily.windspeed_10m_max[i]) });
     return map;
   } catch { return {}; }
 }
-
-// ─────────────────────────────────────────────────────
-//  LIVE WEATHER WIDGET (header)
-// ─────────────────────────────────────────────────────
-function updateTime() {
-  const now  = new Date();
-  const h    = now.getHours();
-  const m    = now.getMinutes();
-  const ampm = h >= 12 ? 'PM' : 'AM';
-  const dh   = h % 12 || 12;
-  const dm   = m < 10 ? '0' + m : String(m);
-  document.getElementById('current-time').textContent = `🕐 ${dh}:${dm} ${ampm}`;
-}
-updateTime();
-setInterval(updateTime, 60000);
-
-async function updateHeaderWeather() {
+async function fetchNowWx(){
   try {
-    const url = 'https://api.open-meteo.com/v1/forecast' +
-      '?latitude=26.1004&longitude=-80.3997' +
-      '&current=temperature_2m,precipitation_probability,wind_speed_10m,wind_direction_10m' +
-      '&temperature_unit=fahrenheit&wind_speed_unit=mph';
-    const res  = await fetch(url);
-    if (!res.ok) return;
-    const data = await res.json();
-    const c    = data.current;
-
-    const temp = Math.round(c.temperature_2m);
-    const rain = c.precipitation_probability || 0;
-    const wind = Math.round(c.wind_speed_10m);
-    const dirs = ['N','NE','E','SE','S','SW','W','NW'];
-    const dir  = dirs[Math.round(c.wind_direction_10m / 45) % 8];
-    const icon = rain >= 60 ? '🌧' : rain >= 30 ? '🌦' : temp >= 85 ? '☀️' : '🌤';
-
-    document.getElementById('current-temp').textContent = `${icon} ${temp}°F`;
-    document.getElementById('current-wind').textContent = `💨 ${wind} mph ${dir}`;
-    document.getElementById('current-rain').textContent = `💧 ${rain}%`;
-  } catch (e) {
-    console.warn('Header weather fetch failed:', e);
-  }
+    const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=26.1004&longitude=-80.3997&current=temperature_2m,precipitation_probability,wind_speed_10m,wind_direction_10m&temperature_unit=fahrenheit&wind_speed_unit=mph');
+    if (!r.ok) return;
+    const c = (await r.json()).current;
+    const dir = ['N','NE','E','SE','S','SW','W','NW'][Math.round(c.wind_direction_10m/45)%8];
+    document.getElementById('now-wx').innerHTML = `<span>${I.temp}${Math.round(c.temperature_2m)}°F</span><span>${I.wind}${Math.round(c.wind_speed_10m)} mph ${dir}</span><span class="hide-sm">${I.drop}${c.precipitation_probability || 0}%</span>`;
+  } catch {}
 }
-updateHeaderWeather();
-setInterval(updateHeaderWeather, 600000); // refresh every 10 min
-
-// ─────────────────────────────────────────────────────
-//  FEATURED EVENTS (header)
-// ─────────────────────────────────────────────────────
-// Source: Rides table — records with Featured checkbox checked.
-// Rules: show regardless of how far out; drop once the ride date has passed midnight;
-// if more than 3 are featured, show the 3 soonest.
-function renderFeaturedEvents(featuredRideRecords, weatherMap) {
-  const now   = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // midnight today
-  const wk    = weekDates();
-
-  // Unified item shape: { name, org, date, time, loc, addrNote, dist, pace, rain, wind, weather, mapsUrl }
-  const items = [];
-
-  // From Rides table (Featured checkbox = true)
-  (featuredRideRecords || []).forEach(r => {
-    const f      = r.fields;
-    const status = (f[R.status] || '').toLowerCase();
-    if (status === 'canceled' || status === 'cancelled' || status === 'hidden') return;
-    const d = rideDateFor(f, wk);
-    if (!d || d < today) return; // drop once midnight of the ride day has passed
-    const dateStr = d.toISOString().split('T')[0];
-    const wx      = weatherMap ? weatherMap[dateStr] : null;
-    const orgKey = (f[R.org] || '').toLowerCase().trim();
-    const orgRec = organizerMap[orgKey] || {};
-    if (orgKey && !organizerMap[orgKey]) {
-      console.warn(`[featured] No organizer match for "${orgKey}" — social links will use ride-field fallback`);
-    }
-    items.push({
-      name: f[R.name] || 'Unnamed Ride',
-      org:  f[R.org]  || '',
-      date: d,
-      time: f[R.time] || '',
-      loc:  f[R.loc]  || '',
-      addrNote: f[R.addrNote] || '',
-      dist: f[R.dist] || '',
-      pace: f[R.pace] || '',
-      rain: wx ? wx.rain : f[R.rain],
-      wind: wx ? wx.wind : f[R.wind],
-      weather: f[R.weather] || '',
-      mapsUrl: f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]),
-      igUrl:      orgRec[O.igUrl]   || f[R.instagram] || '',
-      siteUrl:    orgRec[O.website] || f[R.website]   || '',
-      strava:     orgRec[O.strava]  || f[R.strava]    || '',
-      recordId:   r.id,
-    });
-  });
-
-  items.sort((a, b) => a.date - b.date);
-  const upcoming = items.slice(0, 3);
-
-  const container = document.getElementById('featured-events-list');
-
-  const sidebarEl = document.getElementById('sidebar');
-  const layoutEl  = document.getElementById('page-layout');
-
-  if (!upcoming.length) {
-    if (sidebarEl) sidebarEl.style.display = 'none';
-    if (layoutEl)  layoutEl.classList.remove('sidebar-visible');
-    return;
-  }
-
-  // Show sidebar with featured events
-  if (sidebarEl) sidebarEl.style.display = '';
-  if (layoutEl)  layoutEl.classList.add('sidebar-visible');
-
-  container.innerHTML = upcoming.map(item => {
-    const dateLabel = `${DAYS[item.date.getDay()].substring(0, 3)} ${fmt(item.date)}`;
-    const timeStr   = item.time ? ` · ${escHtml(item.time)}` : '';
-    const distStr   = item.dist ? ` · ${escHtml(item.dist)}` : '';
-    const regText   = '';
-
-    // Expanded detail rows
-    const locParts  = [item.loc, item.addrNote].filter(Boolean);
-    const locStr    = locParts.length
-      ? `<div class="featured-detail-row">📍 ${locParts.map(escHtml).join(' · ')}${item.mapsUrl ? ` · <a href="${escHtml(item.mapsUrl)}" target="_blank" rel="noopener">Maps</a>` : ''}</div>`
-      : '';
-    const paceStr   = item.pace
-      ? `<div class="featured-detail-row"><span class="featured-detail-label">Pace</span> ${escHtml(item.pace)}</div>` : '';
-    const wxStr     = wxDisplay(null, item.rain, item.wind) !== '—'
-      ? `<div class="featured-detail-row"><span class="featured-detail-label">Weather</span> ${wxDisplay(null, item.rain, item.wind)}</div>` : '';
-
-    return `
-      <div class="featured-item" onclick="if(!event.target.closest('button,a')) this.classList.toggle('expanded')">
-        <div class="featured-item-header">
-          <div>
-            <div class="featured-name">${escHtml(item.name)}</div>
-            ${item.org ? `<div class="featured-org">${escHtml(item.org)}</div>` : ''}
-          </div>
-          <span class="featured-expand-hint">▾</span>
-        </div>
-        <div class="featured-meta">${dateLabel}${timeStr}${distStr}${regText}</div>
-        ${(() => {
-          const links = [
-            item.igUrl   ? `<a href="${escHtml(item.igUrl)}"   class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
-            item.strava  ? `<a href="${escHtml(item.strava)}"  class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
-            item.siteUrl ? `<a href="${escHtml(item.siteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
-          ].filter(Boolean).join('');
-          return links ? `<div class="featured-detail-row featured-social-row" style="margin-top:4px">${links}</div>` : '';
-        })()}
-        <div class="featured-details">
-          ${locStr}${paceStr}${wxStr}
-        </div>
-      </div>`;
-  }).join('');
+function dayWx(key){
+  if (state.wx[key]) return state.wx[key];
+  const rs = state.items.filter(i => i.key === key && i.rideDateRaw === key && i.rain != null);
+  if (!rs.length) return null;
+  return { rain: Math.round(Math.max(...rs.map(i => i.rain)) * 100), wind: Math.round(Math.max(...rs.map(i => i.wind || 0))) };
 }
+const wxFlag = w => !w ? '' : w.rain >= 50 ? 'Rain likely' : w.wind >= 20 ? 'Windy' : '';
 
-// ─────────────────────────────────────────────────────
-//  TIMELINE CARDS (next 48 hours, expandable)
-// ─────────────────────────────────────────────────────
-function renderTimeline(rideRecords, weatherMap) {
-  const todayN    = new Date().getDay();
-  const tomorrowN = (todayN + 1) % 7;
-  const todayName    = DAYS[todayN];
-  const tomorrowName = DAYS[tomorrowN];
-  const wk = weekDates();
-
-  const todayDate    = wk[todayN];
-  const tomorrowDate = wk[tomorrowN];
-
-  const rides48 = rideRecords
-    .filter(r => {
-      const actual = rideDateFor(r.fields, wk);
-      if (!actual) return false;
-      const ds = actual.toDateString();
-      return ds === todayDate.toDateString() || ds === tomorrowDate.toDateString();
-    })
-    .sort((a, b) => {
-      const da = rideDateFor(a.fields, wk)?.toDateString() === todayDate.toDateString() ? 0 : 1;
-      const db = rideDateFor(b.fields, wk)?.toDateString() === todayDate.toDateString() ? 0 : 1;
-      if (da !== db) return da - db;
-      return (a.fields[R.time] || '').localeCompare(b.fields[R.time] || '');
-    });
-
-  const container = document.getElementById('timeline-list');
-
-  if (!rides48.length) {
-    // Look for the next ride later this week (beyond tomorrow)
-    const afterTomorrow = new Date(tomorrowDate);
-    afterTomorrow.setDate(afterTomorrow.getDate() + 1);
-    const nextRide = rideRecords
-      .filter(r => {
-        if (!shouldShowRide(r)) return false;
-        const d = rideDateFor(r.fields, wk);
-        return d && d >= afterTomorrow;
-      })
-      .sort((a, b) => {
-        const da = rideDateFor(a.fields, wk);
-        const db = rideDateFor(b.fields, wk);
-        if (da - db !== 0) return da - db;
-        return (a.fields[R.time] || '').localeCompare(b.fields[R.time] || '');
-      })[0];
-
-    if (nextRide) {
-      const nf       = nextRide.fields;
-      const nd       = rideDateFor(nf, wk);
-      const nDay     = DAYS[nd.getDay()];
-      const nName    = nf[R.name] || nf[R.org] || 'Upcoming Ride';
-      const nTime    = nf[R.time] ? ` · ${escHtml(nf[R.time])}` : '';
-      container.innerHTML = `
-        <p class="no-rides">No rides today or tomorrow.</p>
-        <div class="next-ride-hint">
-          <span class="next-ride-label">Next ride:</span>
-          <strong>${escHtml(nName)}</strong> · ${escHtml(nDay)}${nTime}
-        </div>`;
-    } else {
-      container.innerHTML = '<p class="no-rides">No rides in the next 48 hours.</p>';
-    }
-    return;
-  }
-
-  container.innerHTML = rides48.map(r => {
-    const f          = r.fields;
-    const dayName    = f[R.day];
-    const dayDate    = rideDateFor(f, wk);
-    const dayLabel   = isToday(dayDate) ? 'Today' : isTomorrow(dayDate) ? 'Tomorrow' : dayName;
-    const status     = (f[R.status] || 'unknown').toLowerCase();
-    const cardClass  = status === 'confirmed' ? 'confirmed'
-                     : (status === 'canceled' || status === 'cancelled') ? 'canceled' : '';
-    const dateStr    = dayDate ? dayDate.toISOString().split('T')[0] : null;
-    const wx         = dateStr ? weatherMap[dateStr] : null;
-    const mUrl       = f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]);
-    const locParts   = [f[R.loc], f[R.addrNote]].filter(Boolean);
-    const infoParts  = [
-      `<strong>${dayLabel}</strong>`,
-      f[R.time] ? escHtml(f[R.time]) : null,
-      f[R.loc]  ? escHtml(f[R.loc])  : null,
-      f[R.dist] ? escHtml(f[R.dist]) + ' mi' : null,
-    ].filter(Boolean);
-
-    const orgName_tl  = f[R.org] || f[R.name] || '';
-    const org_tl      = organizerMap[(orgName_tl).toLowerCase().trim()] || {};
-    const igUrl_tl    = org_tl[O.igUrl]    || f[R.instagram] || '';
-    const stravaUrl_tl= org_tl[O.strava]   || f[R.strava]    || '';
-    const siteUrl_tl  = org_tl[O.website]  || f[R.website]   || '';
-    const socialLinks = [
-      igUrl_tl    ? `<a href="${escHtml(igUrl_tl)}"    class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
-      stravaUrl_tl? `<a href="${escHtml(stravaUrl_tl)}" class="social-link" target="_blank" rel="noopener">Strava</a>`   : '',
-      siteUrl_tl  ? `<a href="${escHtml(siteUrl_tl)}"  class="social-link" target="_blank" rel="noopener">Website</a>`  : '',
-    ].filter(Boolean).join('');
-
-    return `
-      <div class="timeline-card ${cardClass}"
-           data-status="${escHtml(status)}"
-           data-organizer="${escHtml(normalizeOrg(f[R.org]))}"
-           onclick="this.classList.toggle('expanded')">
-        <div class="timeline-header">
-          <span class="timeline-organizer">${escHtml(f[R.org] || f[R.name] || '—')}</span>
-          ${tlStatusBadge(f[R.status])}
-        </div>
-        ${f[R.name] ? `<div class="timeline-ride-title">${escHtml(f[R.name])}</div>` : ''}
-        <div class="timeline-info">${infoParts.join(' · ')}</div>
-        <div class="expand-hint">Tap for details ▾</div>
-        <div class="timeline-details">
-          <div class="timeline-grid">
-            <div>
-              <div class="timeline-detail-label">Pace</div>
-              <div class="timeline-detail-value">${escHtml(f[R.pace] || '—')}</div>
-            </div>
-            <div>
-              <div class="timeline-detail-label">Weather</div>
-              <div class="timeline-detail-value">${wxDisplay(wx, f[R.rain], f[R.wind])}</div>
-            </div>
-          </div>
-          ${locParts.length ? `
-          <div class="timeline-meeting">
-            📍 ${locParts.map(escHtml).join(' · ')}
-            ${mUrl ? ` · <a href="${escHtml(mUrl)}" target="_blank" rel="noopener">Maps</a>` : ''}
-          </div>` : ''}
-          ${socialLinks ? `<div class="timeline-social">${socialLinks}</div>` : ''}
-        </div>
-      </div>`;
-  }).join('');
-}
-
-// ─────────────────────────────────────────────────────
-//  BUILD FULL RIDE CARD (shared by Upcoming + All Rides)
-// ─────────────────────────────────────────────────────
-function buildRideCard(f, dayDate, weatherMap, recordId) {
-  const status     = (f[R.status] || 'unknown').toLowerCase();
-  const cardClass  = status === 'confirmed' ? 'confirmed'
-                   : (status === 'canceled' || status === 'cancelled') ? 'canceled' : '';
-  const dateStr    = dayDate ? dayDate.toISOString().split('T')[0] : null;
-  const wx         = dateStr ? weatherMap[dateStr] : null;
-  const orgName    = f[R.org] || f[R.name] || '';
-  const mUrl       = f[R.mapsUrl] || buildMapsUrl(f[R.loc], f[R.addrNote]);
-  const locParts   = [f[R.loc], f[R.addrNote]].filter(Boolean);
-  const dayLabel   = dayDate ? `${DAYS[dayDate.getDay()]}, ${fmt(dayDate)}` : '';
-
-  // Pull organizer details from central Organizers table
-  const org        = organizerMap[(orgName).toLowerCase().trim()] || {};
-  const igUrl      = org[O.igUrl]    || f[R.instagram] || '';
-  const stravaUrl  = org[O.strava]   || f[R.strava]    || '';
-  const websiteUrl = org[O.website]  || f[R.website]   || '';
-  const avatarUrl  = org[O.avatar]   && org[O.avatar][0] ? org[O.avatar][0].url : '';
-
-  const socialLinks = [
-    igUrl      ? `<a href="${escHtml(igUrl)}"      class="social-link" target="_blank" rel="noopener">Instagram</a>` : '',
-    stravaUrl  ? `<a href="${escHtml(stravaUrl)}"  class="social-link" target="_blank" rel="noopener">Strava</a>`    : '',
-    websiteUrl ? `<a href="${escHtml(websiteUrl)}" class="social-link" target="_blank" rel="noopener">Website</a>`   : '',
-  ].filter(Boolean).join('');
-
-  // Pace color dot
-  const paceVal    = f[R.pace] || '';
-  const paceUpper  = paceVal.trim().toUpperCase();
-  const paceDotCls = paceUpper.startsWith('A') ? 'pace-a' : paceUpper.startsWith('B') ? 'pace-b' : paceUpper.startsWith('C') ? 'pace-c' : '';
-  const paceDot    = paceDotCls ? `<span class="pace-dot ${paceDotCls}"></span>` : '';
-
-  return `
-    <div class="ride-card ${cardClass}"
-         data-status="${escHtml(status)}"
-         data-organizer="${escHtml(normalizeOrg(orgName))}"
-         data-ride-name="${escHtml(f[R.name] || '')}"
-         onclick="if(!event.target.closest('a,button')) this.classList.toggle('expanded')">
-      <div class="ride-header">
-        ${avatarUrl
-          ? `<img class="avatar avatar-img" src="${escHtml(avatarUrl)}" alt="${escHtml(orgName)}" loading="lazy">`
-          : `<div class="avatar">${escHtml(initials(orgName))}</div>`}
-        <div class="ride-title-block">
-          <h3>${escHtml(f[R.name] || 'Unnamed Ride')}</h3>
-          ${orgName ? `<div class="ride-organizer-name">${escHtml(orgName)}</div>` : ''}
-          ${(status === 'canceled' || status === 'cancelled') ? `<div class="ride-meta">${statusBadge(f[R.status])}</div>` : ''}
-        </div>
-      </div>
-      <div class="ride-chips">
-        ${f[R.time] ? `<span class="ride-chip">🕐 ${escHtml(f[R.time])}</span>` : ''}
-        ${f[R.dist] ? `<span class="ride-chip">📏 ${escHtml(f[R.dist])} mi</span>` : ''}
-        ${paceVal   ? `<span class="ride-chip">${paceDot}${escHtml(paceVal)}</span>` : ''}
-        <span class="chip-chevron">▾</span>
-      </div>
-      <div class="ride-details">
-        ${dayLabel ? `<div class="detail-item">
-          <div class="detail-label">Date</div>
-          <div class="detail-value">${escHtml(dayLabel)}</div>
-        </div>` : ''}
-        <div class="detail-item">
-          <div class="detail-label">Status</div>
-          <div class="detail-value">${statusBadge(f[R.status])}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Distance</div>
-          <div class="detail-value ${!f[R.dist] ? 'muted' : ''}">
-            ${f[R.dist] ? escHtml(f[R.dist]) + ' mi' : '—'}
-          </div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Pace</div>
-          <div class="detail-value ${!f[R.pace] ? 'muted' : ''}">${escHtml(f[R.pace] || '—')}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Weather</div>
-          <div class="detail-value ${wxDisplay(wx, f[R.rain], f[R.wind]) === '—' ? 'muted' : ''}">
-            ${wxDisplay(wx, f[R.rain], f[R.wind])}
-          </div>
-        </div>
-      </div>
-      ${locParts.length ? `
-      <div class="meeting-point">
-        📍 ${locParts.map(escHtml).join(' · ')}
-        ${mUrl ? ` · <a href="${escHtml(mUrl)}" target="_blank" rel="noopener">Open in Maps</a>` : ''}
-      </div>` : ''}
-      <div class="card-footer">
-        <div class="social-links">${socialLinks}</div>
-        <button class="calendar-btn"
-          data-name="${escHtml(f[R.name] || orgName)}"
-          data-date="${escHtml(dateStr || '')}"
-          data-time="${escHtml(f[R.time] || '')}"
-          data-location="${escHtml(locParts.join(', '))}"
-          data-organizer="${escHtml(orgName)}">📅 Add to calendar</button>
-      </div>
-    </div>`;
-}
-
-// ─────────────────────────────────────────────────────
-//  RENDER: UPCOMING TAB
-// ─────────────────────────────────────────────────────
-function renderUpcomingRides(rideRecords, weatherMap) {
-  const wk    = weekDates();
-  const today = new Date(); today.setHours(0, 0, 0, 0);
-
-  // Attach resolved date to each record, filter out anything in the past
-  const dated = rideRecords
-    .map(r => ({ r, d: rideDateFor(r.fields, wk) }))
-    .filter(({ d }) => d && d >= today)
-    .sort((a, b) => a.d - b.d || (a.r.fields[R.time] || '').localeCompare(b.r.fields[R.time] || ''));
-
-  // Group by ISO date string so April-10 Friday and April-24 Friday are separate sections
-  const groups = [];
-  dated.forEach(({ r, d }) => {
-    const key = d.toISOString().split('T')[0];
-    const last = groups[groups.length - 1];
-    if (last && last.key === key) { last.rides.push({ r, d }); }
-    else { groups.push({ key, d, rides: [{ r, d }] }); }
-  });
-
-  let html = '';
-  groups.forEach(({ d, rides }) => {
-    const dateStr  = d.toISOString().split('T')[0];
-    const wx       = weatherMap[dateStr];
-    const label    = isToday(d) ? 'Today' : isTomorrow(d) ? 'Tomorrow' : `${DAYS[d.getDay()]}, ${fmt(d)}`;
-    html += `<div class="section-block">
-      <div class="section-title">${label}
-        ${wx ? `<span class="weather-day-pill">
-          ${wx.rain >= 60 ? '🌧' : wx.rain >= 30 ? '🌦' : '☀️'} ${wx.rain}%
-          <span style="opacity:0.4">·</span> 💨 ${wx.wind} mph
-        </span>` : ''}
-      </div>`;
-    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap, r.id); });
-    html += `</div>`;
-  });
-
-  document.getElementById('upcoming-rides-list').innerHTML =
-    html || '<p class="no-rides">No upcoming rides found.</p>';
-}
-
-function renderUpcomingEvents(rides, weatherMap) {
-  const now         = new Date();
-  const fortyEightH = new Date(now.getTime() + 48 * 60 * 60 * 1000);
-  const wk          = weekDates();
-
-  const SPECIAL_TYPES = ['special_event', 'annual', 'special event'];
-
-  const specialRides = rides.filter(r => {
-    const f = r.fields;
-    if (f[R.displayOnSite] === false) return false;
-    const status = (f[R.status] || '').toLowerCase();
-    if (['hidden', 'past', 'canceled', 'cancelled'].includes(status)) return false;
-    const rideType = (f[R.rideType] || '').toLowerCase();
-    if (!SPECIAL_TYPES.includes(rideType)) return false;
-    const d = rideDateFor(f, wk);
-    return d && d >= now;
-  });
-
-  // Events in next 48h → top block
-  const events48 = specialRides.filter(r => {
-    const d = rideDateFor(r.fields, wk);
-    return d && d <= fortyEightH;
-  });
-  const block48 = document.getElementById('events-48h-block');
-  if (events48.length) {
-    block48.style.display = 'block';
-    document.getElementById('events-48h-list').innerHTML =
-      events48.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap, r.id)).join('');
-  } else {
-    block48.style.display = 'none';
-  }
-
-  // Events beyond 48h → upcoming events section
-  const upcoming = specialRides
-    .filter(r => {
-      const d = rideDateFor(r.fields, wk);
-      return d && d > fortyEightH;
-    })
-    .sort((a, b) => rideDateFor(a.fields, wk) - rideDateFor(b.fields, wk));
-
-  document.getElementById('upcoming-events-list').innerHTML = upcoming.length
-    ? upcoming.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap, r.id)).join('')
-    : '<p class="no-rides">No upcoming special events.</p>';
-}
-
-// ─────────────────────────────────────────────────────
-//  RENDER: ALL RIDES TAB (grouped by actual date, chronological)
-// ─────────────────────────────────────────────────────
-function renderAllRides(rideRecords, weatherMap) {
-  const wk    = weekDates();
-  const today = new Date(); today.setHours(0, 0, 0, 0);
-
-  // Resolve actual date for every record, drop anything in the past
-  const dated = rideRecords
-    .map(r => ({ r, d: rideDateFor(r.fields, wk) }))
-    .filter(({ d }) => d && d >= today)
-    .sort((a, b) => a.d - b.d || (a.r.fields[R.time] || '').localeCompare(b.r.fields[R.time] || ''));
-
-  // Group by ISO date so e.g. two different Friday dates become separate sections
-  const groups = [];
-  dated.forEach(({ r, d }) => {
-    const key  = d.toISOString().split('T')[0];
-    const last = groups[groups.length - 1];
-    if (last && last.key === key) { last.rides.push({ r, d }); }
-    else { groups.push({ key, d, rides: [{ r, d }] }); }
-  });
-
-  let html = '';
-  groups.forEach(({ d, rides }) => {
-    const dateStr = d.toISOString().split('T')[0];
-    const wx      = weatherMap[dateStr];
-    html += `<div class="day-section">
-      <div class="day-header">
-        <span class="day-name">${DAYS[d.getDay()]}</span>
-        <span class="day-date">${fmt(d)}</span>
-        ${isToday(d) ? '<span class="today-badge">Today</span>' : ''}
-        ${wx ? `<span class="weather-day-pill">
-          ${wx.rain >= 60 ? '🌧' : wx.rain >= 30 ? '🌦' : '☀️'} ${wx.rain}%
-          <span style="opacity:0.4">·</span>
-          💨 ${wx.wind} mph
-        </span>` : ''}
-      </div>`;
-    rides.forEach(({ r, d: rideDate }) => { html += buildRideCard(r.fields, rideDate, weatherMap, r.id); });
-    html += `</div>`;
-  });
-
-  document.getElementById('all-rides-list').innerHTML =
-    html || '<p class="no-rides">No rides found.</p>';
-}
-
-// ─────────────────────────────────────────────────────
-//  RENDER: SPECIAL EVENTS TAB
-// ─────────────────────────────────────────────────────
-function renderSpecialEvents(rides, weatherMap) {
-  const today = new Date(); today.setHours(0, 0, 0, 0);
-  const wk    = weekDates();
-
-  const SPECIAL_TYPES = ['special_event', 'annual', 'special event'];
-
-  const visible = rides
-    .filter(r => {
-      const f = r.fields;
-      const rideType = (f[R.rideType] || '').toLowerCase();
-      if (!SPECIAL_TYPES.includes(rideType)) return false;
-      const d = rideDateFor(f, wk);
-      return d && d >= today;  // hide events whose date has already passed
-    })
-    .sort((a, b) => rideDateFor(a.fields, wk) - rideDateFor(b.fields, wk));
-
-  document.getElementById('special-events-list').innerHTML = visible.length
-    ? visible.map(r => buildRideCard(r.fields, rideDateFor(r.fields, wk), weatherMap, r.id)).join('')
-    : '<p class="no-rides">No special events found.</p>';
-}
-
-// ─────────────────────────────────────────────────────
-//  ORGANIZER FILTER (dynamic population)
-// ─────────────────────────────────────────────────────
-function populateOrganizerFilter(rideRecords) {
-  const orgs = [...new Set(
-    rideRecords.map(r => r.fields[R.org]).filter(Boolean)
-  )].sort();
-
-  const sel = document.getElementById('organizer-filter');
-  orgs.forEach(org => {
-    const opt = document.createElement('option');
-    opt.value       = normalizeOrg(org);
-    opt.textContent = org;
-    sel.appendChild(opt);
-  });
-}
-
-// ─────────────────────────────────────────────────────
-//  FILTERS
-// ─────────────────────────────────────────────────────
-function applyFilters() {
-  const statusVal = document.getElementById('status-filter').value;
-  const orgVal    = document.getElementById('organizer-filter').value;
-
-  document.querySelectorAll('.ride-card, .timeline-card').forEach(card => {
-    let show = true;
-    if (statusVal !== 'all') {
-      const cs = card.dataset.status || '';
-      if (!cs.startsWith(statusVal)) show = false;
-    }
-    if (orgVal !== 'all') {
-      if ((card.dataset.organizer || '') !== orgVal) show = false;
-    }
-    card.style.display = show ? '' : 'none';
-  });
-  updateFiltersDot();
-}
-
-document.getElementById('status-filter').addEventListener('change', applyFilters);
-document.getElementById('organizer-filter').addEventListener('change', applyFilters);
-document.getElementById('clear-filters-btn').addEventListener('click', () => {
-  document.getElementById('status-filter').value    = 'all';
-  document.getElementById('organizer-filter').value = 'all';
-  applyFilters();
-  // Collapse the panel after clearing
-  setFiltersOpen(false);
-});
-
-// ── FILTERS TOGGLE ───────────────────────────────────
-function setFiltersOpen(open) {
-  const btn   = document.getElementById('filters-toggle-btn');
-  const panel = document.getElementById('filters-panel');
-  if (open) {
-    panel.classList.add('open');
-    btn.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-  } else {
-    panel.classList.remove('open');
-    btn.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-}
-
-document.getElementById('filters-toggle-btn').addEventListener('click', () => {
-  const isOpen = document.getElementById('filters-panel').classList.contains('open');
-  setFiltersOpen(!isOpen);
-});
-
-function updateFiltersDot() {
-  const statusVal = document.getElementById('status-filter').value;
-  const orgVal    = document.getElementById('organizer-filter').value;
-  const active    = statusVal !== 'all' || orgVal !== 'all';
-  document.getElementById('filters-dot').classList.toggle('active', active);
-}
-
-// ─────────────────────────────────────────────────────
-//  TABS
-// ─────────────────────────────────────────────────────
-function showTabContent(tabName) {
-  document.querySelectorAll('.tab-content').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById(tabName + '-content');
-  if (el) el.classList.add('active');
-}
-
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', function () {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    this.classList.add('active');
-    showTabContent(this.dataset.tab);
-    applyFilters(); // re-apply on tab switch
-  });
-});
-
-// ─────────────────────────────────────────────────────
-//  STICKY POSITION (dynamic — accounts for variable header height)
-// ─────────────────────────────────────────────────────
-function updateStickyPositions() {
-  const headerEl  = document.getElementById('main-header');
-  const tabsEl    = document.getElementById('tabs-bar');
-  const filtersEl = document.getElementById('filters-bar');
-  const sidebarEl = document.getElementById('sidebar');
-  if (!headerEl || !tabsEl || !filtersEl) return;
-  const headerH = headerEl.offsetHeight;
-  const tabsH   = tabsEl.offsetHeight;
-  tabsEl.style.top    = headerH + 'px';
-  filtersEl.style.top = (headerH + tabsH) + 'px';
-  if (sidebarEl) sidebarEl.style.top = (headerH + tabsH) + 'px';
-}
-window.addEventListener('resize', updateStickyPositions);
-
-// ─────────────────────────────────────────────────────
-//  VISIBILITY CONTROL
-// ─────────────────────────────────────────────────────
-
-// All active rides (has Day of Week). Set in init() so duplicate detection works.
-let allActiveRides = [];
-
-/**
- * Returns true if this ride record should be shown on the site.
- * Reasons to hide:
- *  1. "Display on Site" checkbox explicitly unchecked (=== false in Airtable)
- *  2. Status is "hidden" or "past"
- *  3. Another record for the same ride is marked as the primary listing
- *  4. The ride's day has already passed this week (midnight cutoff)
- */
-function shouldShowRide(record) {
-  const f = record.fields;
-  // Checkbox: unchecked = field is undefined (not false). Only explicitly false = hidden.
-  if (f[R.displayOnSite] === false) return false;
-  const status = (f[R.status] || '').toLowerCase();
-  if (status === 'hidden' || status === 'past') return false;
-  if (hasPrimaryDuplicate(record)) return false;
-  if (hasPassedMidnight(f)) return false;
+/* ── Filters ── */
+function passes(it){
+  if (state.pace !== 'all' && !(it.pace && it.pace.groups.has(state.pace))) return false;
+  if (state.weston && it.area !== 'Weston') return false;
+  if (state.org !== 'all' && it.org !== state.org) return false;
   return true;
 }
+const activeFilters = () => (state.pace !== 'all') + state.weston + (state.org !== 'all');
 
-/**
- * Returns true if another record is the designated primary listing
- * for the same ride (same organizer + day + time).
- * If no record is marked primary, the alphabetically first record ID wins.
- */
-function hasPrimaryDuplicate(record) {
-  const f = record.fields;
-  // Only consider non-past rides as potential duplicates.
-  // A past ride with an earlier record ID should not shadow a future ride.
-  const duplicates = allActiveRides.filter(r =>
-    r.fields[R.org]  === f[R.org]  &&
-    r.fields[R.day]  === f[R.day]  &&
-    r.fields[R.time] === f[R.time] &&
-    !hasPassedMidnight(r.fields)
-  );
-  if (duplicates.length <= 1) return false;             // no duplicate
-  if (f[R.isPrimary] === true) return false;             // this IS the primary
-  const otherPrimary = duplicates.some(r =>
-    r.id !== record.id && r.fields[R.isPrimary] === true
-  );
-  if (otherPrimary) return true;                        // another is marked primary
-  // Fallback: keep the alphabetically first record ID
-  const sorted = [...duplicates].sort((a, b) => a.id.localeCompare(b.id));
-  return sorted[0].id !== record.id;
+function renderFilters(){
+  const paces = [['all','All paces'],['fast','Fast 21+','var(--fast-dot)'],['mod','Moderate 17–21','var(--mod-dot)'],['soc','Social / no-drop','var(--soc-dot)']];
+  const orgs = [...new Set(allItems().map(i => i.org).filter(Boolean))].sort();
+  document.getElementById('filters').innerHTML =
+    paces.map(([v,l,c]) => `<button class="chip ${state.pace===v?'on':''}" data-pace="${v}" aria-pressed="${state.pace===v}">${c?`<i class="dot" style="background:${c}"></i>`:''}${l}</button>`).join('') +
+    `<span class="sep"></span><button class="chip ${state.weston?'on':''}" data-weston="1" aria-pressed="${state.weston}">Weston only</button>` +
+    `<select class="org-select ${state.org!=='all'?'on':''}" id="org-select" aria-label="Organizer"><option value="all">All organizers</option>${orgs.map(o=>`<option ${o===state.org?'selected':''}>${esc(o)}</option>`).join('')}</select>` +
+    (activeFilters() ? `<button class="clear" data-clear="1">Clear</button>` : '') +
+    (state.generatedAt ? `<span class="updated">Updated ${ago(state.generatedAt)}</span>` : '');
+  const hrs = state.generatedAt ? (Date.now() - new Date(state.generatedAt))/36e5 : 0;
+  document.getElementById('stale').innerHTML = hrs > STALE_HOURS
+    ? `<div class="stale">${I.warn}<span>Ride info may be out of date — last updated ${ago(state.generatedAt)}. Check the organizer's Instagram before heading out.</span></div>` : '';
 }
 
-/**
- * Returns true if the ride should be hidden because its date is in the past.
- * - No Day of Week → always hide (invalid record)
- * - Explicit Ride Date in the past → hide (except weekly rides — see below)
- * - No explicit Ride Date → weekDates() always returns a future/today date, so show
- * - Weekly ride with a past Ride Date → never hide; rideDateFor() will compute the next
- *   upcoming occurrence via weekDates() so the ride stays visible between scraper runs.
- */
-function hasPassedMidnight(f) {
-  if (!f[R.day]) return true; // no Day of Week = invalid, hide
-  const ds = f[R.rideDate];
-  if (!ds) return false; // no explicit date — weekDates() handles it
-  const rideDay = new Date(ds + 'T00:00:00');
-  const today   = new Date();
-  today.setHours(0, 0, 0, 0);
-  // Weekly rides: a past Ride Date just means the scraper hasn't run this week yet.
-  // Don't hide — rideDateFor() will advance the date to the next occurrence.
-  const rideType = (f[R.rideType] || '').toLowerCase();
-  if (rideType === 'weekly' && rideDay < today) return false;
-  return rideDay < today; // hide non-weekly rides if date is before today's midnight
+/* ── Day strip ── */
+function renderStrip(){
+  const chips = [`<button class="day-chip wide ${state.view==='week'?'active':''}" data-view="week"><span class="dw">All</span><span class="dd">Week</span></button>`];
+  for (const d of state.days) {
+    const key = keyOf(d);
+    const its = state.items.filter(i => i.key === key && passes(i));
+    const n = its.filter(i => i.status !== 'canceled').length, cx = its.length - n;
+    const w = dayWx(key);
+    chips.push(`<button class="day-chip ${state.view===key?'active':''} ${n?'':'empty'}" data-view="${key}" aria-label="${DAYS[d.getDay()]} ${MON3[d.getMonth()]} ${d.getDate()}, ${n} rides">
+      <span class="dw">${relDay(key) === 'Today' ? 'Today' : DOW3[d.getDay()]}</span><span class="dd num">${d.getDate()}</span>
+      <span class="dc num">${n} ride${n===1?'':'s'}${cx?`<span class="cx">· ${cx}✕</span>`:''}${w?`<i class="wxdot ${wxFlag(w)?'bad':''}"></i>`:''}</span></button>`);
+  }
+  if (state.later.length) chips.push(`<button class="day-chip wide ${state.view==='later'?'active':''}" data-view="later"><span class="dw">Later</span><span class="dd">Events</span></button>`);
+  document.getElementById('strip').innerHTML = chips.join('');
+  const act = document.querySelector('.day-chip.active');
+  if (act) act.scrollIntoView({ block:'nearest', inline:'nearest' });
 }
 
-/**
- * Show "Updated Xh ago" in the header based on the most recent
- * Last Checked At timestamp across all fetched ride records.
- */
-function updateScanStatus(rides) {
-  const el = document.getElementById('scan-status-text');
-  if (!el) return;
-  const timestamps = rides
-    .map(r => r.fields[R.lastChecked])
-    .filter(Boolean)
-    .map(ts => new Date(ts).getTime())
-    .filter(t => !isNaN(t));
-  if (!timestamps.length) return;
-  const latest = new Date(Math.max(...timestamps));
-  const diffMs = Date.now() - latest.getTime();
-  const diffH  = diffMs / (1000 * 60 * 60);
-  let label;
-  if (diffH < 1) {
-    const diffM = Math.round(diffMs / 60000);
-    label = diffM <= 1 ? 'just now' : `${diffM}m ago`;
-  } else if (diffH < 24) {
-    label = `${Math.round(diffH)}h ago`;
+/* ── Coming up ── */
+function renderComing(){
+  const el = document.getElementById('coming');
+  const evs = state.later.filter(passes).slice(0, 8);
+  if (!evs.length || state.view === 'later') { el.hidden = true; return; }
+  el.hidden = false;
+  el.innerHTML = `<div class="eyebrow">Coming up</div><div class="ev-row">${evs.map(e => `
+    <button class="ev-card" data-goto="${e.id}">
+      <span class="ev-date"><span class="m">${MON3[e.date.getMonth()].toUpperCase()}</span><span class="d num">${e.date.getDate()}</span></span>
+      <span style="min-width:0"><span class="ev-name">${esc(e.name)}</span><span class="ev-org">${esc(e.org)}${e.dist?` · ${esc(e.dist)}`:''}</span></span>
+    </button>`).join('')}</div>`;
+}
+
+/* ── Ride rows ── */
+function avatarHtml(orgName){
+  const o = state.orgs[orgName.toLowerCase()];
+  if (o && (o.thumb || o.avatar)) {
+    const src = o.thumb || o.avatar;
+    const fb = o.thumb && o.avatar ? ` onerror="this.onerror=null;this.src='${esc(o.avatar)}'"` : '';
+    return `<img class="av" src="${esc(src)}" alt="" loading="lazy" width="34" height="34"${fb}>`;
+  }
+  return `<span class="av">${esc(initials(orgName))}</span>`;
+}
+function rideRow(it){
+  const t = fmtTime(it.min);
+  const canceled = it.status === 'canceled';
+  const tags = [
+    !it.weekly ? '<span class="tag ev">Event</span>' : '',
+    canceled ? '<span class="tag cx">Canceled</span>' : '',
+    !canceled && it.status === 'planned' ? '<span class="tag un">Unconfirmed</span>' : '',
+    it.area !== 'Weston' ? `<span class="tag area">${esc(it.area)}</span>` : '',
+  ].join('');
+  const pace = it.pace ? `<span class="pill p-${it.pace.top}">${esc(it.pace.label)}</span>` : '';
+  const nd = it.pace && it.pace.nodrop ? '<span class="tag nd">No-drop</span>' : '';
+  const w = it.date < new Date(Date.now() + 7*864e5) ? dayWx(it.key) : null;
+  const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(it.loc);
+  const notPosted = '<span class="mut">Not posted</span>';
+  return `<article class="ride ${canceled?'canceled':''} ${isPast(it)?'past':''} ${state.open.has(it.id)?'open':''}" id="r-${it.id}">
+    <button class="ride-main" data-toggle="${it.id}" aria-expanded="${state.open.has(it.id)}">
+      <span class="t num">${t ? `<span class="hm">${t.hm}</span><span class="ap">${t.ap}</span>` : '<span class="tba">TBA</span>'}</span>
+      ${avatarHtml(it.org)}
+      <span class="info"><span class="name"><span class="txt">${esc(it.name)}</span>${tags}</span>
+        <span class="sub">${esc(it.org)}${it.venue && it.venue !== it.org ? ` · ${esc(it.venue)}` : ''}</span></span>
+      <span class="meta num">${it.dist?`<span class="pill dist">${esc(it.dist)}</span>`:''}${pace}${nd}</span>
+      <span class="chev">${I.chev}</span>
+    </button>
+    <div class="detail">
+      <div class="d-grid">
+        <div><div class="d-k">Start</div><div class="d-v">${esc(it.venue) || notPosted}${it.detail?`<br><span class="mut">${esc(it.detail)}</span>`:''}</div></div>
+        <div><div class="d-k">Pace</div><div class="d-v">${it.pace ? esc(it.pace.raw) : notPosted}</div></div>
+        <div><div class="d-k">Distance</div><div class="d-v">${it.dist ? esc(it.dist) : notPosted}</div></div>
+        <div><div class="d-k">Forecast</div><div class="d-v num">${w ? `${w.rain}% rain · ${w.wind} mph wind` : '<span class="mut">Shown within 7 days</span>'}</div></div>
+      </div>
+      ${it.notes ? `<div class="d-notes">${esc(it.notes)}</div>` : ''}
+      <div class="actions">
+        <a class="btn primary" href="${mapsUrl}" target="_blank" rel="noopener" data-ga="maps_link_click" data-ride="${it.id}">${I.pin}Directions</a>
+        ${it.min != null ? `<button class="btn" data-ics="${it.id}">${I.cal}Calendar</button>` : ''}
+        <button class="btn" data-share="${it.id}">${I.share}Share</button>
+        ${it.ig ? `<a class="btn" href="${esc(it.ig)}" target="_blank" rel="noopener" data-ga="social_link_click" data-ride="${it.id}">${I.ig}Instagram</a>` : ''}
+      </div>
+    </div></article>`;
+}
+const blockOf = min => min == null ? 'Time TBA' : min < 390 ? 'Early · before 6:30' : min < 720 ? 'Morning' : 'Afternoon & evening';
+function daySection(key, date, items, opts = {}){
+  const rel = relDay(key);
+  const w = opts.noWx ? null : dayWx(key);
+  const flag = wxFlag(w);
+  const past = rel === 'Today' ? items.filter(isPast) : [];
+  const ahead = items.filter(i => !past.includes(i));
+  let body = '';
+  if (past.length) {
+    body += `<button class="earlier ${state.showPast?'open':''}" data-past="1" aria-expanded="${state.showPast}">${past.length} earlier ride${past.length===1?'':'s'} today ${I.chev}</button>`;
+    if (state.showPast) body += past.map(rideRow).join('');
+  }
+  if (!items.length) body = `<div class="empty-day">${activeFilters() ? 'No rides match your filters on this day.' : 'No rides posted for this day yet.'}</div>`;
+  else if (!ahead.length) body += `<div class="empty-day">That's it for today.</div>`;
+  else if (ahead.length >= 4) {
+    let last = null;
+    for (const it of ahead) { const b = blockOf(it.min); if (b !== last) { body += `<div class="block">${b}</div>`; last = b; } body += rideRow(it); }
+  } else body += ahead.map(rideRow).join('');
+  const n = items.filter(i => i.status !== 'canceled').length;
+  return `<section class="day">
+    <div class="day-head">
+      <h2>${rel ? `<span class="rel">${rel}</span>` : ''}${DAYS[date.getDay()]} <span class="sub">${MON3[date.getMonth()]} ${date.getDate()}</span></h2>
+      <div class="day-wx num">${n} ride${n===1?'':'s'}${w ? `<span>${I.drop}${w.rain}%</span><span>${I.wind}${w.wind} mph</span>` : ''}${flag ? `<span class="flag">${flag}</span>` : ''}</div>
+    </div>
+    <div class="list">${body}</div></section>`;
+}
+function renderMain(){
+  let html = '';
+  if (state.view === 'week') {
+    for (const d of state.days) {
+      const key = keyOf(d), items = state.items.filter(i => i.key === key && passes(i));
+      if (items.length || !activeFilters()) html += daySection(key, d, items);
+    }
+  } else if (state.view === 'later') {
+    const byDay = new Map();
+    state.later.filter(passes).forEach(i => (byDay.get(i.key) || byDay.set(i.key, []).get(i.key)).push(i));
+    for (const [key, items] of byDay) html += daySection(key, items[0].date, items, { noWx: true });
+    if (!html) html = `<div class="empty-day">No upcoming events match your filters.</div>`;
   } else {
-    const diffD = Math.round(diffH / 24);
-    label = `${diffD}d ago`;
+    const d = state.days.find(x => keyOf(x) === state.view);
+    html = daySection(state.view, d, state.items.filter(i => i.key === state.view && passes(i)));
+    html += `<p class="swipe-hint">Swipe left or right to change day</p>`;
   }
-  el.textContent = `· Updated ${label}`;
+  document.getElementById('main').innerHTML = html;
 }
 
-/**
- * Dev helper: logs any rides with duplicates to the console.
- * Call after allActiveRides is populated to spot merge candidates.
- */
-function logDuplicates() {
-  const seen = {};
-  allActiveRides.forEach(r => {
-    const f = r.fields;
-    const key = `${f[R.org]}|${f[R.day]}|${f[R.time]}`;
-    if (!seen[key]) seen[key] = [];
-    seen[key].push(r.id);
-  });
-  const dupes = Object.entries(seen).filter(([, ids]) => ids.length > 1);
-  if (dupes.length) {
-    console.group(`[RideTracker] ${dupes.length} duplicate ride(s) detected:`);
-    dupes.forEach(([key, ids]) => console.log(key, '→', ids));
-    console.groupEnd();
-  }
-}
-
-// ─────────────────────────────────────────────────────
-//  INIT
-// ─────────────────────────────────────────────────────
-async function init() {
-  try {
-    // Only request fields that exist in Airtable.
-    // Optional future fields (Instagram URL, Strava URL, etc.) are defined in R/E
-    // but excluded here until added to Airtable — add them back when ready.
-    const rideFields = [
-      R.name, R.org, R.day, R.time, R.loc, R.addrNote,
-      R.dist, R.pace, R.status, R.weather, R.rain, R.wind,
-      R.rideDate, R.rideType, R.featured, R.displayOnSite, R.isPrimary, R.needsReview,
-      R.instagram, R.lastChecked,
-    ];
-
-    const orgFields = [
-      O.name, O.type, O.igHandle, O.igUrl, O.website,
-      O.whatsapp, O.strava, O.email, O.avatar, O.active,
-    ];
-
-    const [rides, organizers, weatherMap] = await Promise.all([
-      fetchAll(RIDES,      rideFields),
-      fetchAll(ORGANIZERS, orgFields),
-      fetchWeather(),
-    ]);
-    // rides.json generated: show timestamp in console for debugging
-    _loadRidesJson().then(d => d && console.log('[RideTrackerFL] rides.json generated:', d.generated_at));
-
-    // Build lookup map: lowercase organizer name → organizer fields
-    organizerMap = {};
-    organizers.forEach(r => {
-      const name = (r.fields[O.name] || '').toLowerCase().trim();
-      if (name) organizerMap[name] = r.fields;
-    });
-
-    // Active rides only: must have a Day of Week set
-    const activeRides = rides.filter(r => r.fields[R.day]);
-
-    // Store globally for cross-record duplicate detection
-    allActiveRides = activeRides;
-    logDuplicates();
-
-
-    // Apply visibility filter before rendering
-    const visibleRides = activeRides.filter(r => shouldShowRide(r));
-
-    // Featured rides: manually checked "Featured" checkbox in Airtable.
-    // Pulled from ALL rides (not just activeRides) so special one-time rides
-    // with only a Ride Date (no Day of Week) can also be featured.
-    const featuredRides = rides.filter(r =>
-      r.fields[R.featured] === true &&
-      r.fields[R.displayOnSite] !== false &&
-      !['hidden', 'canceled', 'cancelled'].includes((r.fields[R.status] || '').toLowerCase())
-    );
-
-    populateOrganizerFilter(visibleRides);
-
-    renderFeaturedEvents(featuredRides, weatherMap);
-    renderUpcomingRides(visibleRides, weatherMap);
-    renderUpcomingEvents(rides, weatherMap);
-    renderAllRides(visibleRides, weatherMap);
-    renderSpecialEvents(rides, weatherMap);
-
-    // Update sticky offsets after all content has rendered
-    setTimeout(updateStickyPositions, 150);
-
-  } catch (err) {
-    console.error(err);
-    document.getElementById('upcoming-rides-list').innerHTML =
-      `<div class="error-msg">⚠️ Could not load rides. Please try again later.<br>
-       <small>${escHtml(err.message)}</small></div>`;
-  }
-}
-
-// ─────────────────────────────────────────────────────
-//  GOOGLE ANALYTICS 4 — CUSTOM EVENT TRACKING
-// ─────────────────────────────────────────────────────
-function gaEvent(name, params) {
-  if (typeof gtag !== 'undefined') gtag('event', name, params);
-}
-
-// Tab switches (static elements — safe on DOMContentLoaded)
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', function () {
-    gaEvent('tab_switch', { event_category: 'navigation', event_label: this.dataset.tab || this.textContent.trim() });
-  });
-});
-
-// Filter usage (static elements)
-document.querySelectorAll('.filter-select').forEach(sel => {
-  sel.addEventListener('change', function () {
-    gaEvent('filter_used', { event_category: 'engagement', event_label: this.id, filter_value: this.value });
-  });
-});
-
-// ─────────────────────────────────────────────────────
-//  ICS CALENDAR DOWNLOAD
-// ─────────────────────────────────────────────────────
-function downloadICS(name, dateStr, timeStr, location, organizer) {
-  // Serve via Netlify function so iOS Safari hands off to Calendar app
-  const p = new URLSearchParams({ name, date: dateStr, time: timeStr, location, organizer });
-  window.location.href = `/.netlify/functions/ics?${p}`;
-}
-
-// Event delegation for dynamically rendered content (ride cards, links)
-document.addEventListener('click', function (e) {
-  // Ride card click
-  const card = e.target.closest('.ride-card, .timeline-card');
-  if (card && !e.target.closest('a, button')) {
-    gaEvent('ride_view', {
-      event_category: 'engagement',
-      event_label: card.dataset.rideName || 'Unknown Ride',
-      organizer: card.dataset.organizer || 'Unknown',
-      view_type: card.classList.contains('timeline-card') ? 'timeline_card' : 'ride_card',
-    });
-  }
-
-  // Social link click (Instagram / Strava / Website)
-  const social = e.target.closest('.social-link');
-  if (social) {
-    const parent = social.closest('[data-organizer]');
-    gaEvent('organizer_click', {
-      event_category: 'engagement',
-      event_label: parent ? parent.dataset.organizer : 'Unknown',
-      link_type: social.textContent.trim().toLowerCase(),
-    });
-  }
-
-  // Google Maps link click
-  const mapsLink = e.target.closest('.meeting-point a');
-  if (mapsLink) {
-    const parent = mapsLink.closest('[data-ride-name]');
-    gaEvent('maps_click', {
-      event_category: 'engagement',
-      event_label: parent ? parent.dataset.rideName : 'Unknown',
-    });
-  }
-
-  // Register button click
-  const regBtn = e.target.closest('.register-btn');
-  if (regBtn && !regBtn.disabled) {
-    const parent = regBtn.closest('.ride-card');
-    const name   = parent ? (parent.dataset.rideName || parent.querySelector('h3')?.textContent) : 'Unknown Event';
-    gaEvent('register_click', { event_category: 'conversion', event_label: name, value: 1 });
-  }
-
-  // Calendar download
-  const calBtn = e.target.closest('.calendar-btn');
-  if (calBtn) {
-    const { name, date, time, location, organizer } = calBtn.dataset;
-    downloadICS(name || 'Ride', date || '', time || '', location || '', organizer || '');
-    gaEvent('calendar_add', { event_category: 'engagement', event_label: name || 'Unknown Ride' });
-  }
-});
-
-init();
-
-// ─────────────────────────────────────────────────────
-//  PWA AUTO-REFRESH
-//  iOS keeps PWAs in memory and restores the frozen page
-//  instead of doing a fresh load. Re-fetch ride data:
-//    1. When the app comes back into view (visibilitychange)
-//    2. Every 10 minutes while the app is open (interval)
-// ─────────────────────────────────────────────────────
-let _lastRefresh = Date.now();
-const REFRESH_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes
-
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) return;
-  const now = Date.now();
-  // Only refresh if it's been at least 60 seconds since the last refresh
-  // (avoids double-fetch on rapid tab switches)
-  if (now - _lastRefresh > 60_000) {
-    _lastRefresh = now;
-    _ridesJson = null; // force fresh fetch from network
-    init();
-  }
-});
-
-setInterval(() => {
-  if (!document.hidden) {
-    _lastRefresh = Date.now();
-    _ridesJson = null; // force fresh fetch from network
-    init();
-  }
-}, REFRESH_INTERVAL_MS);
-
-// ─────────────────────────────────────────────────────
-//  EMAIL SIGNUP
-// ─────────────────────────────────────────────────────
-document.getElementById('signup-form').addEventListener('submit', async function (e) {
-  e.preventDefault();
-
-  const emailInput = document.getElementById('email-input');
-  const submitBtn  = document.getElementById('submit-btn');
-  const msgDiv     = document.getElementById('form-message');
-  const email      = emailInput.value.trim();
-
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showSignupMessage('Please enter a valid email address.', 'error');
+/* ── Banner: same-day cancellation beats next ride ── */
+function renderNext(){
+  const now = new Date(), el = document.getElementById('next'), inner = document.getElementById('next-inner');
+  const startOf = i => new Date(i.date.getTime() + (i.min ?? 0)*60000);
+  const soon = new Date(now.getTime() + 24*36e5);
+  const cx = allItems().filter(i => i.status === 'canceled' && i.min != null && startOf(i) > now && startOf(i) < soon).sort((a,b) => startOf(a) - startOf(b));
+  if (cx.length) {
+    const i = cx[0], t = fmtTime(i.min);
+    el.hidden = false; el.classList.add('alert'); inner.dataset.goto = i.id;
+    inner.innerHTML = `<span class="next-label">CANCELED</span><span class="next-body"><strong>${esc(i.name)}</strong> · ${esc(i.org)} · ${esc(relDay(i.key) || DOW3[i.date.getDay()])} ${t.hm} ${t.ap}</span>${cx.length > 1 ? `<span class="next-count">+${cx.length-1} more</span>` : ''}`;
     return;
   }
+  el.classList.remove('alert');
+  const nxt = allItems().filter(i => i.min != null && i.status !== 'canceled').map(i => ({ i, at: startOf(i) })).filter(x => x.at > now).sort((a,b) => a.at - b.at)[0];
+  if (!nxt) { el.hidden = true; return; }
+  const mins = Math.round((nxt.at - now)/60000);
+  const cd = mins < 60 ? `in ${mins}m` : mins < 48*60 ? `in ${Math.floor(mins/60)}h ${mins%60}m` : `in ${Math.round(mins/1440)} days`;
+  const t = fmtTime(nxt.i.min);
+  el.hidden = false; inner.dataset.goto = nxt.i.id;
+  inner.innerHTML = `<span class="next-label">NEXT RIDE</span><span class="next-body"><strong>${esc(nxt.i.name)}</strong> · ${esc(relDay(nxt.i.key) || DOW3[nxt.i.date.getDay()])} ${t.hm} ${t.ap} · ${esc(nxt.i.venue)}</span><span class="next-count num ${mins < 120 ? 'soon' : ''}">${cd}</span>`;
+}
 
-  submitBtn.disabled = true;
-  submitBtn.querySelector('.btn-text').style.display    = 'none';
-  submitBtn.querySelector('.btn-loading').style.display = 'inline';
-  msgDiv.textContent = '';
-  msgDiv.className   = 'form-message';
+function renderAll(){ renderFilters(); renderStrip(); renderComing(); renderMain(); renderNext(); syncUrl(); }
 
-  try {
-    const res  = await fetch('/.netlify/functions/subscribe', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ email, source: 'website' }),
+/* ── Deep links: ?day=today|tomorrow|sat|week|events  ·  ?ride=<record id> ── */
+function viewToParam(v){
+  if (v === 'week') return 'week';
+  if (v === 'later') return 'events';
+  const rel = relDay(v);
+  if (rel) return rel.toLowerCase();
+  const d = state.days.find(x => keyOf(x) === v);
+  return d ? DOW3[d.getDay()].toLowerCase() : null;
+}
+function paramToView(p){
+  p = String(p || '').toLowerCase();
+  if (p === 'week') return 'week';
+  if (p === 'events' || p === 'later') return state.later.length ? 'later' : 'week';
+  if (p === 'today') return keyOf(state.days[0]);
+  if (p === 'tomorrow') return keyOf(state.days[1]);
+  const d = state.days.find(x => DOW3[x.getDay()].toLowerCase() === p.slice(0,3));
+  return d ? keyOf(d) : null;
+}
+function syncUrl(){
+  const p = viewToParam(state.view);
+  const url = p ? `${location.pathname}?day=${p}` : location.pathname;
+  if (location.pathname + location.search !== url) history.replaceState(null, '', url);
+}
+function shareUrl(it){ return `${location.origin}/?ride=${encodeURIComponent(it.id)}`; }
+
+/* ── Interaction ── */
+function goTo(id, scroll = true){
+  const it = allItems().find(i => i.id === id);
+  if (!it) return false;
+  state.view = state.later.includes(it) ? 'later' : it.key;
+  state.open.add(id);
+  if (isPast(it)) state.showPast = true;
+  renderAll();
+  const el = document.getElementById('r-' + id);
+  if (el && scroll) {
+    requestAnimationFrame(() => {
+      scrollTo({ top: el.getBoundingClientRect().top + scrollY - 150, behavior: 'smooth' });
+      el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1700);
     });
-    const data = await res.json();
-
-    if (res.ok) {
-      if (data.alreadySubscribed) {
-        showSignupMessage("You're already on the list — we'll keep you posted! 🚴", 'success');
-      } else {
-        showSignupMessage("🎉 You're in! We'll keep you updated on Weston rides.", 'success');
-        emailInput.value = '';
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'email_signup', { event_category: 'engagement', event_label: 'footer_form', source: 'website' });
-        }
-      }
-    } else {
-      showSignupMessage(data.error || 'Something went wrong. Please try again.', 'error');
-    }
-  } catch (err) {
-    showSignupMessage('Network error. Please check your connection and try again.', 'error');
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.querySelector('.btn-text').style.display    = 'inline';
-    submitBtn.querySelector('.btn-loading').style.display = 'none';
+  }
+  return true;
+}
+function setView(v){ state.view = v; renderAll(); gaEvent('tab_switch', { event_label: viewToParam(v) }); }
+async function shareRide(it){
+  const t = fmtTime(it.min);
+  const when = `${relDay(it.key) || DAYS[it.date.getDay()]}${t ? ` ${t.hm} ${t.ap}` : ''}`;
+  const text = `${it.name} (${it.org}) · ${when} · ${it.venue}`;
+  const url = shareUrl(it);
+  gaEvent('ride_share', { ride_id: it.id, method: navigator.share ? 'native' : 'copy' });
+  if (navigator.share) { try { await navigator.share({ title: it.name, text, url }); } catch {} return; }
+  try { await navigator.clipboard.writeText(`${text}\n${url}`); toast('Link copied'); }
+  catch { prompt('Copy this link', url); }
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-toggle],[data-view],[data-pace],[data-weston],[data-clear],[data-goto],[data-ics],[data-share],[data-past],[data-ga],#install-btn');
+  if (!t) return;
+  const d = t.dataset;
+  if (d.toggle) {
+    const id = d.toggle, art = document.getElementById('r-' + id), open = !state.open.has(id);
+    open ? state.open.add(id) : state.open.delete(id);
+    art.classList.toggle('open', open); t.setAttribute('aria-expanded', open);
+    if (open) gaEvent('ride_view', { ride_id: id });
+  } else if (d.view) { setView(d.view); scrollTo({ top: 0, behavior: 'smooth' }); }
+  else if (d.pace) { state.pace = d.pace; store.set('rt_pace', d.pace); renderAll(); gaEvent('filter_apply', { filter: 'pace', value: d.pace }); }
+  else if (d.weston) { state.weston = !state.weston; renderAll(); gaEvent('filter_apply', { filter: 'area', value: state.weston }); }
+  else if (d.clear) { state.pace = 'all'; store.set('rt_pace', 'all'); state.weston = false; state.org = 'all'; renderAll(); gaEvent('filter_clear'); }
+  else if (d.goto) goTo(d.goto);
+  else if (d.past) { state.showPast = !state.showPast; renderMain(); }
+  else if (d.share) shareRide(allItems().find(i => i.id === d.share));
+  else if (d.ics) {
+    const it = allItems().find(i => i.id === d.ics), tm = fmtTime(it.min);
+    gaEvent('add_to_calendar', { ride_id: it.id });
+    location.href = `/.netlify/functions/ics?${new URLSearchParams({ name: it.fullName || it.name, date: it.key, time: `${tm.hm} ${tm.ap}`, location: it.loc, organizer: it.org })}`;
+  } else if (d.ga) gaEvent(d.ga, { ride_id: d.ride });
+  else if (t.id === 'install-btn' && deferredInstall) {
+    deferredInstall.prompt();
+    deferredInstall.userChoice.then(c => { gaEvent(c.outcome === 'accepted' ? 'pwa_install_accepted' : 'pwa_install_dismissed'); deferredInstall = null; t.hidden = true; });
   }
 });
+document.addEventListener('change', e => {
+  if (e.target.id === 'org-select') { state.org = e.target.value; renderAll(); gaEvent('filter_apply', { filter: 'organizer', value: state.org }); }
+});
 
-function showSignupMessage(text, type) {
-  const d = document.getElementById('form-message');
-  d.textContent = text;
-  d.className   = `form-message ${type}`;
-}
+/* ── Swipe between days (ride list only; ignores vertical scrolls) ── */
+(() => {
+  const main = document.getElementById('main');
+  let x0 = null, y0 = 0, t0 = 0;
+  main.addEventListener('touchstart', e => { if (e.touches.length !== 1) return; x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; t0 = Date.now(); }, { passive: true });
+  main.addEventListener('touchend', e => {
+    if (x0 == null) return;
+    const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.8 || Date.now() - t0 > 600) return;
+    const order = ['week', ...state.days.map(keyOf), ...(state.later.length ? ['later'] : [])];
+    const i = order.indexOf(state.view), j = i + (dx < 0 ? 1 : -1);
+    if (i < 0 || j < 0 || j >= order.length) return;
+    setView(order[j]);
+    gaEvent('day_swipe', { direction: dx < 0 ? 'next' : 'prev' });
+  }, { passive: true });
+})();
 
-// ── PWA INSTALL PROMPT ───────────────────────────────────────
-let deferredPrompt = null;
-const installPrompt = document.getElementById('pwa-install-prompt');
-const installBtn    = document.getElementById('pwa-install-btn');
-const laterBtn      = document.getElementById('pwa-later-btn');
-const closeBtn      = document.getElementById('pwa-close-btn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
+/* ── Subscribe ── */
+document.getElementById('sub-form').addEventListener('submit', async e => {
   e.preventDefault();
-  deferredPrompt = e;
-  const dismissed = localStorage.getItem('pwa-install-dismissed');
-  const daysSince = dismissed ? (Date.now() - parseInt(dismissed)) / 86400000 : 999;
-  if (!dismissed || daysSince > 7) {
-    setTimeout(() => { if (installPrompt) installPrompt.style.display = 'block'; }, 3000);
+  const input = document.getElementById('sub-email'), btn = document.getElementById('sub-btn'), msg = document.getElementById('sub-msg');
+  const email = input.value.trim();
+  const show = (text, ok) => { msg.hidden = false; msg.textContent = text; msg.className = 'sub-msg ' + (ok ? 'ok' : 'err'); };
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return show('Please enter a valid email address.', false);
+  btn.disabled = true; btn.textContent = 'Subscribing…';
+  try {
+    const res = await fetch('/.netlify/functions/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'website' }) });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok) {
+      if (data.alreadySubscribed) show("You're already on the list.", true);
+      else { show("You're in — we'll keep you posted on Weston rides.", true); input.value = ''; gaEvent('email_signup', { source: 'website' }); }
+    } else show(data.error || 'Something went wrong. Please try again.', false);
+  } catch { show('Network error — check your connection and try again.', false); }
+  btn.disabled = false; btn.textContent = 'Subscribe';
+});
+
+/* ── PWA: service worker, install button, offline notice ── */
+let deferredInstall = null;
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredInstall = e; document.getElementById('install-btn').hidden = false; gaEvent('pwa_install_prompt_shown'); });
+const setOnline = () => { document.getElementById('offline').hidden = navigator.onLine; };
+window.addEventListener('online', () => { setOnline(); load(true); });
+window.addEventListener('offline', setOnline);
+
+/* ── Load ── */
+async function load(force = false){
+  if (!force && Date.now() - state.lastLoad < 60000) return;   // 60s cooldown
+  state.lastLoad = Date.now();
+  const [data, wx] = await Promise.all([fetch(DATA_URL, { cache: 'no-store' }).then(r => r.json()), fetchDailyWx()]);
+  if (!data || !data.rides) return;
+  state.wx = wx;
+  state.generatedAt = data.generated_at;
+  state.orgs = {};
+  for (const o of (data.organizers?.records || [])) {
+    const f = o.fields || {}, a = f.Avatar?.[0] || {};
+    if (f.Name) state.orgs[f.Name.toLowerCase()] = { avatar: a.url || '', thumb: a.thumb || '' };
   }
-});
+  const { inWindow, later } = buildItems(data.rides.records || []);
+  state.items = inWindow; state.later = later;
+  const today = midnight(new Date());
+  state.days = Array.from({ length: WINDOW_DAYS }, (_, i) => { const d = new Date(today); d.setDate(d.getDate() + i); return d; });
 
-function dismissInstallPrompt(label) {
-  if (installPrompt) installPrompt.style.display = 'none';
-  localStorage.setItem('pwa-install-dismissed', Date.now().toString());
-  if (typeof gtag !== 'undefined') gtag('event', 'pwa_install_dismissed', { event_category: 'engagement', event_label: label });
-}
-
-if (installBtn) {
-  installBtn.addEventListener('click', async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (typeof gtag !== 'undefined') gtag('event', 'pwa_install_clicked', { event_category: 'engagement', event_label: outcome });
-    if (installPrompt) installPrompt.style.display = 'none';
-    deferredPrompt = null;
-  });
-}
-if (laterBtn) laterBtn.addEventListener('click', () => dismissInstallPrompt('maybe_later'));
-if (closeBtn) closeBtn.addEventListener('click', () => dismissInstallPrompt('close_button'));
-
-window.addEventListener('appinstalled', () => {
-  if (installPrompt) installPrompt.style.display = 'none';
-  if (typeof gtag !== 'undefined') gtag('event', 'pwa_installed', { event_category: 'engagement', event_label: 'PWA Successfully Installed' });
-  console.log('✅ PWA installed successfully!');
-});
-
-// ── SERVICE WORKER REGISTRATION ──────────────────────────────
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then((registration) => {
-        console.log('✅ Service Worker registered:', registration.scope);
-        // Check for updates every hour
-        setInterval(() => { registration.update(); }, 60 * 60 * 1000);
-      })
-      .catch((error) => {
-        console.error('❌ Service Worker registration failed:', error);
-      });
-  });
-
-  // Monitor online/offline status
-  function updateOnlineStatus() {
-    const offlineIndicator = document.getElementById('offline-indicator');
-    if (offlineIndicator) {
-      offlineIndicator.style.display = navigator.onLine ? 'none' : 'block';
-      document.body.classList.toggle('offline', !navigator.onLine);
+  if (!state.view || (state.view !== 'week' && state.view !== 'later' && !state.days.some(d => keyOf(d) === state.view))) {
+    const q = new URLSearchParams(location.search);
+    if (q.get('ride') && goTo(q.get('ride'))) { gaEvent('deep_link', { type: 'ride' }); return; }
+    const fromUrl = paramToView(q.get('day'));
+    if (fromUrl) { state.view = fromUrl; gaEvent('deep_link', { type: 'day', value: q.get('day') }); }
+    else {
+      const first = state.items.find(i => i.status !== 'canceled' && !isPast(i));
+      state.view = first ? first.key : 'week';
     }
   }
-  window.addEventListener('online', updateOnlineStatus);
-  window.addEventListener('offline', updateOnlineStatus);
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateOnlineStatus);
-  } else {
-    updateOnlineStatus();
-  }
+  renderAll();
 }
+load(true).catch(err => { console.error(err); document.getElementById('main').innerHTML = `<div class="loading">Couldn't load rides. Check your connection and refresh.</div>`; });
+fetchNowWx();
+setOnline();
+setInterval(renderNext, 60000);
+setInterval(() => load(), 10*60000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { load(); fetchNowWx(); } });
 </script>
 </body>
 </html>

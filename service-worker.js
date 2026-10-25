@@ -1,5 +1,5 @@
-const CACHE_NAME = 'ridetrackerfl-v7';
-const RUNTIME_CACHE = 'ridetrackerfl-runtime-v7';
+const CACHE_NAME = 'ridetrackerfl-v8';
+const RUNTIME_CACHE = 'ridetrackerfl-runtime-v8';
 
 // Assets to cache immediately on install
 const STATIC_ASSETS = [
@@ -54,6 +54,28 @@ self.addEventListener('fetch', (event) => {
   // (same bug class as the rides.json Network-First fix below).
   if (url.hostname === 'api.open-meteo.com') {
     event.respondWith(fetch(request));
+    return;
+  }
+
+  // Pages (HTML navigations) - Network First, so a new site version shows up
+  // on the next visit instead of being stuck behind the cache. Falls back to
+  // the cached page when offline.
+  if (request.mode === 'navigate' || (request.headers.get('accept') || '').includes('text/html')) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(RUNTIME_CACHE).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request).then((r) => r || caches.match('/index.html'))
+          // respondWith(undefined) throws, which would replace the offline
+          // page with the browser's error page.
+          .then((r) => r || new Response('<h1>Offline</h1><p>No cached copy of this page.</p>',
+            { headers: { 'Content-Type': 'text/html' } })))
+    );
     return;
   }
 
