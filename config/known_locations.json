@@ -201,6 +201,13 @@
     "buy now",
     "limited time"
   ],
+  "travel_package_patterns": [
+    "nights stay",
+    "night stay",
+    "nights of accommodation",
+    "accommodation",
+    "lodging"
+  ],
   "suppressed_titles": [
     "100-miles route",
     "100 miles route",

@@ -18,6 +18,8 @@ Sample_Screenshots_With_Ride/
 !public/organizers/*.jpeg
 !public/organizers/*.png
 !public/organizers/*.webp
+!public/organizers/thumbs/
+!public/organizers/thumbs/*.webp
 config/secrets.env
 *-backup-*.json
 *-backup-*.html

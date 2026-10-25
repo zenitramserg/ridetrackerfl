@@ -28,6 +28,11 @@ import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
+try:
+    from pipeline.site_normalize import normalize_ride
+except ImportError:  # run as a plain script from inside pipeline/
+    from site_normalize import normalize_ride
+
 # ── Config ────────────────────────────────────────────────────────────────────
 
 BASE_ID      = "appp3CTtWpqVcTn6e"
@@ -53,6 +58,8 @@ ORG_FIELDS = [
 
 OUTPUT_PATH    = Path(__file__).parent.parent / "public" / "rides.json"
 AVATARS_PATH   = Path(__file__).parent.parent / "public" / "organizers"
+THUMBS_PATH    = AVATARS_PATH / "thumbs"
+THUMB_PX       = 96   # 2x the largest on-page logo (48px)
 
 
 # ── Airtable fetch ─────────────────────────────────────────────────────────────
@@ -157,6 +164,38 @@ def _sync_avatar(attachment: dict, slug: str) -> str | None:
         return f"/public/organizers/{slug}{ext}"
     except Exception as e:
         print(f"[sync] ⚠ Could not download avatar for {slug}: {e}")
+        return None
+
+
+def _make_thumb(local_url: str, slug: str) -> str | None:
+    """
+    Small square WebP of an organizer avatar for the site (the originals can be
+    600 KB+ for a 34px circle). Regenerated only when the source is newer.
+    Returns the web path, or None if Pillow is missing or conversion fails —
+    the frontend falls back to the full avatar in that case.
+    """
+    try:
+        from PIL import Image, ImageOps
+    except ImportError:
+        return None
+    src = AVATARS_PATH / Path(local_url).name
+    dst = THUMBS_PATH / f"{slug}.webp"
+    try:
+        if dst.exists() and dst.stat().st_mtime >= src.stat().st_mtime:
+            return f"/public/organizers/thumbs/{slug}.webp"
+        THUMBS_PATH.mkdir(parents=True, exist_ok=True)
+        with Image.open(src) as im:
+            im = ImageOps.exif_transpose(im)
+            if im.mode in ("RGBA", "LA", "P"):
+                im = im.convert("RGBA")
+                bg = Image.new("RGBA", im.size, (255, 255, 255, 255))
+                bg.alpha_composite(im)
+                im = bg
+            im = ImageOps.fit(im.convert("RGB"), (THUMB_PX, THUMB_PX), Image.LANCZOS)
+            im.save(dst, "WEBP", quality=82, method=6)
+        return f"/public/organizers/thumbs/{slug}.webp"
+    except Exception as e:
+        print(f"[sync] ⚠ Could not build thumbnail for {slug}: {e}")
         return None
 
 
@@ -454,9 +493,18 @@ def generate_rides_json(token: str, dry_run: bool = False) -> dict:
         if local_url:
             # Replace the Airtable attachment array with a simple local URL string
             # The frontend checks: org['Avatar'][0].url — we keep the same shape
-            fields["Avatar"] = [{"url": local_url, "filename": Path(local_url).name}]
+            avatar = {"url": local_url, "filename": Path(local_url).name}
+            thumb = _make_thumb(local_url, slug)
+            if thumb:
+                avatar["thumb"] = thumb
+            fields["Avatar"] = [avatar]
             downloaded += 1
     print(f"[sync] Avatars synced: {downloaded}/{len(organizers)}.")
+
+    # Display-ready fields for the site (additive `site` object per ride) and
+    # removal of the scraper's internal image description from public Notes.
+    for rec in rides:
+        normalize_ride(rec)
 
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

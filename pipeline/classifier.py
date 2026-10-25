@@ -20,6 +20,7 @@ NOISE_PATTERNS = _CONFIG["noise_patterns"]
 PERFORMANCE_PATTERNS = _CONFIG["performance_patterns"]
 PROMO_PATTERNS = _CONFIG["promo_patterns"]
 SUPPRESSED_TITLES = _CONFIG.get("suppressed_titles", [])
+TRAVEL_PACKAGE_PATTERNS = _CONFIG.get("travel_package_patterns", [])
 
 
 def is_noise(text: str) -> bool:
@@ -42,6 +43,28 @@ def is_promo_post(text: str) -> bool:
     """Detect shop promotions, demos, and sales — excluded per project rules."""
     t = (text or "").lower()
     return any(p in t for p in PROMO_PATTERNS)
+
+
+def is_travel_package(text: str) -> bool:
+    """
+    A trip to a ride is not a ride. These posts sell transport and lodging to
+    get to someone else's event, and the "start time" the vision model pulls
+    out of them is a coach departure — so they publish as a ride nobody can
+    turn up to. The Horrible Hundred post was extracted with the *return*
+    coach (4:00 PM Sunday) as its start.
+
+    Keyed on an overnight stay, because a single-day group ride has no reason
+    to mention one. Deliberately NOT keyed on price, "per person", "limited
+    spots" or a shuttle: the genuine Miami→Key West and Coast to Coast rides
+    carry all four. Nor on "register separately", which a local ride uses to
+    mean "individually, not as a team". Nor on "hotel", which a local ride can
+    legitimately meet at.
+
+    Measured over the 119 stored rides: flags the two travel packages
+    (Horrible Hundred, Clermont Weekend Experience), nothing else.
+    """
+    t = (text or "").lower()
+    return any(p in t for p in TRAVEL_PACKAGE_PATTERNS)
 
 
 def classify_ride(ride: dict) -> str:
@@ -103,6 +126,8 @@ def rejection_reason(ride: dict) -> str | None:
         return "performance post (ride stats, not an invitation)"
     if is_promo_post(raw):
         return "shop promo"
+    if is_travel_package(raw):
+        return "travel package (trip to an event, not a ride)"
     if is_suppressed_title(ride.get("title", "")):
         return f"suppressed title: {ride.get('title', '')!r}"
 
