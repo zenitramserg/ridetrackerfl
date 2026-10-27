@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T14:00:19.531929+00:00",
+  "generated_at": "2026-10-27T14:12:26.995807+00:00",
   "rides": {
     "records": [
       {
@@ -799,6 +799,39 @@
           "venue_detail": "Japan Inn inside Weston Town Center Plaza",
           "area": "Weston",
           "display_name": "Wild Hogs Thursday Ride"
+        }
+      },
+      {
+        "id": "recpRmTHdHMTf8gOJ",
+        "createdTime": "2026-10-27T14:12:20.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:30 AM",
+          "Wind Speed": 11.9,
+          "Rain Probability": 0.17,
+          "Location": "El Penon",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-10-27T14:12:15.000Z",
+          "Weather Summary": "Dry (17% rain), winds 12 mph",
+          "Ride Name": "Bom dia mundão morning ride",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-27",
+          "Organizer": "OMG Cycling"
+        },
+        "site": {
+          "time_min": 390,
+          "time_display": "6:30 AM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "El Penon",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Bom dia mundão morning ride"
         }
       },
       {
