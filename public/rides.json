@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T00:17:27.215996+00:00",
+  "generated_at": "2026-10-28T13:45:04.804340+00:00",
   "rides": {
     "records": [
       {
@@ -73,40 +73,6 @@
           "venue_detail": "Behind Bank of America",
           "area": "Weston",
           "display_name": "Wednesday Favorite Ride"
-        }
-      },
-      {
-        "id": "rec0JirVJ21vT4DDJ",
-        "createdTime": "2026-08-23T19:25:22.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:30 AM",
-          "Wind Speed": 5.9,
-          "Rain Probability": 0.16,
-          "Location": "Einstein Bros. Bagels, Indian Trace Shopping Center, 1356 Weston Rd, Weston, FL 33326",
-          "Last Checked At": "2026-10-26T18:00:00.000Z",
-          "Weather Summary": "Dry (16% rain), light winds 6 mph",
-          "Ride Name": "Wild Hogs Special Tuesday — Einstein Bros. Bagel Run",
-          "Day of Week": "Tuesday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-27",
-          "Address Note": "Einstein's (Indian Trace & Weston Rd)",
-          "Organizer": "Wild Hogs Cycling",
-          "Notes": "Monthly special — Wild Hogs run this once a month in place of the standard Tuesday ride. Starts at Einstein Bros. Bagels (Indian Trace & Weston Rd) instead of Weston Town Center. Pedals up 7:30 AM. Bagels afterwards. Standard Wild Hogs Tuesday ride is hidden for this date."
-        },
-        "site": {
-          "time_min": 450,
-          "time_display": "7:30 AM",
-          "pace_label": "",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "Einstein Bros. Bagels",
-          "venue_detail": "Indian Trace Shopping Center, 1356 Weston Rd, Weston, FL 33326 · Einstein's (Indian Trace & Weston Rd)",
-          "area": "Weston",
-          "display_name": "Wild Hogs Special Tuesday — Einstein Bros. Bagel Run"
         }
       },
       {
