@@ -4,6 +4,7 @@ Classify each extracted ride record by type and validate it is a true group ride
 Ported and adapted from weston-rides-monitor legacy project.
 """
 
+import functools
 import json
 import re
 from pathlib import Path
@@ -23,9 +24,34 @@ SUPPRESSED_TITLES = _CONFIG.get("suppressed_titles", [])
 TRAVEL_PACKAGE_PATTERNS = _CONFIG.get("travel_package_patterns", [])
 
 
+@functools.lru_cache(maxsize=None)
+def _compile(pattern: str) -> re.Pattern:
+    r"""
+    Word-bounded when the pattern is only letters and spaces, a plain substring
+    otherwise.
+
+    Bare substrings misfire: 38% of the scraped posts are Spanish or
+    Portuguese, and "sale" — Spanish for "it departs", as in "sale a las
+    6:00 AM" — sits inside the promo list, as it does inside "wholesale".
+
+    The split matters because blanket boundaries would break the patterns that
+    start with a symbol. "% off" is preceded by a digit in "20% off", and a
+    (?<!\w) lookbehind fails against a digit, so the pattern would stop
+    matching the exact thing it was written for.
+    """
+    if pattern.replace(" ", "").isalpha():
+        return re.compile(rf"(?<!\w){re.escape(pattern)}(?!\w)", re.I)
+    return re.compile(re.escape(pattern), re.I)
+
+
+def _matched(patterns, text: str) -> str | None:
+    """The first pattern that matches, so a rejection can name its evidence."""
+    t = text or ""
+    return next((p for p in patterns if _compile(p).search(t)), None)
+
+
 def is_noise(text: str) -> bool:
-    t = (text or "").lower()
-    return any(p in t for p in NOISE_PATTERNS)
+    return _matched(NOISE_PATTERNS, text) is not None
 
 
 def is_suppressed_title(title: str) -> bool:
@@ -35,14 +61,12 @@ def is_suppressed_title(title: str) -> bool:
 
 
 def is_performance_post(text: str) -> bool:
-    t = (text or "").lower()
-    return any(p in t for p in PERFORMANCE_PATTERNS)
+    return _matched(PERFORMANCE_PATTERNS, text) is not None
 
 
 def is_promo_post(text: str) -> bool:
     """Detect shop promotions, demos, and sales — excluded per project rules."""
-    t = (text or "").lower()
-    return any(p in t for p in PROMO_PATTERNS)
+    return _matched(PROMO_PATTERNS, text) is not None
 
 
 def is_travel_package(text: str) -> bool:
@@ -63,8 +87,7 @@ def is_travel_package(text: str) -> bool:
     Measured over the 119 stored rides: flags the two travel packages
     (Horrible Hundred, Clermont Weekend Experience), nothing else.
     """
-    t = (text or "").lower()
-    return any(p in t for p in TRAVEL_PACKAGE_PATTERNS)
+    return _matched(TRAVEL_PACKAGE_PATTERNS, text) is not None
 
 
 def classify_ride(ride: dict) -> str:
@@ -120,14 +143,18 @@ def rejection_reason(ride: dict) -> str | None:
     """
     raw = ride.get("raw_visible_text", "") or ""
 
-    if is_noise(raw):
-        return "noise text"
-    if is_performance_post(raw):
-        return "performance post (ride stats, not an invitation)"
-    if is_promo_post(raw):
-        return "shop promo"
-    if is_travel_package(raw):
-        return "travel package (trip to an event, not a ride)"
+    # Each of these names the pattern it matched. A rejection that only states
+    # a category cannot be checked: "shop promo" on a 0.93-confidence century
+    # ride is either a correct call or a substring misfire, and the flyer it
+    # came from has expired by the time anyone asks.
+    if m := _matched(NOISE_PATTERNS, raw):
+        return f"noise text (matched {m!r})"
+    if m := _matched(PERFORMANCE_PATTERNS, raw):
+        return f"performance post, ride stats rather than an invitation (matched {m!r})"
+    if m := _matched(PROMO_PATTERNS, raw):
+        return f"shop promo (matched {m!r})"
+    if m := _matched(TRAVEL_PACKAGE_PATTERNS, raw):
+        return f"travel package, a trip to an event rather than a ride (matched {m!r})"
     if is_suppressed_title(ride.get("title", "")):
         return f"suppressed title: {ride.get('title', '')!r}"
 

@@ -777,7 +777,14 @@ def main():
 
     try:
         payload = generate_rides_json(token, dry_run=args.dry_run)
-    except RuntimeError as e:
+    except (RuntimeError, urllib.error.URLError, OSError) as e:
+        # _fetch_table turns an HTTPError into RuntimeError, but a laptop that
+        # is asleep, waking, or on flaky wifi fails below that: URLError for
+        # DNS, TimeoutError and ConnectionResetError from the socket. Those are
+        # OSError subclasses and used to escape this handler, so the common
+        # failure printed a traceback instead of the line written for it — 13
+        # times in the log so far. Nothing is written either way, so the
+        # previous rides.json stands and the site stays live.
         print(f"[sync] ✗ Failed to fetch from Airtable: {e}")
         print("[sync] ⚠ Keeping existing rides.json — site remains live.")
         sys.exit(1)
