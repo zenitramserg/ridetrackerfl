@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T14:13:20.845757+00:00",
+  "generated_at": "2026-10-29T16:00:04.807034+00:00",
   "rides": {
     "records": [
       {
@@ -73,45 +73,6 @@
           "venue_detail": "Behind Bank of America",
           "area": "Weston",
           "display_name": "Wednesday Favorite Ride"
-        }
-      },
-      {
-        "id": "rec5pXok7XiOHyShs",
-        "createdTime": "2026-03-27T14:43:19.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "07:00 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.01,
-          "Location": "Weston Town Center — GRIT. Bike Lab",
-          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Weather Summary": "Dry (1% rain), light winds 4 mph",
-          "Pace": "A & B / C Groups",
-          "Distance": "40 / 30",
-          "Ride Name": "Ride84",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-20",
-          "Organizer": "Ride84",
-          "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Jointly promoted by Alex's Bicycle Pro Shop and Ride84."
-        },
-        "site": {
-          "time_min": 420,
-          "time_display": "7:00 AM",
-          "pace_label": "A/B/C groups",
-          "pace_groups": [
-            "fast",
-            "mod",
-            "soc"
-          ],
-          "pace_top": "fast",
-          "pace_nodrop": false,
-          "dist_display": "40/30 mi",
-          "venue": "Weston Town Center",
-          "venue_detail": "GRIT. Bike Lab",
-          "area": "Weston",
-          "display_name": "Ride84"
         }
       },
       {
@@ -624,6 +585,47 @@
           "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
           "area": "Weston",
           "display_name": "One Last Ride 2026"
+        }
+      },
+      {
+        "id": "recXuiKRWWZhOMqJj",
+        "createdTime": "2026-10-29T15:57:23.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Weston Town Center — GRIT. Bike Lab",
+          "Featured": true,
+          "Last Checked At": "2026-10-29T18:00:00.000Z",
+          "Pace": "A & B / C Groups",
+          "Distance": "40 / 30",
+          "Ride Name": "Ride84 × GRIT. Bike Lab — Halloween Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-31",
+          "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
+          "Organizer": "Ride84",
+          "Notes": "Halloween edition of the weekly Ride84 group ride, promoted jointly by Ride84 and GRIT. Bike Lab. Same start time, start location and distances as the regular Saturday ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM.",
+          "Weather Summary": "Dry (20% rain), light winds 9 mph",
+          "Rain Probability": 0.2,
+          "Wind Speed": 9.3
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "A/B/C groups",
+          "pace_groups": [
+            "fast",
+            "mod",
+            "soc"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "40/30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "GRIT. Bike Lab · 1797 Bell Tower Ln, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "Ride84 × GRIT. Bike Lab — Halloween Ride"
         }
       },
       {
