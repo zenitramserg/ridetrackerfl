@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T16:00:04.807034+00:00",
+  "generated_at": "2026-10-29T17:30:06.064283+00:00",
   "rides": {
     "records": [
       {
@@ -594,9 +594,12 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 9.3,
+          "Rain Probability": 0.2,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Featured": true,
           "Last Checked At": "2026-10-29T18:00:00.000Z",
+          "Weather Summary": "Dry (20% rain), light winds 9 mph",
           "Pace": "A & B / C Groups",
           "Distance": "40 / 30",
           "Ride Name": "Ride84 × GRIT. Bike Lab — Halloween Ride",
@@ -605,10 +608,7 @@
           "Ride Date": "2026-10-31",
           "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
           "Organizer": "Ride84",
-          "Notes": "Halloween edition of the weekly Ride84 group ride, promoted jointly by Ride84 and GRIT. Bike Lab. Same start time, start location and distances as the regular Saturday ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM.",
-          "Weather Summary": "Dry (20% rain), light winds 9 mph",
-          "Rain Probability": 0.2,
-          "Wind Speed": 9.3
+          "Notes": "Halloween edition of the weekly Ride84 group ride, promoted jointly by Ride84 and GRIT. Bike Lab. Same start time, start location and distances as the regular Saturday ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM."
         },
         "site": {
           "time_min": 420,
