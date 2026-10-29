@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T10:30:45.155774+00:00",
+  "generated_at": "2026-10-29T14:13:20.845757+00:00",
   "rides": {
     "records": [
       {
@@ -346,18 +346,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "05:30 AM",
-          "Wind Speed": 2.1,
-          "Rain Probability": 0.24,
+          "Wind Speed": 2.4,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-16T09:12:18.000Z",
-          "Weather Summary": "Dry (24% rain), light winds 2 mph",
+          "Last Checked At": "2026-10-29T14:13:12.000Z",
+          "Weather Summary": "Dry (0% rain), winds 2 mph",
           "Pace": "24 /26 mph",
           "Distance": "40",
           "Ride Name": "Thursday Tempo Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
-          "Ride Date": "2026-09-17",
+          "Ride Date": "2026-10-29",
           "Organizer": "OMG Cycling",
           "Address Note": "Behind Bank of America"
         },
