@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T16:15:06.843607+00:00",
+  "generated_at": "2026-10-30T16:30:03.253552+00:00",
   "rides": {
     "records": [
       {
@@ -120,16 +120,17 @@
           "Time": "09:30 AM",
           "Wind Speed": 3.2,
           "Rain Probability": 0.17,
-          "Location": "@Gritbikelab",
+          "Location": "Weston Town Center — GRIT. Bike Lab",
           "Organizer Instagram Profile": "https://www.instagram.com/ride.84/",
           "Last Checked At": "2026-10-30T14:14:46.000Z",
           "Weather Summary": "Dry (17% rain), light winds 3 mph",
-          "Ride Name": "Saturday 5K Run",
+          "Ride Name": "Ride84 × GRIT. Bike Lab — Saturday 5K Run",
           "Day of Week": "Saturday",
           "Status": "confirmed",
           "Ride Date": "2026-10-31",
-          "Organizer": "Alex's Bicycle Pro Shop",
-          "Distance": "5 KM"
+          "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
+          "Organizer": "Ride84",
+          "Notes": "Recurring Saturday morning 5K RUN (not a bike ride), organized by Ride84 with GRIT. Bike Lab. Starts and finishes at GRIT. Bike Lab, Weston Town Center. Distance: 5 km."
         },
         "site": {
           "time_min": 570,
@@ -138,11 +139,11 @@
           "pace_groups": [],
           "pace_top": "unk",
           "pace_nodrop": false,
-          "dist_display": "5 KM mi",
-          "venue": "GRIT Bike Lab",
-          "venue_detail": "",
+          "dist_display": "",
+          "venue": "Weston Town Center",
+          "venue_detail": "GRIT. Bike Lab · 1797 Bell Tower Ln, Weston, FL 33326",
           "area": "Weston",
-          "display_name": "Saturday 5K Run"
+          "display_name": "Ride84 × GRIT. Bike Lab — Saturday 5K Run"
         }
       },
       {
@@ -1021,6 +1022,18 @@
           "Type": "Shop",
           "Instagram URL": "https://www.instagram.com/miamispecialized/",
           "Instagram Handle": "miamispecialized"
+        }
+      },
+      {
+        "id": "rec88k44SqSaGlqPk",
+        "createdTime": "2026-10-30T16:29:12.000Z",
+        "fields": {
+          "Name": "GRIT. Bike Lab",
+          "Active": true,
+          "Type": "Shop",
+          "Website URL": "https://gritbikelab.com",
+          "Instagram URL": "https://www.instagram.com/gritbikelab/",
+          "Instagram Handle": "gritbikelab"
         }
       },
       {
