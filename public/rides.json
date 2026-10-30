@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T17:00:06.803393+00:00",
+  "generated_at": "2026-10-30T17:15:05.575512+00:00",
   "rides": {
     "records": [
       {
@@ -692,12 +692,12 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 4.2,
-          "Rain Probability": 0.24,
+          "Wind Speed": 6.3,
+          "Rain Probability": 0.27,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Featured": true,
           "Last Checked At": "2026-10-29T18:00:00.000Z",
-          "Weather Summary": "Dry (24% rain), light winds 4 mph",
+          "Weather Summary": "Dry (27% rain), light winds 6 mph",
           "Pace": "A & B / C Groups",
           "Distance": "40 / 30",
           "Ride Name": "Ride84 × GRIT. Bike Lab — Halloween Ride",
