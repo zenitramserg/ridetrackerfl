@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T14:00:04.755788+00:00",
+  "generated_at": "2026-10-30T14:14:59.862034+00:00",
   "rides": {
     "records": [
       {
@@ -109,6 +109,40 @@
           "venue_detail": "",
           "area": "Weston",
           "display_name": "Team Galiz Sunday Recovery Ride to Miramar"
+        }
+      },
+      {
+        "id": "rec9YzbwtJm3Vk730",
+        "createdTime": "2026-10-30T14:14:52.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "09:30 AM",
+          "Wind Speed": 3.2,
+          "Rain Probability": 0.21,
+          "Location": "@Gritbikelab",
+          "Organizer Instagram Profile": "https://www.instagram.com/ride.84/",
+          "Last Checked At": "2026-10-30T14:14:46.000Z",
+          "Weather Summary": "Dry (21% rain), winds 3 mph",
+          "Ride Name": "Saturday 5K Run",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-31",
+          "Organizer": "Alex's Bicycle Pro Shop",
+          "Distance": "5 KM"
+        },
+        "site": {
+          "time_min": 570,
+          "time_display": "9:30 AM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "5 KM mi",
+          "venue": "GRIT Bike Lab",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Saturday 5K Run"
         }
       },
       {
@@ -265,6 +299,38 @@
         }
       },
       {
+        "id": "recDfjjtCpA5xYVKH",
+        "createdTime": "2026-10-30T14:14:53.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:00 PM",
+          "Location": "MBO Brickell",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-10-30T14:14:46.000Z",
+          "Ride Name": "Thirsty Thursday Group Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-29",
+          "Organizer": "MBO Ten Cycling",
+          "Pace": "Tempo+",
+          "Address Note": "1100 SW 2nd St, Miami, FL"
+        },
+        "site": {
+          "time_min": 1080,
+          "time_display": "6:00 PM",
+          "pace_label": "Tempo+",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "MBO Brickell",
+          "venue_detail": "1100 SW 2nd St, Miami, FL",
+          "area": "Weston",
+          "display_name": "Thirsty Thursday Group Ride"
+        }
+      },
+      {
         "id": "recG3IAsRXicb8ybd",
         "createdTime": "2026-10-22T17:58:17.000Z",
         "fields": {
@@ -375,6 +441,37 @@
         }
       },
       {
+        "id": "recK1EPkBZUO59H02",
+        "createdTime": "2026-10-30T14:14:51.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:30 PM",
+          "Location": "GRIT Bike Lab",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-10-30T14:14:46.000Z",
+          "Ride Name": "GRIT Bike Lab Social Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-29",
+          "Organizer": "OMG Cycling",
+          "Pace": "Easy Pace"
+        },
+        "site": {
+          "time_min": 1110,
+          "time_display": "6:30 PM",
+          "pace_label": "Easy Pace",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "GRIT Bike Lab",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "GRIT Bike Lab Social Ride"
+        }
+      },
+      {
         "id": "recLwXQwGIdP5YCzR",
         "createdTime": "2026-10-13T18:31:59.000Z",
         "fields": {
@@ -416,17 +513,17 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 7.4,
-          "Rain Probability": 0.03,
+          "Wind Speed": 4.7,
+          "Rain Probability": 0.07,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-10-22T14:13:42.000Z",
-          "Weather Summary": "Dry (3% rain), light winds 7 mph",
+          "Last Checked At": "2026-10-30T14:14:46.000Z",
+          "Weather Summary": "Dry (7% rain), light winds 5 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
           "Status": "confirmed",
-          "Ride Date": "2026-10-23",
+          "Ride Date": "2026-10-30",
           "Organizer": "OMG Cycling",
           "Pace": "22/24 mph",
           "Address Note": "Behind Bank of America"
