@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T14:12:26.554801+00:00",
+  "generated_at": "2026-10-31T16:05:06.930736+00:00",
   "rides": {
     "records": [
       {
@@ -118,7 +118,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "09:30 AM",
-          "Wind Speed": 5.0,
+          "Wind Speed": 5,
           "Rain Probability": 0.32,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Organizer Instagram Profile": "https://www.instagram.com/ride.84/",
@@ -479,8 +479,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
+          "Wind Speed": 7.9,
+          "Rain Probability": 0,
           "Location": "Alex Bicycle Pro Shop",
           "Featured": true,
+          "Weather Summary": "Dry (0% rain), light winds 8 mph",
           "Pace": "22-24 mph",
           "Distance": "60",
           "Ride Name": "OMG Girls 5th Edition",
@@ -489,10 +492,7 @@
           "Ride Date": "2026-11-07",
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "OMG Cycling",
-          "Notes": "5th edition of the OMG Girls ride. PAID EVENT — $80 + fees, REGISTRATION REQUIRED via signup link (in @omg_cycling bio). Includes jersey and t-shirt post ride, nutrition, food and raffles. Tagline: Ride together. Shine together. Sponsors include Alex Bicycle Pro Shop, YBEAUTY, JAM Sports Wear. Source: OMG Cycling Instagram story, Sept 23 2026 scan.",
-          "Weather Summary": "Dry (0% rain), light winds 8 mph",
-          "Rain Probability": 0.0,
-          "Wind Speed": 7.9
+          "Notes": "5th edition of the OMG Girls ride. PAID EVENT — $80 + fees, REGISTRATION REQUIRED via signup link (in @omg_cycling bio). Includes jersey and t-shirt post ride, nutrition, food and raffles. Tagline: Ride together. Shine together. Sponsors include Alex Bicycle Pro Shop, YBEAUTY, JAM Sports Wear. Source: OMG Cycling Instagram story, Sept 23 2026 scan."
         },
         "site": {
           "time_min": 330,
@@ -910,12 +910,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 8.2,
-          "Rain Probability": 0.36,
+          "Wind Speed": 8.6,
+          "Rain Probability": 0.39,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-10-31T14:12:04.000Z",
-          "Weather Summary": "Possible rain (36% rain), winds 8 mph",
+          "Weather Summary": "Dry (39% rain), light winds 9 mph",
           "Ride Name": "S.L.A.B. Pimpin Morning Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
