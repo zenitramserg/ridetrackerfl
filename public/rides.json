@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T16:05:06.930736+00:00",
+  "generated_at": "2026-10-31T17:10:34.865409+00:00",
   "rides": {
     "records": [
       {
@@ -911,11 +911,11 @@
           "Display on Site": true,
           "Time": "07:00 AM",
           "Wind Speed": 8.6,
-          "Rain Probability": 0.39,
+          "Rain Probability": 0.32,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-10-31T14:12:04.000Z",
-          "Weather Summary": "Dry (39% rain), light winds 9 mph",
+          "Weather Summary": "Dry (32% rain), light winds 9 mph",
           "Ride Name": "S.L.A.B. Pimpin Morning Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
