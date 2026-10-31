@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T21:02:33.919783+00:00",
+  "generated_at": "2026-10-31T14:12:26.554801+00:00",
   "rides": {
     "records": [
       {
@@ -118,12 +118,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "09:30 AM",
-          "Wind Speed": 3.2,
-          "Rain Probability": 0.17,
+          "Wind Speed": 5.0,
+          "Rain Probability": 0.32,
           "Location": "Weston Town Center — GRIT. Bike Lab",
           "Organizer Instagram Profile": "https://www.instagram.com/ride.84/",
           "Last Checked At": "2026-10-30T14:14:46.000Z",
-          "Weather Summary": "Dry (17% rain), light winds 3 mph",
+          "Weather Summary": "Dry (32% rain), light winds 5 mph",
           "Ride Name": "Ride84 × GRIT. Bike Lab — Saturday 5K Run",
           "Day of Week": "Saturday",
           "Status": "confirmed",
@@ -489,7 +489,10 @@
           "Ride Date": "2026-11-07",
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "OMG Cycling",
-          "Notes": "5th edition of the OMG Girls ride. PAID EVENT — $80 + fees, REGISTRATION REQUIRED via signup link (in @omg_cycling bio). Includes jersey and t-shirt post ride, nutrition, food and raffles. Tagline: Ride together. Shine together. Sponsors include Alex Bicycle Pro Shop, YBEAUTY, JAM Sports Wear. Source: OMG Cycling Instagram story, Sept 23 2026 scan."
+          "Notes": "5th edition of the OMG Girls ride. PAID EVENT — $80 + fees, REGISTRATION REQUIRED via signup link (in @omg_cycling bio). Includes jersey and t-shirt post ride, nutrition, food and raffles. Tagline: Ride together. Shine together. Sponsors include Alex Bicycle Pro Shop, YBEAUTY, JAM Sports Wear. Source: OMG Cycling Instagram story, Sept 23 2026 scan.",
+          "Weather Summary": "Dry (0% rain), light winds 8 mph",
+          "Rain Probability": 0.0,
+          "Wind Speed": 7.9
         },
         "site": {
           "time_min": 330,
@@ -514,12 +517,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.7,
-          "Rain Probability": 0.07,
+          "Wind Speed": 4.9,
+          "Rain Probability": 0.03,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
           "Last Checked At": "2026-10-30T14:14:46.000Z",
-          "Weather Summary": "Dry (7% rain), light winds 5 mph",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
           "Distance": "30",
           "Ride Name": "Friday Recovery Ride",
           "Day of Week": "Friday",
@@ -901,6 +904,39 @@
         }
       },
       {
+        "id": "recqfk6ZFuYj1iWMN",
+        "createdTime": "2026-10-31T14:12:09.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:00 AM",
+          "Wind Speed": 8.2,
+          "Rain Probability": 0.36,
+          "Location": "Alex's Bicycle Pro Shop",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Last Checked At": "2026-10-31T14:12:04.000Z",
+          "Weather Summary": "Possible rain (36% rain), winds 8 mph",
+          "Ride Name": "S.L.A.B. Pimpin Morning Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-01",
+          "Organizer": "Alex's Bicycle Pro Shop"
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "Alex's Bicycle Pro Shop",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "S.L.A.B. Pimpin Morning Ride"
+        }
+      },
+      {
         "id": "recuaipPr38uAnkhq",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -942,18 +978,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.2,
-          "Rain Probability": 0.09,
+          "Wind Speed": 9.6,
+          "Rain Probability": 0.21,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-10-01T13:45:06.000Z",
-          "Weather Summary": "Dry (9% rain), light winds 4 mph",
+          "Last Checked At": "2026-10-31T14:12:04.000Z",
+          "Weather Summary": "Dry (21% rain), light winds 10 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-10-10",
+          "Ride Date": "2026-10-31",
           "Organizer": "OMG Cycling",
           "Address Note": "Behind Graziano's"
         },
