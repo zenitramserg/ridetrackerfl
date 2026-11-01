@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T00:00:09.670803+00:00",
+  "generated_at": "2026-11-01T15:13:54.846198+00:00",
   "rides": {
     "records": [
       {
@@ -229,18 +229,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 1.1,
-          "Rain Probability": 0,
+          "Wind Speed": 9.2,
+          "Rain Probability": 0.42,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-09-13T10:19:46.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 1 mph",
+          "Last Checked At": "2026-11-01T15:13:45.000Z",
+          "Weather Summary": "Chance of rain (42%), light winds 9 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "OMG Sunday Chill Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
-          "Ride Date": "2026-09-13",
+          "Ride Date": "2026-11-01",
           "Organizer": "OMG Cycling",
           "Address Note": "Behind Bank of America"
         },
@@ -689,47 +689,6 @@
         }
       },
       {
-        "id": "recXuiKRWWZhOMqJj",
-        "createdTime": "2026-10-29T15:57:23.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 7.3,
-          "Rain Probability": 0.23,
-          "Location": "Weston Town Center — GRIT. Bike Lab",
-          "Featured": true,
-          "Last Checked At": "2026-10-29T18:00:00.000Z",
-          "Weather Summary": "Dry (23% rain), light winds 7 mph",
-          "Pace": "A & B / C Groups",
-          "Distance": "40 / 30",
-          "Ride Name": "Ride84 × GRIT. Bike Lab — Halloween Ride",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-31",
-          "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
-          "Organizer": "Ride84",
-          "Notes": "Halloween edition of the weekly Ride84 group ride, promoted jointly by Ride84 and GRIT. Bike Lab. Same start time, start location and distances as the regular Saturday ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM."
-        },
-        "site": {
-          "time_min": 420,
-          "time_display": "7:00 AM",
-          "pace_label": "A/B/C groups",
-          "pace_groups": [
-            "fast",
-            "mod",
-            "soc"
-          ],
-          "pace_top": "fast",
-          "pace_nodrop": false,
-          "dist_display": "40/30 mi",
-          "venue": "Weston Town Center",
-          "venue_detail": "GRIT. Bike Lab · 1797 Bell Tower Ln, Weston, FL 33326",
-          "area": "Weston",
-          "display_name": "Ride84 × GRIT. Bike Lab — Halloween Ride"
-        }
-      },
-      {
         "id": "recYIhjXHLzbywyG2",
         "createdTime": "2026-04-05T20:15:44.000Z",
         "fields": {
@@ -910,12 +869,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.23,
+          "Wind Speed": 9.2,
+          "Rain Probability": 0.42,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-10-31T14:12:04.000Z",
-          "Weather Summary": "Dry (23% rain), light winds 4 mph",
+          "Weather Summary": "Chance of rain (42%), light winds 9 mph",
           "Ride Name": "S.L.A.B. Pimpin Morning Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
