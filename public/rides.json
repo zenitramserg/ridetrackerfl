@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T15:13:54.846198+00:00",
+  "generated_at": "2026-11-01T19:15:03.118157+00:00",
   "rides": {
     "records": [
       {
@@ -73,6 +73,45 @@
           "venue_detail": "Behind Bank of America",
           "area": "Weston",
           "display_name": "Wednesday Favorite Ride"
+        }
+      },
+      {
+        "id": "rec5pXok7XiOHyShs",
+        "createdTime": "2026-03-27T14:43:19.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "07:00 AM",
+          "Wind Speed": 3.7,
+          "Rain Probability": 0.01,
+          "Location": "Weston Town Center — GRIT. Bike Lab",
+          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
+          "Weather Summary": "Dry (1% rain), light winds 4 mph",
+          "Pace": "A & B / C Groups",
+          "Distance": "40 / 30",
+          "Ride Name": "Ride84",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-06-20",
+          "Organizer": "Ride84",
+          "Notes": "Saturday road group ride. A & B Group pedals up 7:00 AM · C Group pedals up 7:05 AM. Starts from GRIT. Bike Lab, Weston Town Center."
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "A/B/C groups",
+          "pace_groups": [
+            "fast",
+            "mod",
+            "soc"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "40/30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "GRIT. Bike Lab",
+          "area": "Weston",
+          "display_name": "Ride84"
         }
       },
       {
