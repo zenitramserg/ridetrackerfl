@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T14:00:06.036830+00:00",
+  "generated_at": "2026-11-02T14:11:16.428091+00:00",
   "rides": {
     "records": [
       {
@@ -148,41 +148,6 @@
           "venue_detail": "",
           "area": "Weston",
           "display_name": "Team Galiz Sunday Recovery Ride to Miramar"
-        }
-      },
-      {
-        "id": "rec9YzbwtJm3Vk730",
-        "createdTime": "2026-10-30T14:14:52.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "09:30 AM",
-          "Wind Speed": 5,
-          "Rain Probability": 0.32,
-          "Location": "Weston Town Center — GRIT. Bike Lab",
-          "Organizer Instagram Profile": "https://www.instagram.com/ride.84/",
-          "Last Checked At": "2026-10-30T14:14:46.000Z",
-          "Weather Summary": "Dry (32% rain), light winds 5 mph",
-          "Ride Name": "Ride84 × GRIT. Bike Lab — Saturday 5K Run",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-31",
-          "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
-          "Organizer": "Ride84",
-          "Notes": "Recurring Saturday morning 5K RUN (not a bike ride), organized by Ride84 with GRIT. Bike Lab. Starts and finishes at GRIT. Bike Lab, Weston Town Center. Distance: 5 km."
-        },
-        "site": {
-          "time_min": 570,
-          "time_display": "9:30 AM",
-          "pace_label": "",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "Weston Town Center",
-          "venue_detail": "GRIT. Bike Lab · 1797 Bell Tower Ln, Weston, FL 33326",
-          "area": "Weston",
-          "display_name": "Ride84 × GRIT. Bike Lab — Saturday 5K Run"
         }
       },
       {
@@ -866,39 +831,6 @@
           "venue_detail": "Japan Inn inside Weston Town Center Plaza",
           "area": "Weston",
           "display_name": "Wild Hogs Thursday Ride"
-        }
-      },
-      {
-        "id": "recpRmTHdHMTf8gOJ",
-        "createdTime": "2026-10-27T14:12:20.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "06:30 AM",
-          "Wind Speed": 11.9,
-          "Rain Probability": 0.17,
-          "Location": "El Penon",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-10-27T14:12:15.000Z",
-          "Weather Summary": "Dry (17% rain), winds 12 mph",
-          "Ride Name": "Bom dia mundão morning ride",
-          "Day of Week": "Tuesday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-27",
-          "Organizer": "OMG Cycling"
-        },
-        "site": {
-          "time_min": 390,
-          "time_display": "6:30 AM",
-          "pace_label": "",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "El Penon",
-          "venue_detail": "",
-          "area": "Weston",
-          "display_name": "Bom dia mundão morning ride"
         }
       },
       {
