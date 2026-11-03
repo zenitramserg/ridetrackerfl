@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T11:00:11.255335+00:00",
+  "generated_at": "2026-11-03T15:13:41.572223+00:00",
   "rides": {
     "records": [
       {
@@ -483,11 +483,12 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 7.9,
-          "Rain Probability": 0,
+          "Wind Speed": 4.6,
+          "Rain Probability": 0.01,
           "Location": "Alex Bicycle Pro Shop",
           "Featured": true,
-          "Weather Summary": "Dry (0% rain), light winds 8 mph",
+          "Last Checked At": "2026-11-03T15:13:22.000Z",
+          "Weather Summary": "Dry (1% rain), winds 5 mph",
           "Pace": "22-24 mph",
           "Distance": "60",
           "Ride Name": "OMG Girls 5th Edition",
@@ -631,18 +632,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 13.4,
-          "Rain Probability": 0.31,
+          "Wind Speed": 6.9,
+          "Rain Probability": 0.15,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-10-26T14:12:13.000Z",
-          "Weather Summary": "Dry (31% rain), moderate winds 13 mph",
+          "Last Checked At": "2026-11-03T15:13:22.000Z",
+          "Weather Summary": "Dry (15% rain), light winds 7 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
-          "Ride Date": "2026-10-27",
+          "Ride Date": "2026-11-03",
           "Organizer": "OMG Cycling"
         },
         "site": {
