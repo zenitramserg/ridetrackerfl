@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T21:31:16.099866+00:00",
+  "generated_at": "2026-11-04T21:33:08.791059+00:00",
   "rides": {
     "records": [
       {
@@ -452,14 +452,15 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:30 PM",
-          "Location": "GRIT Bike Lab",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Location": "GRIT Bike Lab, Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/teamrecoveryweston/",
           "Last Checked At": "2026-10-30T14:14:46.000Z",
-          "Ride Name": "GRIT Bike Lab Social Ride",
+          "Ride Name": "Team Recovery Weston × GRIT Bike Lab Social Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
           "Ride Date": "2026-10-29",
-          "Organizer": "OMG Cycling",
+          "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
+          "Organizer": "Team Recovery Weston",
           "Pace": "Easy Pace"
         },
         "site": {
@@ -471,9 +472,9 @@
           "pace_nodrop": false,
           "dist_display": "",
           "venue": "GRIT Bike Lab",
-          "venue_detail": "",
+          "venue_detail": "Weston Town Center · 1797 Bell Tower Ln, Weston, FL 33326",
           "area": "Weston",
-          "display_name": "GRIT Bike Lab Social Ride"
+          "display_name": "Team Recovery Weston × GRIT Bike Lab Social Ride"
         }
       },
       {
