@@ -179,11 +179,12 @@ def main():
     _banner("Phase 5 · Airtable Sync")
 
     pushed = synced = logged = 0
+    push_outcomes = []
     if added > 0 or updated > 0:
         from pipeline.airtable_writer import push_new_rides, push_updated_rides, push_ride_history
 
         # Push brand-new rides (no Airtable record yet)
-        pushed = push_new_rides()
+        pushed = push_new_rides(outcomes=push_outcomes)
         print(f"Pushed {pushed} new record(s) to Airtable.")
 
         # Sync updated rides back to existing Airtable records (e.g. new date, source accounts)
@@ -229,20 +230,20 @@ def main():
         print("[sync] Dry run — skipping site sync.")
 
     if not args.dry_run:
-        _send_report(
-            f"RideTrackerFL: {added} added, {updated} updated",
-            "\n".join([
-                f"Scan directory:      {scan_dir.name}",
-                f"Ride posts found:    {len(ride_candidates)}",
-                f"Added to DB:         {added}",
-                f"Updated in DB:       {updated}",
-                f"Total in DB:         {total}",
-                f"Pushed to Airtable:  {pushed}",
-                f"Synced to Airtable:  {synced}",
-                f"Ride history logged: {logged}",
-                f"Site sync:           {site_sync_status}",
-            ]),
-        )
+        from pipeline.db import load_db
+        from pipeline.report import build_report
+        try:
+            subject, body = build_report(summary, push_outcomes, load_db(),
+                                         len(ride_candidates), site_sync_status)
+        except Exception as e:
+            # The detail is a convenience; the counts must still arrive.
+            print(f"[report] ⚠ Could not build detailed report: {e}")
+            subject = f"RideTrackerFL: {added} added, {updated} updated"
+            body = (f"Detailed report failed ({e}).\n"
+                    f"Added {added} · updated {updated} · rejected {summary.get('rejected', 0)}"
+                    f" · site sync {site_sync_status}")
+        print(f"\n[report] {subject}\n{body}")
+        _send_report(subject, body)
 
 
 def _check_scrape_health(scan_dir: Path):

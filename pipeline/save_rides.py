@@ -161,7 +161,8 @@ def process_batch(batch_path: Path, dry_run: bool = False) -> dict:
         valid_rides.append(_enrich(ride, scan_timestamp, scan_date))
 
     # Deduplication + merge
-    merged_db, added, updated = deduplicate(existing, valid_rides)
+    match_events = []
+    merged_db, added, updated = deduplicate(existing, valid_rides, events=match_events)
 
     summary = {
         "scan_timestamp": scan_timestamp,
@@ -171,6 +172,7 @@ def process_batch(batch_path: Path, dry_run: bool = False) -> dict:
         "rejected": len(rejections),
         "skipped_not_ride": skipped_not_ride,
         "rejections": rejections,
+        "match_events": match_events,
         "added_to_db": added,
         "updated_in_db": updated,
         "total_in_db": len(merged_db),

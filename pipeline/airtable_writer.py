@@ -383,7 +383,7 @@ def _build_airtable_index(table) -> dict:
     return index
 
 
-def push_new_rides(dry_run: bool = False) -> int:
+def push_new_rides(dry_run: bool = False, outcomes: list | None = None) -> int:
     """
     Push any rides in rides_database.json that don't yet have an airtable_record_id.
 
@@ -403,6 +403,9 @@ def push_new_rides(dry_run: bool = False) -> int:
         AIRTABLE_API_KEY environment variable (Personal Access Token from airtable.com/create/tokens)
 
     Returns the number of NEW records created (linked records are not counted).
+    If `outcomes` is given, one {"ride_id", "record_id", "action"} entry is
+    appended per ride resolved, action being "created" or "linked" — only
+    "created" means the ride is new on the site.
     """
     import os
     import json
@@ -468,6 +471,9 @@ def push_new_rides(dry_run: bool = False) -> int:
                     table.update(existing_record_id, patch_fields)
                 print(f"  ↻ Linked {existing_record_id}: {ride.get('title', '?')} (existing record updated)")
                 linked += 1
+                if outcomes is not None:
+                    outcomes.append({"ride_id": ride.get("ride_id"),
+                                     "record_id": existing_record_id, "action": "linked"})
             except Exception as e:
                 print(f"  ✗ Failed to patch '{ride.get('title', '?')}' ({existing_record_id}): {e}")
                 ride.pop("airtable_record_id", None)  # Don't save a bad link
@@ -489,6 +495,9 @@ def push_new_rides(dry_run: bool = False) -> int:
                     airtable_index[match_key] = record_id
                 print(f"  ✓ Created {record_id}: {ride.get('title', '?')}")
                 created += 1
+                if outcomes is not None:
+                    outcomes.append({"ride_id": ride.get("ride_id"),
+                                     "record_id": record_id, "action": "created"})
 
                 # Upload screenshot attachment if available
                 screenshot_path = ride.get("screenshot_path", "")

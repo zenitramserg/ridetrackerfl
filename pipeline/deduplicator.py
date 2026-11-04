@@ -132,10 +132,32 @@ def _recurring_key(ride: dict) -> Tuple[str, str, str]:
     return (weekday, time, location)
 
 
-def deduplicate(existing_rides: List[dict], new_rides: List[dict]) -> Tuple[List[dict], int, int]:
+_EVENT_FIELDS = ("title", "date", "start_time", "start_location", "source_account")
+
+
+def _record_event(events: Optional[list], kind: str, tier: str,
+                  before: dict, incoming: dict, ride_id: str) -> None:
+    """Note what happened to one incoming ride, for the run report.
+
+    `before` is the stored record as it was *before* the merge, so the report
+    can show what the scraper saw versus what was already on file.
+    """
+    if events is None:
+        return
+    events.append({
+        "kind": kind, "tier": tier, "ride_id": ride_id,
+        "before": {f: before.get(f) for f in _EVENT_FIELDS} if before else {},
+        "incoming": {f: incoming.get(f) for f in _EVENT_FIELDS},
+    })
+
+
+def deduplicate(existing_rides: List[dict], new_rides: List[dict],
+                events: Optional[list] = None) -> Tuple[List[dict], int, int]:
     """
     Merge new_rides into existing_rides.
     Returns (merged_database, added_count, updated_count).
+    If `events` is given, one entry per incoming ride is appended to it
+    describing how it was matched (see _record_event).
 
     Matching tiers (in order):
       1. Exact story_id   — same Instagram story re-scraped
@@ -180,14 +202,18 @@ def deduplicate(existing_rides: List[dict], new_rides: List[dict]) -> Tuple[List
         # ── Tier 1: Exact story_id (same story re-scraped) ───────────────────
         if story_id and story_id in story_id_index:
             idx = story_id_index[story_id]
-            database[idx] = _merge_rides(database[idx], incoming)
+            before = database[idx]
+            database[idx] = _merge_rides(before, incoming)
+            _record_event(events, "matched", "story", before, incoming, before.get("ride_id"))
             updated += 1
             matched = True
 
         # ── Tier 2: Identity key (same date+time+location, cross-account) ────
         if not matched and all(k for k in identity) and identity in index:
             idx = index[identity]
-            database[idx] = _merge_rides(database[idx], incoming)
+            before = database[idx]
+            database[idx] = _merge_rides(before, incoming)
+            _record_event(events, "matched", "identity", before, incoming, before.get("ride_id"))
             if story_id:
                 story_id_index[story_id] = idx
             updated += 1
@@ -202,7 +228,9 @@ def deduplicate(existing_rides: List[dict], new_rides: List[dict]) -> Tuple[List
             rkey = _recurring_key(incoming)
             if all(k for k in rkey) and rkey in recurring_index:
                 idx = recurring_index[rkey]
-                database[idx] = _merge_rides(database[idx], incoming)
+                before = database[idx]
+                database[idx] = _merge_rides(before, incoming)
+                _record_event(events, "matched", "recurring", before, incoming, before.get("ride_id"))
                 # Always advance to the newest occurrence date
                 if incoming.get("date"):
                     database[idx]["date"] = incoming["date"]
@@ -221,7 +249,8 @@ def deduplicate(existing_rides: List[dict], new_rides: List[dict]) -> Tuple[List
                 sim = _title_similarity(incoming_title, existing.get("title", ""))
                 existing_date = _normalize_date(existing.get("date", "") or existing.get("weekday", ""))
                 if sim >= 0.6 and incoming_date and existing_date and incoming_date == existing_date:
-                    database[idx] = _merge_rides(database[idx], incoming)
+                    database[idx] = _merge_rides(existing, incoming)
+                    _record_event(events, "matched", "fuzzy", existing, incoming, existing.get("ride_id"))
                     if story_id:
                         story_id_index[story_id] = idx
                     if all(k for k in identity):
@@ -233,6 +262,7 @@ def deduplicate(existing_rides: List[dict], new_rides: List[dict]) -> Tuple[List
         # ── Tier 5: New ride ──────────────────────────────────────────────────
         if not matched:
             database.append(incoming)
+            _record_event(events, "added", "new", {}, incoming, incoming.get("ride_id"))
             new_idx = len(database) - 1
             if all(k for k in identity):
                 index[identity] = new_idx
