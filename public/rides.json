@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T15:00:05.555583+00:00",
+  "generated_at": "2026-11-05T15:13:18.559381+00:00",
   "rides": {
     "records": [
       {
@@ -310,13 +310,16 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "6:00 PM",
+          "Wind Speed": 3.5,
+          "Rain Probability": 0.01,
           "Location": "MBO Brickell",
           "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-10-30T14:14:46.000Z",
+          "Last Checked At": "2026-11-05T15:13:08.000Z",
+          "Weather Summary": "Dry (1% rain), winds 4 mph",
           "Ride Name": "Thirsty Thursday Group Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
-          "Ride Date": "2026-10-29",
+          "Ride Date": "2026-11-05",
           "Organizer": "MBO Ten Cycling",
           "Pace": "Tempo+",
           "Address Note": "1100 SW 2nd St, Miami, FL"
