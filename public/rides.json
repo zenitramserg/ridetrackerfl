@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T15:00:06.139782+00:00",
+  "generated_at": "2026-11-06T15:13:03.865953+00:00",
   "rides": {
     "records": [
       {
@@ -491,7 +491,7 @@
           "Rain Probability": 0.01,
           "Location": "Alex Bicycle Pro Shop",
           "Featured": true,
-          "Last Checked At": "2026-11-03T15:13:22.000Z",
+          "Last Checked At": "2026-11-06T15:12:53.000Z",
           "Weather Summary": "Dry (1% rain), winds 5 mph",
           "Pace": "22-24 mph",
           "Distance": "60",
