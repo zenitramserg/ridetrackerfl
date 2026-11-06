@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T16:00:20.289024+00:00",
+  "generated_at": "2026-11-06T16:15:02.369912+00:00",
   "rides": {
     "records": [
       {
@@ -904,44 +904,6 @@
           "venue_detail": "Japan Inn inside Weston Town Center Plaza",
           "area": "Weston",
           "display_name": "Wild Hogs Tuesday Ride"
-        }
-      },
-      {
-        "id": "recwsRk8IafsKiFac",
-        "createdTime": "2026-04-11T10:17:14.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "06:00 AM",
-          "Wind Speed": 9.6,
-          "Rain Probability": 0.21,
-          "Location": "Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-10-31T14:12:04.000Z",
-          "Weather Summary": "Dry (21% rain), light winds 10 mph",
-          "Pace": "23-25mph",
-          "Distance": "42/52/62",
-          "Ride Name": "Saturday Palomos 2.0",
-          "Day of Week": "Saturday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-31",
-          "Organizer": "OMG Cycling",
-          "Address Note": "Behind Graziano's"
-        },
-        "site": {
-          "time_min": 360,
-          "time_display": "6:00 AM",
-          "pace_label": "23–25 mph",
-          "pace_groups": [
-            "fast"
-          ],
-          "pace_top": "fast",
-          "pace_nodrop": false,
-          "dist_display": "42/52/62 mi",
-          "venue": "Weston Town Center",
-          "venue_detail": "Behind Graziano's",
-          "area": "Weston",
-          "display_name": "Saturday Palomos 2.0"
         }
       }
     ]
