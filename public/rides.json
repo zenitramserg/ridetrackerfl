@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T16:45:05.057775+00:00",
+  "generated_at": "2026-11-08T16:50:32.065533+00:00",
   "rides": {
     "records": [
       {
@@ -800,39 +800,6 @@
         }
       },
       {
-        "id": "recqfk6ZFuYj1iWMN",
-        "createdTime": "2026-10-31T14:12:09.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "07:00 AM",
-          "Wind Speed": 9.2,
-          "Rain Probability": 0.42,
-          "Location": "Alex's Bicycle Pro Shop",
-          "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-10-31T14:12:04.000Z",
-          "Weather Summary": "Chance of rain (42%), light winds 9 mph",
-          "Ride Name": "S.L.A.B. Pimpin Morning Ride",
-          "Day of Week": "Sunday",
-          "Status": "confirmed",
-          "Ride Date": "2026-11-01",
-          "Organizer": "Alex's Bicycle Pro Shop"
-        },
-        "site": {
-          "time_min": 420,
-          "time_display": "7:00 AM",
-          "pace_label": "",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "Alex's Bicycle Pro Shop",
-          "venue_detail": "",
-          "area": "Weston",
-          "display_name": "S.L.A.B. Pimpin Morning Ride"
-        }
-      },
-      {
         "id": "recuaipPr38uAnkhq",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -865,6 +832,45 @@
           "venue_detail": "Japan Inn inside Weston Town Center Plaza",
           "area": "Weston",
           "display_name": "Wild Hogs Tuesday Ride"
+        }
+      },
+      {
+        "id": "recwsRk8IafsKiFac",
+        "createdTime": "2026-04-11T10:17:14.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "06:00 AM",
+          "Wind Speed": 9.6,
+          "Rain Probability": 0.21,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-10-31T14:12:04.000Z",
+          "Weather Summary": "Dry (21% rain), light winds 10 mph",
+          "Pace": "23-25mph",
+          "Distance": "42/52/62",
+          "Ride Name": "Saturday Palomos 2.0",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Ride Date": "2026-10-31",
+          "Organizer": "OMG Cycling",
+          "Is Primary Listing": true,
+          "Address Note": "Behind Graziano's, Weston Town Center"
+        },
+        "site": {
+          "time_min": 360,
+          "time_display": "6:00 AM",
+          "pace_label": "23–25 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "42/52/62 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Graziano's, Weston Town Center",
+          "area": "Weston",
+          "display_name": "Saturday Palomos 2.0"
         }
       }
     ]
