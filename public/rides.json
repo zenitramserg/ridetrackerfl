@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T17:00:02.183664+00:00",
+  "generated_at": "2026-11-09T15:13:43.152032+00:00",
   "rides": {
     "records": [
       {
@@ -601,14 +601,14 @@
           "Rain Probability": 0.03,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-11-03T15:13:22.000Z",
+          "Last Checked At": "2026-11-09T15:13:32.000Z",
           "Weather Summary": "Dry (3% rain), winds 5 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
-          "Ride Date": "2026-11-03",
+          "Ride Date": "2026-11-10",
           "Organizer": "OMG Cycling"
         },
         "site": {
@@ -733,6 +733,41 @@
         }
       },
       {
+        "id": "recZZkegtLnx7hSJs",
+        "createdTime": "2026-11-08T17:00:27.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Weston Town Center — Applewoods Parking",
+          "Organizer Instagram Profile": "https://www.instagram.com/charliesride_cycling",
+          "Pace": "18-22 mph",
+          "Distance": "42",
+          "Ride Name": "Charlie's Saturday Ride",
+          "Day of Week": "Saturday",
+          "Status": "confirmed",
+          "Address Note": "1694 Market St, Weston, FL 33326",
+          "Organizer": "Charlie's Ride",
+          "Notes": "Non-stop. Controlled and steady pace. Listing requested directly by the organizer, Charles Hernandez (@chrndz1999), 2026-11-08; details taken from the group's own Saturday Ride flyer."
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "18–22 mph",
+          "pace_groups": [
+            "fast",
+            "mod"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "42 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Applewoods Parking · 1694 Market St, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "Charlie's Saturday Ride"
+        }
+      },
+      {
         "id": "recaE1xja2682w4yI",
         "createdTime": "2026-06-03T20:54:09.000Z",
         "fields": {
@@ -797,6 +832,37 @@
           "venue_detail": "Japan Inn inside Weston Town Center Plaza",
           "area": "Weston",
           "display_name": "Wild Hogs Thursday Ride"
+        }
+      },
+      {
+        "id": "recndcXA8xONGJ2fw",
+        "createdTime": "2026-11-09T15:13:37.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:30 AM",
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/pd.cyclingclub/",
+          "Last Checked At": "2026-11-09T15:13:32.000Z",
+          "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-26",
+          "Organizer": "Weston Flyers",
+          "Pace": "Easy pace to Parkland / Fast back"
+        },
+        "site": {
+          "time_min": 450,
+          "time_display": "7:30 AM",
+          "pace_label": "Easy pace to Parkland / Fast back",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "Weston Town Center",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Weston Flyers Annual 2026 Thanksgiving Day Ride"
         }
       },
       {
@@ -928,12 +994,37 @@
         "id": "rec88k44SqSaGlqPk",
         "createdTime": "2026-10-30T16:29:12.000Z",
         "fields": {
+          "Avatar": [
+            {
+              "url": "/public/organizers/grit_bike_lab.webp",
+              "filename": "grit_bike_lab.webp",
+              "thumb": "/public/organizers/thumbs/grit_bike_lab.webp"
+            }
+          ],
           "Name": "GRIT. Bike Lab",
           "Active": true,
           "Type": "Shop",
           "Website URL": "https://gritbikelab.com",
           "Instagram URL": "https://www.instagram.com/gritbikelab/",
           "Instagram Handle": "gritbikelab"
+        }
+      },
+      {
+        "id": "rec9ojRlFk5Dx1Hon",
+        "createdTime": "2026-11-08T17:00:26.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "url": "/public/organizers/charlie_s_ride.jpg",
+              "filename": "charlie_s_ride.jpg",
+              "thumb": "/public/organizers/thumbs/charlie_s_ride.webp"
+            }
+          ],
+          "Name": "Charlie's Ride",
+          "Active": true,
+          "Type": "Group",
+          "Instagram URL": "https://www.instagram.com/charliesride_cycling",
+          "Instagram Handle": "charliesride_cycling"
         }
       },
       {
