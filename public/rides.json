@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T15:00:05.608917+00:00",
+  "generated_at": "2026-11-10T15:14:39.388909+00:00",
   "rides": {
     "records": [
       {
@@ -597,12 +597,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 2.5,
+          "Wind Speed": 5.1,
           "Rain Probability": 0.03,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-11-09T15:13:32.000Z",
-          "Weather Summary": "Dry (3% rain), light winds 2 mph",
+          "Last Checked At": "2026-11-10T15:14:30.000Z",
+          "Weather Summary": "Dry (3% rain), winds 5 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
@@ -843,7 +843,7 @@
           "Time": "7:30 AM",
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/pd.cyclingclub/",
-          "Last Checked At": "2026-11-09T15:13:32.000Z",
+          "Last Checked At": "2026-11-10T15:14:30.000Z",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
