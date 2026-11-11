@@ -516,7 +516,33 @@ def generate_rides_json(token: str, dry_run: bool = False) -> dict:
 
 # ── Write file ─────────────────────────────────────────────────────────────────
 
+def _keep_timestamp_if_unchanged(payload: dict) -> bool:
+    """
+    Reuse the previous generated_at when nothing else in the payload changed.
+
+    Every push of rides.json is a Netlify production deploy (15 credits), and
+    a fresh timestamp alone made each 15-minute run push: in the cycle from
+    2026-10-19, 271 of 335 deploys changed nothing but generated_at and ran
+    the team to 75% of its 3,000 credits in three weeks. Keeping the old
+    timestamp leaves the file byte-identical, so both push paths see no change.
+    The site's "Updated" label now means when the rides last changed.
+    """
+    try:
+        previous = json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    if not isinstance(previous, dict) or "generated_at" not in previous:
+        return False
+    if {k: v for k, v in previous.items() if k != "generated_at"} != \
+       {k: v for k, v in payload.items() if k != "generated_at"}:
+        return False
+    payload["generated_at"] = previous["generated_at"]
+    return True
+
+
 def write_json(payload: dict) -> Path:
+    if _keep_timestamp_if_unchanged(payload):
+        print("[sync] Rides unchanged since the last sync — keeping its timestamp.")
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
