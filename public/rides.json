@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T15:15:01.651877+00:00",
+  "generated_at": "2026-11-12T15:00:02.054977+00:00",
   "rides": {
     "records": [
       {
@@ -843,6 +843,7 @@
           "Time": "7:30 AM",
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/pd.cyclingclub/",
+          "Featured": true,
           "Last Checked At": "2026-11-11T15:12:57.000Z",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
