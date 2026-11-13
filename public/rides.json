@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T15:02:38.806254+00:00",
+  "generated_at": "2026-11-13T15:13:10.367617+00:00",
   "rides": {
     "records": [
       {
@@ -841,15 +841,20 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Location": "Weston Town Center",
+          "Wind Speed": 5.7,
+          "Rain Probability": 0.06,
+          "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
           "Featured": true,
-          "Last Checked At": "2026-11-11T15:12:57.000Z",
+          "Last Checked At": "2026-11-13T15:13:04.000Z",
+          "Weather Summary": "Dry (6% rain), winds 6 mph",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
           "Ride Date": "2026-11-26",
+          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "Weston Flyers",
+          "Notes": "START LOCATION CHANGED: this ride now departs from Alex's Bicycle Pro Shop, 16098 W State Rd 84 #3, Weston — not Weston Town Center as shown on the original flyer.",
           "Pace": "Easy pace to Parkland / Fast back"
         },
         "site": {
@@ -860,8 +865,8 @@
           "pace_top": "unk",
           "pace_nodrop": false,
           "dist_display": "",
-          "venue": "Weston Town Center",
-          "venue_detail": "",
+          "venue": "Alex's Bicycle Pro Shop",
+          "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
           "area": "Weston",
           "display_name": "Weston Flyers Annual 2026 Thanksgiving Day Ride"
         }
