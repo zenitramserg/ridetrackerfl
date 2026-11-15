@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T15:15:01.834300+00:00",
+  "generated_at": "2026-11-15T15:13:07.696173+00:00",
   "rides": {
     "records": [
       {
@@ -233,18 +233,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "07:00 AM",
-          "Wind Speed": 3.7,
-          "Rain Probability": 0.02,
+          "Wind Speed": 6.7,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center - Behind Bank of America",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-11-01T15:13:45.000Z",
-          "Weather Summary": "Dry (2% rain), winds 4 mph",
+          "Last Checked At": "2026-11-15T15:12:58.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 7 mph",
           "Pace": "22/24 mph",
           "Distance": "40",
           "Ride Name": "OMG Sunday Chill Ride",
           "Day of Week": "Sunday",
           "Status": "confirmed",
-          "Ride Date": "2026-11-01",
+          "Ride Date": "2026-11-15",
           "Organizer": "OMG Cycling",
           "Address Note": "Behind Bank of America"
         },
