@@ -53,6 +53,26 @@ Nothing has been built yet: no accounts, privacy page, wrapper project or store 
 
 **Open decision:** Android first (recommended), or both in parallel?
 
+## Costs (as of 2026-11-16)
+
+Tracked in Airtable, in the **Costs** table of the RideTrackerFL base. Update it whenever a plan changes.
+
+| Service | Per month | Notes |
+|---|---|---|
+| Airtable Team | $24 | Upgraded from Free on Nov 15 after the API request limit was hit. Next charge about Dec 15 (estimated) |
+| Netlify Pro | $20 | 3,000 credits/month; 15 credits per deploy. Cycle resets on the 18th |
+| Claude Pro | $20 | Dev sessions |
+| ChatGPT Plus | $20 | Image creation. Price is the list rate, not yet checked against a receipt |
+| Claude API (scanning) | ~$10 | Usage-based, prepaid credits |
+| Google Workspace | $9 | hello@ridetrackerfl.com |
+| Domain | ~$1.67 | ridetrackerfl.com; renews Mar 24 2027 |
+| AWS | $0 | About $0.50/month, covered by free-plan credits ($99.35 left). Plan ends Mar 13 2027 |
+| **Total** | **≈ $105** | **≈ $1,260/year** |
+
+Savings to revisit:
+- **Airtable.** Downgrading to Free after a month of watching request usage saves $288/year. It needs Ride History archived to stay under 1,000 records per base.
+- **AWS.** Decide on the paid plan before Mar 13 2027.
+
 ## Backlog
 
 - **Data cleanup**, proposed but not yet approved:
