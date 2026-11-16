@@ -1,20 +1,22 @@
 # RideTrackerFL Roadmap
 
-_Last updated: 2026-11-12_
+_Last updated: 2026-11-16_
 
 ## Where things stand
 
 - **Site** (ridetrackerfl.com, Netlify) is live and healthy: 26 rides, 19 organizers.
   `super-tanuki-783b85.netlify.app` serves the same site and is the one to test
   from the home network, whose filter blocks the apex domain.
-- **Laptop sync** runs `pipeline.sync_to_site` from cron every 15 minutes while the Mac
-  is awake. It pushes `public/rides.json` only when ride data actually changes
-  (fix e4389aa, 2026-11-10).
+- **Laptop sync** runs `pipeline.sync_to_site` from cron hourly, 5 AM–10 PM, while the
+  Mac is awake. It pushes `public/rides.json` only when ride data actually changes
+  (e4389aa), and makes about one Airtable request per run (86c7008). The Airtable free
+  plan allows about 1,000 requests a month, and the 15-minute sync hit that limit on
+  2026-11-15.
 - **Daily cloud scan**: ECS Fargate in us-east-2, scheduled 10:00 ET. Runs the `:latest`
   image in ECR `ridetrackerfl`. Sends a detailed email report (NEW / CHECK / REJECTED /
   RE-CONFIRMED, with Airtable links) through SNS.
-- **Story limits**: omg_cycling, alexbicycles, teamrecoveryweston and mbo_tencycling are
-  at 40 slides; all others at 24 (`config/accounts.json`).
+- **Story limits**: omg_cycling is at 60 slides; alexbicycles, teamrecoveryweston and
+  mbo_tencycling at 40; all others at 24 (`config/accounts.json`).
 
 ## Recently done (Nov 2026)
 
