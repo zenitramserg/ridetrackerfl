@@ -4,15 +4,17 @@ Pulls rides and organizers from Airtable and generates public/rides.json.
 
 This replaces the live Airtable API calls that every site visitor was
 triggering. The frontend reads the static JSON instead — zero API calls
-from visitors, capped at 96 Airtable calls/day from the cron job.
+from visitors. The cron job itself makes about one Airtable request per run
+(organizers are cached for 12 hours), because the free plan's ~1,000
+requests a month are shared with the daily scan.
 
 Usage:
     python3.12 -m pipeline.sync_to_site          # generate + git push
     python3.12 -m pipeline.sync_to_site --dry-run # generate only, no push
     python3.12 -m pipeline.sync_to_site --no-push # generate, skip git push
 
-Cron (every 15 min):
-    */15 * * * * cd ~/ridetrackerfl && python3.12 -m pipeline.sync_to_site >> logs/sync.log 2>&1
+Cron (hourly, 5 AM to 10 PM):
+    0 5-22 * * * cd ~/ridetrackerfl && python3.12 -m pipeline.sync_to_site --org-cache-hours 12 >> logs/sync.log 2>&1
 """
 
 import argparse
@@ -22,6 +24,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 import urllib.parse
@@ -60,6 +63,7 @@ OUTPUT_PATH    = Path(__file__).parent.parent / "public" / "rides.json"
 AVATARS_PATH   = Path(__file__).parent.parent / "public" / "organizers"
 THUMBS_PATH    = AVATARS_PATH / "thumbs"
 THUMB_PX       = 96   # 2x the largest on-page logo (48px)
+ORGS_CACHE_PATH = Path(__file__).parent.parent / "data" / "organizers_cache.json"
 
 
 # ── Airtable fetch ─────────────────────────────────────────────────────────────
@@ -323,9 +327,11 @@ def _patch_ride(token: str, record_id: str, fields: dict) -> None:
         pass
 
 
-def _expire_and_restore(token: str, dry_run: bool = False) -> None:
+def _expire_and_restore(token: str, all_rides: list[dict], dry_run: bool = False) -> None:
     """
-    Housekeeping pass, run before the display set is fetched.
+    Housekeeping pass over every ride record, run before the display set is
+    picked out of the same records. Patches are mirrored onto all_rides so
+    the display set reflects them without a second fetch.
 
     With dry_run=True nothing is written back to Airtable; the actions that
     would be taken are printed instead.
@@ -345,16 +351,6 @@ def _expire_and_restore(token: str, dry_run: bool = False) -> None:
     from datetime import date as _date
 
     today = _date.today()
-
-    try:
-        all_rides = _fetch_table(
-            token, RIDES_TABLE,
-            ["Ride Name", "Organizer", "Day of Week", "Ride Date",
-             "Ride Type", "Status", "Display on Site", "Featured", "Notes"],
-        )
-    except RuntimeError as e:
-        print(f"[sync] ⚠ Housekeeping skipped — could not fetch rides: {e}")
-        return
 
     def _parse(d):
         try:
@@ -382,17 +378,19 @@ def _expire_and_restore(token: str, dry_run: bool = False) -> None:
         if rd < today:
             expired_keys.add(key)
             if f.get("Status") in ("confirmed", "planned"):
-                to_expire.append((rec["id"], f.get("Ride Name"), f.get("Ride Date")))
+                to_expire.append((rec, f.get("Ride Name"), f.get("Ride Date")))
         else:
             upcoming_keys.add(key)
 
     # 1. Expire past specials
-    for rid, name, rdate in to_expire:
+    for rec, name, rdate in to_expire:
         if dry_run:
             print(f"[sync] [dry-run] would expire special: {name} ({rdate}) -> past")
             continue
         try:
-            _patch_ride(token, rid, {"Status": "past", "Featured": False})
+            patch = {"Status": "past", "Featured": False}
+            _patch_ride(token, rec["id"], patch)
+            rec["fields"].update(patch)
             print(f"[sync] Expired special: {name} ({rdate}) -> past")
         except Exception as e:
             print(f"[sync] ⚠ Could not expire {name}: {e}")
@@ -426,8 +424,9 @@ def _expire_and_restore(token: str, dry_run: bool = False) -> None:
             restored += 1
             continue
         try:
-            _patch_ride(token, rec["id"],
-                        {"Status": "confirmed", "Display on Site": True})
+            patch = {"Status": "confirmed", "Display on Site": True}
+            _patch_ride(token, rec["id"], patch)
+            f.update(patch)
             print(f"[sync] Restored recurring ride: {f.get('Ride Name')}")
             restored += 1
         except Exception as e:
@@ -446,28 +445,63 @@ def _expire_and_restore(token: str, dry_run: bool = False) -> None:
 
 # ── Generate JSON ──────────────────────────────────────────────────────────────
 
-def generate_rides_json(token: str, dry_run: bool = False) -> dict:
+def _load_organizers(token: str, max_age_hours: float) -> list[dict]:
     """
-    Pull rides (display_on_site only) and all active organizers from Airtable.
-    Returns the combined payload that public/rides.json will contain.
+    Active organizers, from the local cache when it is younger than
+    max_age_hours, otherwise from Airtable (refreshing the cache).
+
+    Organizers change rarely, and the Airtable free plan allows about 1,000
+    API requests a month across everything; on 2026-11-15 the 15-minute sync
+    used them up and Airtable refused every request for the rest of the day.
+    Cached attachment URLs expire, but _sync_avatar skips the download when
+    the local file already matches, so logos keep working.
     """
-    print("[sync] Housekeeping — expiring past specials, restoring recurring rides...")
-    _expire_and_restore(token, dry_run=dry_run)
-
-    print("[sync] Fetching rides from Airtable...")
-    # Only export rides that should show on site AND are not hidden/past
-    rides = _fetch_table(
-        token, RIDES_TABLE, RIDE_FIELDS,
-        filter_formula='AND({Display on Site}=TRUE(), NOT(OR({Status}="hidden", {Status}="past")))'
-    )
-    print(f"[sync] {len(rides)} rides fetched.")
-
+    if max_age_hours > 0 and ORGS_CACHE_PATH.exists():
+        age_h = (time.time() - ORGS_CACHE_PATH.stat().st_mtime) / 3600
+        if age_h < max_age_hours:
+            try:
+                organizers = json.loads(ORGS_CACHE_PATH.read_text(encoding="utf-8"))
+                print(f"[sync] {len(organizers)} organizers from cache ({age_h:.1f}h old).")
+                return organizers
+            except (OSError, ValueError):
+                pass
     print("[sync] Fetching organizers from Airtable...")
     organizers = _fetch_table(
         token, ORGS_TABLE, ORG_FIELDS,
         filter_formula="{Active}=TRUE()"
     )
     print(f"[sync] {len(organizers)} organizers fetched.")
+    try:
+        ORGS_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        ORGS_CACHE_PATH.write_text(json.dumps(organizers), encoding="utf-8")
+    except OSError as e:
+        print(f"[sync] ⚠ Could not cache organizers: {e}")
+    return organizers
+
+
+def generate_rides_json(token: str, dry_run: bool = False,
+                        org_cache_hours: float = 0) -> dict:
+    """
+    Pull rides (display_on_site only) and all active organizers from Airtable.
+    Returns the combined payload that public/rides.json will contain.
+
+    All rides come back in one request and serve both housekeeping and the
+    display set, which used to fetch them separately — see _load_organizers
+    for why every Airtable request counts.
+    """
+    print("[sync] Fetching rides from Airtable...")
+    all_rides = _fetch_table(token, RIDES_TABLE, RIDE_FIELDS)
+
+    print("[sync] Housekeeping — expiring past specials, restoring recurring rides...")
+    _expire_and_restore(token, all_rides, dry_run=dry_run)
+
+    # Only export rides that should show on site AND are not hidden/past
+    rides = [r for r in all_rides
+             if r.get("fields", {}).get("Display on Site")
+             and r.get("fields", {}).get("Status") not in ("hidden", "past")]
+    print(f"[sync] {len(rides)} rides to display (of {len(all_rides)}).")
+
+    organizers = _load_organizers(token, org_cache_hours)
 
     # Refresh weather for upcoming rides that are missing or have stale data
     _refresh_weather(token, rides)
@@ -775,6 +809,9 @@ def main():
                         help="Generate JSON locally but do not push to GitHub")
     parser.add_argument("--no-push", action="store_true",
                         help="Write file but skip git push")
+    parser.add_argument("--org-cache-hours", type=float, default=0,
+                        help="Reuse organizers fetched within this many hours "
+                             "(default 0: always fetch). The laptop cron passes 12.")
     args = parser.parse_args()
 
     lock = _acquire_single_run_lock()  # released when the process exits
@@ -802,7 +839,8 @@ def main():
     print("=" * 56)
 
     try:
-        payload = generate_rides_json(token, dry_run=args.dry_run)
+        payload = generate_rides_json(token, dry_run=args.dry_run,
+                                      org_cache_hours=args.org_cache_hours)
     except (RuntimeError, urllib.error.URLError, OSError) as e:
         # _fetch_table turns an HTTPError into RuntimeError, but a laptop that
         # is asleep, waking, or on flaky wifi fails below that: URLError for
