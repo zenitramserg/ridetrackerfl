@@ -6,7 +6,10 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from datetime import datetime
 
-OUTPUT = "/sessions/epic-awesome-bell/mnt/ridetrackerfl/RideTrackerFL_Daily_SOP.pdf"
+from pathlib import Path
+
+# Run with: python3.12 scripts/generate_sop.py  (needs reportlab, see requirements.txt)
+OUTPUT = str(Path(__file__).resolve().parent.parent / "docs" / "RideTrackerFL_Daily_SOP.pdf")
 
 doc = SimpleDocTemplate(
     OUTPUT,
@@ -74,9 +77,11 @@ story.append(Spacer(1, 16))
 # ── Overview ──────────────────────────────────────────────────────────────────
 story.append(Paragraph("Overview", h2_style))
 story.append(Paragraph(
-    "There are two daily tasks: running the scraper and syncing any manual Airtable edits. "
-    "The scraper handles everything automatically end-to-end. Manual edits require a separate sync command. "
-    "Both commands are run from the terminal inside the ridetrackerfl project folder.",
+    "Both jobs run on their own. The scraper runs in AWS every day at 10:00 AM ET and emails a "
+    "report of what it added, changed and rejected. The laptop syncs Airtable to the site every "
+    "hour from 5 AM to 10 PM while it is awake. Your daily task is to read the report email and "
+    "fix anything wrong in Airtable. Commands below are run from the terminal inside the "
+    "ridetrackerfl project folder.",
     body_style
 ))
 story.append(Spacer(1, 8))
@@ -90,12 +95,20 @@ table_data = [
         Paragraph("Command", ParagraphStyle("th", fontSize=9.5, fontName="Helvetica-Bold", textColor=BASE)),
     ],
     [
-        Paragraph("Run the daily scraper", body_style),
-        Paragraph("python3.12 -m pipeline.run_scan", ParagraphStyle("c", fontSize=9.5, fontName="Courier", textColor=BASE, leading=14)),
+        Paragraph("Push Airtable edits to the site now (instead of within the hour)", body_style),
+        Paragraph("python3.12 -m pipeline.sync_to_site", ParagraphStyle("c", fontSize=9.5, fontName="Courier", textColor=BASE, leading=14)),
     ],
     [
-        Paragraph("Sync manual Airtable edits to site", body_style),
-        Paragraph("python3.12 -m pipeline.sync_to_site", ParagraphStyle("c", fontSize=9.5, fontName="Courier", textColor=BASE, leading=14)),
+        Paragraph("Log in to AWS (session expires about daily)", body_style),
+        Paragraph("aws login", ParagraphStyle("c", fontSize=9.5, fontName="Courier", textColor=BASE, leading=14)),
+    ],
+    [
+        Paragraph("Read the last sync runs", body_style),
+        Paragraph("tail -40 logs/sync.log", ParagraphStyle("c", fontSize=9.5, fontName="Courier", textColor=BASE, leading=14)),
+    ],
+    [
+        Paragraph("Run the scraper by hand on the laptop (rarely needed)", body_style),
+        Paragraph("python3.12 -m pipeline.run_scan", ParagraphStyle("c", fontSize=9.5, fontName="Courier", textColor=BASE, leading=14)),
     ],
 ]
 
@@ -116,14 +129,26 @@ story.append(Spacer(1, 16))
 
 # ── Flow 1 ────────────────────────────────────────────────────────────────────
 story.append(section_rule())
-story.append(Paragraph("Flow 1 — Daily Scraper Run", h2_style))
+story.append(Paragraph("Flow 1 — Daily Scraper Run (automatic)", h2_style))
 story.append(Paragraph(
-    "Run this once or twice a day (typically morning and evening). "
-    "The scraper handles everything in a single command:",
+    "AWS runs the scraper every day at 10:00 AM ET (ECS Fargate, us-east-2), using the "
+    "<font face='Courier'>:latest</font> image in the ridetrackerfl ECR repository. Nothing to "
+    "start by hand. About 10 minutes later an email arrives titled "
+    "<i>RideTrackerFL: N new, N re-confirmed, N rejected</i>, listing each ride with a link to "
+    "its Airtable record:",
     body_style
 ))
-story.append(Spacer(1, 6))
-story.append(code_block("cd ~/ridetrackerfl && python3.12 -m pipeline.run_scan"))
+for label, desc in [
+    ("NEW", "already live on the site — check name, date, time and start location"),
+    ("CHECK", "a post differs from what is on file (time, place or name); not applied, fix by hand if the post is right"),
+    ("REJECTED", "not saved, with the reason; the story expires within 24h"),
+    ("RE-CONFIRMED", "rides seen again, with their dates"),
+]:
+    story.append(Paragraph(
+        f"<b>{label}:</b> {desc}",
+        ParagraphStyle("step", fontSize=10, fontName="Helvetica", textColor=BASE,
+                       spaceAfter=4, leading=14, leftIndent=12)
+    ))
 story.append(Spacer(1, 10))
 
 story.append(Paragraph("What it does automatically:", h3_style))
@@ -143,8 +168,8 @@ for phase, desc in steps:
     ))
 
 story.append(Spacer(1, 10))
-story.append(Paragraph("After the scraper finishes:", h3_style))
-story.append(Paragraph("Open Airtable and review the runs output. Check for:", body_style))
+story.append(Paragraph("After the report arrives:", h3_style))
+story.append(Paragraph("Spot-check the rides it names in Airtable. Look for:", body_style))
 review = [
     "Rides added with wrong dates, times, or locations",
     "Rides that should be hidden (set Display on Site = false)",
@@ -165,16 +190,17 @@ story.append(Spacer(1, 16))
 story.append(section_rule())
 story.append(Paragraph("Flow 2 — Manual Airtable Edit", h2_style))
 story.append(Paragraph(
-    "Any time you make a change directly in Airtable — fixing a date, adding a ride from "
-    "an organizer email, toggling Display on Site — run the sync command to push it live:",
+    "Changes made directly in Airtable — fixing a date, adding a ride from an organizer email, "
+    "toggling Display on Site — reach the site at the next hourly sync (5 AM to 10 PM). "
+    "New organizer logos can take up to 12 hours. To push them live right away, run:",
     body_style
 ))
 story.append(Spacer(1, 6))
 story.append(code_block("cd ~/ridetrackerfl && python3.12 -m pipeline.sync_to_site"))
 story.append(Spacer(1, 8))
 story.append(Paragraph(
-    "The site updates within 60 seconds. "
-    "If you forget to sync, the site just shows the previous data until the next scraper run.",
+    "The site updates within about 60 seconds. A manual sync always fetches everything fresh. "
+    "To hide a ride, uncheck Display on Site rather than deleting the record.",
     note_style
 ))
 
@@ -187,8 +213,65 @@ story.append(Paragraph("Troubleshooting", h2_style))
 issues = [
     (
         "Site shows old data",
-        "Run the sync command manually:\n"
-        "cd ~/ridetrackerfl && python3.12 -m pipeline.sync_to_site"
+        "The hourly sync only runs 5 AM to 10 PM while the laptop is awake. Run it manually:\n"
+        "cd ~/ridetrackerfl && python3.12 -m pipeline.sync_to_site\n"
+        "The \"Updated\" label on the site shows when the rides last changed, not when the sync last ran."
+    ),
+    (
+        "Can't open ridetrackerfl.com from home (\"Web Page Blocked\")",
+        "The home network filter blocks the domain. The same site is at "
+        "https://super-tanuki-783b85.netlify.app — use that to check it."
+    ),
+    (
+        "Sync log shows Airtable error 429 PUBLIC_API_BILLING_LIMIT_EXCEEDED",
+        "Airtable's free plan allows about 1,000 API requests a month, shared by the laptop sync "
+        "and the daily scan. Every Airtable request fails until the monthly count resets; the site "
+        "stays up with its last data. Check usage in Airtable → workspace settings. Do not make the "
+        "sync run more often than hourly (crontab -l shows the schedule), and keep "
+        "--org-cache-hours 12 on the cron line. First seen 2026-11-15."
+    ),
+    (
+        "Sync log shows \"nodename nor servname\", timeouts or \"Remote end closed connection\"",
+        "The laptop was waking up or offline. Harmless — the next run fixes it and the site stays up."
+    ),
+    (
+        "Sync warns \"N hidden weekly ride(s) with no expired special to explain them\"",
+        "Only a reminder. If those rides are hidden on purpose, add NO AUTO-RESTORE to their Notes "
+        "in Airtable and the warning stops."
+    ),
+    (
+        "AWS command says \"Your session has expired\"",
+        "Log in again (it lasts about a day):\n"
+        "aws login"
+    ),
+    (
+        "A code change or config change (accounts.json) is not in the daily scan or email yet",
+        "AWS runs whatever image is tagged :latest; a commit alone changes nothing there. Build and push:\n"
+        "cd ~/ridetrackerfl && docker build --platform linux/arm64 -t ridetrackerfl:new .\n"
+        "R=624005844966.dkr.ecr.us-east-2.amazonaws.com\n"
+        "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $R\n"
+        "docker tag ridetrackerfl:new $R/ridetrackerfl:latest && docker push $R/ridetrackerfl:latest\n"
+        "The next 10:00 AM run uses it."
+    ),
+    (
+        "Check what the last daily scans did",
+        "Read the report emails, or the AWS logs (after aws login):\n"
+        "aws logs describe-log-streams --region us-east-2 --log-group-name /ecs/ridetrackerfl "
+        "--order-by LastEventTime --descending --max-items 3\n"
+        "aws logs get-log-events --region us-east-2 --log-group-name /ecs/ridetrackerfl "
+        "--log-stream-name &lt;name from above&gt; --query 'events[].message' --output text"
+    ),
+    (
+        "Scan log says \"Reached the N-slide cap for @account\"",
+        "That account posted more stories than its limit, so the newest ones were missed. Raise "
+        "max_slides for it in config/accounts.json (default 24; omg_cycling 60; alexbicycles, "
+        "teamrecoveryweston, mbo_tencycling 40), commit, then build and push the image as above."
+    ),
+    (
+        "Netlify warns about credit usage",
+        "Every push to GitHub main is a production deploy (15 credits; 3,000 a month, resetting "
+        "on the 18th). The sync only pushes when ride data changes. Count recent deploys with:\n"
+        "git log --since=\"7 days ago\" --oneline | wc -l"
     ),
     (
         "Scraper fails at Phase 1 (Playwright)",
@@ -225,12 +308,12 @@ issues = [
     (
         "Duplicate ride appearing after scraper run",
         "The scraper created a new record instead of updating the existing one.\n"
-        "Delete the duplicate in Airtable (keep the older record with the full history).\n"
+        "Hide the duplicate in Airtable — uncheck Display on Site (keep the older record with the full history).\n"
         "This was caused by a time format mismatch — fixed in v2.2. Should not recur."
     ),
     (
         "Weather showing wrong values",
-        "Weather is refreshed automatically on every sync from Open-Meteo.\n"
+        "Weather is refreshed automatically by the sync from Open-Meteo.\n"
         "If values look stale, just run the sync command to force a fresh fetch:\n"
         "cd ~/ridetrackerfl && python3.12 -m pipeline.sync_to_site"
     ),
@@ -261,6 +344,8 @@ files = [
     ("public/rides.json", "Static file served to site visitors — generated by sync"),
     ("public/organizers/", "Organizer avatar images — downloaded once, served permanently from Netlify"),
     ("logs/sync.log", "Sync job logs — check here if something seems off"),
+    ("docs/ROADMAP.md", "Current state, app plan and backlog"),
+    ("data/organizers_cache.json", "Organizers saved by the hourly sync (refreshed every 12h)"),
     ("pipeline/run_scan.py", "Main scraper pipeline orchestrator"),
     ("pipeline/sync_to_site.py", "Airtable → rides.json sync script"),
 ]
