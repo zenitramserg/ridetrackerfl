@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T19:00:14.706423+00:00",
+  "generated_at": "2026-11-17T14:00:15.620698+00:00",
   "rides": {
     "records": [
       {
@@ -633,12 +633,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 8.4,
-          "Rain Probability": 0.21,
+          "Wind Speed": 12.7,
+          "Rain Probability": 0.24,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-11-16T15:12:14.000Z",
-          "Weather Summary": "Dry (21% rain), light winds 8 mph",
+          "Weather Summary": "Dry (24% rain), moderate winds 13 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
