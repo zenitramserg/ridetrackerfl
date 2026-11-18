@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T16:00:06.283093+00:00",
+  "generated_at": "2026-11-18T15:10:41.078234+00:00",
   "rides": {
     "records": [
       {
@@ -44,18 +44,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 4.5,
-          "Rain Probability": 0.01,
+          "Wind Speed": 9.9,
+          "Rain Probability": 0.52,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-08-19T09:09:04.000Z",
-          "Weather Summary": "Dry (1% rain), winds 4 mph",
+          "Last Checked At": "2026-11-18T15:10:18.000Z",
+          "Weather Summary": "Chance of rain (52%), light winds 10 mph",
           "Pace": "22/23 mph",
           "Distance": "30",
           "Ride Name": "Wednesday Favorite Ride",
           "Day of Week": "Wednesday",
           "Status": "confirmed",
-          "Ride Date": "2026-08-19",
+          "Ride Date": "2026-11-18",
           "Organizer": "OMG Cycling",
           "Address Note": "Behind Bank of America"
         },
@@ -73,6 +73,45 @@
           "venue_detail": "Behind Bank of America",
           "area": "Weston",
           "display_name": "Wednesday Favorite Ride"
+        }
+      },
+      {
+        "id": "rec0nQfTkYb35vm3e",
+        "createdTime": "2026-11-18T15:10:26.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "07:30 AM",
+          "Wind Speed": 12.4,
+          "Rain Probability": 0.1,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/ride.84/",
+          "Last Checked At": "2026-11-18T15:10:18.000Z",
+          "Weather Summary": "Dry (10% rain), winds 12 mph",
+          "Ride Name": "Harvest Drive Annual Thanksgiving Bike Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-26",
+          "Organizer": "Alex's Bicycle Pro Shop",
+          "Pace": "social pace (first 30 miles)",
+          "Distance": "60 mi",
+          "Address Note": "1675 Market St, Weston, FL 33326"
+        },
+        "site": {
+          "time_min": 450,
+          "time_display": "7:30 AM",
+          "pace_label": "30 mph",
+          "pace_groups": [
+            "fast",
+            "soc"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": true,
+          "dist_display": "60 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "1675 Market St, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "Harvest Drive Annual Thanksgiving Bike Ride"
         }
       },
       {
@@ -633,18 +672,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 12.7,
-          "Rain Probability": 0.24,
+          "Wind Speed": 2.8,
+          "Rain Probability": 0.07,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
-          "Last Checked At": "2026-11-17T15:10:45.000Z",
-          "Weather Summary": "Dry (24% rain), moderate winds 13 mph",
+          "Last Checked At": "2026-11-18T15:10:18.000Z",
+          "Weather Summary": "Dry (7% rain), light winds 3 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
           "Day of Week": "Tuesday",
           "Status": "confirmed",
-          "Ride Date": "2026-11-17",
+          "Ride Date": "2026-11-24",
           "Organizer": "OMG Cycling"
         },
         "site": {
@@ -882,7 +921,7 @@
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
           "Featured": true,
-          "Last Checked At": "2026-11-16T15:12:14.000Z",
+          "Last Checked At": "2026-11-18T15:10:18.000Z",
           "Weather Summary": "Dry (6% rain), winds 6 mph",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
