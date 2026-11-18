@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T17:00:02.728884+00:00",
+  "generated_at": "2026-11-18T17:50:09.107261+00:00",
   "rides": {
     "records": [
       {
@@ -88,26 +88,25 @@
           "Organizer Instagram Profile": "https://www.instagram.com/harvestdrivefl/",
           "Last Checked At": "2026-11-18T15:10:18.000Z",
           "Weather Summary": "Dry (10% rain), winds 12 mph",
+          "Pace": "Social / no-drop",
+          "Distance": "60",
           "Ride Name": "Harvest Drive Annual Thanksgiving Bike Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
           "Ride Date": "2026-11-26",
           "Address Note": "1675 Market St, Weston, FL 33326",
           "Organizer": "Harvest Drive",
-          "Notes": "Organized by Harvest Drive (@harvestdrivefl). Local cycling clubs repost and participate — Ride84, PD Cycling Club, OMG Cycling, Unicosta, Alex's Bicycle Pro Shop — but Harvest Drive is the organizer.\nNOTE: this is a separate ride from the Weston Flyers Annual Thanksgiving Day Ride, which also runs Thu Nov 26 at 7:30 AM but starts from Alex's Bicycle Pro Shop.",
-          "Pace": "social pace for the first 30 miles",
-          "Distance": "60 miles"
+          "Notes": "Organized by Harvest Drive (@harvestdrivefl). Local cycling clubs repost and participate — Ride84, PD Cycling Club, OMG Cycling, Unicosta, Alex's Bicycle Pro Shop — but Harvest Drive is the organizer.\nStart: Weston Town Center, 1675 Market St, Weston, FL 33326\nSocial, no-drop pace for the opening section of the route.\nNOTE: separate ride from the Weston Flyers Annual Thanksgiving Day Ride, which also runs Thu Nov 26 at 7:30 AM but starts from Alex's Bicycle Pro Shop."
         },
         "site": {
           "time_min": 450,
           "time_display": "7:30 AM",
-          "pace_label": "30 mph",
+          "pace_label": "No-drop",
           "pace_groups": [
-            "fast",
             "soc"
           ],
-          "pace_top": "fast",
-          "pace_nodrop": true,
+          "pace_top": "soc",
+          "pace_nodrop": false,
           "dist_display": "60 mi",
           "venue": "Weston Town Center",
           "venue_detail": "1675 Market St, Weston, FL 33326",
@@ -1308,6 +1307,24 @@
           "Website URL": "https://letourdeweston.com/",
           "Instagram URL": "https://www.instagram.com/letourdeweston/",
           "Instagram Handle": "letourdeweston"
+        }
+      },
+      {
+        "id": "recUmY5wfEI9Qa4n7",
+        "createdTime": "2026-11-18T16:11:05.000Z",
+        "fields": {
+          "Avatar": [
+            {
+              "url": "/public/organizers/harvest_drive.jpg",
+              "filename": "harvest_drive.jpg",
+              "thumb": "/public/organizers/thumbs/harvest_drive.webp"
+            }
+          ],
+          "Name": "Harvest Drive",
+          "Active": true,
+          "Type": "Event",
+          "Instagram URL": "https://www.instagram.com/harvestdrivefl/",
+          "Instagram Handle": "harvestdrivefl"
         }
       },
       {
