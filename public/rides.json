@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T15:10:41.078234+00:00",
+  "generated_at": "2026-11-18T16:00:04.958667+00:00",
   "rides": {
     "records": [
       {
@@ -517,6 +517,45 @@
           "venue_detail": "Weston Town Center · 1797 Bell Tower Ln, Weston, FL 33326",
           "area": "Weston",
           "display_name": "Team Recovery Weston × GRIT Bike Lab Social Ride"
+        }
+      },
+      {
+        "id": "recKCiLH8gzWz98BC",
+        "createdTime": "2026-11-18T15:36:36.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "5:30 AM",
+          "Location": "Alex's Bicycle Pro Shop",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Pace": "24 mph controlled",
+          "Distance": "43",
+          "Ride Name": "OMG Cycling × Alex's Bicycle Pro Shop — Friendsgiving Ride",
+          "Day of Week": "Tuesday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-24",
+          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "Organizer": "OMG Cycling",
+          "Notes": "Friendsgiving edition of the Tuesday New Season ride, presented by OMG Cycling and Alex's Bicycle Pro Shop.\nPost-ride get-together at the shop with snacks and refreshments — a thank you to riders for their support this year. Same 5:30 AM start from Alex's Bicycle Pro Shop as the regular Tuesday ride.",
+          "Weather Summary": "Dry (7% rain), light winds 3 mph",
+          "Rain Probability": 0.07,
+          "Wind Speed": 2.8
+        },
+        "site": {
+          "time_min": 330,
+          "time_display": "5:30 AM",
+          "pace_label": "24 mph",
+          "pace_groups": [
+            "fast",
+            "soc"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": true,
+          "dist_display": "43 mi",
+          "venue": "Alex's Bicycle Pro Shop",
+          "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
+          "area": "Weston",
+          "display_name": "OMG Cycling × Alex's Bicycle Pro Shop — Friendsgiving Ride"
         }
       },
       {
