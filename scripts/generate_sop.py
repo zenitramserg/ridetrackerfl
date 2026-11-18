@@ -294,6 +294,17 @@ issues = [
         "Fix the date directly in Airtable, then run the sync command."
     ),
     (
+        "New organizer's logo or profile not showing on the site",
+        "The hourly sync reuses a saved organizer list for up to 12 hours (to save Airtable "
+        "requests), so a brand-new organizer record is not picked up until then. Check the "
+        "Organizers record has its Avatar uploaded and Active ticked, then run a manual sync, "
+        "which always fetches organizers fresh:\n"
+        "cd ~/ridetrackerfl && python3.12 -m pipeline.sync_to_site --org-cache-hours 0\n"
+        "The log should say \"Updated avatar: &lt;name&gt;.jpg\". The site updates within about "
+        "60 seconds. \"Coming up\" event cards never show logos — check the ride card or the "
+        "organizer profile. First seen 2026-11-18 (Harvest Drive)."
+    ),
+    (
         "New organizer ride not appearing",
         "Add manually in Airtable with Display on Site = true, then run sync.\n"
         "To add the organizer to the scraper, add their handle to config/accounts.json"
