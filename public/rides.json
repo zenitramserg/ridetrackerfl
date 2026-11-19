@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T17:50:09.107261+00:00",
+  "generated_at": "2026-11-19T03:00:50.192055+00:00",
   "rides": {
     "records": [
       {
@@ -526,11 +526,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 2.8,
-          "Rain Probability": 0.07,
+          "Wind Speed": 2.3,
+          "Rain Probability": 0.04,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Weather Summary": "Dry (7% rain), light winds 3 mph",
+          "Weather Summary": "Dry (4% rain), light winds 2 mph",
           "Pace": "24 mph controlled",
           "Distance": "43",
           "Ride Name": "OMG Cycling × Alex's Bicycle Pro Shop — Friendsgiving Ride",
@@ -711,12 +711,12 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 2.8,
-          "Rain Probability": 0.07,
+          "Wind Speed": 2.3,
+          "Rain Probability": 0.04,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-11-18T15:10:18.000Z",
-          "Weather Summary": "Dry (7% rain), light winds 3 mph",
+          "Weather Summary": "Dry (4% rain), light winds 2 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
