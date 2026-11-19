@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T15:00:07.680929+00:00",
+  "generated_at": "2026-11-19T15:12:29.744634+00:00",
   "rides": {
     "records": [
       {
@@ -86,7 +86,7 @@
           "Rain Probability": 0.04,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/harvestdrivefl/",
-          "Last Checked At": "2026-11-18T15:10:18.000Z",
+          "Last Checked At": "2026-11-19T15:12:12.000Z",
           "Weather Summary": "Dry (4% rain), light winds 10 mph",
           "Pace": "Social / no-drop",
           "Distance": "60",
@@ -955,13 +955,13 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Wind Speed": 10.4,
-          "Rain Probability": 0.04,
+          "Wind Speed": 5.7,
+          "Rain Probability": 0.06,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
           "Featured": true,
-          "Last Checked At": "2026-11-18T15:10:18.000Z",
-          "Weather Summary": "Dry (4% rain), light winds 10 mph",
+          "Last Checked At": "2026-11-19T15:12:12.000Z",
+          "Weather Summary": "Dry (6% rain), winds 6 mph",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
