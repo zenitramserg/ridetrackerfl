@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T14:26:04.515622+00:00",
+  "generated_at": "2026-11-20T15:10:18.871985+00:00",
   "rides": {
     "records": [
       {
@@ -196,8 +196,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
+          "Wind Speed": 3.3,
+          "Rain Probability": 0.02,
           "Location": "GRIT. Bike Lab, Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/playlikeiker/",
+          "Weather Summary": "Dry (2% rain), light winds 3 mph",
           "Distance": "45 miles",
           "Ride Name": "Play Like Iker – Ewing Sarcoma Awareness Day Bike Ride",
           "Day of Week": "Saturday",
@@ -205,10 +208,7 @@
           "Ride Date": "2026-11-21",
           "Address Note": "1797 Bell Tower Ln, Ste 109, Weston, FL",
           "Organizer": "GRIT. Bike Lab",
-          "Notes": "Play Like Iker Movement — Ewing Sarcoma Awareness Day, hosted at GRIT. Bike Lab. Free event, no registration. Bike 7:00 AM (45 mi), run 8:45 AM (2.2 mi), family walk 9:00 AM (1.1 mi). Free T-shirt for the first 150. Posted by Ride84, OMG Cycling and Weston Flyers.\nAdded manually 2026-11-20: the scan had linked these posts to the retired Ride 84 x Alex Bicycles record (recPW5UcQaU9FlFIx), so it never showed on the site.",
-          "Weather Summary": "Dry (2% rain), light winds 3 mph",
-          "Rain Probability": 0.02,
-          "Wind Speed": 3.3
+          "Notes": "Play Like Iker Movement — Ewing Sarcoma Awareness Day, hosted at GRIT. Bike Lab. Free event, no registration. Bike 7:00 AM (45 mi), run 8:45 AM (2.2 mi), family walk 9:00 AM (1.1 mi). Free T-shirt for the first 150. Posted by Ride84, OMG Cycling and Weston Flyers.\nAdded manually 2026-11-20: the scan had linked these posts to the retired Ride 84 x Alex Bicycles record (recPW5UcQaU9FlFIx), so it never showed on the site."
         },
         "site": {
           "time_min": 420,
@@ -562,10 +562,10 @@
           "Display on Site": true,
           "Time": "5:30 AM",
           "Wind Speed": 5.2,
-          "Rain Probability": 0.11,
+          "Rain Probability": 0.2,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Weather Summary": "Dry (11% rain), light winds 5 mph",
+          "Weather Summary": "Dry (20% rain), light winds 5 mph",
           "Pace": "24 mph controlled",
           "Distance": "43",
           "Ride Name": "OMG Cycling × Alex's Bicycle Pro Shop — Friendsgiving Ride",
@@ -747,11 +747,11 @@
           "Display on Site": true,
           "Time": "5:30 AM",
           "Wind Speed": 5.2,
-          "Rain Probability": 0.11,
+          "Rain Probability": 0.2,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
           "Last Checked At": "2026-11-18T15:10:18.000Z",
-          "Weather Summary": "Dry (11% rain), light winds 5 mph",
+          "Weather Summary": "Dry (20% rain), light winds 5 mph",
           "Pace": "24/26",
           "Distance": "43",
           "Ride Name": "OMG Cycling - Tuesday New Season ",
