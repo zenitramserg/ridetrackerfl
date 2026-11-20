@@ -349,6 +349,23 @@ def _ride_match_key(ride: dict) -> tuple:
     return (org, weekday, time_)
 
 
+_ONE_OFF_TYPES = ("special_event", "annual", "special event", "featured event", "ride_event")
+
+
+def _is_past(ride: dict) -> bool:
+    """True when the ride's date is before today (US Eastern)."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    iso = _parse_date_for_airtable(ride.get("date") or "")
+    return bool(iso) and iso < datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+
+
+def _is_not_found(exc: Exception) -> bool:
+    """True only when Airtable says the record does not exist (HTTP 404)."""
+    response = getattr(exc, "response", None)
+    return getattr(response, "status_code", None) == 404
+
+
 def _build_airtable_index(table) -> dict:
     """
     Fetch all existing Rides records and build a lookup dict:
@@ -365,12 +382,22 @@ def _build_airtable_index(table) -> dict:
     F_ORGANIZER = "Organizer"
     F_WEEKDAY   = "Day of Week"
     F_TIME      = "Time"
+    F_TYPE      = "Ride Type"
+    F_NOTES     = "Notes"
 
     index = {}
     try:
-        records = table.all(fields=[F_ORGANIZER, F_WEEKDAY, F_TIME])
+        records = table.all(fields=[F_ORGANIZER, F_WEEKDAY, F_TIME, F_TYPE, F_NOTES])
         for rec in records:
             f = rec.get("fields", {})
+            # Only recurring rides can stand in for a new post. A one-off event
+            # or a retired ride sharing (organizer, weekday, time) is a different
+            # ride — linking to it hid the 2026-11-21 Play Like Iker event behind
+            # the retired Ride 84 x Alex Bicycles record.
+            if (f.get(F_TYPE) or "").lower() in _ONE_OFF_TYPES:
+                continue
+            if (f.get(F_NOTES) or "").lstrip().upper().startswith("RETIRED"):
+                continue
             org     = (f.get(F_ORGANIZER) or "").lower().strip()
             weekday = (f.get(F_WEEKDAY)   or "").lower().strip()
             time_   = _normalize_time(f.get(F_TIME) or "")
@@ -428,7 +455,9 @@ def push_new_rides(dry_run: bool = False, outcomes: list | None = None) -> int:
     db = load_db()
 
     # Only process rides that haven't been synced yet
-    pending = [r for r in db if not r.get("airtable_record_id")]
+    # A ride whose date has passed is history, not something to publish — this
+    # also keeps unlinked old entries from being re-created on the site.
+    pending = [r for r in db if not r.get("airtable_record_id") and not _is_past(r)]
     if not pending:
         print("[airtable] ✓ All rides already synced — nothing to push.")
         return 0
@@ -451,7 +480,9 @@ def push_new_rides(dry_run: bool = False, outcomes: list | None = None) -> int:
 
     for ride in pending:
         match_key = _ride_match_key(ride)
-        existing_record_id = airtable_index.get(match_key) if all(match_key) else None
+        one_off = (ride.get("ride_type") or "").lower() in _ONE_OFF_TYPES
+        existing_record_id = (airtable_index.get(match_key)
+                              if all(match_key) and not one_off else None)
 
         if existing_record_id:
             # ── Match found: link + patch safe fields ─────────────────────────
@@ -620,10 +651,12 @@ def push_updated_rides(updated_ids: list[str] | None = None, dry_run: bool = Fal
             updated += 1
         except Exception as e:
             print(f"  ✗ Failed to update {record_id} '{ride.get('title', '?')}': {e}")
-            ride.pop("airtable_record_id", None)  # Clear stale ID so next run retries cleanly
-            # Persist the cleared ID back to disk so the next run doesn't
-            # keep hitting the same 403/404 for a deleted Airtable record.
-            save_db(db)
+            # Clear the link only for a deleted record. Any other failure
+            # (timeout, 429, 5xx) is transient, and clearing would make the
+            # next run create a live duplicate of a ride that still exists.
+            if _is_not_found(e):
+                ride.pop("airtable_record_id", None)
+                save_db(db)
 
     return updated
 
