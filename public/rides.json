@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T15:09:54.764609+00:00",
+  "generated_at": "2026-11-22T15:29:51.256376+00:00",
   "rides": {
     "records": [
       {
@@ -82,7 +82,7 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "07:30 AM",
-          "Wind Speed": 6.0,
+          "Wind Speed": 6,
           "Rain Probability": 0.07,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/harvestdrivefl/",
@@ -526,7 +526,7 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 6.0,
+          "Wind Speed": 6,
           "Rain Probability": 0.01,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
@@ -711,7 +711,7 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "5:30 AM",
-          "Wind Speed": 6.0,
+          "Wind Speed": 6,
           "Rain Probability": 0.01,
           "Location": "Alex's Bike Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/alexbicycles/",
@@ -955,7 +955,7 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Wind Speed": 6.0,
+          "Wind Speed": 6,
           "Rain Probability": 0.07,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
