@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T16:00:05.639653+00:00",
+  "generated_at": "2026-11-23T17:00:03.928558+00:00",
   "rides": {
     "records": [
       {
@@ -911,6 +911,43 @@
           "venue_detail": "",
           "area": "Weston",
           "display_name": "Team Galiz Wednesday Evening Ride"
+        }
+      },
+      {
+        "id": "recdLW54bSjwcxclg",
+        "createdTime": "2026-11-23T16:57:49.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Flamingo & Griffin",
+          "Organizer Instagram Profile": "https://www.instagram.com/teamgaliz/",
+          "Pace": "One group · no drop",
+          "Distance": "40",
+          "Ride Name": "Team Galiz Thanksgiving Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-26",
+          "Organizer": "Team Galiz",
+          "Notes": "Team Galiz Thanksgiving Ride — pedals up 7:00 AM from Flamingo & Griffin.\nOne group, no one left behind. SAG car on route.\nPart of Team Galiz's 20th anniversary year. Details supplied directly by the group admin.",
+          "Weather Summary": "Dry (8% rain), light winds 8 mph",
+          "Rain Probability": 0.08,
+          "Wind Speed": 7.6
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "No-drop",
+          "pace_groups": [
+            "soc"
+          ],
+          "pace_top": "soc",
+          "pace_nodrop": false,
+          "dist_display": "40 mi",
+          "venue": "Flamingo & Griffin",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "Team Galiz Thanksgiving Ride"
         }
       },
       {
