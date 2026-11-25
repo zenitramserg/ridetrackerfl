@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T17:00:04.541242+00:00",
+  "generated_at": "2026-11-25T02:00:06.391643+00:00",
   "rides": {
     "records": [
       {
@@ -82,12 +82,12 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "07:30 AM",
-          "Wind Speed": 10.5,
-          "Rain Probability": 0.03,
+          "Wind Speed": 10.8,
+          "Rain Probability": 0.0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/harvestdrivefl/",
           "Last Checked At": "2026-11-23T15:12:25.000Z",
-          "Weather Summary": "Dry (3% rain), light winds 10 mph",
+          "Weather Summary": "Dry (0% rain), light winds 11 mph",
           "Pace": "Social / no-drop",
           "Distance": "60",
           "Ride Name": "Harvest Drive Annual Thanksgiving Bike Ride",
@@ -920,11 +920,11 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:00 AM",
-          "Wind Speed": 10.5,
-          "Rain Probability": 0.03,
+          "Wind Speed": 10.8,
+          "Rain Probability": 0.0,
           "Location": "Flamingo & Griffin",
           "Organizer Instagram Profile": "https://www.instagram.com/teamgaliz/",
-          "Weather Summary": "Dry (3% rain), light winds 10 mph",
+          "Weather Summary": "Dry (0% rain), light winds 11 mph",
           "Pace": "One group · no drop",
           "Distance": "40",
           "Ride Name": "Team Galiz Thanksgiving Ride",
@@ -951,54 +951,19 @@
         }
       },
       {
-        "id": "reck35UmKabTDKKaP",
-        "createdTime": "2026-03-27T14:43:19.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "07:30 AM",
-          "Location": "Weston Town Center",
-          "Pace": "20/23 mph | Controlled Pace | No Drop",
-          "Distance": "30",
-          "Ride Name": "Wild Hogs Thursday Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Address Note": "Japan Inn inside Weston Town Center Plaza",
-          "Organizer": "Wild Hogs Cycling",
-          "Notes": "No-drop group. Mirror of Tuesday ride. Instagram: @wildhogscycling. Bill (admin) approved listing Jul 2026."
-        },
-        "site": {
-          "time_min": 450,
-          "time_display": "7:30 AM",
-          "pace_label": "20–23 mph",
-          "pace_groups": [
-            "fast",
-            "mod",
-            "soc"
-          ],
-          "pace_top": "fast",
-          "pace_nodrop": true,
-          "dist_display": "30 mi",
-          "venue": "Weston Town Center",
-          "venue_detail": "Japan Inn inside Weston Town Center Plaza",
-          "area": "Weston",
-          "display_name": "Wild Hogs Thursday Ride"
-        }
-      },
-      {
         "id": "recndcXA8xONGJ2fw",
         "createdTime": "2026-11-09T15:13:37.000Z",
         "fields": {
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Wind Speed": 10.5,
-          "Rain Probability": 0.03,
+          "Wind Speed": 10.8,
+          "Rain Probability": 0.0,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
           "Featured": true,
           "Last Checked At": "2026-11-24T15:13:24.000Z",
-          "Weather Summary": "Dry (3% rain), light winds 10 mph",
+          "Weather Summary": "Dry (0% rain), light winds 11 mph",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
