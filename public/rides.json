@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T13:51:38.800191+00:00",
+  "generated_at": "2026-11-25T15:12:15.185244+00:00",
   "rides": {
     "records": [
       {
@@ -777,13 +777,13 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Wind Speed": 10.8,
-          "Rain Probability": 0,
+          "Wind Speed": 6.0,
+          "Rain Probability": 0.0,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
           "Featured": true,
-          "Last Checked At": "2026-11-24T15:13:24.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 11 mph",
+          "Last Checked At": "2026-11-25T15:12:06.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 6 mph",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
