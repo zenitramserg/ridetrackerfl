@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T15:12:15.185244+00:00",
+  "generated_at": "2026-11-25T18:00:04.670633+00:00",
   "rides": {
     "records": [
       {
@@ -777,8 +777,8 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Wind Speed": 6.0,
-          "Rain Probability": 0.0,
+          "Wind Speed": 6,
+          "Rain Probability": 0,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
           "Featured": true,
