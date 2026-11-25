@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T10:00:29.748100+00:00",
+  "generated_at": "2026-11-25T13:44:58.283925+00:00",
   "rides": {
     "records": [
       {
@@ -343,41 +343,6 @@
         }
       },
       {
-        "id": "recDfjjtCpA5xYVKH",
-        "createdTime": "2026-10-30T14:14:53.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "6:00 PM",
-          "Wind Speed": 3.5,
-          "Rain Probability": 0.01,
-          "Location": "MBO Brickell",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-11-05T15:13:08.000Z",
-          "Weather Summary": "Dry (1% rain), winds 4 mph",
-          "Ride Name": "Thirsty Thursday Group Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-11-05",
-          "Organizer": "MBO Ten Cycling",
-          "Pace": "Tempo+",
-          "Address Note": "1100 SW 2nd St, Miami, FL"
-        },
-        "site": {
-          "time_min": 1080,
-          "time_display": "6:00 PM",
-          "pace_label": "Tempo+",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "MBO Brickell",
-          "venue_detail": "1100 SW 2nd St, Miami, FL",
-          "area": "Weston",
-          "display_name": "Thirsty Thursday Group Ride"
-        }
-      },
-      {
         "id": "recG3IAsRXicb8ybd",
         "createdTime": "2026-10-22T17:58:17.000Z",
         "fields": {
@@ -414,85 +379,10 @@
         }
       },
       {
-        "id": "recHtSoEzNTxyHQBY",
-        "createdTime": "2026-04-16T00:43:55.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "05:30 AM",
-          "Wind Speed": 2.4,
-          "Rain Probability": 0,
-          "Location": "Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-10-29T14:13:12.000Z",
-          "Weather Summary": "Dry (0% rain), winds 2 mph",
-          "Pace": "24 /26 mph",
-          "Distance": "40",
-          "Ride Name": "Thursday Tempo Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-29",
-          "Organizer": "OMG Cycling",
-          "Address Note": "Behind Bank of America"
-        },
-        "site": {
-          "time_min": 330,
-          "time_display": "5:30 AM",
-          "pace_label": "24–26 mph",
-          "pace_groups": [
-            "fast"
-          ],
-          "pace_top": "fast",
-          "pace_nodrop": false,
-          "dist_display": "40 mi",
-          "venue": "Weston Town Center",
-          "venue_detail": "Behind Bank of America",
-          "area": "Weston",
-          "display_name": "Thursday Tempo Ride"
-        }
-      },
-      {
-        "id": "recJgnwpRsAuba1yA",
-        "createdTime": "2026-03-30T01:33:52.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Display on Site": true,
-          "Time": "06:30 PM",
-          "Wind Speed": 10.9,
-          "Rain Probability": 0.05,
-          "Location": "1800 N Commerce Pkwy, Weston",
-          "Organizer Instagram Profile": "https://www.instagram.com/unicosta_cycling/",
-          "Weather Summary": "Dry (5% rain), light winds 11 mph",
-          "Pace": "A: 26+ mph / B: 24-26 mph",
-          "Ride Name": "Unicosta Thursday Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-06-11",
-          "Organizer": "Unicosta Cycling",
-          "Notes": "Group A: Race pace (26+ mph). Group B: Tempo (24-26 mph). Source: Unicosta website."
-        },
-        "site": {
-          "time_min": 1110,
-          "time_display": "6:30 PM",
-          "pace_label": "24–26+ mph",
-          "pace_groups": [
-            "fast"
-          ],
-          "pace_top": "fast",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "1800 N Commerce Pkwy",
-          "venue_detail": "",
-          "area": "Weston",
-          "display_name": "Unicosta Thursday Ride"
-        }
-      },
-      {
         "id": "recK1EPkBZUO59H02",
         "createdTime": "2026-10-30T14:14:51.000Z",
         "fields": {
           "Ride Type": "weekly",
-          "Display on Site": true,
           "Time": "06:30 PM",
           "Location": "GRIT Bike Lab, Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/teamrecoveryweston/",
@@ -503,6 +393,7 @@
           "Ride Date": "2026-10-29",
           "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
           "Organizer": "Team Recovery Weston",
+          "Display on Site": true,
           "Pace": "Easy Pace"
         },
         "site": {
