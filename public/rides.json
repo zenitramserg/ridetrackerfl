@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T13:44:58.283925+00:00",
+  "generated_at": "2026-11-25T13:45:43.601596+00:00",
   "rides": {
     "records": [
       {
@@ -376,38 +376,6 @@
           "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
           "area": "Weston",
           "display_name": "Alex Bike Shop Ride"
-        }
-      },
-      {
-        "id": "recK1EPkBZUO59H02",
-        "createdTime": "2026-10-30T14:14:51.000Z",
-        "fields": {
-          "Ride Type": "weekly",
-          "Time": "06:30 PM",
-          "Location": "GRIT Bike Lab, Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/teamrecoveryweston/",
-          "Last Checked At": "2026-10-30T14:14:46.000Z",
-          "Ride Name": "Team Recovery Weston × GRIT Bike Lab Social Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-10-29",
-          "Address Note": "1797 Bell Tower Ln, Weston, FL 33326",
-          "Organizer": "Team Recovery Weston",
-          "Display on Site": true,
-          "Pace": "Easy Pace"
-        },
-        "site": {
-          "time_min": 1110,
-          "time_display": "6:30 PM",
-          "pace_label": "Easy Pace",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "GRIT Bike Lab",
-          "venue_detail": "Weston Town Center · 1797 Bell Tower Ln, Weston, FL 33326",
-          "area": "Weston",
-          "display_name": "Team Recovery Weston × GRIT Bike Lab Social Ride"
         }
       },
       {
