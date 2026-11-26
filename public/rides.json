@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T18:00:04.670633+00:00",
+  "generated_at": "2026-11-26T15:11:59.719271+00:00",
   "rides": {
     "records": [
       {
@@ -115,6 +115,39 @@
         }
       },
       {
+        "id": "rec1n94BxKg0cQOBl",
+        "createdTime": "2026-11-26T15:11:54.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "6:15 AM",
+          "Wind Speed": 3.3,
+          "Rain Probability": 0,
+          "Location": "MBO Store",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-11-26T15:11:48.000Z",
+          "Weather Summary": "Dry (0% rain), winds 3 mph",
+          "Ride Name": "MBO Ride",
+          "Day of Week": "Friday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-27",
+          "Organizer": "MBO Ten Cycling"
+        },
+        "site": {
+          "time_min": 375,
+          "time_display": "6:15 AM",
+          "pace_label": "",
+          "pace_groups": [],
+          "pace_top": "unk",
+          "pace_nodrop": false,
+          "dist_display": "",
+          "venue": "MBO Store",
+          "venue_detail": "",
+          "area": "Weston",
+          "display_name": "MBO Ride"
+        }
+      },
+      {
         "id": "rec5pXok7XiOHyShs",
         "createdTime": "2026-03-27T14:43:19.000Z",
         "fields": {
@@ -187,6 +220,45 @@
           "venue_detail": "",
           "area": "Weston",
           "display_name": "Team Galiz Sunday Recovery Ride to Miramar"
+        }
+      },
+      {
+        "id": "rec6ZnJP7wpJrWMd1",
+        "createdTime": "2026-11-26T15:11:53.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "5:50 AM",
+          "Wind Speed": 7.8,
+          "Rain Probability": 0,
+          "Location": "MBO Miami",
+          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
+          "Last Checked At": "2026-11-26T15:11:48.000Z",
+          "Weather Summary": "Dry (0% rain), winds 8 mph",
+          "Ride Name": "MBO Thanksgiving Ride",
+          "Day of Week": "Thursday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-26",
+          "Organizer": "MBO Ten Cycling",
+          "Pace": "20-22 mph",
+          "Distance": "62 miles",
+          "Address Note": "1100 SW 2nd Ave, Miami, FL 33130"
+        },
+        "site": {
+          "time_min": 350,
+          "time_display": "5:50 AM",
+          "pace_label": "20–22 mph",
+          "pace_groups": [
+            "fast",
+            "mod"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "62 mi",
+          "venue": "MBO Miami",
+          "venue_detail": "1100 SW 2nd Ave, Miami, FL 33130",
+          "area": "Miami",
+          "display_name": "MBO Thanksgiving Ride"
         }
       },
       {
@@ -777,13 +849,13 @@
           "Ride Type": "special_event",
           "Display on Site": true,
           "Time": "7:30 AM",
-          "Wind Speed": 6,
-          "Rain Probability": 0,
+          "Wind Speed": 11.4,
+          "Rain Probability": 0.0,
           "Location": "Alex's Bicycle Pro Shop",
           "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
           "Featured": true,
-          "Last Checked At": "2026-11-25T15:12:06.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 6 mph",
+          "Last Checked At": "2026-11-26T15:11:48.000Z",
+          "Weather Summary": "Dry (0% rain), light winds 11 mph",
           "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
           "Day of Week": "Thursday",
           "Status": "confirmed",
