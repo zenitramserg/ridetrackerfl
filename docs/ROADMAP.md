@@ -1,6 +1,6 @@
 # RideTrackerFL Roadmap
 
-_Last updated: 2026-11-20_
+_Last updated: 2026-11-24_
 
 ## Where things stand
 
@@ -82,9 +82,10 @@ Savings to revisit:
      entries were left alone; they repair themselves when a post is seen again. Root
      cause fixed too: new posts no longer link by (organizer, weekday, time) to one-off
      or RETIRED records, and rides with a past date are never created.
-  3. Airtable touch-ups, still open. Add "NO AUTO-RESTORE" to the notes of the 3 paused
-     5am Pull Club records and S.L.A.B. Pimpin, which stops the sync warning. Also fill
-     in missing Ride Types and hide empty shell record recES0YkEq1lBggMM. No deletions.
+  3. ~~Airtable touch-ups~~ — done 2026-11-24. NO AUTO-RESTORE was already on the 3 paused
+     5am Pull Club records and S.L.A.B. Pimpin (added 2026-11-22). Ride Types filled in
+     (Weston Flyers Tuesday and Specialized Coconut Grove Sunday → weekly; Coach Peter
+     Aldridge Charity Ride → special_event). Shell record recES0YkEq1lBggMM set to hidden.
   4. The hidden "Ride for Team USA" record (recSvTJiQEk45M4gD) had its date overwritten
      to Nov 21 by the bad linking. Restore it if the record is kept for history.
 - **Classifier**: one-off events (e.g. Play Like Iker) are sometimes typed `weekly_ride`,
