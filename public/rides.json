@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T15:11:59.719271+00:00",
+  "generated_at": "2026-11-27T15:16:12.829365+00:00",
   "rides": {
     "records": [
       {
@@ -73,45 +73,6 @@
           "venue_detail": "Behind Bank of America",
           "area": "Weston",
           "display_name": "Wednesday Favorite Ride"
-        }
-      },
-      {
-        "id": "rec0nQfTkYb35vm3e",
-        "createdTime": "2026-11-18T15:10:26.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "07:30 AM",
-          "Wind Speed": 10.8,
-          "Rain Probability": 0,
-          "Location": "Weston Town Center",
-          "Organizer Instagram Profile": "https://www.instagram.com/harvestdrivefl/",
-          "Last Checked At": "2026-11-23T15:12:25.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 11 mph",
-          "Pace": "Social / no-drop",
-          "Distance": "60",
-          "Ride Name": "Harvest Drive Annual Thanksgiving Bike Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-11-26",
-          "Address Note": "1675 Market St, Weston, FL 33326",
-          "Organizer": "Harvest Drive",
-          "Notes": "Organized by Harvest Drive (@harvestdrivefl). Local cycling clubs repost and participate — Ride84, PD Cycling Club, OMG Cycling, Unicosta, Alex's Bicycle Pro Shop — but Harvest Drive is the organizer.\nStart: Weston Town Center, 1675 Market St, Weston, FL 33326\nSocial, no-drop pace for the opening section of the route.\nNOTE: separate ride from the Weston Flyers Annual Thanksgiving Day Ride, which also runs Thu Nov 26 at 7:30 AM but starts from Alex's Bicycle Pro Shop."
-        },
-        "site": {
-          "time_min": 450,
-          "time_display": "7:30 AM",
-          "pace_label": "No-drop",
-          "pace_groups": [
-            "soc"
-          ],
-          "pace_top": "soc",
-          "pace_nodrop": false,
-          "dist_display": "60 mi",
-          "venue": "Weston Town Center",
-          "venue_detail": "1675 Market St, Weston, FL 33326",
-          "area": "Weston",
-          "display_name": "Harvest Drive Annual Thanksgiving Bike Ride"
         }
       },
       {
@@ -220,45 +181,6 @@
           "venue_detail": "",
           "area": "Weston",
           "display_name": "Team Galiz Sunday Recovery Ride to Miramar"
-        }
-      },
-      {
-        "id": "rec6ZnJP7wpJrWMd1",
-        "createdTime": "2026-11-26T15:11:53.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "5:50 AM",
-          "Wind Speed": 7.8,
-          "Rain Probability": 0,
-          "Location": "MBO Miami",
-          "Organizer Instagram Profile": "https://www.instagram.com/mbo_tencycling/",
-          "Last Checked At": "2026-11-26T15:11:48.000Z",
-          "Weather Summary": "Dry (0% rain), winds 8 mph",
-          "Ride Name": "MBO Thanksgiving Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-11-26",
-          "Organizer": "MBO Ten Cycling",
-          "Pace": "20-22 mph",
-          "Distance": "62 miles",
-          "Address Note": "1100 SW 2nd Ave, Miami, FL 33130"
-        },
-        "site": {
-          "time_min": 350,
-          "time_display": "5:50 AM",
-          "pace_label": "20–22 mph",
-          "pace_groups": [
-            "fast",
-            "mod"
-          ],
-          "pace_top": "fast",
-          "pace_nodrop": false,
-          "dist_display": "62 mi",
-          "venue": "MBO Miami",
-          "venue_detail": "1100 SW 2nd Ave, Miami, FL 33130",
-          "area": "Miami",
-          "display_name": "MBO Thanksgiving Ride"
         }
       },
       {
@@ -412,6 +334,44 @@
           "venue_detail": "Weston Town Center · 1797 Bell Tower Ln, Weston, FL 33326",
           "area": "Weston",
           "display_name": "Wednesday evening ride"
+        }
+      },
+      {
+        "id": "recEh12UqKHT2y0Lb",
+        "createdTime": "2026-11-27T15:16:06.000Z",
+        "fields": {
+          "Ride Type": "weekly",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Wind Speed": 1.1,
+          "Rain Probability": 0,
+          "Location": "Weston Town Center",
+          "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
+          "Last Checked At": "2026-11-27T15:16:01.000Z",
+          "Weather Summary": "Dry (0% rain), winds 1 mph",
+          "Ride Name": "Friday Recovery Ride",
+          "Day of Week": "Friday",
+          "Status": "confirmed",
+          "Ride Date": "2026-11-27",
+          "Organizer": "OMG Cycling",
+          "Pace": "22/24 mph",
+          "Distance": "30 mi",
+          "Address Note": "Behind Bank of America"
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "22–24 mph",
+          "pace_groups": [
+            "fast"
+          ],
+          "pace_top": "fast",
+          "pace_nodrop": false,
+          "dist_display": "30 mi",
+          "venue": "Weston Town Center",
+          "venue_detail": "Behind Bank of America",
+          "area": "Weston",
+          "display_name": "Friday Recovery Ride"
         }
       },
       {
@@ -803,80 +763,6 @@
           "venue_detail": "",
           "area": "Weston",
           "display_name": "Team Galiz Wednesday Evening Ride"
-        }
-      },
-      {
-        "id": "recdLW54bSjwcxclg",
-        "createdTime": "2026-11-23T16:57:49.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:00 AM",
-          "Wind Speed": 10.8,
-          "Rain Probability": 0,
-          "Location": "Flamingo & Griffin",
-          "Organizer Instagram Profile": "https://www.instagram.com/teamgaliz/",
-          "Weather Summary": "Dry (0% rain), light winds 11 mph",
-          "Pace": "One group · no drop",
-          "Distance": "40",
-          "Ride Name": "Team Galiz Thanksgiving Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-11-26",
-          "Organizer": "Team Galiz",
-          "Notes": "Team Galiz Thanksgiving Ride — pedals up 7:00 AM from Flamingo & Griffin.\nOne group, no one left behind. SAG car on route.\nPart of Team Galiz's 20th anniversary year. Details supplied directly by the group admin."
-        },
-        "site": {
-          "time_min": 420,
-          "time_display": "7:00 AM",
-          "pace_label": "No-drop",
-          "pace_groups": [
-            "soc"
-          ],
-          "pace_top": "soc",
-          "pace_nodrop": false,
-          "dist_display": "40 mi",
-          "venue": "Flamingo & Griffin",
-          "venue_detail": "",
-          "area": "Weston",
-          "display_name": "Team Galiz Thanksgiving Ride"
-        }
-      },
-      {
-        "id": "recndcXA8xONGJ2fw",
-        "createdTime": "2026-11-09T15:13:37.000Z",
-        "fields": {
-          "Ride Type": "special_event",
-          "Display on Site": true,
-          "Time": "7:30 AM",
-          "Wind Speed": 11.4,
-          "Rain Probability": 0.0,
-          "Location": "Alex's Bicycle Pro Shop",
-          "Organizer Instagram Profile": "https://www.instagram.com/weston_flyers/",
-          "Featured": true,
-          "Last Checked At": "2026-11-26T15:11:48.000Z",
-          "Weather Summary": "Dry (0% rain), light winds 11 mph",
-          "Ride Name": "Weston Flyers Annual 2026 Thanksgiving Day Ride",
-          "Day of Week": "Thursday",
-          "Status": "confirmed",
-          "Ride Date": "2026-11-26",
-          "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
-          "Organizer": "Weston Flyers",
-          "Notes": "START LOCATION CHANGED: this ride now departs from Alex's Bicycle Pro Shop, 16098 W State Rd 84 #3, Weston — not Weston Town Center as shown on the original flyer.",
-          "Pace": "Easy pace to Parkland / Fast back"
-        },
-        "site": {
-          "time_min": 450,
-          "time_display": "7:30 AM",
-          "pace_label": "Easy pace to Parkland / Fast back",
-          "pace_groups": [],
-          "pace_top": "unk",
-          "pace_nodrop": false,
-          "dist_display": "",
-          "venue": "Alex's Bicycle Pro Shop",
-          "venue_detail": "16098 W State Rd 84 #3, Weston, FL 33326",
-          "area": "Weston",
-          "display_name": "Weston Flyers Annual 2026 Thanksgiving Day Ride"
         }
       },
       {
