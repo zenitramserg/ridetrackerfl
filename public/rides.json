@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T16:16:08.539234+00:00",
+  "generated_at": "2026-11-27T17:00:04.167510+00:00",
   "rides": {
     "records": [
       {
@@ -623,6 +623,41 @@
           "venue_detail": "",
           "area": "Pembroke Pines",
           "display_name": "Alligators Ride"
+        }
+      },
+      {
+        "id": "recPgzuohyW20lXb6",
+        "createdTime": "2026-11-27T16:36:14.000Z",
+        "fields": {
+          "Ride Type": "special_event",
+          "Display on Site": true,
+          "Time": "7:00 AM",
+          "Location": "Alligator's Cycling, Pembroke Pines",
+          "Organizer Instagram Profile": "https://www.instagram.com/alligators.cycling/",
+          "Pace": "18-20 mph",
+          "Distance": "50",
+          "Ride Name": "Alligators Cycling — Group “B” Ride",
+          "Day of Week": "Sunday",
+          "Status": "confirmed",
+          "Ride Date": "2026-12-06",
+          "Address Note": "10426 Taft St, Pembroke Pines, FL",
+          "Organizer": "Alligators Cycling",
+          "Notes": "Monthly Group “B” ride — first Sunday of every month, 7:00 AM from Alligator's Cycling, 10426 Taft St, Pembroke Pines.\nOne rest stop. Ride leader: Scott B.\nFriendly, fast-paced ride for intermediate to advanced riders. RSVP or questions by DM, or call/WhatsApp +1 (754) 270-9335."
+        },
+        "site": {
+          "time_min": 420,
+          "time_display": "7:00 AM",
+          "pace_label": "18–20 mph",
+          "pace_groups": [
+            "mod"
+          ],
+          "pace_top": "mod",
+          "pace_nodrop": false,
+          "dist_display": "50 mi",
+          "venue": "Alligator's Cycling",
+          "venue_detail": "Pembroke Pines · 10426 Taft St, Pembroke Pines, FL",
+          "area": "Pembroke Pines",
+          "display_name": "Group “B” Ride"
         }
       },
       {
