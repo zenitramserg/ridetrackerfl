@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T17:00:04.167510+00:00",
+  "generated_at": "2026-11-28T15:12:26.855310+00:00",
   "rides": {
     "records": [
       {
@@ -784,7 +784,10 @@
           "Ride Date": "2026-12-05",
           "Address Note": "16098 W State Rd 84 #3, Weston, FL 33326",
           "Organizer": "Alex's Bicycle Pro Shop",
-          "Notes": "Year-end community ride. START AND FINISH both at Alex's Bicycle Pro Shop (loop). Two options: 100 miles (Century) or 50 miles (Half Century). Chance to WIN A 2028 BMC BICYCLE. Raffles and giveaways, on-course support. Sponsors: Oakley, Spaiki, Shokz, Just Recovery. Tagline: Enjoy an unforgettable ride with the South Florida cycling community. START TIME NOT YET ANNOUNCED - confirm with shop before promoting. Registration requirements also not yet stated. Source: Alex's Bicycle Pro Shop flyer, Oct 2026."
+          "Notes": "Year-end community ride. START AND FINISH both at Alex's Bicycle Pro Shop (loop). Two options: 100 miles (Century) or 50 miles (Half Century). Chance to WIN A 2028 BMC BICYCLE. Raffles and giveaways, on-course support. Sponsors: Oakley, Spaiki, Shokz, Just Recovery. Tagline: Enjoy an unforgettable ride with the South Florida cycling community. START TIME NOT YET ANNOUNCED - confirm with shop before promoting. Registration requirements also not yet stated. Source: Alex's Bicycle Pro Shop flyer, Oct 2026.",
+          "Weather Summary": "Dry (6% rain), light winds 8 mph",
+          "Rain Probability": 0.06,
+          "Wind Speed": 8.0
         },
         "site": {
           "time_min": null,
@@ -983,18 +986,18 @@
           "Ride Type": "weekly",
           "Display on Site": true,
           "Time": "06:00 AM",
-          "Wind Speed": 9.6,
-          "Rain Probability": 0.21,
+          "Wind Speed": 7.4,
+          "Rain Probability": 0,
           "Location": "Weston Town Center",
           "Organizer Instagram Profile": "https://www.instagram.com/omg_cycling/",
-          "Last Checked At": "2026-10-31T14:12:04.000Z",
-          "Weather Summary": "Dry (21% rain), light winds 10 mph",
+          "Last Checked At": "2026-11-28T15:12:18.000Z",
+          "Weather Summary": "Dry (0% rain), winds 7 mph",
           "Pace": "23-25mph",
           "Distance": "42/52/62",
           "Ride Name": "Saturday Palomos 2.0",
           "Day of Week": "Saturday",
           "Status": "confirmed",
-          "Ride Date": "2026-10-31",
+          "Ride Date": "2026-11-28",
           "Organizer": "OMG Cycling",
           "Is Primary Listing": true,
           "Address Note": "Behind Graziano's, Weston Town Center"
